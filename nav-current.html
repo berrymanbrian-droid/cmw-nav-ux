@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW Navigation - Current State</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            background: #111;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 56px;
+            position: relative;
+        }
+
+        .nav-logo {
+            margin-right: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 28px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            flex: 1;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a,
+        .nav-item > button {
+            padding: 0 14px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 500;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-item > a:hover,
+        .nav-item > button:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        .nav-item .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            min-width: 200px;
+            z-index: 1000;
+            padding: 6px 0;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 9px 16px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .dropdown a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .dropdown .divider {
+            height: 1px;
+            background: #333;
+            margin: 4px 0;
+        }
+
+        /* Right side icons */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-icon:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #444;
+            margin-left: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        /* Structure Reference Section */
+        .reference {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .reference h1 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .reference .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .menu-group {
+            margin-bottom: 24px;
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 16px 20px;
+        }
+
+        .menu-group h3 {
+            font-size: 14px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-group h3 .badge {
+            font-size: 11px;
+            background: #333;
+            color: #999;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 400;
+        }
+
+        .menu-group ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px 16px;
+        }
+
+        .menu-group ul li {
+            font-size: 13px;
+            color: #999;
+            padding: 2px 0;
+        }
+
+        .menu-group ul li::before {
+            content: "·";
+            margin-right: 6px;
+            color: #555;
+        }
+
+        .external-badge {
+            font-size: 10px;
+            background: #2a4a3a;
+            color: #6fcf97;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 6px;
+        }
+
+        .pending {
+            opacity: 0.5;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Interactive Nav Bar -->
+    <nav class="nav-bar">
+        <div class="nav-logo"><img src="cmw-logo.png" alt="Ceramic Materials Workshop"></div>
+
+        <div class="nav-links">
+            <!-- Ware (external link) -->
+            <div class="nav-item">
+                <a href="#" target="_blank">Ware <span style="font-size:10px; margin-left:4px; opacity:0.5;">↗</span></a>
+            </div>
+
+            <!-- Join -->
+            <div class="nav-item">
+                <button>Join</button>
+                <div class="dropdown">
+                    <a href="#">Courses</a>
+                    <a href="#">Membership</a>
+                    <a href="#">Merch</a>
+                </div>
+            </div>
+
+            <!-- Glaze Anatomy -->
+            <div class="nav-item">
+                <button>Glaze Anatomy</button>
+                <div class="dropdown">
+                    <a href="#">Overview</a>
+                    <a href="#">Calculator</a>
+                    <a href="#">Free Tools</a>
+                    <div class="divider"></div>
+                    <a href="#">Materials</a>
+                    <a href="#">Concepts</a>
+                    <a href="#">Glaze Types</a>
+                    <a href="#">Troubleshooting</a>
+                    <div class="divider"></div>
+                    <a href="#">Reference</a>
+                    <a href="#">Hot Takes</a>
+                    <a href="#">Watch & Listen</a>
+                </div>
+            </div>
+
+            <!-- Fired! -->
+            <div class="nav-item">
+                <button>Fired!</button>
+                <div class="dropdown">
+                    <a href="#">Feed</a>
+                    <a href="#">Explore</a>
+                    <a href="#">Talk</a>
+                    <a href="#">Post</a>
+                    <a href="#">Score</a>
+                </div>
+            </div>
+
+            <!-- My Book -->
+            <div class="nav-item">
+                <button>My Book</button>
+                <div class="dropdown">
+                    <a href="#">My Book</a>
+                    <a href="#">My Glazes</a>
+                    <a href="#">My Bodies</a>
+                    <div class="divider"></div>
+                    <a href="#">Import</a>
+                    <a href="#">Drop Box</a>
+                </div>
+            </div>
+
+            <!-- Glaze Lab -->
+            <div class="nav-item">
+                <button>Glaze Lab</button>
+                <div class="dropdown">
+                    <a href="#">Glaze Lab</a>
+                    <a href="#">Calculator</a>
+                    <a href="#">Clay Body Calculator</a>
+                    <a href="#">Glaze Quantity</a>
+                    <a href="#">Plaster</a>
+                    <div class="divider"></div>
+                    <a href="#">Start a Test</a>
+                    <a href="#">Design a Test</a>
+                    <a href="#">Fix a Flaw</a>
+                    <div class="divider"></div>
+                    <a href="#">My Presentations</a>
+                    <a href="#">Firing</a>
+                    <a href="#">Compare</a>
+                </div>
+            </div>
+
+            <!-- Library -->
+            <div class="nav-item">
+                <button>Library</button>
+                <div class="dropdown">
+                    <a href="#">Library Home</a>
+                    <a href="#">Latest</a>
+                    <a href="#">Live</a>
+                    <a href="#">The Journal</a>
+                    <div class="divider"></div>
+                    <a href="#">Test, Test, Test</a>
+                    <a href="#">Stull Maps</a>
+                    <a href="#">Stains</a>
+                    <a href="#">Color</a>
+                    <a href="#">Recipes</a>
+                    <a href="#">Clay Reports</a>
+                    <div class="divider"></div>
+                    <a href="#">My Workbooks</a>
+                    <a href="#">Commercial</a>
+                    <a href="#">Search</a>
+                </div>
+            </div>
+
+            <!-- Learn -->
+            <div class="nav-item">
+                <button>Learn</button>
+                <div class="dropdown">
+                    <a href="#">My Classes</a>
+                    <a href="#">Silica:Alumni</a>
+                    <a href="#">Browse Classes</a>
+                    <div class="divider"></div>
+                    <a href="#">All Labs</a>
+                    <a href="#">All Discussions</a>
+                    <div class="divider"></div>
+                    <a href="#">Live</a>
+                    <a href="#">Sign-Up Sheets</a>
+                    <a href="#">Hangout Calendar</a>
+                    <a href="#">Live Archive</a>
+                    <div class="divider"></div>
+                    <a href="#">Commons</a>
+                </div>
+            </div>
+
+            <!-- Studio -->
+            <div class="nav-item">
+                <button>Studio</button>
+                <div class="dropdown">
+                    <a href="#">Studio Directory</a>
+                    <a href="#">Region Board</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right side icons -->
+        <div class="nav-right">
+            <!-- Search -->
+            <div class="nav-icon" title="Search">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </div>
+            <!-- Feedback -->
+            <div class="nav-icon" title="Feedback">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+            </div>
+            <!-- Notifications -->
+            <div class="nav-icon" title="Notifications">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </div>
+            <!-- Dark/Light toggle -->
+            <div class="nav-icon" title="Toggle theme">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+            </div>
+            <!-- Account -->
+            <div class="avatar" title="Account">U</div>
+        </div>
+    </nav>
+
+    <!-- Structure Reference -->
+    <div class="reference">
+        <h1>CMW Navigation — Current Structure</h1>
+        <p class="subtitle">Hover over nav items above to see dropdowns. Items marked italic are awaiting sub-menu details.</p>
+
+        <div class="menu-group">
+            <h3>Ware <span class="external-badge">External Link</span></h3>
+            <ul>
+                <li>Links to separate Ware service/site</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Join <span class="badge">3 items</span></h3>
+            <ul>
+                <li>Courses</li>
+                <li>Membership</li>
+                <li>Merch</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Glaze Anatomy <span class="badge">10 items</span></h3>
+            <ul>
+                <li>Overview</li>
+                <li>Calculator</li>
+                <li>Free Tools</li>
+                <li>Materials</li>
+                <li>Concepts</li>
+                <li>Glaze Types</li>
+                <li>Troubleshooting</li>
+                <li>Reference</li>
+                <li>Hot Takes</li>
+                <li>Watch & Listen</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Fired! <span class="badge">5 items</span></h3>
+            <ul>
+                <li>Feed</li>
+                <li>Explore</li>
+                <li>Talk</li>
+                <li>Post</li>
+                <li>Score</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>My Book <span class="badge">5 items</span></h3>
+            <ul>
+                <li>My Book</li>
+                <li>My Glazes</li>
+                <li>My Bodies</li>
+                <li>Import</li>
+                <li>Drop Box</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Glaze Lab <span class="badge">11 items</span></h3>
+            <ul>
+                <li>Glaze Lab</li>
+                <li>Calculator</li>
+                <li>Clay Body Calculator</li>
+                <li>Glaze Quantity</li>
+                <li>Plaster</li>
+                <li>Start a Test</li>
+                <li>Design a Test</li>
+                <li>Fix a Flaw</li>
+                <li>My Presentations</li>
+                <li>Firing</li>
+                <li>Compare</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Library <span class="badge">14 items</span></h3>
+            <ul>
+                <li>Library Home</li>
+                <li>Latest</li>
+                <li>Live</li>
+                <li>The Journal</li>
+                <li>Test, Test, Test</li>
+                <li>Stull Maps</li>
+                <li>Stains</li>
+                <li>Color</li>
+                <li>Recipes</li>
+                <li>Clay Reports</li>
+                <li>My Workbooks</li>
+                <li>Commercial</li>
+                <li>Search</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Learn <span class="badge">10 items</span></h3>
+            <ul>
+                <li>My Classes</li>
+                <li>Silica:Alumni</li>
+                <li>Browse Classes</li>
+                <li>All Labs</li>
+                <li>All Discussions</li>
+                <li>Live</li>
+                <li>Sign-Up Sheets</li>
+                <li>Hangout Calendar</li>
+                <li>Live Archive</li>
+                <li>Commons</li>
+            </ul>
+        </div>
+
+        <div class="menu-group">
+            <h3>Studio <span class="badge">2 items</span></h3>
+            <ul>
+                <li>Studio Directory</li>
+                <li>Region Board</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

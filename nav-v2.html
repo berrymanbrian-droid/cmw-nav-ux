@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW Navigation - V2 Proposal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            background: #111;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 56px;
+            position: relative;
+        }
+
+        .nav-logo {
+            margin-right: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 28px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a,
+        .nav-item > button {
+            padding: 0 14px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-item > a:hover,
+        .nav-item > button:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Standard dropdown */
+        .nav-item .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            min-width: 200px;
+            z-index: 1000;
+            padding: 6px 0;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 9px 16px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .dropdown a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .dropdown .divider {
+            height: 1px;
+            background: #333;
+            margin: 4px 0;
+        }
+
+        .dropdown .section-label {
+            padding: 8px 16px 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #666;
+        }
+
+        /* Mega Menu */
+        .nav-item .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 24px 28px;
+            width: 680px;
+        }
+
+        .nav-item:first-child .mega-menu {
+            left: 8px;
+        }
+
+        .nav-item:hover .mega-menu {
+            display: block;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .mega-column h4 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #888;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mega-column a {
+            display: block;
+            padding: 5px 0;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.12s;
+        }
+
+        .mega-column a:hover {
+            color: #fff;
+        }
+
+        .mega-column a .desc {
+            display: block;
+            font-size: 11px;
+            color: #666;
+            margin-top: 1px;
+        }
+
+        /* Right side nav */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .nav-right .nav-item > a,
+        .nav-right .nav-item > button {
+            padding: 0 12px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .nav-right .nav-item.community > button {
+            color: #8b5cf6;
+        }
+
+        .nav-right .nav-item.community > button:hover {
+            color: #a78bfa;
+        }
+
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-icon:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #444;
+            margin-left: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .ware-link {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #aaa;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-right: 8px;
+            transition: all 0.15s;
+        }
+
+        .ware-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-color: #555;
+        }
+
+        /* Membership tier pills */
+        .pill {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 7px;
+            border-radius: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .pill-exclusive {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .pill-enroll {
+            background: rgba(99, 190, 123, 0.15);
+            color: #63be7b;
+            border: 1px solid rgba(99, 190, 123, 0.3);
+        }
+
+        /* Annotations Section */
+        .annotations {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .annotations h1 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .annotations .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .change-card {
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .change-card h3 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .change-card p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .change-card .tag {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        .tag-merge { background: #2a3a4a; color: #7db8e0; }
+        .tag-move { background: #3a2a4a; color: #b07de0; }
+        .tag-rename { background: #2a4a3a; color: #6fcf97; }
+        .tag-new { background: #4a3a2a; color: #e0a07d; }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .comparison .before,
+        .comparison .after {
+            background: #151515;
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
+
+        .comparison h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .comparison .before h4 { color: #e07d7d; }
+        .comparison .after h4 { color: #6fcf97; }
+
+        .comparison ul {
+            list-style: none;
+        }
+
+        .comparison ul li {
+            font-size: 12px;
+            color: #999;
+            padding: 2px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- V2 Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-logo"><img src="cmw-logo.png" alt="Ceramic Materials Workshop"></div>
+
+        <div class="nav-links">
+
+            <!-- Courses — courses and structured education -->
+            <div class="nav-item">
+                <button>Courses</button>
+                <div class="mega-menu" style="width: 620px;">
+                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mega-column">
+                            <a href="#" style="font-weight: 500; color: #fff; margin-bottom: 12px; display: block;">Where do I start?<span class="desc">Not sure which course is right for you? We'll help you find your path.</span></a>
+                            <h4>CMW Courses</h4>
+                            <a href="#">Making Glazes Make Sense<span class="desc">Master glaze chemistry — all levels welcome</span></a>
+                            <a href="#">Advancing Glazes<span class="desc">In-depth labs and a self-directed glaze project</span></a>
+                            <a href="#">Crystal Ball<span class="pill pill-enroll">Enroll Now</span><span class="desc">Techniques for breathtaking crystalline effects</span></a>
+                            <a href="#">Intro to Clay Bodies<span class="pill pill-enroll">Enroll Now</span><span class="desc">The science behind clay — take control of your materials</span></a>
+                            <a href="#">Workshops<span class="desc">Self-guided short workshops to build your glaze skills</span></a>
+                            <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span class="desc">Continue your learning journey with exclusive access</span></a>
+                            <a href="#" style="margin-top: 12px; color: #7db8e0; font-weight: 500;">View all courses →</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>My Learning</h4>
+                            <a href="#">My Classes<span class="desc">Your enrolled courses</span></a>
+                            <a href="#">All Labs<span class="desc">Hands-on experiments across courses</span></a>
+                            <a href="#">All Discussions<span class="desc">Conversations with classmates & instructors</span></a>
+                            <a href="#">Commons<span class="desc">See classmates' work and progress</span></a>
+                            <h4 style="margin-top: 16px;">Course Resources</h4>
+                            <a href="#">Sign-Up Sheets</a>
+                            <a href="#">Hangout Calendar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Work — consolidated personal content -->
+            <div class="nav-item">
+                <button>My Work</button>
+                <div class="dropdown">
+                    <div class="section-label">Saved Data</div>
+                    <a href="#">My Book</a>
+                    <a href="#">My Glazes</a>
+                    <a href="#">My Clay Bodies</a>
+                    <a href="#">My Workbooks</a>
+                    <a href="#">My Presentations</a>
+                    <div class="divider"></div>
+                    <div class="section-label">Manage</div>
+                    <a href="#">Import</a>
+                    <a href="#">Drop Box</a>
+                </div>
+            </div>
+
+            <!-- Glaze Lab — consolidated calculators and workflows -->
+            <div class="nav-item">
+                <button>Glaze Lab</button>
+                <div class="mega-menu" style="width: 580px;">
+                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mega-column">
+                            <h4>Calculators</h4>
+                            <a href="#">Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
+                            <a href="#">Clay Body Calculator</a>
+                            <a href="#">Glaze Quantity</a>
+                            <a href="#">Plaster</a>
+                            <a href="#">Compare<span class="desc">Side-by-side analysis</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Testing & Workflows</h4>
+                            <a href="#">Start a Test</a>
+                            <a href="#">Design a Test</a>
+                            <a href="#">Fix a Flaw</a>
+                            <a href="#">Firing<span class="desc">Schedules & logging</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glaze Anatomy — focused on reference/learning content -->
+            <div class="nav-item">
+                <button>Glaze Anatomy</button>
+                <div class="mega-menu">
+                    <div class="mega-grid">
+                        <div class="mega-column">
+                            <h4>Learn</h4>
+                            <a href="#">Overview<span class="desc">Start here — guided paths by level</span></a>
+                            <a href="#">Materials<span class="desc">Oxides, families, analyses</span></a>
+                            <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
+                            <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
+                            <a href="#">Troubleshooting<span class="desc">25 faults — crazing, crawling, etc.</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Reference</h4>
+                            <a href="#">Reference Desk<span class="desc">Cone chart, Stull map, glossary</span></a>
+                            <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
+                            <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Library — research collections and published content -->
+            <div class="nav-item">
+                <button>Library</button>
+                <div class="mega-menu" style="width: 620px;">
+                    <div class="mega-grid">
+                        <div class="mega-column">
+                            <h4>Collections</h4>
+                            <a href="#">CMW Glaze Recipes<span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
+                            <a href="#">Stull Maps</a>
+                            <a href="#">Stains</a>
+                            <a href="#">Color</a>
+                            <a href="#">Clay Reports</a>
+                            <a href="#">Commercial</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Research</h4>
+                            <a href="#">Test, Test, Test<span class="desc">Thousands of fired tiles</span></a>
+                            <a href="#">The Journal</a>
+                            <a href="#">Latest</a>
+                            <a href="#">Hangout Archive<span class="desc">Watch thousands of hours of past live CMW hangouts</span></a>
+                            <a href="#">Search</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Live</h4>
+                            <a href="#">Live Events</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ware — external service -->
+            <div class="nav-item">
+                <button>Ware</button>
+                <div class="dropdown" style="min-width: 280px; padding: 16px;">
+                    <div style="font-size: 13px; color: #ccc; line-height: 1.6; margin-bottom: 12px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 4px;">Design Your Perfect Glaze</strong>
+                        Start with a color and we'll craft the glaze. Pick from thousands of real fired tiles, match a photo, or dial in exactly what you want — no chemistry required.
+                    </div>
+                    <a href="#" target="_blank" style="display: inline-block; padding: 8px 14px; background: rgba(255,255,255,0.1); border-radius: 4px; color: #fff; font-size: 12px; font-weight: 500; text-decoration: none;">Go to Ware →</a>
+                </div>
+            </div>
+
+            <!-- Merch -->
+            <div class="nav-item">
+                <a href="#">Merch</a>
+            </div>
+
+        </div>
+
+        <!-- Right side — secondary nav + utilities -->
+        <div class="nav-right">
+
+            <!-- Community — social, Fired!, alumni, watch & listen -->
+            <div class="nav-item community">
+                <button>Community</button>
+                <div class="dropdown" style="right: 0; left: auto; min-width: 280px;">
+                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Post your work, ask a question, and join the conversation with other potters and CMW</span></a>
+                    <div class="divider"></div>
+                    <a href="#">Studio Directory<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Find a ceramics studio near you</span></a>
+                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
+                    <div class="divider"></div>
+                    <div class="section-label">Watch & Listen</div>
+                    <a href="#">For Flux Sake Podcast</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Livestreams</a>
+                </div>
+            </div>
+
+            <!-- Search -->
+            <div class="nav-icon" title="Search">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </div>
+            <!-- Feedback -->
+            <div class="nav-icon" title="Feedback">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+            </div>
+            <!-- Notifications -->
+            <div class="nav-icon" title="Notifications">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </div>
+            <!-- Dark/Light toggle -->
+            <div class="nav-icon" title="Toggle theme">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+                </svg>
+            </div>
+            <!-- Account -->
+            <div class="avatar" title="Account">U</div>
+        </div>
+    </nav>
+
+</body>
+</html>
