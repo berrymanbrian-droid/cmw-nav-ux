@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW Navigation - V3 Mobile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            max-width: 390px;
+            margin: 0 auto;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Top Bar */
+        .mobile-top-bar {
+            background: #111;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+            height: 52px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .mobile-top-bar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .mobile-top-bar .logo img {
+            height: 22px;
+            width: auto;
+        }
+
+        .mobile-top-bar .right-icons {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mobile-top-bar .icon-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: none;
+            background: none;
+            color: #999;
+            cursor: pointer;
+        }
+
+        .mobile-top-bar .icon-btn:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .mobile-top-bar .avatar {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            background: #444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            color: #ccc;
+        }
+
+        /* Announcement Bar */
+        .mobile-announcement {
+            background: #2a2a2a;
+            padding: 8px 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #bbb;
+            border-bottom: 1px solid #333;
+        }
+
+        .mobile-announcement .badge {
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            padding: 2px 6px;
+            border-radius: 8px;
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            flex-shrink: 0;
+        }
+
+        .mobile-announcement .close-btn {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 16px;
+            cursor: pointer;
+            margin-left: auto;
+            flex-shrink: 0;
+        }
+
+        /* Page Content Area */
+        .mobile-content {
+            padding: 24px 16px;
+            padding-bottom: 80px;
+        }
+
+        .mobile-content h2 {
+            font-size: 16px;
+            color: #888;
+            margin-bottom: 8px;
+        }
+
+        .mobile-content p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Bottom Tab Bar */
+        .bottom-tab-bar {
+            position: fixed;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 390px;
+            background: #111;
+            border-top: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 8px 0 12px;
+            z-index: 100;
+        }
+
+        .tab-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 3px;
+            cursor: pointer;
+            padding: 4px 12px;
+            border-radius: 8px;
+            transition: background 0.12s;
+            border: none;
+            background: none;
+            color: #888;
+            text-decoration: none;
+        }
+
+        .tab-item:hover,
+        .tab-item.active {
+            color: #fff;
+        }
+
+        .tab-item svg {
+            width: 22px;
+            height: 22px;
+        }
+
+        .tab-item span {
+            font-size: 10px;
+            font-weight: 500;
+        }
+
+        .tab-item.menu-tab {
+            color: #888;
+        }
+
+        /* Slide-out Menu */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 200;
+            max-width: 390px;
+            margin: 0 auto;
+        }
+
+        .menu-overlay.open {
+            display: block;
+        }
+
+        .slide-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 330px;
+            height: 100%;
+            background: #151515;
+            z-index: 201;
+            transition: right 0.25s ease;
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+
+        .menu-overlay.open .slide-menu {
+            right: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .menu-header h3 {
+            font-size: 15px;
+            color: #fff;
+            font-weight: 600;
+        }
+
+        .menu-close {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            border: none;
+            background: rgba(255,255,255,0.06);
+            color: #999;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Menu Sections */
+        .menu-section {
+            padding: 12px 0;
+            border-bottom: 1px solid #222;
+        }
+
+        .menu-section-label {
+            padding: 4px 16px 8px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #666;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 16px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background 0.12s;
+        }
+
+        .menu-item:hover {
+            background: rgba(255,255,255,0.05);
+            color: #fff;
+        }
+
+        .menu-item .item-desc {
+            display: block;
+            font-size: 11px;
+            color: #666;
+            margin-top: 2px;
+            line-height: 1.3;
+        }
+
+        .menu-item .pill {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 7px;
+            border-radius: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .pill-enroll {
+            background: rgba(99, 190, 123, 0.15);
+            color: #63be7b;
+            border: 1px solid rgba(99, 190, 123, 0.3);
+        }
+
+        .pill-exclusive {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .pill-locked {
+            background: rgba(251, 191, 36, 0.12);
+            color: #f59e0b;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        .pill-new {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .menu-item.locked {
+            opacity: 0.6;
+        }
+
+        .menu-item.ware-link {
+            color: #8b5cf6;
+        }
+
+        .menu-item.community-link {
+            color: #fff;
+            font-weight: 500;
+        }
+
+        .menu-divider {
+            height: 1px;
+            background: #222;
+            margin: 0 16px;
+        }
+
+        /* Search bar in menu */
+        .menu-search {
+            padding: 12px 16px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .menu-search input {
+            width: 100%;
+            padding: 10px 14px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 14px;
+            outline: none;
+        }
+
+        .menu-search input::placeholder {
+            color: #666;
+        }
+
+        .menu-search input:focus {
+            border-color: #555;
+            background: rgba(255,255,255,0.08);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="mobile-top-bar">
+        <div class="logo">
+            <img src="cmw-logo.png" alt="CMW">
+        </div>
+        <div class="right-icons">
+            <button class="icon-btn" title="Notifications">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>
+            </button>
+            <div class="avatar">U</div>
+        </div>
+    </div>
+
+    <!-- Announcement Bar -->
+    <div class="mobile-announcement" id="announcement">
+        <span class="badge">New</span>
+        <span>Introducing <strong>Ware</strong> — Design your perfect glaze.</span>
+        <button class="close-btn" onclick="document.getElementById('announcement').style.display='none'">&times;</button>
+    </div>
+
+    <!-- Page Content (placeholder) -->
+    <div class="mobile-content">
+        <h2>Mobile Navigation Preview</h2>
+        <p>This is a mobile layout exploration for the CMW navigation. Use the bottom tab bar for quick access to core features, or tap the menu icon to see the full navigation.</p>
+    </div>
+
+    <!-- Bottom Tab Bar -->
+    <div class="bottom-tab-bar">
+        <a href="#" class="tab-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+            <span>Glaze Lab</span>
+        </a>
+        <a href="#" class="tab-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"/></svg>
+            <span>My Work</span>
+        </a>
+        <a href="#" class="tab-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            <span>Search</span>
+        </a>
+        <a href="#" class="tab-item">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+            <span>Community</span>
+        </a>
+        <button class="tab-item menu-tab" onclick="openMenu()">
+            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            <span>Menu</span>
+        </button>
+    </div>
+
+    <!-- Slide-out Menu -->
+    <div class="menu-overlay" id="menuOverlay" onclick="closeMenu()">
+        <div class="slide-menu" onclick="event.stopPropagation()">
+            <div class="menu-header">
+                <h3>Menu</h3>
+                <button class="menu-close" onclick="closeMenu()">&times;</button>
+            </div>
+
+            <!-- Search -->
+            <div class="menu-search">
+                <input type="text" placeholder="Search entire site">
+            </div>
+
+            <!-- Courses -->
+            <div class="menu-section">
+                <div class="menu-section-label">Courses</div>
+                <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500;">Where do I start?</a>
+                <a href="#" class="menu-item">Making Glazes Make Sense<span class="item-desc">Master glaze chemistry — all levels welcome</span></a>
+                <a href="#" class="menu-item">Advancing Glazes<span class="item-desc">In-depth labs and a self-directed glaze project</span></a>
+                <a href="#" class="menu-item">Crystal Ball <span class="pill pill-enroll">Enroll Now</span></a>
+                <a href="#" class="menu-item">Intro to Clay Bodies <span class="pill pill-enroll">Enroll Now</span></a>
+                <a href="#" class="menu-item">Workshops</a>
+                <a href="#" class="menu-item" style="color: #7db8e0; font-weight: 500; font-size: 13px;">View all courses →</a>
+            </div>
+
+            <!-- My Courses -->
+            <div class="menu-section">
+                <div class="menu-section-label">My Courses</div>
+                <a href="#" class="menu-item">My Classes</a>
+                <a href="#" class="menu-item">All Labs</a>
+                <a href="#" class="menu-item">All Discussions</a>
+                <a href="#" class="menu-item">Commons</a>
+                <div class="menu-divider"></div>
+                <div class="menu-section-label" style="padding-top: 10px;">Hangout Resources</div>
+                <a href="#" class="menu-item">Live Hangout Information</a>
+                <a href="#" class="menu-item">Hangout Calendar</a>
+                <a href="#" class="menu-item">Hangout Signup</a>
+                <a href="#" class="menu-item">Hangout Archive</a>
+            </div>
+
+            <!-- My Work -->
+            <div class="menu-section">
+                <div class="menu-section-label">My Work</div>
+                <a href="#" class="menu-item">My Book</a>
+                <a href="#" class="menu-item">My Glazes</a>
+                <a href="#" class="menu-item">My Clay Bodies</a>
+                <a href="#" class="menu-item">My Test Reports</a>
+                <a href="#" class="menu-item">My Workbooks</a>
+                <a href="#" class="menu-item">My Presentations</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Import</a>
+                <a href="#" class="menu-item">Drop Box</a>
+            </div>
+
+            <!-- Glaze Lab -->
+            <div class="menu-section">
+                <div class="menu-section-label">Glaze Lab</div>
+                <a href="#" class="menu-item">Glaze Calculator<span class="item-desc">UMF, recipe, limits</span></a>
+                <a href="#" class="menu-item">Glaze Quantity</a>
+                <a href="#" class="menu-item">Compare<span class="item-desc">Side-by-side analysis</span></a>
+                <a href="#" class="menu-item">Free Tools</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Start a Test</a>
+                <a href="#" class="menu-item locked">Design a Test <span class="pill pill-locked">Pro</span></a>
+                <a href="#" class="menu-item">Fix a Flaw</a>
+                <a href="#" class="menu-item">Firing Schedules</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Overview<span class="item-desc">Guided paths by level</span></a>
+                <a href="#" class="menu-item">Materials</a>
+                <a href="#" class="menu-item">Concepts</a>
+                <a href="#" class="menu-item">Glaze Types<span class="item-desc">36 families</span></a>
+                <a href="#" class="menu-item">Troubleshooting<span class="item-desc">25 faults</span></a>
+                <a href="#" class="menu-item">Reference Desk</a>
+                <a href="#" class="menu-item">Hot Takes</a>
+                <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500; margin-top: 4px;">Help! I'm not sure where to start →</a>
+            </div>
+
+            <!-- Clay Lab -->
+            <div class="menu-section">
+                <div class="menu-section-label">Clay Lab</div>
+                <a href="#" class="menu-item">Clay Body Calculator</a>
+                <a href="#" class="menu-item">Plaster Calculator</a>
+                <a href="#" class="menu-item">Compare</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Clay Reports</a>
+                <a href="#" class="menu-item">Clay Body Basics</a>
+                <a href="#" class="menu-item">Shrinkage & Absorption</a>
+                <a href="#" class="menu-item">Material Properties</a>
+            </div>
+
+            <!-- Research -->
+            <div class="menu-section">
+                <div class="menu-section-label">Research</div>
+                <a href="#" class="menu-item locked">Test, Test, Test <span class="pill pill-locked">Pro</span><span class="item-desc">Thousands of fired tiles</span></a>
+                <a href="#" class="menu-item">CMW Glaze Recipes<span class="item-desc">Full chemistry and one-click open in the calculator</span></a>
+                <a href="#" class="menu-item">Stull Map Explorations</a>
+                <a href="#" class="menu-item">Stains<span class="item-desc">How single stains fire, and how they blend</span></a>
+                <a href="#" class="menu-item">Commercial Glaze Reference</a>
+                <a href="#" class="menu-item">Color</a>
+                <a href="#" class="menu-item">The Journal<span class="item-desc">Articles, arguments, and thoughts from CMW</span></a>
+            </div>
+
+            <!-- Community -->
+            <div class="menu-section">
+                <div class="menu-section-label">Community</div>
+                <a href="#" class="menu-item community-link">Fired!<span class="item-desc" style="color: #888;">Post your work, ask a question, check out other potters</span></a>
+                <a href="#" class="menu-item">Silica:Alumni <span class="pill pill-exclusive">Exclusive</span></a>
+                <a href="#" class="menu-item">Studio Directory</a>
+                <a href="#" class="menu-item">Region Board</a>
+                <div class="menu-divider"></div>
+                <div class="menu-section-label" style="padding-top: 10px;">Watch & Listen</div>
+                <a href="#" class="menu-item">For Flux Sake Podcast</a>
+                <a href="#" class="menu-item">YouTube</a>
+                <a href="#" class="menu-item">Livestreams</a>
+            </div>
+
+            <!-- Ware & Merch -->
+            <div class="menu-section">
+                <a href="#" class="menu-item ware-link">Ware <span class="pill pill-new">New</span><span class="item-desc" style="color: #666;">Design your perfect glaze — no chemistry required</span></a>
+                <a href="#" class="menu-item">Merch</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openMenu() {
+            document.getElementById('menuOverlay').classList.add('open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            document.getElementById('menuOverlay').classList.remove('open');
+            document.body.style.overflow = '';
+        }
+    </script>
+
+</body>
+</html>
