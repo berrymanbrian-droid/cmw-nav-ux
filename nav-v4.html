@@ -551,33 +551,33 @@
 
         /* Membership tier pills */
         .pill-pitfire {
-            background: rgba(156, 130, 110, 0.15);
-            color: #c4a882;
-            border: 1px solid rgba(156, 130, 110, 0.3);
+            background: rgba(156, 130, 110, 0.25);
+            color: #d4bc9a;
+            border: 1px solid rgba(156, 130, 110, 0.4);
         }
 
         .pill-lowfire {
-            background: rgba(232, 121, 77, 0.15);
-            color: #e8794d;
-            border: 1px solid rgba(232, 121, 77, 0.3);
+            background: rgba(240, 144, 112, 0.25);
+            color: #f09070;
+            border: 1px solid rgba(240, 144, 112, 0.4);
         }
 
         .pill-midfire {
-            background: rgba(235, 168, 52, 0.15);
-            color: #eba834;
-            border: 1px solid rgba(235, 168, 52, 0.3);
+            background: rgba(235, 168, 52, 0.25);
+            color: #f0be4a;
+            border: 1px solid rgba(235, 168, 52, 0.4);
         }
 
         .pill-highfire {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(248, 113, 113, 0.25);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.4);
         }
 
         .pill-alumni {
-            background: rgba(212, 175, 55, 0.15);
-            color: #d4af37;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.25);
+            color: #e0c04a;
+            border: 1px solid rgba(212, 175, 55, 0.4);
         }
 
         .locked-item {
@@ -1129,16 +1129,16 @@
                 <button>My Courses</button>
                 <div class="dropdown" style="min-width: 240px;">
                     <div class="section-label">My Learning</div>
-                    <a href="#">My Courses<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
-                    <a href="#">All Labs<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
-                    <a href="#">All Discussions<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
-                    <a href="#">Commons<span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
+                    <a href="#" data-required-tier="midfire">My Courses<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Labs<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Discussions<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
+                    <a href="#" data-required-tier="midfire">Commons<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Hangout Course Resources</div>
-                    <a href="#">Live Hangout Information</a>
-                    <a href="#">Hangout Calendar</a>
-                    <a href="#">Hangout Signup</a>
-                    <a href="#">Hangout Archive<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
+                    <a href="#" data-required-tier="midfire">Live Hangout Information<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                    <a href="#" data-required-tier="midfire">Hangout Calendar<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                    <a href="#" data-required-tier="midfire">Hangout Signup<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                    <a href="#" data-required-tier="highfire">Hangout Archive<span class="pill pill-highfire tier-pill">High Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
                 </div>
             </div>
 
@@ -1176,7 +1176,7 @@
                         <div class="mega-column">
                             <h4>Testing & Workflows</h4>
                             <a href="#">Start a Test</a>
-                            <a href="#" class="locked-item">Design a Test <span class="pill pill-highfire">High Fire</span></a>
+                            <a href="#" class="locked-item" data-required-tier="highfire">Design a Test <span class="pill pill-highfire tier-pill">High Fire+</span></a>
                             <a href="#">Fix a Flaw</a>
                             <a href="#">Firing Schedules<span class="desc">Schedules & logging</span></a>
                         </div>
@@ -1222,9 +1222,9 @@
                 <div class="mega-menu" style="width: 620px;">
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
                         <div class="mega-column">
-                            <a href="#" class="locked-item">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="desc">Thousands of fired tiles</span></a>
-                            <a href="#">CMW Glaze Recipes<span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
-                            <a href="#">Stull Map Explorations</a>
+                            <a href="#" class="locked-item" data-required-tier="highfire">Test, Test, Test <span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Thousands of fired tiles</span></a>
+                            <a href="#" data-required-tier="midfire">CMW Glaze Recipes<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
+                            <a href="#" data-required-tier="midfire">Stull Map Explorations<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                             <a href="#">Stains<span class="desc">CMW's color research — how single stains fire, and how they blend</span></a>
                         </div>
                         <div class="mega-column">
@@ -1241,7 +1241,7 @@
             <div class="nav-item">
                 <button class="community-btn">Community</button>
                 <div class="dropdown" style="min-width: 280px;">
-                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
+                    <a href="#" data-required-tier="midfire">Fired!<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
                     <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
                     <div class="divider"></div>
                     <a href="#">Studio Directory<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Find a ceramics studio near you</span></a>
@@ -1317,7 +1317,7 @@
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                        My membership <span class="pill pill-midfire">Mid Fire</span>
+                        My membership <span id="membershipPill" class="pill pill-midfire">Mid Fire</span>
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
@@ -1620,6 +1620,35 @@
 
     </div>
 
+    <!-- Membership Tier Simulator -->
+    <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Membership Tier Simulator</h2>
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px;">
+            <p style="font-size: 13px; color: #888; margin-bottom: 16px;">Preview how the navigation changes for different membership levels. Select a tier and toggle the display behavior.</p>
+            
+            <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
+                <div>
+                    <label style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px;">Current Tier</label>
+                    <select id="tierSelector" onchange="applyTier()" style="padding: 10px 14px; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 14px; font-family: inherit; cursor: pointer; min-width: 160px;">
+                        <option value="pitfire">Pit Fire (Free)</option>
+                        <option value="lowfire">Low Fire</option>
+                        <option value="midfire" selected>Mid Fire</option>
+                        <option value="highfire">High Fire</option>
+                        <option value="alumni">Silica:Alumni</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px;">Locked Items</label>
+                    <select id="displayMode" onchange="applyTier()" style="padding: 10px 14px; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 14px; font-family: inherit; cursor: pointer; min-width: 180px;">
+                        <option value="show">Show with tier pill (tease)</option>
+                        <option value="hide">Hide completely</option>
+                    </select>
+                </div>
+            </div>
+            <p id="tierDescription" style="font-size: 12px; color: #888; margin-top: 12px;"></p>
+        </div>
+    </div>
+
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-grid">
@@ -1734,6 +1763,76 @@
                 toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
             }
         }
+
+        // Membership Tier Simulator
+        const tierHierarchy = ['pitfire', 'lowfire', 'midfire', 'highfire', 'alumni'];
+
+        function tierLevel(tier) {
+            if (tier === 'alumni') return 5;
+            return tierHierarchy.indexOf(tier);
+        }
+
+        function applyTier() {
+            const selectedTier = document.getElementById('tierSelector').value;
+            const displayMode = document.getElementById('displayMode').value;
+            const lockedItems = document.querySelectorAll('[data-required-tier]');
+            const descEl = document.getElementById('tierDescription');
+            const membershipPill = document.getElementById('membershipPill');
+
+            const descriptions = {
+                pitfire: 'Viewing as Pit Fire (free tier) — most premium features are locked.',
+                lowfire: 'Viewing as Low Fire — basic membership, some features locked.',
+                midfire: 'Viewing as Mid Fire — standard membership, advanced features locked.',
+                highfire: 'Viewing as High Fire — full access to all features.',
+                alumni: 'Viewing as Silica:Alumni — full access plus exclusive alumni content.'
+            };
+            descEl.textContent = descriptions[selectedTier];
+
+            // Update membership pill in account dropdown
+            const tierNames = {
+                pitfire: 'Pit Fire',
+                lowfire: 'Low Fire',
+                midfire: 'Mid Fire',
+                highfire: 'High Fire',
+                alumni: 'Silica:Alumni'
+            };
+            const tierClasses = {
+                pitfire: 'pill-pitfire',
+                lowfire: 'pill-lowfire',
+                midfire: 'pill-midfire',
+                highfire: 'pill-highfire',
+                alumni: 'pill-alumni'
+            };
+            membershipPill.className = 'pill ' + tierClasses[selectedTier];
+            membershipPill.textContent = tierNames[selectedTier];
+
+            lockedItems.forEach(item => {
+                const requiredTier = item.getAttribute('data-required-tier');
+                const hasAccess = tierLevel(selectedTier) >= tierLevel(requiredTier);
+                const tierPills = item.querySelectorAll('.tier-pill');
+
+                if (hasAccess) {
+                    item.style.display = '';
+                    item.style.opacity = '1';
+                    item.classList.remove('locked-item');
+                    // Hide tier pills when user has access
+                    tierPills.forEach(pill => pill.style.display = 'none');
+                } else {
+                    if (displayMode === 'hide') {
+                        item.style.display = 'none';
+                    } else {
+                        item.style.display = '';
+                        item.style.opacity = '0.5';
+                        item.classList.add('locked-item');
+                        // Show tier pills when locked
+                        tierPills.forEach(pill => pill.style.display = '');
+                    }
+                }
+            });
+        }
+
+        // Apply on load
+        applyTier();
     </script>
 
 </body>
