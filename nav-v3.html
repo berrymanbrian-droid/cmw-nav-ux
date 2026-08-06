@@ -639,6 +639,249 @@
             color: #fff;
         }
 
+        /* Hero Spotlight */
+        .hero-spotlight {
+            padding: 80px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .hero-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .hero-search {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 4px 4px 4px 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-search:focus-within {
+            border-color: #555;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .hero-search-icon {
+            color: #666;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        .hero-search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            padding: 12px 0;
+        }
+
+        .hero-search-input::placeholder {
+            color: #666;
+        }
+
+        .hero-search-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            background: #8b5cf6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+
+        .hero-search-btn:hover {
+            background: #7c3aed;
+        }
+
+        .hero-suggestions {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hero-suggestion-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .hero-suggestion {
+            font-size: 12px;
+            color: #888;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 4px 12px;
+            text-decoration: none;
+            transition: color 0.12s, border-color 0.12s;
+        }
+
+        .hero-suggestion:hover {
+            color: #fff;
+            border-color: #444;
+        }
+
+        /* Light mode hero */
+        body.light .hero-spotlight {
+            background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+            border-bottom-color: #e0e0e0;
+        }
+
+        body.light .hero-title {
+            color: #111;
+        }
+
+        body.light .hero-subtitle {
+            color: #666;
+        }
+
+        body.light .hero-search {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        body.light .hero-search:focus-within {
+            border-color: #bbb;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+        }
+
+        body.light .hero-search-input {
+            color: #333;
+        }
+
+        body.light .hero-search-input::placeholder {
+            color: #999;
+        }
+
+        body.light .hero-suggestion {
+            background: #fff;
+            border-color: #ddd;
+            color: #666;
+        }
+
+        body.light .hero-suggestion:hover {
+            color: #111;
+            border-color: #bbb;
+        }
+
+        /* Wayfinding Cards */
+        .wayfinding-section {
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .wayfinding-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .wayfinding-card {
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            transition: border-color 0.15s, transform 0.15s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wayfinding-card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .wayfinding-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b5cf6;
+            margin-bottom: 16px;
+        }
+
+        .wayfinding-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .wayfinding-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .wayfinding-arrow {
+            font-size: 18px;
+            color: #555;
+            margin-top: 12px;
+            transition: color 0.12s, transform 0.12s;
+        }
+
+        .wayfinding-card:hover .wayfinding-arrow {
+            color: #8b5cf6;
+            transform: translateX(4px);
+        }
+
+        /* Light mode wayfinding */
+        body.light .wayfinding-card {
+            background: #fff;
+            border-color: #e0e0e0;
+        }
+
+        body.light .wayfinding-card:hover {
+            border-color: #ccc;
+        }
+
+        body.light .wayfinding-card h3 {
+            color: #111;
+        }
+
+        body.light .wayfinding-card p {
+            color: #666;
+        }
+
         /* Footer */
         .site-footer {
             background: #0d0d0d;
@@ -844,7 +1087,7 @@
                 <button>My Courses</button>
                 <div class="dropdown" style="min-width: 240px;">
                     <div class="section-label">My Learning</div>
-                    <a href="#">My Classes<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
+                    <a href="#">My Courses<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
                     <a href="#">All Labs<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
                     <a href="#">All Discussions<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
                     <a href="#">Commons<span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
@@ -1075,11 +1318,152 @@
         <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
     </div>
 
+    <!-- Hero Spotlight -->
+    <div class="hero-spotlight">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to CMW Central</h1>
+            <p class="hero-subtitle">Your workspace for glazes, clay bodies, and ceramic research. Ask anything — we'll point you in the right direction.</p>
+            <div class="hero-search">
+                <div class="hero-search-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input type="text" class="hero-search-input" placeholder="Ask anything... &quot;Why is my glaze crazing?&quot;">
+                <button class="hero-search-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+            <div class="hero-suggestions">
+                <span class="hero-suggestion-label">Try:</span>
+                <a href="#" class="hero-suggestion">What cone should I fire at?</a>
+                <a href="#" class="hero-suggestion">How do I fix pinholes?</a>
+                <a href="#" class="hero-suggestion">Open the calculator</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wayfinding Cards -->
+    <div class="wayfinding-section">
+        <h2 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 6px; text-align: center;">Where do I start?</h2>
+        <p style="font-size: 14px; color: #888; text-align: center; margin-bottom: 28px;">Not sure what to do first? Here are a few popular starting points.</p>
+        <div class="wayfinding-grid">
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <h3>Create a glaze recipe</h3>
+                <p>Open the calculator and start building or adjusting a glaze from scratch.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <h3>Get glaze ideas</h3>
+                <p>Browse fired tiles, glaze types, and color research for your next project.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <h3>Browse our courses</h3>
+                <p>Find the right class for your level — from beginner to advanced chemistry.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
     <!-- Spacer to simulate page content -->
-    <div style="min-height: 60vh;"></div>
+    <div style="min-height: 20vh;"></div>
 
     <!-- Legend & Questions -->
     <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
+
+        <!-- Core Website Challenge -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Core Website Challenge</h2>
+
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+            <p style="font-size: 14px; color: #ccc; line-height: 1.8; margin-bottom: 16px;">This site presents a unique navigation challenge:</p>
+            <ul style="padding-left: 20px; list-style: disc; color: #ccc; font-size: 14px; line-height: 2;">
+                <li>It contains a <strong style="color: #fff;">massive amount of information</strong> — courses, calculators, research databases, community features, media, and personal saved data all competing for attention in the navigation.</li>
+                <li>It needs to work for people across a <strong style="color: #fff;">very wide range of ages and technical abilities</strong> — from first-time hobbyists who've never heard of a UMF, to advanced ceramicists running complex test series daily.</li>
+            </ul>
+            <p style="font-size: 13px; color: #888; line-height: 1.7; margin-top: 16px;">The navigation must guide without overwhelming. New users need clear entry points and wayfinding. Power users need fast access without friction. Both need to coexist in the same interface.</p>
+        </div>
+
+        <!-- User Stories -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">User Stories</h2>
+
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+
+            <!-- New User -->
+            <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #2a4a3a; color: #6fcf97; font-size: 10px; padding: 2px 8px; border-radius: 10px;">New User</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As a brand new user of the website, I want to be able to clearly see all of the things that the site can provide and do, so that I can understand the value of a membership and find the right starting point for my experience level.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Browse available courses and understand what each one covers</li>
+                    <li>Explore free content (Glaze Anatomy, Free Tools) without signing up</li>
+                    <li>Understand what membership tier is right for me</li>
+                    <li>Find the "Where do I start?" guide</li>
+                    <li>Watch or listen to free content (For Flux Sake, YouTube)</li>
+                    <li>See what the community looks like (Fired!)</li>
+                </ul>
+            </div>
+
+            <!-- Student -->
+            <div style="margin-bottom: 0;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #2a3a4a; color: #7db8e0; font-size: 10px; padding: 2px 8px; border-radius: 10px;">CMW Student</span>
+                </h3>
+                <div style="padding-left: 12px; border-left: 2px solid #333;">
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px;">
+                        As a student of CMW, I want to be able to easily find information and resources for the specific class that I have signed up for, so that I can complete labs, create and post results, and communicate with Matt.
+                    </p>
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px;">
+                        As a student of CMW, I want to be able to see other classes that might be available to me to sign up for in the future, so that I can plan my learning path and continue growing.
+                    </p>
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7;">
+                        As a student of CMW, I want to be able to find helpful resources and Q&A content, so that I can answer questions I have while working without having to wait for Matt to respond or for the next hangout.
+                    </p>
+                </div>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Access my enrolled course materials, labs, and discussions</li>
+                    <li>Post lab results and view classmates' work in Commons</li>
+                    <li>Check the hangout calendar and sign up for live sessions</li>
+                    <li>Use the Glaze Calculator to work through course exercises</li>
+                    <li>Search for answers to specific glaze problems (Troubleshooting, Concepts)</li>
+                    <li>Browse recipes and reference materials while working in the studio</li>
+                    <li>Save glazes and clay bodies to My Work for future reference</li>
+                    <li>See what other courses are available and what's open for enrollment</li>
+                </ul>
+            </div>
+
+            <!-- Experienced User -->
+            <div style="margin-bottom: 0; margin-top: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #3a2a4a; color: #b07de0; font-size: 10px; padding: 2px 8px; border-radius: 10px;">Experienced User</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As an experienced user who has previously taken CMW courses, I know my way around the basic and advanced tools. I'm coming back to fix specific issues, run more advanced tests, or dig into the deeper research and information that CMW provides.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Jump straight to the Glaze Calculator or Clay Body Calculator</li>
+                    <li>Use Fix a Flaw or Troubleshooting to solve a specific problem</li>
+                    <li>Design and run advanced test series</li>
+                    <li>Dig into research collections (Test Test Test, Stull Maps, Stains)</li>
+                    <li>Compare glazes or clay bodies side by side</li>
+                    <li>Read The Journal for deeper analysis and arguments</li>
+                    <li>Access saved data (My Glazes, My Test Reports, My Workbooks)</li>
+                    <li>Share results and participate in the Fired! community</li>
+                </ul>
+            </div>
+
+        </div>
+
         <!-- Pill & Icon Legend -->
         <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">UI Element Legend</h2>
         
@@ -1149,23 +1533,6 @@
             </div>
         </div>
 
-        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Questions for Matt</h2>
-        <ol style="list-style: decimal; padding-left: 20px; color: #ccc; font-size: 14px; line-height: 1.8;">
-            <li style="margin-bottom: 16px;">Who are the main users of the site? What are their user stories? Brand new users, experienced power users, other?</li>
-            <li style="margin-bottom: 16px;">What sorts of pricing or membership tiers will exist and how would that impact what the user sees on the front end? What information is shown or hidden for various users?
-                <ol style="list-style: lower-alpha; padding-left: 20px; margin-top: 8px; color: #999;">
-                    <li>For a free or low price tier, what do they see? What is gated off? How can we nudge them to up their subscription?</li>
-                </ol>
-            </li>
-            <li style="margin-bottom: 16px;">What are the top 3-5 tasks a user performs on the site daily? (e.g., open calculator, check saved glazes, browse recipes) — this helps validate the bottom tab bar choices on mobile.</li>
-            <li style="margin-bottom: 16px;">Is there a specific onboarding flow for brand new users? When someone signs up, where should they land and what should they see first?</li>
-            <li style="margin-bottom: 16px;">How does the nav change (if at all) for non-logged-in users vs. logged-in users? Are there items that should be hidden entirely, or shown with upgrade prompts?</li>
-            <li style="margin-bottom: 16px;">What's the relationship between "Courses" content and "Glaze Lab / Anatomy" content? Are enrolled students expected to use the Lab tools as part of their coursework, or are these independent?</li>
-            <li style="margin-bottom: 16px;">Are there plans to add more courses or tools in the near future? If so, how should the nav accommodate growth without getting cluttered again?</li>
-            <li style="margin-bottom: 16px;">What is the expected mobile vs. desktop split for this audience? Are people using the calculators and tools on their phones (e.g., in the studio), or primarily desktop?</li>
-            <li style="margin-bottom: 16px;">For the "Fired!" community — is there any moderation, featured content, or algorithmic feed? Or is it purely chronological? This affects whether "Feed" and "Explore" need to be separate concepts.</li>
-            <li style="margin-bottom: 16px;">Does Ware share any user accounts/data with the main CMW site, or is it completely separate? Could a user's Ware glaze orders appear in their "My Work" section?</li>
-        </ol>
     </div>
 
     <!-- Footer -->
