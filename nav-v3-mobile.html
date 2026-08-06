@@ -294,17 +294,54 @@
 
         /* Menu Sections */
         .menu-section {
-            padding: 12px 0;
             border-bottom: 1px solid #222;
         }
 
+        .menu-section-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 16px;
+            cursor: pointer;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .menu-section-header:active {
+            background: rgba(255,255,255,0.04);
+        }
+
         .menu-section-label {
-            padding: 4px 16px 8px;
-            font-size: 11px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #ccc;
+        }
+
+        .menu-section-arrow {
+            color: #555;
+            font-size: 14px;
+            transition: transform 0.2s;
+        }
+
+        .menu-section.open .menu-section-arrow {
+            transform: rotate(180deg);
+        }
+
+        .menu-section-content {
+            display: none;
+            padding: 0 0 12px;
+        }
+
+        .menu-section.open .menu-section-content {
+            display: block;
+        }
+
+        .menu-sub-label {
+            padding: 8px 16px 4px;
+            font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            color: #666;
+            color: #555;
         }
 
         .menu-item {
@@ -455,110 +492,145 @@
         </div>
 
         <!-- Courses -->
-        <div class="menu-section">
-            <div class="menu-section-label">Courses</div>
-            <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500;">Where do I start?</a>
-            <a href="#" class="menu-item">Making Glazes Make Sense<span class="item-desc">Master glaze chemistry — all levels welcome</span></a>
-            <a href="#" class="menu-item">Advancing Glazes<span class="item-desc">In-depth labs and a self-directed glaze project</span></a>
-            <a href="#" class="menu-item">Crystal Ball <span class="pill pill-enroll">Enroll Now</span></a>
-            <a href="#" class="menu-item">Intro to Clay Bodies <span class="pill pill-enroll">Enroll Now</span></a>
-            <a href="#" class="menu-item">Workshops</a>
-            <a href="#" class="menu-item" style="color: #7db8e0; font-weight: 500;">View all courses →</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">Courses</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500;">Where do I start?</a>
+                <a href="#" class="menu-item">Making Glazes Make Sense<span class="item-desc">Master glaze chemistry — all levels welcome</span></a>
+                <a href="#" class="menu-item">Advancing Glazes<span class="item-desc">In-depth labs and a self-directed glaze project</span></a>
+                <a href="#" class="menu-item">Crystal Ball <span class="pill pill-enroll">Enroll Now</span></a>
+                <a href="#" class="menu-item">Intro to Clay Bodies <span class="pill pill-enroll">Enroll Now</span></a>
+                <a href="#" class="menu-item">Workshops</a>
+                <a href="#" class="menu-item" style="color: #7db8e0; font-weight: 500;">View all courses →</a>
+            </div>
         </div>
 
         <!-- My Courses -->
-        <div class="menu-section">
-            <div class="menu-section-label">My Courses</div>
-            <a href="#" class="menu-item">My Classes</a>
-            <a href="#" class="menu-item">All Labs</a>
-            <a href="#" class="menu-item">All Discussions</a>
-            <a href="#" class="menu-item">Commons</a>
-            <div class="menu-divider"></div>
-            <div class="menu-section-label">Hangout Resources</div>
-            <a href="#" class="menu-item">Live Hangout Information</a>
-            <a href="#" class="menu-item">Hangout Calendar</a>
-            <a href="#" class="menu-item">Hangout Signup</a>
-            <a href="#" class="menu-item">Hangout Archive</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">My Courses</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item">My Courses</a>
+                <a href="#" class="menu-item">All Labs</a>
+                <a href="#" class="menu-item">All Discussions</a>
+                <a href="#" class="menu-item">Commons</a>
+                <div class="menu-divider"></div>
+                <div class="menu-sub-label">Hangout Resources</div>
+                <a href="#" class="menu-item">Live Hangout Information</a>
+                <a href="#" class="menu-item">Hangout Calendar</a>
+                <a href="#" class="menu-item">Hangout Signup</a>
+                <a href="#" class="menu-item">Hangout Archive</a>
+            </div>
         </div>
 
         <!-- My Work -->
-        <div class="menu-section">
-            <div class="menu-section-label">My Work</div>
-            <a href="#" class="menu-item">My Book</a>
-            <a href="#" class="menu-item">My Glazes</a>
-            <a href="#" class="menu-item">My Clay Bodies</a>
-            <a href="#" class="menu-item">My Test Reports</a>
-            <a href="#" class="menu-item">My Workbooks</a>
-            <a href="#" class="menu-item">My Presentations</a>
-            <div class="menu-divider"></div>
-            <a href="#" class="menu-item">Import</a>
-            <a href="#" class="menu-item">Drop Box</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">My Work</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item">My Book</a>
+                <a href="#" class="menu-item">My Glazes</a>
+                <a href="#" class="menu-item">My Clay Bodies</a>
+                <a href="#" class="menu-item">My Test Reports</a>
+                <a href="#" class="menu-item">My Workbooks</a>
+                <a href="#" class="menu-item">My Presentations</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Import</a>
+                <a href="#" class="menu-item">Drop Box</a>
+            </div>
         </div>
 
         <!-- Glaze Lab -->
-        <div class="menu-section">
-            <div class="menu-section-label">Glaze Lab</div>
-            <a href="#" class="menu-item">Glaze Calculator<span class="item-desc">UMF, recipe, limits</span></a>
-            <a href="#" class="menu-item">Glaze Quantity</a>
-            <a href="#" class="menu-item">Compare<span class="item-desc">Side-by-side analysis</span></a>
-            <a href="#" class="menu-item">Free Tools</a>
-            <div class="menu-divider"></div>
-            <a href="#" class="menu-item">Start a Test</a>
-            <a href="#" class="menu-item locked">Design a Test <span class="pill pill-highfire">High Fire</span></a>
-            <a href="#" class="menu-item">Fix a Flaw</a>
-            <a href="#" class="menu-item">Firing Schedules</a>
-            <div class="menu-divider"></div>
-            <a href="#" class="menu-item">Overview<span class="item-desc">Guided paths by level</span></a>
-            <a href="#" class="menu-item">Materials</a>
-            <a href="#" class="menu-item">Concepts</a>
-            <a href="#" class="menu-item">Glaze Types<span class="item-desc">36 families</span></a>
-            <a href="#" class="menu-item">Troubleshooting<span class="item-desc">25 faults</span></a>
-            <a href="#" class="menu-item">Reference Desk</a>
-            <a href="#" class="menu-item">Hot Takes</a>
-            <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500;">Help! I'm not sure where to start →</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">Glaze Lab</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item">Glaze Calculator<span class="item-desc">UMF, recipe, limits</span></a>
+                <a href="#" class="menu-item">Glaze Quantity</a>
+                <a href="#" class="menu-item">Compare<span class="item-desc">Side-by-side analysis</span></a>
+                <a href="#" class="menu-item">Free Tools</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Start a Test</a>
+                <a href="#" class="menu-item locked">Design a Test <span class="pill pill-highfire">High Fire</span></a>
+                <a href="#" class="menu-item">Fix a Flaw</a>
+                <a href="#" class="menu-item">Firing Schedules</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Overview<span class="item-desc">Guided paths by level</span></a>
+                <a href="#" class="menu-item">Materials</a>
+                <a href="#" class="menu-item">Concepts</a>
+                <a href="#" class="menu-item">Glaze Types<span class="item-desc">36 families</span></a>
+                <a href="#" class="menu-item">Troubleshooting<span class="item-desc">25 faults</span></a>
+                <a href="#" class="menu-item">Reference Desk</a>
+                <a href="#" class="menu-item">Hot Takes</a>
+                <a href="#" class="menu-item" style="color: #8b5cf6; font-weight: 500;">Help! I'm not sure where to start →</a>
+            </div>
         </div>
 
         <!-- Clay Lab -->
-        <div class="menu-section">
-            <div class="menu-section-label">Clay Lab</div>
-            <a href="#" class="menu-item">Clay Body Calculator</a>
-            <a href="#" class="menu-item">Plaster Calculator</a>
-            <a href="#" class="menu-item">Compare</a>
-            <div class="menu-divider"></div>
-            <a href="#" class="menu-item">Clay Reports</a>
-            <a href="#" class="menu-item">Clay Body Basics</a>
-            <a href="#" class="menu-item">Shrinkage & Absorption</a>
-            <a href="#" class="menu-item">Material Properties</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">Clay Lab</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item">Clay Body Calculator</a>
+                <a href="#" class="menu-item">Plaster Calculator</a>
+                <a href="#" class="menu-item">Compare</a>
+                <div class="menu-divider"></div>
+                <a href="#" class="menu-item">Clay Reports</a>
+                <a href="#" class="menu-item">Clay Body Basics</a>
+                <a href="#" class="menu-item">Shrinkage & Absorption</a>
+                <a href="#" class="menu-item">Material Properties</a>
+            </div>
         </div>
 
         <!-- Research -->
-        <div class="menu-section">
-            <div class="menu-section-label">Research</div>
-            <a href="#" class="menu-item locked">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="item-desc">Thousands of fired tiles</span></a>
-            <a href="#" class="menu-item">CMW Glaze Recipes<span class="item-desc">Full chemistry and one-click open in the calculator</span></a>
-            <a href="#" class="menu-item">Stull Map Explorations</a>
-            <a href="#" class="menu-item">Stains<span class="item-desc">How single stains fire, and how they blend</span></a>
-            <a href="#" class="menu-item">Commercial Glaze Reference</a>
-            <a href="#" class="menu-item">Color</a>
-            <a href="#" class="menu-item">The Journal<span class="item-desc">Articles, arguments, and thoughts from CMW</span></a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">Research</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item locked">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="item-desc">Thousands of fired tiles</span></a>
+                <a href="#" class="menu-item">CMW Glaze Recipes<span class="item-desc">Full chemistry and one-click open in the calculator</span></a>
+                <a href="#" class="menu-item">Stull Map Explorations</a>
+                <a href="#" class="menu-item">Stains<span class="item-desc">How single stains fire, and how they blend</span></a>
+                <a href="#" class="menu-item">Commercial Glaze Reference</a>
+                <a href="#" class="menu-item">Color</a>
+                <a href="#" class="menu-item">The Journal<span class="item-desc">Articles, arguments, and thoughts from CMW</span></a>
+            </div>
         </div>
 
         <!-- Community -->
-        <div class="menu-section">
-            <div class="menu-section-label">Community</div>
-            <a href="#" class="menu-item community-link">Fired!<span class="item-desc" style="color: #888;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
-            <a href="#" class="menu-item">Silica:Alumni <span class="pill pill-exclusive">Exclusive</span><span class="item-desc">Our exclusive community for dedicated ceramicists</span></a>
-            <a href="#" class="menu-item">Studio Directory<span class="item-desc">Find a ceramics studio near you</span></a>
-            <a href="#" class="menu-item">Region Board<span class="item-desc">Announcements, events, and workshops in your region</span></a>
-            <div class="menu-divider"></div>
-            <div class="menu-section-label">Watch & Listen</div>
-            <a href="#" class="menu-item">For Flux Sake Podcast</a>
-            <a href="#" class="menu-item">YouTube</a>
-            <a href="#" class="menu-item">Livestreams</a>
+        <div class="menu-section" onclick="toggleSection(this)">
+            <div class="menu-section-header">
+                <span class="menu-section-label">Community</span>
+                <span class="menu-section-arrow">▾</span>
+            </div>
+            <div class="menu-section-content">
+                <a href="#" class="menu-item community-link">Fired!<span class="item-desc" style="color: #888;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
+                <a href="#" class="menu-item">Silica:Alumni <span class="pill pill-exclusive">Exclusive</span><span class="item-desc">Our exclusive community for dedicated ceramicists</span></a>
+                <a href="#" class="menu-item">Studio Directory<span class="item-desc">Find a ceramics studio near you</span></a>
+                <a href="#" class="menu-item">Region Board<span class="item-desc">Announcements, events, and workshops in your region</span></a>
+                <div class="menu-divider"></div>
+                <div class="menu-sub-label">Watch & Listen</div>
+                <a href="#" class="menu-item">For Flux Sake Podcast</a>
+                <a href="#" class="menu-item">YouTube</a>
+                <a href="#" class="menu-item">Livestreams</a>
+            </div>
         </div>
 
-        <!-- Ware & Merch -->
-        <div class="menu-section">
+        <!-- Ware & Merch (no accordion, always visible) -->
+        <div class="menu-section" style="padding: 8px 0;">
             <a href="#" class="menu-item ware-link">Ware <span class="pill pill-new">New</span><span class="item-desc" style="color: #666;">Design your perfect glaze — no chemistry required</span></a>
             <a href="#" class="menu-item">Merch</a>
         </div>
@@ -575,6 +647,12 @@
             document.getElementById('menuOverlay').classList.remove('open');
             document.getElementById('slideMenu').classList.remove('open');
             document.body.style.overflow = '';
+        }
+
+        function toggleSection(el) {
+            // Don't toggle if the click was on a link
+            if (event.target.closest('.menu-item')) return;
+            el.classList.toggle('open');
         }
     </script>
 
