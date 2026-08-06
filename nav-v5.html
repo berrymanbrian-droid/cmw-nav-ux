@@ -387,7 +387,7 @@
         .mega-column a .desc {
             display: block;
             font-size: 11px;
-            color: #666;
+            color: #888;
             margin-top: 1px;
         }
 
@@ -589,6 +589,48 @@
         .locked-item {
             opacity: 0.6;
             position: relative;
+        }
+
+        /* Mega menu upgrade CTA */
+        .mega-menu-cta {
+            margin-top: 16px;
+            padding: 14px 16px;
+            background: rgba(139, 92, 246, 0.06);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        .mega-menu-cta p {
+            font-size: 13px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .mega-menu-cta .cta-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #7c3aed;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .mega-menu-cta .cta-btn:hover {
+            background: #6d28d9;
+        }
+
+        body.light .mega-menu-cta {
+            background: rgba(139, 92, 246, 0.04);
+            border-color: rgba(139, 92, 246, 0.12);
+        }
+
+        body.light .mega-menu-cta p {
+            color: #555;
         }
         .announcement-bar {
             background: #2a2a2a;
@@ -1122,9 +1164,9 @@
             <div class="nav-item">
                 <button>Join</button>
                 <div class="dropdown" style="min-width: 260px;">
-                    <a href="#">Memberships<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Explore membership tiers and find the right level for you</span></a>
+                    <a href="#">Memberships<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Explore membership tiers and find the right level for you</span></a>
                     <div class="divider"></div>
-                    <a href="#">Courses<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Browse CMW courses — from beginner to advanced</span></a>
+                    <a href="#">Courses<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Browse CMW courses — from beginner to advanced</span></a>
                     <div class="divider"></div>
                     <a href="#">Merch</a>
                 </div>
@@ -1135,35 +1177,41 @@
                 <button>My Courses</button>
                 <div class="dropdown" style="min-width: 240px;">
                     <div class="section-label">My Learning</div>
-                    <a href="#" data-required-tier="midfire">My Courses<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
-                    <a href="#" data-required-tier="midfire">All Labs<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
-                    <a href="#" data-required-tier="midfire">All Discussions<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
-                    <a href="#" data-required-tier="midfire">Commons<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
+                    <a href="#" data-required-tier="midfire">My Courses<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Your enrolled courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Labs<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Hands-on experiments across courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Discussions<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Conversations with classmates & instructors</span></a>
+                    <a href="#" data-required-tier="midfire">Commons<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">See classmates' work and progress</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Hangout Course Resources</div>
-                    <a href="#" data-required-tier="highfire">Live Hangout Information<span class="pill pill-highfire tier-pill">High Fire+</span></a>
-                    <a href="#" data-required-tier="highfire">Hangout Calendar<span class="pill pill-highfire tier-pill">High Fire+</span></a>
-                    <a href="#" data-required-tier="highfire">Hangout Signup<span class="pill pill-highfire tier-pill">High Fire+</span></a>
-                    <a href="#" data-required-tier="highfire">Hangout Archive<span class="pill pill-highfire tier-pill">High Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
+                    <a href="#" data-required-tier="highfire">Live Hangout Links<span class="pill pill-highfire tier-pill">High Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Weekly discussions, calendar, and signup</span></a>
+                    <!-- Upgrade CTA -->
+                    <div class="mega-menu-cta" data-show-below-tier="midfire" style="margin: 8px 0 4px; border-radius: 6px;">
+                        <p>Unlock course access and tools</p>
+                        <a href="#" class="cta-btn">Upgrade Membership</a>
+                    </div>
                 </div>
             </div>
 
             <!-- My Work — consolidated personal content -->
             <div class="nav-item">
                 <button>My Work</button>
-                <div class="dropdown">
-                    <div class="section-label">Organize and manage your work</div>
-                    <a href="#">My Book</a>
-                    <a href="#">My Glazes</a>
-                    <a href="#" data-required-tier="midfire">My Clay Bodies<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <a href="#" data-required-tier="midfire">My Test Reports<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <a href="#">My Workbooks</a>
-                    <a href="#">My Presentations</a>
-                    <a href="#" data-required-tier="midfire">My Firing Profiles<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <div class="divider"></div>
-                    <div class="section-label">Bulk data actions</div>
-                    <a href="#" data-required-tier="midfire">Import<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <a href="#">Drop Box</a>
+                <div class="mega-menu" style="width: 520px;">
+                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mega-column">
+                            <h4>My Saved Work</h4>
+                            <a href="#">My Book<span class="desc">Recipes, mainstays, testing, and your wishlist</span></a>
+                            <a href="#">My Glazes<span class="desc">Your full saved-glazes library</span></a>
+                            <a href="#" data-required-tier="midfire">My Clay Bodies<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                            <a href="#" data-required-tier="midfire">My Test Reports<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                            <a href="#">My Workbooks<span class="desc">Imported workbooks — a glaze taken through five labs</span></a>
+                            <a href="#">My Presentations<span class="desc">Slide decks from your test photos, recipes, and notes</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Data Management</h4>
+                            <a href="#" data-required-tier="midfire">Import<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Bring in CMW, Glazy, Insight, and spreadsheet data</span></a>
+                            <a href="#">Drop Box</a>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -1191,6 +1239,11 @@
                             <a href="#" data-required-tier="midfire">Design a Test<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Pick a variable, set your range, and get a fire-ready test series</span></a>
                         </div>
                     </div>
+                    <!-- Upgrade CTA (shown when user has locked items) -->
+                    <div class="mega-menu-cta" data-show-below-tier="midfire">
+                        <p>Unlock more features and tools</p>
+                        <a href="#" class="cta-btn">Upgrade Membership</a>
+                    </div>
                 </div>
             </div>
 
@@ -1207,7 +1260,7 @@
                             <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
                             <a href="#">Troubleshooting<span class="desc">25 faults</span></a>
                             <a href="#" data-required-tier="midfire">Fix a Flaw<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Turn a defect into a test plan</span></a>
-                            <a href="#">Reference Desk<span class="desc">Cone chart, Stull map, glossary</span></a>
+                            <a href="#">CMW Reference Guide / Glossary<span class="desc">The classic ceramics charts, the working vocabulary, and the class index</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Clay Knowledge</h4>
@@ -1239,12 +1292,18 @@
                             <a href="#">Commercial Glaze Reference<span class="desc">Commercial glazes, underglazes, and decorating media from North American manufacturers</span></a>
                         </div>
                         <div class="mega-column">
-                            <h4>High Fire+</h4>
+                            <h4 data-required-tier="highfire" class="tier-heading">High Fire+</h4>
                             <a href="#" data-required-tier="highfire">CMW Glaze Recipes<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Full chemistry and one-click open in the calculator</span></a>
                             <a href="#" data-required-tier="highfire">Stull Map Explorations<span class="pill pill-highfire tier-pill">High Fire+</span></a>
                             <a href="#" data-required-tier="highfire">Stain Spectrum<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">How single stains fire, and how they blend</span></a>
                             <a href="#" data-required-tier="highfire">Test, Test, Test<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Thousands of fired tiles</span></a>
+                            <a href="#" data-required-tier="highfire">Hangout Library<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">~4,000 hours of searchable live discussion archives</span></a>
                         </div>
+                    </div>
+                    <!-- Upgrade CTA -->
+                    <div class="mega-menu-cta" data-show-below-tier="highfire">
+                        <p>Unlock the full research library</p>
+                        <a href="#" class="cta-btn">Upgrade Membership</a>
                     </div>
                 </div>
             </div>
@@ -1253,10 +1312,10 @@
             <div class="nav-item">
                 <button class="community-btn">Community</button>
                 <div class="dropdown" style="min-width: 280px;">
-                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Post your work, ask a question, and check out work from other potters</span></a>
-                    <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
+                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Post your work, ask a question, and check out work from other potters</span></a>
+                    <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
                     <div class="divider"></div>
-                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
+                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Watch & Listen</div>
                     <a href="#">For Flux Sake Podcast</a>
@@ -1816,6 +1875,15 @@
             membershipPill.className = 'pill ' + tierClasses[selectedTier];
             membershipPill.textContent = tierNames[selectedTier];
 
+            // Show/hide upgrade CTAs
+            const ctaBanners = document.querySelectorAll('.mega-menu-cta');
+            ctaBanners.forEach(cta => {
+                const showBelow = cta.getAttribute('data-show-below-tier');
+                const userLevel = tierLevel(selectedTier);
+                const requiredLevel = tierLevel(showBelow);
+                cta.style.display = (userLevel < requiredLevel) ? 'block' : 'none';
+            });
+
             // Show/hide Pyr nav item
             pyrNavItem.style.display = (selectedTier === 'pyr') ? '' : 'none';
 
@@ -1826,6 +1894,12 @@
                 const requiredLevel = tierLevel(requiredTier);
                 const tierGap = requiredLevel - userLevel;
                 const tierPills = item.querySelectorAll('.tier-pill');
+
+                // Tier headings — hide when user has access
+                if (item.classList.contains('tier-heading')) {
+                    item.style.display = (tierGap <= 0) ? 'none' : '';
+                    return;
+                }
 
                 if (tierGap <= 0) {
                     // User has access — show normally, hide pills
