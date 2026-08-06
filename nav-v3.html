@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CMW Navigation - V2 Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,9 +15,213 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: #1a1a1a;
             color: #e0e0e0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Light Mode */
+        body.light {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        body.light .nav-bar {
+            background: #fff;
+            border-bottom-color: #e0e0e0;
+        }
+
+        body.light .nav-item > a,
+        body.light .nav-item > button {
+            color: #555;
+        }
+
+        body.light .nav-item > a:hover,
+        body.light .nav-item > button:hover {
+            color: #111;
+            background: rgba(0,0,0,0.04);
+        }
+
+        body.light .nav-item .dropdown,
+        body.light .nav-item .mega-menu {
+            background: #fff;
+            border-color: #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        body.light .dropdown a,
+        body.light .mega-column a {
+            color: #555;
+        }
+
+        body.light .dropdown a:hover,
+        body.light .mega-column a:hover {
+            background: rgba(0,0,0,0.04);
+            color: #111;
+        }
+
+        body.light .dropdown .divider {
+            background: #eee;
+        }
+
+        body.light .dropdown .section-label {
+            color: #999;
+        }
+
+        body.light .mega-column h4 {
+            color: #999;
+            border-bottom-color: #eee;
+        }
+
+        body.light .mega-column a .desc {
+            color: #999;
+        }
+
+        body.light .nav-icon {
+            color: #888;
+        }
+
+        body.light .nav-icon:hover {
+            color: #111;
+            background: rgba(0,0,0,0.06);
+        }
+
+        body.light .avatar {
+            background: #ddd;
+            color: #555;
+        }
+
+        body.light .search-container.expanded .search-input {
+            background: rgba(0,0,0,0.04);
+            border-color: #ccc;
+            color: #333;
+        }
+
+        body.light .search-container.expanded .search-input::placeholder {
+            color: #999;
+        }
+
+        body.light .announcement-bar {
+            background: #eee;
+            border-bottom-color: #ddd;
+        }
+
+        body.light .announcement-text {
+            color: #555;
+        }
+
+        body.light .ware-item > button {
+            color: #7c3aed !important;
+        }
+
+        body.light .nav-right .nav-item > a,
+        body.light .nav-right .nav-item > button {
+            color: #666;
+        }
+
+        body.light .nav-item > button[style*="color: #fff"] {
+            color: #111 !important;
+        }
+
+        body.light .nav-logo img {
+            filter: invert(1);
+        }
+
+        .community-btn {
+            color: #fff !important;
+        }
+
+        body.light .community-btn {
+            color: #111 !important;
+        }
+
+        body.light .site-footer {
+            background: #fff;
+            border-top-color: #e0e0e0;
+        }
+
+        body.light .footer-column h4 {
+            color: #999;
+        }
+
+        body.light .footer-column a {
+            color: #666;
+        }
+
+        body.light .footer-column a:hover {
+            color: #111;
+        }
+
+        body.light .footer-bottom {
+            border-top-color: #eee;
+        }
+
+        body.light .footer-bottom p,
+        body.light .footer-legal a {
+            color: #999;
+        }
+
+        body.light .site-footer img {
+            filter: invert(1);
+        }
+
+        body.light .account-dropdown {
+            background: #fff !important;
+            border-color: #e0e0e0 !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+        }
+
+        body.light .account-dropdown a {
+            color: #555 !important;
+        }
+
+        body.light .account-dropdown a:hover {
+            background: rgba(0,0,0,0.04) !important;
+            color: #111 !important;
+        }
+
+        body.light .account-dropdown .divider {
+            background: #eee !important;
+        }
+
+        body.light .footer-tagline {
+            color: #888;
+        }
+
+        body.light .footer-social a {
+            color: #888;
+        }
+
+        body.light .footer-social a:hover {
+            color: #111;
+        }
+
+        /* Light mode - content area text */
+        body.light h2, body.light h3 {
+            color: #111 !important;
+        }
+
+        body.light p {
+            color: #555 !important;
+        }
+
+        body.light ol li {
+            color: #444 !important;
+        }
+
+        body.light ol ol li {
+            color: #666 !important;
+        }
+
+        /* Light mode - legend card */
+        body.light [style*="background: #1e1e1e"] {
+            background: #fff !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        body.light .locked-item {
+            opacity: 0.5;
         }
 
         /* Top Navigation Bar */
@@ -37,6 +244,7 @@
         .nav-logo img {
             height: 28px;
             width: auto;
+            transition: filter 0.3s;
         }
 
         .nav-links {
@@ -60,7 +268,7 @@
             align-items: center;
             color: #ccc;
             text-decoration: none;
-            font-size: 15px;
+            font-size: 16px;
             font-weight: 500;
             border: none;
             background: none;
@@ -339,6 +547,37 @@
             background: rgba(251, 191, 36, 0.12);
             color: #f59e0b;
             border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        /* Membership tier pills */
+        .pill-pitfire {
+            background: rgba(156, 130, 110, 0.15);
+            color: #c4a882;
+            border: 1px solid rgba(156, 130, 110, 0.3);
+        }
+
+        .pill-lowfire {
+            background: rgba(232, 121, 77, 0.15);
+            color: #e8794d;
+            border: 1px solid rgba(232, 121, 77, 0.3);
+        }
+
+        .pill-midfire {
+            background: rgba(235, 168, 52, 0.15);
+            color: #eba834;
+            border: 1px solid rgba(235, 168, 52, 0.3);
+        }
+
+        .pill-highfire {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .pill-alumni {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
         }
 
         .locked-item {
@@ -652,7 +891,7 @@
                         <div class="mega-column">
                             <h4>Testing & Workflows</h4>
                             <a href="#">Start a Test</a>
-                            <a href="#" class="locked-item">Design a Test <span class="pill pill-locked">Pro</span></a>
+                            <a href="#" class="locked-item">Design a Test <span class="pill pill-highfire">High Fire</span></a>
                             <a href="#">Fix a Flaw</a>
                             <a href="#">Firing Schedules<span class="desc">Schedules & logging</span></a>
                         </div>
@@ -698,7 +937,7 @@
                 <div class="mega-menu" style="width: 620px;">
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
                         <div class="mega-column">
-                            <a href="#" class="locked-item">Test, Test, Test <span class="pill pill-locked">Pro</span><span class="desc">Thousands of fired tiles</span></a>
+                            <a href="#" class="locked-item">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="desc">Thousands of fired tiles</span></a>
                             <a href="#">CMW Glaze Recipes<span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
                             <a href="#">Stull Map Explorations</a>
                             <a href="#">Stains<span class="desc">CMW's color research — how single stains fire, and how they blend</span></a>
@@ -720,7 +959,7 @@
 
             <!-- Community — social, Fired!, watch & listen -->
             <div class="nav-item">
-                <button style="color: #fff;">Community</button>
+                <button class="community-btn">Community</button>
                 <div class="dropdown" style="min-width: 280px;">
                     <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
                     <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
@@ -798,7 +1037,7 @@
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                        My membership
+                        My membership <span class="pill pill-midfire">Mid Fire</span>
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
@@ -806,11 +1045,11 @@
                     </a>
                     <div class="divider"></div>
                     <!-- Theme toggle -->
-                    <div style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; color: #ccc; font-size: 13px; transition: background 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'">
-                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
-                        Dark mode
-                        <div style="margin-left: auto; width: 32px; height: 18px; background: #7c3aed; border-radius: 9px; position: relative;">
-                            <div style="width: 14px; height: 14px; background: #fff; border-radius: 50%; position: absolute; top: 2px; right: 2px;"></div>
+                    <div id="themeToggle" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; color: #ccc; font-size: 13px; transition: background 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'" onclick="toggleTheme()">
+                        <svg id="themeIcon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <span id="themeLabel">Dark mode</span>
+                        <div id="toggleTrack" style="margin-left: auto; width: 32px; height: 18px; background: #7c3aed; border-radius: 9px; position: relative; transition: background 0.2s;">
+                            <div id="toggleKnob" style="width: 14px; height: 14px; background: #fff; border-radius: 50%; position: absolute; top: 2px; right: 2px; transition: right 0.2s, left 0.2s;"></div>
                         </div>
                     </div>
                     <div class="divider"></div>
@@ -839,8 +1078,77 @@
     <!-- Spacer to simulate page content -->
     <div style="min-height: 60vh;"></div>
 
-    <!-- Questions for Client -->
+    <!-- Legend & Questions -->
     <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
+        <!-- Pill & Icon Legend -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">UI Element Legend</h2>
+        
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Membership Tier Pills</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-pitfire">Pit Fire</span>
+                    <span style="font-size: 12px; color: #888;">Free / Entry tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-lowfire">Low Fire</span>
+                    <span style="font-size: 12px; color: #888;">Basic membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-midfire">Mid Fire</span>
+                    <span style="font-size: 12px; color: #888;">Standard membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-highfire">High Fire</span>
+                    <span style="font-size: 12px; color: #888;">Premium membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-alumni">Silica:Alumni</span>
+                    <span style="font-size: 12px; color: #888;">Exclusive alumni community</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Status & Action Pills</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-enroll">Enroll Now</span>
+                    <span style="font-size: 12px; color: #888;">Course open for enrollment</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-highfire">High Fire</span>
+                    <span style="font-size: 12px; color: #888; opacity: 0.6;">← on a locked item = requires this tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-exclusive">Exclusive Membership</span>
+                    <span style="font-size: 12px; color: #888;">Silica:Alumni only (separate track)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-new">New</span>
+                    <span style="font-size: 12px; color: #888;">Newly launched feature or service</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Visual Treatments</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="opacity: 0.6; font-size: 13px; color: #ccc;">Dimmed text</span>
+                    <span style="font-size: 12px; color: #888;">→ Feature is locked / not available at current tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #8b5cf6; font-weight: 500;">Purple text</span>
+                    <span style="font-size: 12px; color: #888;">→ CTA / helper link for new or overwhelmed users</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #7db8e0; font-weight: 500;">Blue text</span>
+                    <span style="font-size: 12px; color: #888;">→ Navigation action link (view all, browse, etc.)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #fff; font-weight: 500;">White text</span>
+                    <span style="font-size: 12px; color: #888;">→ Emphasized nav item (Community)</span>
+                </div>
+            </div>
+        </div>
+
         <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Questions for Matt</h2>
         <ol style="list-style: decimal; padding-left: 20px; color: #ccc; font-size: 14px; line-height: 1.8;">
             <li style="margin-bottom: 16px;">Who are the main users of the site? What are their user stories? Brand new users, experienced power users, other?</li>
@@ -849,6 +1157,14 @@
                     <li>For a free or low price tier, what do they see? What is gated off? How can we nudge them to up their subscription?</li>
                 </ol>
             </li>
+            <li style="margin-bottom: 16px;">What are the top 3-5 tasks a user performs on the site daily? (e.g., open calculator, check saved glazes, browse recipes) — this helps validate the bottom tab bar choices on mobile.</li>
+            <li style="margin-bottom: 16px;">Is there a specific onboarding flow for brand new users? When someone signs up, where should they land and what should they see first?</li>
+            <li style="margin-bottom: 16px;">How does the nav change (if at all) for non-logged-in users vs. logged-in users? Are there items that should be hidden entirely, or shown with upgrade prompts?</li>
+            <li style="margin-bottom: 16px;">What's the relationship between "Courses" content and "Glaze Lab / Anatomy" content? Are enrolled students expected to use the Lab tools as part of their coursework, or are these independent?</li>
+            <li style="margin-bottom: 16px;">Are there plans to add more courses or tools in the near future? If so, how should the nav accommodate growth without getting cluttered again?</li>
+            <li style="margin-bottom: 16px;">What is the expected mobile vs. desktop split for this audience? Are people using the calculators and tools on their phones (e.g., in the studio), or primarily desktop?</li>
+            <li style="margin-bottom: 16px;">For the "Fired!" community — is there any moderation, featured content, or algorithmic feed? Or is it purely chronological? This affects whether "Feed" and "Explore" need to be separate concepts.</li>
+            <li style="margin-bottom: 16px;">Does Ware share any user accounts/data with the main CMW site, or is it completely separate? Could a user's Ware glaze orders appear in their "My Work" section?</li>
         </ol>
     </div>
 
@@ -927,6 +1243,37 @@
             } else {
                 container.classList.add('expanded');
                 input.focus();
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const label = document.getElementById('themeLabel');
+            const track = document.getElementById('toggleTrack');
+            const knob = document.getElementById('toggleKnob');
+            const icon = document.getElementById('themeIcon');
+            const toggleDiv = document.getElementById('themeToggle');
+
+            body.classList.toggle('light');
+
+            if (body.classList.contains('light')) {
+                label.textContent = 'Light mode';
+                track.style.background = '#ccc';
+                knob.style.right = 'auto';
+                knob.style.left = '2px';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+                toggleDiv.style.color = '#555';
+                toggleDiv.onmouseover = function() { this.style.background = 'rgba(0,0,0,0.04)'; };
+                toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
+            } else {
+                label.textContent = 'Dark mode';
+                track.style.background = '#7c3aed';
+                knob.style.left = 'auto';
+                knob.style.right = '2px';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
+                toggleDiv.style.color = '#ccc';
+                toggleDiv.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.08)'; };
+                toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
             }
         }
     </script>
