@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW Navigation - V2 Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #1a1a1a;
+            color: #e0e0e0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        /* Light Mode */
+        body.light {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        body.light .nav-bar {
+            background: #fff;
+            border-bottom-color: #e0e0e0;
+        }
+
+        body.light .nav-item > a,
+        body.light .nav-item > button {
+            color: #555;
+        }
+
+        body.light .nav-item > a:hover,
+        body.light .nav-item > button:hover {
+            color: #111;
+            background: rgba(0,0,0,0.04);
+        }
+
+        body.light .nav-item .dropdown,
+        body.light .nav-item .mega-menu {
+            background: #fff;
+            border-color: #e0e0e0;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        body.light .dropdown a,
+        body.light .mega-column a {
+            color: #555;
+        }
+
+        body.light .dropdown a:hover,
+        body.light .mega-column a:hover {
+            background: rgba(0,0,0,0.04);
+            color: #111;
+        }
+
+        body.light .dropdown .divider {
+            background: #eee;
+        }
+
+        body.light .dropdown .section-label {
+            color: #999;
+        }
+
+        body.light .mega-column h4 {
+            color: #999;
+            border-bottom-color: #eee;
+        }
+
+        body.light .mega-column a .desc {
+            color: #999;
+        }
+
+        body.light .nav-icon {
+            color: #888;
+        }
+
+        body.light .nav-icon:hover {
+            color: #111;
+            background: rgba(0,0,0,0.06);
+        }
+
+        body.light .avatar {
+            background: #ddd;
+            color: #555;
+        }
+
+        body.light .search-container.expanded .search-input {
+            background: rgba(0,0,0,0.04);
+            border-color: #ccc;
+            color: #333;
+        }
+
+        body.light .search-container.expanded .search-input::placeholder {
+            color: #999;
+        }
+
+        body.light .announcement-bar {
+            background: #eee;
+            border-bottom-color: #ddd;
+        }
+
+        body.light .announcement-text {
+            color: #555;
+        }
+
+        body.light .ware-item > button {
+            color: #7c3aed !important;
+        }
+
+        body.light .nav-right .nav-item > a,
+        body.light .nav-right .nav-item > button {
+            color: #666;
+        }
+
+        body.light .nav-item > button[style*="color: #fff"] {
+            color: #111 !important;
+        }
+
+        body.light .nav-logo img {
+            filter: invert(1);
+        }
+
+        .community-btn {
+            color: #fff !important;
+        }
+
+        body.light .community-btn {
+            color: #111 !important;
+        }
+
+        body.light .site-footer {
+            background: #fff;
+            border-top-color: #e0e0e0;
+        }
+
+        body.light .footer-column h4 {
+            color: #999;
+        }
+
+        body.light .footer-column a {
+            color: #666;
+        }
+
+        body.light .footer-column a:hover {
+            color: #111;
+        }
+
+        body.light .footer-bottom {
+            border-top-color: #eee;
+        }
+
+        body.light .footer-bottom p,
+        body.light .footer-legal a {
+            color: #999;
+        }
+
+        body.light .site-footer img {
+            filter: invert(1);
+        }
+
+        body.light .account-dropdown {
+            background: #fff !important;
+            border-color: #e0e0e0 !important;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1) !important;
+        }
+
+        body.light .account-dropdown a {
+            color: #555 !important;
+        }
+
+        body.light .account-dropdown a:hover {
+            background: rgba(0,0,0,0.04) !important;
+            color: #111 !important;
+        }
+
+        body.light .account-dropdown .divider {
+            background: #eee !important;
+        }
+
+        body.light .footer-tagline {
+            color: #888;
+        }
+
+        body.light .footer-social a {
+            color: #888;
+        }
+
+        body.light .footer-social a:hover {
+            color: #111;
+        }
+
+        /* Light mode - content area text */
+        body.light h2, body.light h3 {
+            color: #111 !important;
+        }
+
+        body.light p {
+            color: #555 !important;
+        }
+
+        body.light ol li {
+            color: #444 !important;
+        }
+
+        body.light ol ol li {
+            color: #666 !important;
+        }
+
+        /* Light mode - legend card */
+        body.light [style*="background: #1e1e1e"] {
+            background: #fff !important;
+            border-color: #e0e0e0 !important;
+        }
+
+        body.light .locked-item {
+            opacity: 0.5;
+        }
+
+        /* Top Navigation Bar */
+        .nav-bar {
+            background: #111;
+            border-bottom: 1px solid #2a2a2a;
+            display: flex;
+            align-items: center;
+            padding: 0 24px;
+            height: 56px;
+            position: relative;
+        }
+
+        .nav-logo {
+            margin-right: 32px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo img {
+            height: 28px;
+            width: auto;
+            transition: filter 0.3s;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            height: 100%;
+        }
+
+        .nav-item {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-item > a,
+        .nav-item > button {
+            padding: 0 14px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            border: none;
+            background: none;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+            white-space: nowrap;
+        }
+
+        .nav-item > a:hover,
+        .nav-item > button:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.05);
+        }
+
+        /* Standard dropdown */
+        .nav-item .dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 6px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+            min-width: 200px;
+            z-index: 1000;
+            padding: 6px 0;
+        }
+
+        .nav-item:hover .dropdown {
+            display: block;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 9px 16px;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: background 0.12s, color 0.12s;
+        }
+
+        .dropdown a:hover {
+            background: rgba(255,255,255,0.08);
+            color: #fff;
+        }
+
+        .dropdown .divider {
+            height: 1px;
+            background: #333;
+            margin: 4px 0;
+        }
+
+        .dropdown .section-label {
+            padding: 8px 16px 4px;
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #666;
+        }
+
+        /* Mega Menu */
+        .nav-item .mega-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 8px;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.5);
+            z-index: 1000;
+            padding: 24px 28px;
+            width: 680px;
+        }
+
+        .nav-item:first-child .mega-menu {
+            left: 8px;
+        }
+
+        .nav-item:hover .mega-menu {
+            display: block;
+        }
+
+        .mega-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px;
+        }
+
+        .mega-column h4 {
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: #888;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .mega-column a {
+            display: block;
+            padding: 5px 0;
+            color: #ccc;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.12s;
+        }
+
+        .mega-column a:hover {
+            color: #fff;
+        }
+
+        .mega-column a .desc {
+            display: block;
+            font-size: 11px;
+            color: #666;
+            margin-top: 1px;
+        }
+
+        /* Right side nav */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .nav-right .nav-item > a,
+        .nav-right .nav-item > button {
+            padding: 0 12px;
+            font-size: 14px;
+            color: #999;
+        }
+
+        .ware-item > button {
+            color: #8b5cf6 !important;
+        }
+
+        .ware-item > button:hover {
+            color: #a78bfa !important;
+        }
+
+        .nav-icon {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.15s, background 0.15s;
+        }
+
+        .nav-icon:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.08);
+        }
+
+        .nav-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #444;
+            margin-left: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            color: #ccc;
+            cursor: pointer;
+        }
+
+        .account-item {
+            position: relative;
+        }
+
+        .account-item .account-dropdown {
+            display: none;
+        }
+
+        .account-item:hover .account-dropdown {
+            display: block;
+        }
+
+        /* Expandable search */
+        .search-container {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .search-input {
+            width: 0;
+            padding: 0;
+            border: none;
+            background: transparent;
+            color: #fff;
+            font-size: 13px;
+            outline: none;
+            transition: width 0.25s ease, padding 0.25s ease, background 0.25s ease;
+            border-radius: 4px;
+            height: 32px;
+        }
+
+        .search-container.expanded .search-input {
+            width: 320px;
+            padding: 0 12px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid #444;
+        }
+
+        .search-container.expanded .search-input::placeholder {
+            color: #888;
+        }
+
+        .ware-link {
+            padding: 4px 10px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #333;
+            border-radius: 4px;
+            color: #aaa;
+            font-size: 11px;
+            font-weight: 500;
+            text-decoration: none;
+            margin-right: 8px;
+            transition: all 0.15s;
+        }
+
+        .ware-link:hover {
+            background: rgba(255,255,255,0.1);
+            color: #fff;
+            border-color: #555;
+        }
+
+        /* Membership tier pills */
+        .pill {
+            display: inline-block;
+            font-size: 9px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 7px;
+            border-radius: 10px;
+            margin-left: 8px;
+            vertical-align: middle;
+        }
+
+        .pill-exclusive {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .pill-enroll {
+            background: rgba(99, 190, 123, 0.15);
+            color: #63be7b;
+            border: 1px solid rgba(99, 190, 123, 0.3);
+        }
+
+        .pill-new {
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .pill-locked {
+            background: rgba(251, 191, 36, 0.12);
+            color: #f59e0b;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+        }
+
+        /* Membership tier pills */
+        .pill-pitfire {
+            background: rgba(156, 130, 110, 0.15);
+            color: #c4a882;
+            border: 1px solid rgba(156, 130, 110, 0.3);
+        }
+
+        .pill-lowfire {
+            background: rgba(232, 121, 77, 0.15);
+            color: #e8794d;
+            border: 1px solid rgba(232, 121, 77, 0.3);
+        }
+
+        .pill-midfire {
+            background: rgba(235, 168, 52, 0.15);
+            color: #eba834;
+            border: 1px solid rgba(235, 168, 52, 0.3);
+        }
+
+        .pill-highfire {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+
+        .pill-alumni {
+            background: rgba(212, 175, 55, 0.15);
+            color: #d4af37;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        .locked-item {
+            opacity: 0.6;
+            position: relative;
+        }
+        .announcement-bar {
+            background: #2a2a2a;
+            padding: 10px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #ccc;
+            border-bottom: 1px solid #333;
+        }
+
+        .announcement-badge {
+            font-size: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .announcement-text {
+            color: #bbb;
+        }
+
+        .announcement-link {
+            color: #7db8e0;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 4px;
+        }
+
+        .announcement-link:hover {
+            color: #fff;
+        }
+
+        .announcement-close {
+            background: none;
+            border: none;
+            color: #666;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 0 4px;
+            margin-left: 12px;
+            line-height: 1;
+            transition: color 0.15s;
+        }
+
+        .announcement-close:hover {
+            color: #fff;
+        }
+
+        /* Hero Spotlight */
+        .hero-spotlight {
+            padding: 80px 24px 60px;
+            text-align: center;
+            background: linear-gradient(180deg, #111 0%, #1a1a1a 100%);
+            border-bottom: 1px solid #2a2a2a;
+        }
+
+        .hero-content {
+            max-width: 640px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 15px;
+            color: #888;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        .hero-search {
+            display: flex;
+            align-items: center;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 4px 4px 4px 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .hero-search:focus-within {
+            border-color: #555;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        .hero-search-icon {
+            color: #666;
+            flex-shrink: 0;
+            margin-right: 12px;
+        }
+
+        .hero-search-input {
+            flex: 1;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 16px;
+            font-family: inherit;
+            outline: none;
+            padding: 12px 0;
+        }
+
+        .hero-search-input::placeholder {
+            color: #666;
+        }
+
+        .hero-search-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            border: none;
+            background: #8b5cf6;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            flex-shrink: 0;
+            transition: background 0.15s;
+        }
+
+        .hero-search-btn:hover {
+            background: #7c3aed;
+        }
+
+        .hero-suggestions {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .hero-suggestion-label {
+            font-size: 12px;
+            color: #666;
+        }
+
+        .hero-suggestion {
+            font-size: 12px;
+            color: #888;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid #2a2a2a;
+            border-radius: 16px;
+            padding: 4px 12px;
+            text-decoration: none;
+            transition: color 0.12s, border-color 0.12s;
+        }
+
+        .hero-suggestion:hover {
+            color: #fff;
+            border-color: #444;
+        }
+
+        /* Light mode hero */
+        body.light .hero-spotlight {
+            background: linear-gradient(180deg, #fff 0%, #f5f5f5 100%);
+            border-bottom-color: #e0e0e0;
+        }
+
+        body.light .hero-title {
+            color: #111;
+        }
+
+        body.light .hero-subtitle {
+            color: #666;
+        }
+
+        body.light .hero-search {
+            background: #fff;
+            border-color: #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+        }
+
+        body.light .hero-search:focus-within {
+            border-color: #bbb;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.08);
+        }
+
+        body.light .hero-search-input {
+            color: #333;
+        }
+
+        body.light .hero-search-input::placeholder {
+            color: #999;
+        }
+
+        body.light .hero-suggestion {
+            background: #fff;
+            border-color: #ddd;
+            color: #666;
+        }
+
+        body.light .hero-suggestion:hover {
+            color: #111;
+            border-color: #bbb;
+        }
+
+        /* Wayfinding Cards */
+        .wayfinding-section {
+            padding: 40px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .wayfinding-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+        }
+
+        .wayfinding-card {
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 12px;
+            padding: 24px;
+            text-decoration: none;
+            transition: border-color 0.15s, transform 0.15s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wayfinding-card:hover {
+            border-color: #444;
+            transform: translateY(-2px);
+        }
+
+        .wayfinding-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #8b5cf6;
+            margin-bottom: 16px;
+        }
+
+        .wayfinding-card h3 {
+            font-size: 15px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .wayfinding-card p {
+            font-size: 13px;
+            color: #888;
+            line-height: 1.5;
+            flex: 1;
+        }
+
+        .wayfinding-arrow {
+            font-size: 18px;
+            color: #555;
+            margin-top: 12px;
+            transition: color 0.12s, transform 0.12s;
+        }
+
+        .wayfinding-card:hover .wayfinding-arrow {
+            color: #8b5cf6;
+            transform: translateX(4px);
+        }
+
+        /* Light mode wayfinding */
+        body.light .wayfinding-card {
+            background: #fff;
+            border-color: #e0e0e0;
+        }
+
+        body.light .wayfinding-card:hover {
+            border-color: #ccc;
+        }
+
+        body.light .wayfinding-card h3 {
+            color: #111;
+        }
+
+        body.light .wayfinding-card p {
+            color: #666;
+        }
+
+        /* Sticky Bug Report Button */
+        .bug-report-btn {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: #7c3aed;
+            border: 1px solid #8b5cf6;
+            border-radius: 24px;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 500;
+            font-family: inherit;
+            cursor: pointer;
+            z-index: 90;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+            transition: background 0.15s, box-shadow 0.15s, transform 0.15s;
+            text-decoration: none;
+        }
+
+        .bug-report-btn:hover {
+            background: #6d28d9;
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.4);
+            transform: translateY(-1px);
+        }
+
+        .bug-report-btn svg {
+            width: 16px;
+            height: 16px;
+            flex-shrink: 0;
+        }
+
+        body.light .bug-report-btn {
+            background: #7c3aed;
+            border-color: #8b5cf6;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+        }
+
+        body.light .bug-report-btn:hover {
+            background: #6d28d9;
+            box-shadow: 0 6px 16px rgba(124, 58, 237, 0.3);
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #0d0d0d;
+            border-top: 1px solid #2a2a2a;
+            padding: 48px 24px 24px;
+        }
+
+        .footer-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr;
+            gap: 32px;
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.6px;
+            color: #888;
+            margin-bottom: 12px;
+        }
+
+        .footer-column a {
+            display: block;
+            font-size: 13px;
+            color: #999;
+            text-decoration: none;
+            padding: 4px 0;
+            transition: color 0.12s;
+        }
+
+        .footer-column a:hover {
+            color: #fff;
+        }
+
+        .footer-tagline {
+            font-size: 13px;
+            color: #666;
+            margin-top: 10px;
+            margin-bottom: 16px;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 12px;
+        }
+
+        .footer-social a {
+            color: #666;
+            transition: color 0.12s;
+        }
+
+        .footer-social a:hover {
+            color: #fff;
+        }
+
+        .footer-bottom {
+            max-width: 1100px;
+            margin: 36px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid #222;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-bottom p {
+            font-size: 12px;
+            color: #555;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-legal a {
+            font-size: 12px;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.12s;
+        }
+
+        .footer-legal a:hover {
+            color: #ccc;
+        }
+        .annotations {
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .annotations h1 {
+            font-size: 22px;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .annotations .subtitle {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 32px;
+        }
+
+        .change-card {
+            background: #1e1e1e;
+            border: 1px solid #2a2a2a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 16px;
+        }
+
+        .change-card h3 {
+            font-size: 15px;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .change-card p {
+            font-size: 13px;
+            color: #999;
+            line-height: 1.6;
+        }
+
+        .change-card .tag {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            margin-right: 6px;
+            margin-bottom: 8px;
+        }
+
+        .tag-merge { background: #2a3a4a; color: #7db8e0; }
+        .tag-move { background: #3a2a4a; color: #b07de0; }
+        .tag-rename { background: #2a4a3a; color: #6fcf97; }
+        .tag-new { background: #4a3a2a; color: #e0a07d; }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+
+        .comparison .before,
+        .comparison .after {
+            background: #151515;
+            border-radius: 6px;
+            padding: 12px 16px;
+        }
+
+        .comparison h4 {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 8px;
+        }
+
+        .comparison .before h4 { color: #e07d7d; }
+        .comparison .after h4 { color: #6fcf97; }
+
+        .comparison ul {
+            list-style: none;
+        }
+
+        .comparison ul li {
+            font-size: 12px;
+            color: #999;
+            padding: 2px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- V2 Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-logo"><img src="cmw-logo.png" alt="Ceramic Materials Workshop"></div>
+
+        <div class="nav-links">
+
+            <!-- Join — memberships, courses, and merch -->
+            <div class="nav-item">
+                <button>Join</button>
+                <div class="dropdown" style="min-width: 260px;">
+                    <a href="#">Memberships<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Explore membership tiers and find the right level for you</span></a>
+                    <div class="divider"></div>
+                    <a href="#">Courses<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Browse CMW courses — from beginner to advanced</span></a>
+                    <div class="divider"></div>
+                    <a href="#">Merch</a>
+                </div>
+            </div>
+
+            <!-- My Courses — enrolled student content -->
+            <div class="nav-item">
+                <button>My Courses</button>
+                <div class="dropdown" style="min-width: 240px;">
+                    <div class="section-label">My Learning</div>
+                    <a href="#">My Courses<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
+                    <a href="#">All Labs<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
+                    <a href="#">All Discussions<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
+                    <a href="#">Commons<span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
+                    <div class="divider"></div>
+                    <div class="section-label">Hangout Course Resources</div>
+                    <a href="#">Live Hangout Information</a>
+                    <a href="#">Hangout Calendar</a>
+                    <a href="#">Hangout Signup</a>
+                    <a href="#">Hangout Archive<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
+                </div>
+            </div>
+
+            <!-- My Work — consolidated personal content -->
+            <div class="nav-item">
+                <button>My Work</button>
+                <div class="dropdown">
+                    <div class="section-label">Organize and manage your work</div>
+                    <a href="#">My Book</a>
+                    <a href="#">My Glazes</a>
+                    <a href="#">My Clay Bodies</a>
+                    <a href="#">My Test Reports</a>
+                    <a href="#">My Workbooks</a>
+                    <a href="#">My Presentations</a>
+                    <div class="divider"></div>
+                    <div class="section-label">Bulk data actions</div>
+                    <a href="#">Import</a>
+                    <a href="#">Drop Box</a>
+                </div>
+            </div>
+
+            <!-- Glaze Lab — combined calculators, workflows, and knowledge -->
+            <div class="nav-item">
+                <button>Glaze Lab</button>
+                <div class="mega-menu" style="width: 700px;">
+                    <div class="mega-grid">
+                        <div class="mega-column">
+                            <h4>Calculators & Tools</h4>
+                            <a href="#">Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
+                            <a href="#">Glaze Quantity</a>
+                            <a href="#">Compare<span class="desc">Side-by-side analysis</span></a>
+                            <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
+                            <a href="#" style="margin-top: 12px; color: #8b5cf6; font-weight: 500;">Help! I'm not sure where to start →</a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Testing & Workflows</h4>
+                            <a href="#">Start a Test</a>
+                            <a href="#" class="locked-item">Design a Test <span class="pill pill-highfire">High Fire</span></a>
+                            <a href="#">Fix a Flaw</a>
+                            <a href="#">Firing Schedules<span class="desc">Schedules & logging</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Knowledge & Reference</h4>
+                            <a href="#">Overview<span class="desc">Guided paths by level</span></a>
+                            <a href="#">Materials<span class="desc">Oxides, families, analyses</span></a>
+                            <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
+                            <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
+                            <a href="#">Troubleshooting<span class="desc">25 faults — crazing, crawling, etc.</span></a>
+                            <a href="#">Reference Desk<span class="desc">Cone chart, Stull map, glossary</span></a>
+                            <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clay Lab — clay-focused tools and knowledge -->
+            <div class="nav-item">
+                <button>Clay Lab</button>
+                <div class="mega-menu" style="width: 520px;">
+                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mega-column">
+                            <h4>Calculators & Tools</h4>
+                            <a href="#">Clay Body Calculator<span class="desc">Formulate and analyze clay bodies</span></a>
+                            <a href="#">Plaster Calculator</a>
+                            <a href="#">Compare<span class="desc">Side-by-side clay body analysis</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Knowledge & Reference</h4>
+                            <a href="#">Clay Reports<span class="desc">Detailed analyses of commercial clays</span></a>
+                            <a href="#">Clay Body Basics<span class="desc">How clay bodies work</span></a>
+                            <a href="#">Shrinkage & Absorption<span class="desc">Testing and understanding fit</span></a>
+                            <a href="#">Material Properties<span class="desc">Kaolins, ball clays, feldspars, silica</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Research — research collections and published content -->
+            <div class="nav-item">
+                <button>Research</button>
+                <div class="mega-menu" style="width: 620px;">
+                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
+                        <div class="mega-column">
+                            <a href="#" class="locked-item">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="desc">Thousands of fired tiles</span></a>
+                            <a href="#">CMW Glaze Recipes<span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
+                            <a href="#">Stull Map Explorations</a>
+                            <a href="#">Stains<span class="desc">CMW's color research — how single stains fire, and how they blend</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <a href="#">Commercial Glaze Reference<span class="desc">Commercial glazes, underglazes, and decorating media from North American manufacturers</span></a>
+                            <a href="#">Color</a>
+                            <a href="#">The Journal<span class="desc">Articles, arguments, and thoughts from CMW</span></a>
+                            <a href="#">Search the Entire Site</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Community — social, Fired!, watch & listen -->
+            <div class="nav-item">
+                <button class="community-btn">Community</button>
+                <div class="dropdown" style="min-width: 280px;">
+                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
+                    <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
+                    <div class="divider"></div>
+                    <a href="#">Studio Directory<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Find a ceramics studio near you</span></a>
+                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
+                    <div class="divider"></div>
+                    <div class="section-label">Watch & Listen</div>
+                    <a href="#">For Flux Sake Podcast</a>
+                    <a href="#">YouTube</a>
+                    <a href="#">Livestreams</a>
+                </div>
+            </div>
+
+            <!-- Ware — external service -->
+            <div class="nav-item ware-item">
+                <button>Ware <span class="pill pill-new">New</span></button>
+                <div class="dropdown" style="min-width: 280px; padding: 16px;">
+                    <div style="font-size: 13px; color: #ccc; line-height: 1.6; margin-bottom: 12px;">
+                        <strong style="color: #fff; display: block; margin-bottom: 4px;">Design Your Perfect Glaze</strong>
+                        Start with a color and we'll craft the glaze. Pick from thousands of real fired tiles, match a photo, or dial in exactly what you want — no chemistry required.
+                    </div>
+                    <a href="#" target="_blank" style="display: inline-block; padding: 8px 14px; background: rgba(255,255,255,0.1); border-radius: 4px; color: #fff; font-size: 12px; font-weight: 500; text-decoration: none;">Go to Ware →</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Right side — utilities -->
+        <div class="nav-right">
+
+            <!-- Search (expandable) -->
+            <div class="search-container" id="searchContainer">
+                <input type="text" class="search-input" id="searchInput" placeholder="Search entire site">
+                <div class="nav-icon" title="Search" onclick="toggleSearch()">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+            <!-- Feedback -->
+            <div class="nav-icon" title="Feedback">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                </svg>
+            </div>
+            <!-- Notifications -->
+            <div class="nav-icon" title="Notifications">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                </svg>
+            </div>
+            <!-- Dark/Light toggle - moved to account dropdown -->
+            <!-- Account -->
+            <div class="nav-item account-item">
+                <div class="avatar" title="Account">U</div>
+                <div class="dropdown account-dropdown" style="right: 0; left: auto; min-width: 280px; padding: 0;">
+                    <!-- User info header -->
+                    <div style="display: flex; align-items: center; gap: 12px; padding: 16px 16px 12px;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #444; flex-shrink: 0;"></div>
+                        <div>
+                            <div style="font-size: 14px; font-weight: 600; color: #fff;">Brian Berryman</div>
+                            <div style="font-size: 12px; color: #888;">berryman.brian@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <!-- Menu items -->
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z"/><circle cx="12" cy="12" r="3"/></svg>
+                        Manage account
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        My profile
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                        My membership <span class="pill pill-midfire">Mid Fire</span>
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                        Change membership
+                    </a>
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/></svg>
+                        Download your data
+                    </a>
+                    <div class="divider"></div>
+                    <!-- Theme toggle -->
+                    <div id="themeToggle" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px; cursor: pointer; color: #ccc; font-size: 13px; transition: background 0.12s;" onmouseover="this.style.background='rgba(255,255,255,0.08)'" onmouseout="this.style.background='transparent'" onclick="toggleTheme()">
+                        <svg id="themeIcon" width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+                        <span id="themeLabel">Dark mode</span>
+                        <div id="toggleTrack" style="margin-left: auto; width: 32px; height: 18px; background: #7c3aed; border-radius: 9px; position: relative; transition: background 0.2s;">
+                            <div id="toggleKnob" style="width: 14px; height: 14px; background: #fff; border-radius: 50%; position: absolute; top: 2px; right: 2px; transition: right 0.2s, left 0.2s;"></div>
+                        </div>
+                    </div>
+                    <div class="divider"></div>
+                    <!-- Sign out -->
+                    <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
+                        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
+                        Sign out
+                    </a>
+                    <!-- Secured by Clerk -->
+                    <div style="padding: 10px 16px; text-align: center; font-size: 11px; color: #666; background: rgba(255,255,255,0.02); border-top: 1px solid #2a2a2a;">
+                        Secured by <strong>clerk</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <span class="announcement-badge">New</span>
+        <span class="announcement-text">Introducing <strong>Ware</strong> — Design your perfect glaze. Start with a color, we'll handle the chemistry.</span>
+        <a href="#" class="announcement-link">Learn more →</a>
+        <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- Hero Spotlight -->
+    <div class="hero-spotlight">
+        <div class="hero-content">
+            <h1 class="hero-title">Welcome to CMW Central</h1>
+            <p class="hero-subtitle">Your workspace for glazes, clay bodies, and ceramic research. Ask anything — we'll point you in the right direction.</p>
+            <div class="hero-search">
+                <div class="hero-search-icon">
+                    <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                </div>
+                <input type="text" class="hero-search-input" placeholder="Ask anything... &quot;Why is my glaze crazing?&quot;">
+                <button class="hero-search-btn">
+                    <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </button>
+            </div>
+            <div class="hero-suggestions">
+                <span class="hero-suggestion-label">Try:</span>
+                <a href="#" class="hero-suggestion">What cone should I fire at?</a>
+                <a href="#" class="hero-suggestion">How do I fix pinholes?</a>
+                <a href="#" class="hero-suggestion">Open the calculator</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wayfinding Cards -->
+    <div class="wayfinding-section">
+        <h2 style="font-size: 20px; font-weight: 600; color: #fff; margin-bottom: 6px; text-align: center;">Where do I start?</h2>
+        <p style="font-size: 14px; color: #888; text-align: center; margin-bottom: 28px;">Not sure what to do first? Here are a few popular starting points.</p>
+        <div class="wayfinding-grid">
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <h3>Create a glaze recipe</h3>
+                <p>Open the calculator and start building or adjusting a glaze from scratch.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                </div>
+                <h3>Get glaze ideas</h3>
+                <p>Browse fired tiles, glaze types, and color research for your next project.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+            <a href="#" class="wayfinding-card">
+                <div class="wayfinding-icon">
+                    <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                </div>
+                <h3>Browse our courses</h3>
+                <p>Find the right class for your level — from beginner to advanced chemistry.</p>
+                <span class="wayfinding-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Spacer to simulate page content -->
+    <div style="min-height: 20vh;"></div>
+
+    <!-- Legend & Questions -->
+    <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
+
+        <!-- Core Website Challenge -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Core Website Challenge</h2>
+
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+            <p style="font-size: 14px; color: #ccc; line-height: 1.8; margin-bottom: 16px;">This site presents a unique navigation challenge:</p>
+            <ul style="padding-left: 20px; list-style: disc; color: #ccc; font-size: 14px; line-height: 2;">
+                <li>It contains a <strong style="color: #fff;">massive amount of information</strong> — courses, calculators, research databases, community features, media, and personal saved data all competing for attention in the navigation.</li>
+                <li>It needs to work for people across a <strong style="color: #fff;">very wide range of ages and technical abilities</strong> — from first-time hobbyists who've never heard of a UMF, to advanced ceramicists running complex test series daily.</li>
+            </ul>
+            <p style="font-size: 13px; color: #888; line-height: 1.7; margin-top: 16px;">The navigation must guide without overwhelming. New users need clear entry points and wayfinding. Power users need fast access without friction. Both need to coexist in the same interface.</p>
+        </div>
+
+        <!-- User Stories -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">User Stories</h2>
+
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+
+            <!-- New User -->
+            <div style="margin-bottom: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #2a4a3a; color: #6fcf97; font-size: 10px; padding: 2px 8px; border-radius: 10px;">New User</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As a brand new user of the website, I want to be able to clearly see all of the things that the site can provide and do, so that I can understand the value of a membership and find the right starting point for my experience level.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Browse available courses and understand what each one covers</li>
+                    <li>Explore free content (Glaze Anatomy, Free Tools) without signing up</li>
+                    <li>Understand what membership tier is right for me</li>
+                    <li>Find the "Where do I start?" guide</li>
+                    <li>Watch or listen to free content (For Flux Sake, YouTube)</li>
+                    <li>See what the community looks like (Fired!)</li>
+                </ul>
+            </div>
+
+            <!-- Student -->
+            <div style="margin-bottom: 0;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #2a3a4a; color: #7db8e0; font-size: 10px; padding: 2px 8px; border-radius: 10px;">CMW Student</span>
+                </h3>
+                <div style="padding-left: 12px; border-left: 2px solid #333;">
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px;">
+                        As a student of CMW, I want to be able to easily find information and resources for the specific class that I have signed up for, so that I can complete labs, create and post results, and communicate with Matt.
+                    </p>
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7; margin-bottom: 12px;">
+                        As a student of CMW, I want to be able to see other classes that might be available to me to sign up for in the future, so that I can plan my learning path and continue growing.
+                    </p>
+                    <p style="font-size: 13px; color: #ccc; line-height: 1.7;">
+                        As a student of CMW, I want to be able to find helpful resources and Q&A content, so that I can answer questions I have while working without having to wait for Matt to respond or for the next hangout.
+                    </p>
+                </div>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Access my enrolled course materials, labs, and discussions</li>
+                    <li>Post lab results and view classmates' work in Commons</li>
+                    <li>Check the hangout calendar and sign up for live sessions</li>
+                    <li>Use the Glaze Calculator to work through course exercises</li>
+                    <li>Search for answers to specific glaze problems (Troubleshooting, Concepts)</li>
+                    <li>Browse recipes and reference materials while working in the studio</li>
+                    <li>Save glazes and clay bodies to My Work for future reference</li>
+                    <li>See what other courses are available and what's open for enrollment</li>
+                </ul>
+            </div>
+
+            <!-- Experienced User -->
+            <div style="margin-bottom: 0; margin-top: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #3a2a4a; color: #b07de0; font-size: 10px; padding: 2px 8px; border-radius: 10px;">Experienced User</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As an experienced user who has previously taken CMW courses, I know my way around the basic and advanced tools. I'm coming back to fix specific issues, run more advanced tests, or dig into the deeper research and information that CMW provides.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Jump straight to the Glaze Calculator or Clay Body Calculator</li>
+                    <li>Use Fix a Flaw or Troubleshooting to solve a specific problem</li>
+                    <li>Design and run advanced test series</li>
+                    <li>Dig into research collections (Test Test Test, Stull Maps, Stains)</li>
+                    <li>Compare glazes or clay bodies side by side</li>
+                    <li>Read The Journal for deeper analysis and arguments</li>
+                    <li>Access saved data (My Glazes, My Test Reports, My Workbooks)</li>
+                    <li>Share results and participate in the Fired! community</li>
+                </ul>
+            </div>
+
+            <!-- Keep it Simple User -->
+            <div style="margin-bottom: 0; margin-top: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #4a3a2a; color: #e0a07d; font-size: 10px; padding: 2px 8px; border-radius: 10px;">Keep it Simple User</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As a user who may be an amazing potter but isn't interested in hunting around the site, I have a few key things I regularly use and I want to get in and out quickly. I'm unlikely to leave feedback if something frustrates me — I'll just stop using it. The interface needs to stay out of my way.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Access my most-used tools immediately (calculator, saved glazes)</li>
+                    <li>Use a "simple view" option on complex tools like the calculator</li>
+                    <li>Find answers quickly via search or AI without navigating menus</li>
+                    <li>Have a personalized dashboard or shortcuts for frequent actions</li>
+                    <li>Avoid being overwhelmed by features or options I don't use</li>
+                    <li>Get to my saved recipes and data in as few clicks as possible</li>
+                </ul>
+                <p style="font-size: 12px; color: #888; line-height: 1.6; padding-left: 12px; border-left: 2px solid #4a3a2a; margin-top: 12px; font-style: italic;">
+                    Design consideration: Look for ways to offer simplified views, progressive disclosure, and clear defaults. These users won't tell us when something is wrong — they'll just leave. The AI search bar and "Where do I start?" CTAs are key tools for this persona.
+                </p>
+            </div>
+
+            <!-- Stakeholder / Business -->
+            <div style="margin-bottom: 0; margin-top: 24px;">
+                <h3 style="font-size: 14px; color: #fff; margin-bottom: 8px; display: flex; align-items: center; gap: 8px;">
+                    <span style="background: #2a3a3a; color: #5bb8a9; font-size: 10px; padding: 2px 8px; border-radius: 10px;">Stakeholder / Business</span>
+                </h3>
+                <p style="font-size: 13px; color: #ccc; line-height: 1.7; padding-left: 12px; border-left: 2px solid #333;">
+                    As the business owner, I need the site to clearly communicate the valuable work that CMW does. I need to convert visitors into subscribers, demonstrate the value of upgrading membership tiers, and keep the site organized enough that users don't get frustrated and cancel.
+                </p>
+                <ul style="padding-left: 28px; margin-top: 10px; list-style: disc; color: #999; font-size: 12px; line-height: 1.8;">
+                    <li>Clearly communicate what CMW offers and why it's worth paying for</li>
+                    <li>Surface membership upgrade paths naturally (tier pills, locked features with tier labels)</li>
+                    <li>Show users what they're missing without being aggressive or paywalling the experience</li>
+                    <li>Keep navigation clear and logical so users don't churn from frustration</li>
+                    <li>Make it easy for new visitors to understand the value before signing up</li>
+                    <li>Highlight courses with open enrollment to drive sign-ups</li>
+                    <li>Reduce support burden by making answers self-service (AI search, Troubleshooting, FAQ)</li>
+                    <li>Track which features drive upgrades and which cause drop-off</li>
+                </ul>
+                <p style="font-size: 12px; color: #888; line-height: 1.6; padding-left: 12px; border-left: 2px solid #2a3a3a; margin-top: 12px; font-style: italic;">
+                    Design consideration: The navigation itself is a sales tool. Every locked feature pill is a soft upsell. The "Where do I start?" flows and AI search reduce friction that leads to cancellation. The hierarchy should make the breadth of content visible without overwhelming — demonstrating value at every level.
+                </p>
+            </div>
+
+        </div>
+
+        <!-- Pill & Icon Legend -->
+        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">UI Element Legend</h2>
+        
+        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px; margin-bottom: 40px;">
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Membership Tier Pills</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-pitfire">Pit Fire</span>
+                    <span style="font-size: 12px; color: #888;">Free / Entry tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-lowfire">Low Fire</span>
+                    <span style="font-size: 12px; color: #888;">Basic membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-midfire">Mid Fire</span>
+                    <span style="font-size: 12px; color: #888;">Standard membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-highfire">High Fire</span>
+                    <span style="font-size: 12px; color: #888;">Premium membership</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-alumni">Silica:Alumni</span>
+                    <span style="font-size: 12px; color: #888;">Exclusive alumni community</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Status & Action Pills</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 12px 24px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-enroll">Enroll Now</span>
+                    <span style="font-size: 12px; color: #888;">Course open for enrollment</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-highfire">High Fire</span>
+                    <span style="font-size: 12px; color: #888; opacity: 0.6;">← on a locked item = requires this tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-exclusive">Exclusive Membership</span>
+                    <span style="font-size: 12px; color: #888;">Silica:Alumni only (separate track)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="pill pill-new">New</span>
+                    <span style="font-size: 12px; color: #888;">Newly launched feature or service</span>
+                </div>
+            </div>
+
+            <h3 style="font-size: 14px; color: #888; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Visual Treatments</h3>
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="opacity: 0.6; font-size: 13px; color: #ccc;">Dimmed text</span>
+                    <span style="font-size: 12px; color: #888;">→ Feature is locked / not available at current tier</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #8b5cf6; font-weight: 500;">Purple text</span>
+                    <span style="font-size: 12px; color: #888;">→ CTA / helper link for new or overwhelmed users</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #7db8e0; font-weight: 500;">Blue text</span>
+                    <span style="font-size: 12px; color: #888;">→ Navigation action link (view all, browse, etc.)</span>
+                </div>
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <span style="font-size: 13px; color: #fff; font-weight: 500;">White text</span>
+                    <span style="font-size: 12px; color: #888;">→ Emphasized nav item (Community)</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <div class="footer-logo"><img src="cmw-logo.png" alt="Ceramic Materials Workshop" style="height: 24px; width: auto; opacity: 0.8;"></div>
+                <p class="footer-tagline">Learn. Understand. Make.</p>
+                <div class="footer-social">
+                    <a href="#" title="YouTube">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                    <a href="#" title="Instagram">
+                        <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <h4>Courses</h4>
+                <a href="#">Making Glazes Make Sense</a>
+                <a href="#">Advancing Glazes</a>
+                <a href="#">Crystal Ball</a>
+                <a href="#">Intro to Clay Bodies</a>
+                <a href="#">Workshops</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Tools</h4>
+                <a href="#">Glaze Calculator</a>
+                <a href="#">Clay Body Calculator</a>
+                <a href="#">Glaze Quantity</a>
+                <a href="#">Compare</a>
+                <a href="#">Fix a Flaw</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Community</h4>
+                <a href="#">Fired!</a>
+                <a href="#">Studio Directory</a>
+                <a href="#">Region Board</a>
+                <a href="#">For Flux Sake Podcast</a>
+                <a href="#">YouTube</a>
+            </div>
+
+            <div class="footer-column">
+                <h4>Support</h4>
+                <a href="#">Help / FAQ</a>
+                <a href="#">Feedback</a>
+                <a href="#">Contact Us</a>
+                <a href="#">Membership Levels</a>
+                <a href="#">Merch</a>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2026 Ceramic Materials Workshop. All rights reserved.</p>
+            <div class="footer-legal">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Copyright & Content Policy</a>
+                <a href="#">Refund & Returns Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Sticky Bug Report Button -->
+    <a href="#" class="bug-report-btn">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+        Yell at Matt!
+    </a>
+
+    <script>
+        function toggleSearch() {
+            const container = document.getElementById('searchContainer');
+            const input = document.getElementById('searchInput');
+            if (container.classList.contains('expanded')) {
+                container.classList.remove('expanded');
+                input.value = '';
+                input.blur();
+            } else {
+                container.classList.add('expanded');
+                input.focus();
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const label = document.getElementById('themeLabel');
+            const track = document.getElementById('toggleTrack');
+            const knob = document.getElementById('toggleKnob');
+            const icon = document.getElementById('themeIcon');
+            const toggleDiv = document.getElementById('themeToggle');
+
+            body.classList.toggle('light');
+
+            if (body.classList.contains('light')) {
+                label.textContent = 'Light mode';
+                track.style.background = '#ccc';
+                knob.style.right = 'auto';
+                knob.style.left = '2px';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>';
+                toggleDiv.style.color = '#555';
+                toggleDiv.onmouseover = function() { this.style.background = 'rgba(0,0,0,0.04)'; };
+                toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
+            } else {
+                label.textContent = 'Dark mode';
+                track.style.background = '#7c3aed';
+                knob.style.left = 'auto';
+                knob.style.right = '2px';
+                icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>';
+                toggleDiv.style.color = '#ccc';
+                toggleDiv.onmouseover = function() { this.style.background = 'rgba(255,255,255,0.08)'; };
+                toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
+            }
+        }
+    </script>
+
+</body>
+</html>
