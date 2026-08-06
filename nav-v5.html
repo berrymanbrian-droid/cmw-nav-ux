@@ -580,6 +580,12 @@
             border: 1px solid rgba(212, 175, 55, 0.4);
         }
 
+        .pill-pyr {
+            background: rgba(249, 115, 22, 0.25);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+
         .locked-item {
             opacity: 0.6;
             position: relative;
@@ -1135,9 +1141,9 @@
                     <a href="#" data-required-tier="midfire">Commons<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Hangout Course Resources</div>
-                    <a href="#" data-required-tier="midfire">Live Hangout Information<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <a href="#" data-required-tier="midfire">Hangout Calendar<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                    <a href="#" data-required-tier="midfire">Hangout Signup<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                    <a href="#" data-required-tier="highfire">Live Hangout Information<span class="pill pill-highfire tier-pill">High Fire+</span></a>
+                    <a href="#" data-required-tier="highfire">Hangout Calendar<span class="pill pill-highfire tier-pill">High Fire+</span></a>
+                    <a href="#" data-required-tier="highfire">Hangout Signup<span class="pill pill-highfire tier-pill">High Fire+</span></a>
                     <a href="#" data-required-tier="highfire">Hangout Archive<span class="pill pill-highfire tier-pill">High Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
                 </div>
             </div>
@@ -1149,13 +1155,14 @@
                     <div class="section-label">Organize and manage your work</div>
                     <a href="#">My Book</a>
                     <a href="#">My Glazes</a>
-                    <a href="#">My Clay Bodies</a>
-                    <a href="#">My Test Reports</a>
+                    <a href="#" data-required-tier="midfire">My Clay Bodies<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                    <a href="#" data-required-tier="midfire">My Test Reports<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                     <a href="#">My Workbooks</a>
                     <a href="#">My Presentations</a>
+                    <a href="#" data-required-tier="midfire">My Firing Profiles<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Bulk data actions</div>
-                    <a href="#">Import</a>
+                    <a href="#" data-required-tier="midfire">Import<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                     <a href="#">Drop Box</a>
                 </div>
             </div>
@@ -1168,20 +1175,20 @@
                         <div class="mega-column">
                             <h4>Glaze Tools</h4>
                             <a href="#">Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
-                            <a href="#">Glaze Quantity</a>
-                            <a href="#">Compare<span class="desc">Side-by-side analysis</span></a>
+                            <a href="#" data-required-tier="midfire">Glaze Quantity<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                            <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side analysis</span></a>
                             <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Clay Tools</h4>
-                            <a href="#">Clay Body Calculator<span class="desc">Formulate and analyze clay bodies</span></a>
+                            <a href="#" data-required-tier="midfire">Clay Body Calculator<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Formulate and analyze clay bodies</span></a>
                             <a href="#">Plaster Calculator</a>
-                            <a href="#">Compare<span class="desc">Side-by-side clay body analysis</span></a>
+                            <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side clay body analysis</span></a>
                         </div>
                         <div class="mega-column">
-                            <h4>Testing & Workflows</h4>
-                            <a href="#">Start a Test</a>
-                            <a href="#" class="locked-item" data-required-tier="highfire">Design a Test <span class="pill pill-highfire tier-pill">High Fire+</span></a>
+                            <h4>Testing Tools</h4>
+                            <a href="#" data-required-tier="midfire">Start a Test<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Easy guided-tests to help you with your glazes and clays</span></a>
+                            <a href="#" data-required-tier="midfire">Design a Test<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Pick a variable, set your range, and get a fire-ready test series</span></a>
                         </div>
                     </div>
                 </div>
@@ -1199,9 +1206,8 @@
                             <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
                             <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
                             <a href="#">Troubleshooting<span class="desc">25 faults</span></a>
-                            <a href="#">Fix a Flaw<span class="desc">Diagnose and solve glaze problems</span></a>
+                            <a href="#" data-required-tier="midfire">Fix a Flaw<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Turn a defect into a test plan</span></a>
                             <a href="#">Reference Desk<span class="desc">Cone chart, Stull map, glossary</span></a>
-                            <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Clay Knowledge</h4>
@@ -1210,7 +1216,7 @@
                             <a href="#">Shrinkage & Absorption</a>
                             <a href="#">Material Properties</a>
                             <h4 style="margin-top: 16px;">Firing</h4>
-                            <a href="#">Firing Schedules<span class="desc">Schedules & logging</span></a>
+                            <a href="#">Firing Schedules<span class="desc">Public CMW reference cycles</span></a>
                         </div>
                     </div>
                 </div>
@@ -1223,21 +1229,21 @@
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
                         <div class="mega-column">
                             <h4>Free for Everyone</h4>
+                            <a href="#" style="background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px;">
+                                <span style="color: #8b5cf6; font-weight: 500;">Search Absolutely Everything</span>
+                                <span class="desc" style="margin-top: 4px;">Search the CMW corpus: your own research tests and test series, the CMW Glaze Studies library, your saved glazes, and glazes published by CMW researchers.</span>
+                            </a>
                             <a href="#">Color</a>
                             <a href="#">The Journal<span class="desc">Articles, arguments, and thoughts from CMW</span></a>
+                            <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
                             <a href="#">Commercial Glaze Reference<span class="desc">Commercial glazes, underglazes, and decorating media from North American manufacturers</span></a>
-                            <a href="#">Search the Entire Site</a>
                         </div>
                         <div class="mega-column">
-                            <h4>Mid Fire+</h4>
-                            <a href="#" data-required-tier="midfire">CMW Glaze Recipes<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Full chemistry and one-click open in the calculator</span></a>
-                            <a href="#" data-required-tier="midfire">Stull Map Explorations<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
-                            <a href="#" data-required-tier="midfire">Stains<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">How single stains fire, and how they blend</span></a>
-                            <a href="#" data-required-tier="midfire">Colorant Studies<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Deep dives into individual colorants</span></a>
-                            <h4 style="margin-top: 16px;">High Fire+</h4>
-                            <a href="#" class="locked-item" data-required-tier="highfire">Test, Test, Test<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Thousands of fired tiles</span></a>
-                            <a href="#" class="locked-item" data-required-tier="highfire">Research Explorer<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Full dataset access and filtering</span></a>
-                            <a href="#" class="locked-item" data-required-tier="highfire">Eutectic Studies<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Melt behavior and phase diagrams</span></a>
+                            <h4>High Fire+</h4>
+                            <a href="#" data-required-tier="highfire">CMW Glaze Recipes<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Full chemistry and one-click open in the calculator</span></a>
+                            <a href="#" data-required-tier="highfire">Stull Map Explorations<span class="pill pill-highfire tier-pill">High Fire+</span></a>
+                            <a href="#" data-required-tier="highfire">Stain Spectrum<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">How single stains fire, and how they blend</span></a>
+                            <a href="#" data-required-tier="highfire">Test, Test, Test<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Thousands of fired tiles</span></a>
                         </div>
                     </div>
                 </div>
@@ -1247,7 +1253,7 @@
             <div class="nav-item">
                 <button class="community-btn">Community</button>
                 <div class="dropdown" style="min-width: 280px;">
-                    <a href="#" data-required-tier="midfire">Fired!<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
+                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Post your work, ask a question, and check out work from other potters</span></a>
                     <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
                     <div class="divider"></div>
                     <a href="#">Region Board<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
@@ -1262,6 +1268,11 @@
             <!-- Studio -->
             <div class="nav-item">
                 <a href="#">Studio</a>
+            </div>
+
+            <!-- Pyr — special internal tier -->
+            <div class="nav-item" id="pyrNavItem" data-required-tier="pyr" style="display: none;">
+                <a href="#" style="color: #f97316;">Pyr</a>
             </div>
 
             <!-- Ware — external service -->
@@ -1367,6 +1378,20 @@
         <span class="announcement-text">Introducing <strong>Ware</strong> — Design your perfect glaze. Start with a color, we'll handle the chemistry.</span>
         <a href="#" class="announcement-link">Learn more →</a>
         <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- Membership Tier Simulator -->
+    <div style="background: #0d0d0d; border-bottom: 1px solid #2a2a2a; padding: 10px 24px; display: flex; align-items: center; gap: 16px;">
+        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666;">Viewing as:</span>
+        <select id="tierSelector" onchange="applyTier()" style="padding: 6px 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; color: #fff; font-size: 13px; font-family: inherit; cursor: pointer;">
+            <option value="pitfire">Pit Fire (Free)</option>
+            <option value="lowfire">Low Fire</option>
+            <option value="midfire" selected>Mid Fire</option>
+            <option value="highfire">High Fire</option>
+            <option value="alumni">Silica:Alumni</option>
+            <option value="pyr">Pyr</option>
+        </select>
+        <span id="tierDescription" style="font-size: 11px; color: #888;"></span>
     </div>
 
     <!-- Hero Spotlight -->
@@ -1630,35 +1655,6 @@
 
     </div>
 
-    <!-- Membership Tier Simulator -->
-    <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
-        <h2 style="font-size: 18px; color: #fff; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #333;">Membership Tier Simulator</h2>
-        <div style="background: #1e1e1e; border: 1px solid #2a2a2a; border-radius: 8px; padding: 20px;">
-            <p style="font-size: 13px; color: #888; margin-bottom: 16px;">Preview how the navigation changes for different membership levels. Select a tier and toggle the display behavior.</p>
-            
-            <div style="display: flex; gap: 16px; flex-wrap: wrap; align-items: flex-end;">
-                <div>
-                    <label style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px;">Current Tier</label>
-                    <select id="tierSelector" onchange="applyTier()" style="padding: 10px 14px; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 14px; font-family: inherit; cursor: pointer; min-width: 160px;">
-                        <option value="pitfire">Pit Fire (Free)</option>
-                        <option value="lowfire">Low Fire</option>
-                        <option value="midfire" selected>Mid Fire</option>
-                        <option value="highfire">High Fire</option>
-                        <option value="alumni">Silica:Alumni</option>
-                    </select>
-                </div>
-                <div>
-                    <label style="display: block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666; margin-bottom: 6px;">Locked Items</label>
-                    <select id="displayMode" onchange="applyTier()" style="padding: 10px 14px; background: #111; border: 1px solid #333; border-radius: 6px; color: #fff; font-size: 14px; font-family: inherit; cursor: pointer; min-width: 180px;">
-                        <option value="show">Show with tier pill (tease)</option>
-                        <option value="hide">Hide completely</option>
-                    </select>
-                </div>
-            </div>
-            <p id="tierDescription" style="font-size: 12px; color: #888; margin-top: 12px;"></p>
-        </div>
-    </div>
-
     <!-- Footer -->
     <footer class="site-footer">
         <div class="footer-grid">
@@ -1775,26 +1771,28 @@
         }
 
         // Membership Tier Simulator
-        const tierHierarchy = ['pitfire', 'lowfire', 'midfire', 'highfire', 'alumni'];
+        const tierHierarchy = ['pitfire', 'lowfire', 'midfire', 'highfire', 'alumni', 'pyr'];
 
         function tierLevel(tier) {
+            if (tier === 'pyr') return 6;
             if (tier === 'alumni') return 5;
             return tierHierarchy.indexOf(tier);
         }
 
         function applyTier() {
             const selectedTier = document.getElementById('tierSelector').value;
-            const displayMode = document.getElementById('displayMode').value;
             const lockedItems = document.querySelectorAll('[data-required-tier]');
             const descEl = document.getElementById('tierDescription');
             const membershipPill = document.getElementById('membershipPill');
+            const pyrNavItem = document.getElementById('pyrNavItem');
 
             const descriptions = {
-                pitfire: 'Viewing as Pit Fire (free tier) — most premium features are locked.',
-                lowfire: 'Viewing as Low Fire — basic membership, some features locked.',
-                midfire: 'Viewing as Mid Fire — standard membership, advanced features locked.',
-                highfire: 'Viewing as High Fire — full access to all features.',
-                alumni: 'Viewing as Silica:Alumni — full access plus exclusive alumni content.'
+                pitfire: 'Free tier — public reference, basic calculator, 5 saves/day.',
+                lowfire: 'Private saves, connected-subject navigation, editable downloads.',
+                midfire: 'Full testing, predictions, Clay Body Calculator, unlimited saves.',
+                highfire: 'Full access to all features and research.',
+                alumni: 'Full access plus exclusive alumni community.',
+                pyr: 'Internal tier — full access plus Pyr tools.'
             };
             descEl.textContent = descriptions[selectedTier];
 
@@ -1804,39 +1802,49 @@
                 lowfire: 'Low Fire',
                 midfire: 'Mid Fire',
                 highfire: 'High Fire',
-                alumni: 'Silica:Alumni'
+                alumni: 'Silica:Alumni',
+                pyr: 'Pyr'
             };
             const tierClasses = {
                 pitfire: 'pill-pitfire',
                 lowfire: 'pill-lowfire',
                 midfire: 'pill-midfire',
                 highfire: 'pill-highfire',
-                alumni: 'pill-alumni'
+                alumni: 'pill-alumni',
+                pyr: 'pill-pyr'
             };
             membershipPill.className = 'pill ' + tierClasses[selectedTier];
             membershipPill.textContent = tierNames[selectedTier];
 
+            // Show/hide Pyr nav item
+            pyrNavItem.style.display = (selectedTier === 'pyr') ? '' : 'none';
+
             lockedItems.forEach(item => {
+                if (item.id === 'pyrNavItem') return; // handled above
                 const requiredTier = item.getAttribute('data-required-tier');
-                const hasAccess = tierLevel(selectedTier) >= tierLevel(requiredTier);
+                const userLevel = tierLevel(selectedTier);
+                const requiredLevel = tierLevel(requiredTier);
+                const tierGap = requiredLevel - userLevel;
                 const tierPills = item.querySelectorAll('.tier-pill');
 
-                if (hasAccess) {
+                if (tierGap <= 0) {
+                    // User has access — show normally, hide pills
                     item.style.display = '';
                     item.style.opacity = '1';
                     item.classList.remove('locked-item');
-                    // Hide tier pills when user has access
                     tierPills.forEach(pill => pill.style.display = 'none');
+                } else if (tierGap === 1) {
+                    // One tier away — show dimmed with pill
+                    item.style.display = '';
+                    item.style.opacity = '0.6';
+                    item.classList.add('locked-item');
+                    tierPills.forEach(pill => pill.style.display = '');
                 } else {
-                    if (displayMode === 'hide') {
-                        item.style.display = 'none';
-                    } else {
-                        item.style.display = '';
-                        item.style.opacity = '0.5';
-                        item.classList.add('locked-item');
-                        // Show tier pills when locked
-                        tierPills.forEach(pill => pill.style.display = '');
-                    }
+                    // Two+ tiers away — very faded
+                    item.style.display = '';
+                    item.style.opacity = '0.35';
+                    item.classList.add('locked-item');
+                    tierPills.forEach(pill => pill.style.display = '');
                 }
             });
         }
