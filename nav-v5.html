@@ -586,6 +586,12 @@
             border: 1px solid rgba(249, 115, 22, 0.4);
         }
 
+        .pill-free {
+            background: rgba(99, 190, 123, 0.15);
+            color: #63be7b;
+            border: 1px solid rgba(99, 190, 123, 0.3);
+        }
+
         .locked-item {
             opacity: 0.6;
             position: relative;
@@ -631,6 +637,15 @@
 
         body.light .mega-menu-cta p {
             color: #555;
+        }
+
+        body.light .tier-simulator-bar {
+            background: #eee !important;
+            border-bottom-color: #ddd !important;
+        }
+
+        body.light .tier-simulator-bar span {
+            color: #555 !important;
         }
         .announcement-bar {
             background: #2a2a2a;
@@ -1173,7 +1188,7 @@
             </div>
 
             <!-- My Courses — enrolled student content -->
-            <div class="nav-item">
+            <div class="nav-item" id="myCoursesNav">
                 <button>My Courses</button>
                 <div class="dropdown" style="min-width: 240px;">
                     <div class="section-label">My Learning</div>
@@ -1193,7 +1208,7 @@
             </div>
 
             <!-- My Work — consolidated personal content -->
-            <div class="nav-item">
+            <div class="nav-item" id="myWorkNav">
                 <button>My Work</button>
                 <div class="mega-menu" style="width: 520px;">
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
@@ -1203,13 +1218,13 @@
                             <a href="#">My Glazes<span class="desc">Your full saved-glazes library</span></a>
                             <a href="#" data-required-tier="midfire">My Clay Bodies<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                             <a href="#" data-required-tier="midfire">My Test Reports<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Create and analyze reports from your test data</span></a>
-                            <a href="#">My Workbooks<span class="desc">Imported workbooks — a glaze taken through five labs</span></a>
                             <a href="#">My Presentations<span class="desc">Slide decks from your test photos, recipes, and notes</span></a>
+                            <a href="#">My Workbooks<span class="desc">Imported workbooks — a glaze taken through five labs</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Data Management</h4>
                             <a href="#" data-required-tier="midfire">Import<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Bring in CMW, Glazy, Insight, and spreadsheet data</span></a>
-                            <a href="#">Drop Box</a>
+                            <a href="#" data-required-tier="midfire">Drop Box<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                         </div>
                     </div>
                 </div>
@@ -1222,14 +1237,14 @@
                     <div class="mega-grid">
                         <div class="mega-column">
                             <h4>Glaze Tools</h4>
+                            <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
                             <a href="#">Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
                             <a href="#" data-required-tier="midfire">Glaze Quantity<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
                             <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side analysis</span></a>
-                            <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Clay Tools</h4>
-                            <a href="#" data-required-tier="midfire">Clay Body Calculator<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Formulate and analyze clay bodies</span></a>
+                            <a href="#">Clay Body Calculator<span class="desc">Formulate and analyze clay bodies</span></a>
                             <a href="#">Plaster Calculator</a>
                             <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side clay body analysis</span></a>
                         </div>
@@ -1254,13 +1269,13 @@
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
                         <div class="mega-column">
                             <h4>Glaze Knowledge</h4>
-                            <a href="#">Overview<span class="desc">Guided paths by level</span></a>
+                            <a href="#">Anatomy Overview<span class="desc">Guided paths by level</span></a>
                             <a href="#">Materials<span class="desc">Oxides, families, analyses</span></a>
                             <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
                             <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
                             <a href="#">Troubleshooting<span class="desc">25 faults</span></a>
-                            <a href="#" data-required-tier="midfire">Fix a Flaw<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Turn a defect into a test plan</span></a>
                             <a href="#">CMW Reference Guide / Glossary<span class="desc">The classic ceramics charts, the working vocabulary, and the class index</span></a>
+                            <a href="#" data-required-tier="midfire">Fix a Flaw<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Turn a defect into a test plan</span></a>
                         </div>
                         <div class="mega-column">
                             <h4>Clay Knowledge</h4>
@@ -1374,8 +1389,12 @@
                 </svg>
             </div>
             <!-- Dark/Light toggle - moved to account dropdown -->
+            <!-- Sign In / Sign Up (shown when logged out) -->
+            <a href="#" id="signInBtn" style="display: none; padding: 6px 14px; background: transparent; border: 1px solid #555; color: #ccc; font-size: 13px; font-weight: 500; border-radius: 6px; text-decoration: none; margin-left: 8px;">Sign In</a>
+            <a href="#" id="signUpBtn" style="display: none; padding: 6px 14px; background: #7c3aed; color: #fff; font-size: 13px; font-weight: 500; border-radius: 6px; text-decoration: none; margin-left: 6px;">Sign Up</a>
+
             <!-- Account -->
-            <div class="nav-item account-item">
+            <div class="nav-item account-item" id="accountNav">
                 <div class="avatar" title="Account">U</div>
                 <div class="dropdown account-dropdown" style="right: 0; left: auto; min-width: 280px; padding: 0;">
                     <!-- User info header -->
@@ -1433,17 +1452,24 @@
     </nav>
 
     <!-- Announcement Bar -->
-    <div class="announcement-bar">
+    <div class="announcement-bar" id="announcementLoggedIn">
         <span class="announcement-badge">New</span>
         <span class="announcement-text">Introducing <strong>Ware</strong> — Design your perfect glaze. Start with a color, we'll handle the chemistry.</span>
         <a href="#" class="announcement-link">Learn more →</a>
         <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
     </div>
 
+    <div class="announcement-bar" id="announcementLoggedOut" style="display: none;">
+        <span class="announcement-text">Unlock tools, expert glaze advice, and a community of makers.</span>
+        <a href="#" style="padding: 5px 14px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 500; border-radius: 4px; text-decoration: none; margin-left: 8px;">Become a Member</a>
+        <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+    </div>
+
     <!-- Membership Tier Simulator -->
-    <div style="background: #0d0d0d; border-bottom: 1px solid #2a2a2a; padding: 10px 24px; display: flex; align-items: center; gap: 16px;">
-        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #666;">Viewing as:</span>
+    <div class="tier-simulator-bar" style="background: #0d0d0d; border-bottom: 1px solid #2a2a2a; padding: 10px 24px; display: flex; align-items: center; gap: 16px;">
+        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa;">Viewing as:</span>
         <select id="tierSelector" onchange="applyTier()" style="padding: 6px 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; color: #fff; font-size: 13px; font-family: inherit; cursor: pointer;">
+            <option value="loggedout">Not Logged In</option>
             <option value="pitfire">Pit Fire (Free)</option>
             <option value="lowfire">Low Fire</option>
             <option value="midfire" selected>Mid Fire</option>
@@ -1831,11 +1857,11 @@
         }
 
         // Membership Tier Simulator
-        const tierHierarchy = ['pitfire', 'lowfire', 'midfire', 'highfire', 'alumni', 'pyr'];
+        const tierHierarchy = ['loggedout', 'pitfire', 'lowfire', 'midfire', 'highfire', 'alumni', 'pyr'];
 
         function tierLevel(tier) {
-            if (tier === 'pyr') return 6;
-            if (tier === 'alumni') return 5;
+            if (tier === 'pyr') return 7;
+            if (tier === 'alumni') return 6;
             return tierHierarchy.indexOf(tier);
         }
 
@@ -1845,8 +1871,18 @@
             const descEl = document.getElementById('tierDescription');
             const membershipPill = document.getElementById('membershipPill');
             const pyrNavItem = document.getElementById('pyrNavItem');
+            const myCoursesNav = document.getElementById('myCoursesNav');
+            const myWorkNav = document.getElementById('myWorkNav');
+            const accountNav = document.getElementById('accountNav');
+            const signInBtn = document.getElementById('signInBtn');
+            const signUpBtn = document.getElementById('signUpBtn');
+            const announcementLoggedIn = document.getElementById('announcementLoggedIn');
+            const announcementLoggedOut = document.getElementById('announcementLoggedOut');
+
+            const isLoggedOut = (selectedTier === 'loggedout');
 
             const descriptions = {
+                loggedout: 'Not logged in — public reference and free tools only.',
                 pitfire: 'Free tier — public reference, basic calculator, 5 saves/day.',
                 lowfire: 'Private saves, connected-subject navigation, editable downloads.',
                 midfire: 'Full testing, predictions, Clay Body Calculator, unlimited saves.',
@@ -1856,25 +1892,36 @@
             };
             descEl.textContent = descriptions[selectedTier];
 
+            // Toggle logged-out UI
+            myCoursesNav.style.display = isLoggedOut ? 'none' : '';
+            myWorkNav.style.display = isLoggedOut ? 'none' : '';
+            accountNav.style.display = isLoggedOut ? 'none' : '';
+            signInBtn.style.display = isLoggedOut ? '' : 'none';
+            signUpBtn.style.display = isLoggedOut ? '' : 'none';
+            announcementLoggedIn.style.display = isLoggedOut ? 'none' : '';
+            announcementLoggedOut.style.display = isLoggedOut ? '' : 'none';
+
             // Update membership pill in account dropdown
-            const tierNames = {
-                pitfire: 'Pit Fire',
-                lowfire: 'Low Fire',
-                midfire: 'Mid Fire',
-                highfire: 'High Fire',
-                alumni: 'Silica:Alumni',
-                pyr: 'Pyr'
-            };
-            const tierClasses = {
-                pitfire: 'pill-pitfire',
-                lowfire: 'pill-lowfire',
-                midfire: 'pill-midfire',
-                highfire: 'pill-highfire',
-                alumni: 'pill-alumni',
-                pyr: 'pill-pyr'
-            };
-            membershipPill.className = 'pill ' + tierClasses[selectedTier];
-            membershipPill.textContent = tierNames[selectedTier];
+            if (!isLoggedOut) {
+                const tierNames = {
+                    pitfire: 'Pit Fire',
+                    lowfire: 'Low Fire',
+                    midfire: 'Mid Fire',
+                    highfire: 'High Fire',
+                    alumni: 'Silica:Alumni',
+                    pyr: 'Pyr'
+                };
+                const tierClasses = {
+                    pitfire: 'pill-pitfire',
+                    lowfire: 'pill-lowfire',
+                    midfire: 'pill-midfire',
+                    highfire: 'pill-highfire',
+                    alumni: 'pill-alumni',
+                    pyr: 'pill-pyr'
+                };
+                membershipPill.className = 'pill ' + tierClasses[selectedTier];
+                membershipPill.textContent = tierNames[selectedTier];
+            }
 
             // Show/hide upgrade CTAs
             const ctaBanners = document.querySelectorAll('.mega-menu-cta');

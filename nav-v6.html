@@ -129,11 +129,11 @@
         }
 
         .community-btn {
-            color: #fff !important;
+            color: #ccc !important;
         }
 
         body.light .community-btn {
-            color: #111 !important;
+            color: #555 !important;
         }
 
         body.light .site-footer {
@@ -291,11 +291,11 @@
             left: 0;
             background: #1e1e1e;
             border: 1px solid #333;
-            border-radius: 6px;
+            border-radius: 8px;
             box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-            min-width: 200px;
+            min-width: 240px;
             z-index: 1000;
-            padding: 6px 0;
+            padding: 16px 0;
         }
 
         .nav-item:hover .dropdown {
@@ -304,7 +304,7 @@
 
         .dropdown a {
             display: block;
-            padding: 9px 16px;
+            padding: 10px 20px;
             color: #ccc;
             text-decoration: none;
             font-size: 13px;
@@ -323,12 +323,12 @@
         }
 
         .dropdown .section-label {
-            padding: 8px 16px 4px;
+            padding: 10px 20px 6px;
             font-size: 10px;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.8px;
-            color: #666;
+            color: #888;
         }
 
         /* Mega Menu */
@@ -339,11 +339,16 @@
             left: 0;
             background: #1e1e1e;
             border: 1px solid #333;
-            border-radius: 8px;
+            border-radius: 10px;
             box-shadow: 0 12px 36px rgba(0,0,0,0.5);
             z-index: 1000;
-            padding: 24px 28px;
+            padding: 38px 42px;
             width: 680px;
+        }
+
+        .nav-item .mega-menu.align-right {
+            left: auto;
+            right: 0;
         }
 
         .nav-item:first-child .mega-menu {
@@ -357,7 +362,7 @@
         .mega-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px;
+            gap: 32px;
         }
 
         .mega-column h4 {
@@ -387,7 +392,7 @@
         .mega-column a .desc {
             display: block;
             font-size: 11px;
-            color: #666;
+            color: #888;
             margin-top: 1px;
         }
 
@@ -551,38 +556,168 @@
 
         /* Membership tier pills */
         .pill-pitfire {
-            background: rgba(156, 130, 110, 0.15);
-            color: #c4a882;
-            border: 1px solid rgba(156, 130, 110, 0.3);
+            background: rgba(156, 130, 110, 0.25);
+            color: #d4bc9a;
+            border: 1px solid rgba(156, 130, 110, 0.4);
         }
 
         .pill-lowfire {
-            background: rgba(232, 121, 77, 0.15);
-            color: #e8794d;
-            border: 1px solid rgba(232, 121, 77, 0.3);
+            background: rgba(240, 144, 112, 0.25);
+            color: #f09070;
+            border: 1px solid rgba(240, 144, 112, 0.4);
         }
 
         .pill-midfire {
-            background: rgba(235, 168, 52, 0.15);
-            color: #eba834;
-            border: 1px solid rgba(235, 168, 52, 0.3);
+            background: rgba(235, 168, 52, 0.25);
+            color: #f0be4a;
+            border: 1px solid rgba(235, 168, 52, 0.4);
         }
 
         .pill-highfire {
-            background: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
+            background: rgba(248, 113, 113, 0.25);
+            color: #f87171;
+            border: 1px solid rgba(248, 113, 113, 0.4);
         }
 
         .pill-alumni {
-            background: rgba(212, 175, 55, 0.15);
-            color: #d4af37;
-            border: 1px solid rgba(212, 175, 55, 0.3);
+            background: rgba(212, 175, 55, 0.25);
+            color: #e0c04a;
+            border: 1px solid rgba(212, 175, 55, 0.4);
+        }
+
+        .pill-pyr {
+            background: rgba(249, 115, 22, 0.25);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.4);
+        }
+
+        .pill-free {
+            background: rgba(99, 190, 123, 0.15);
+            color: #63be7b;
+            border: 1px solid rgba(99, 190, 123, 0.3);
         }
 
         .locked-item {
             opacity: 0.6;
             position: relative;
+        }
+
+        /* Mega menu upgrade CTA */
+        .mega-menu-cta {
+            margin-top: 16px;
+            padding: 14px 16px;
+            background: rgba(139, 92, 246, 0.06);
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 8px;
+            text-align: center;
+            display: none;
+        }
+
+        /* Mega menu with promo layout */
+        .mega-menu-with-promo {
+            display: flex;
+            gap: 0;
+        }
+
+        .mega-menu-with-promo .mega-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .menu-promo {
+            background: rgba(255,255,255,0.03);
+            border-left: 1px solid #2a2a2a;
+            padding: 24px;
+            border-radius: 0 8px 8px 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 220px;
+            flex-shrink: 0;
+        }
+
+        .menu-promo h4 {
+            font-size: 13px;
+            font-weight: 600;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .menu-promo p {
+            font-size: 12px;
+            color: #999;
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+
+        .menu-promo .promo-btn {
+            display: inline-block;
+            padding: 7px 14px;
+            background: #7c3aed;
+            color: #fff;
+            font-size: 11px;
+            font-weight: 500;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.15s;
+            text-align: center;
+        }
+
+        .menu-promo .promo-btn:hover {
+            background: #6d28d9;
+        }
+
+        body.light .menu-promo {
+            background: rgba(0,0,0,0.02);
+            border-left-color: #e0e0e0;
+        }
+
+        body.light .menu-promo h4 {
+            color: #111;
+        }
+
+        body.light .menu-promo p {
+            color: #666;
+        }
+
+        .mega-menu-cta p {
+            font-size: 13px;
+            color: #ccc;
+            margin-bottom: 10px;
+        }
+
+        .mega-menu-cta .cta-btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background: #7c3aed;
+            color: #fff;
+            font-size: 12px;
+            font-weight: 500;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background 0.15s;
+        }
+
+        .mega-menu-cta .cta-btn:hover {
+            background: #6d28d9;
+        }
+
+        body.light .mega-menu-cta {
+            background: rgba(139, 92, 246, 0.04);
+            border-color: rgba(139, 92, 246, 0.12);
+        }
+
+        body.light .mega-menu-cta p {
+            color: #555;
+        }
+
+        body.light .tier-simulator-bar {
+            background: #eee !important;
+            border-bottom-color: #ddd !important;
+        }
+
+        body.light .tier-simulator-bar span {
+            color: #555 !important;
         }
         .announcement-bar {
             background: #2a2a2a;
@@ -1112,110 +1247,134 @@
 
         <div class="nav-links">
 
-            <!-- Courses — catalog and browsing -->
+            <!-- Join — memberships, courses, and merch -->
             <div class="nav-item">
-                <button>Courses</button>
-                <div class="dropdown" style="min-width: 280px;">
-                    <a href="#" style="font-weight: 500; color: #8b5cf6; margin-bottom: 4px; display: block;">Where do I start?<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Not sure which course is right for you? We'll help you find your path.</span></a>
-                    <div class="divider"></div>
-                    <div class="section-label">CMW Courses</div>
-                    <a href="#">Making Glazes Make Sense<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Master glaze chemistry — all levels welcome</span></a>
-                    <a href="#">Advancing Glazes<span style="display:block; font-size:11px; color:#666; margin-top:1px;">In-depth labs and a self-directed glaze project</span></a>
-                    <a href="#">Crystal Ball <span class="pill pill-enroll">Enroll Now</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">Techniques for breathtaking crystalline effects</span></a>
-                    <a href="#">Intro to Clay Bodies <span class="pill pill-enroll">Enroll Now</span><span style="display:block; font-size:11px; color:#666; margin-top:1px;">The science behind clay — take control of your materials</span></a>
-                    <a href="#">Workshops<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Self-guided short workshops to build your glaze skills</span></a>
-                    <div class="divider"></div>
-                    <a href="#" style="color: #7db8e0; font-weight: 500;">View all courses →</a>
-                </div>
-            </div>
-
-            <!-- My Courses — enrolled student content -->
-            <div class="nav-item">
-                <button>My Courses</button>
-                <div class="dropdown" style="min-width: 240px;">
-                    <div class="section-label">My Learning</div>
-                    <a href="#">My Courses<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Your enrolled courses</span></a>
-                    <a href="#">All Labs<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Hands-on experiments across courses</span></a>
-                    <a href="#">All Discussions<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Conversations with classmates & instructors</span></a>
-                    <a href="#">Commons<span style="display:block; font-size:11px; color:#666; margin-top:1px;">See classmates' work and progress</span></a>
-                    <div class="divider"></div>
-                    <div class="section-label">Hangout Course Resources</div>
-                    <a href="#">Live Hangout Information</a>
-                    <a href="#">Hangout Calendar</a>
-                    <a href="#">Hangout Signup</a>
-                    <a href="#">Hangout Archive<span style="display:block; font-size:11px; color:#666; margin-top:1px;">Watch thousands of hours of past live CMW hangouts</span></a>
-                </div>
-            </div>
-
-            <!-- My Work — consolidated personal content -->
-            <div class="nav-item">
-                <button>My Work</button>
-                <div class="dropdown">
-                    <div class="section-label">Organize and manage your work</div>
-                    <a href="#">My Book</a>
-                    <a href="#">My Glazes</a>
-                    <a href="#">My Clay Bodies</a>
-                    <a href="#">My Test Reports</a>
-                    <a href="#">My Presentations</a>
-                    <a href="#">My Workbooks</a>
-                    <div class="divider"></div>
-                    <div class="section-label">Bulk data actions</div>
-                    <a href="#">Import</a>
-                    <a href="#">Drop Box</a>
-                </div>
-            </div>
-
-            <!-- Glaze Lab — combined calculators, workflows, and knowledge -->
-            <div class="nav-item">
-                <button>Glaze Lab</button>
-                <div class="mega-menu" style="width: 700px;">
-                    <div class="mega-grid">
-                        <div class="mega-column">
-                            <h4>Calculators & Tools</h4>
-                            <a href="#">Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
-                            <a href="#">Glaze Quantity</a>
-                            <a href="#">Compare<span class="desc">Side-by-side analysis</span></a>
-                            <a href="#">Free Tools<span class="desc">Public calculators & resources</span></a>
-                            <a href="#" style="margin-top: 12px; color: #8b5cf6; font-weight: 500;">Help! I'm not sure where to start →</a>
+                <button>Join</button>
+                <div class="dropdown" style="min-width: 520px; padding: 0;">
+                    <div class="mega-menu-with-promo">
+                        <div class="mega-content" style="padding: 16px 24px;">
+                            <a href="#">Memberships<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Explore membership tiers and find the right level for you</span></a>
+                            <div class="divider"></div>
+                            <a href="#">Courses<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Browse CMW courses — from beginner to advanced</span></a>
+                            <div class="divider"></div>
+                            <a href="#">Merch</a>
                         </div>
-                        <div class="mega-column">
-                            <h4>Testing & Workflows</h4>
-                            <a href="#">Start a Test</a>
-                            <a href="#" class="locked-item">Design a Test <span class="pill pill-highfire">High Fire</span></a>
-                            <a href="#">Fix a Flaw</a>
-                            <a href="#">Firing Schedules<span class="desc">Schedules & logging</span></a>
-                        </div>
-                        <div class="mega-column">
-                            <h4>Knowledge & Reference</h4>
-                            <a href="#">Overview<span class="desc">Guided paths by level</span></a>
-                            <a href="#">Materials<span class="desc">Oxides, families, analyses</span></a>
-                            <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
-                            <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
-                            <a href="#">Troubleshooting<span class="desc">25 faults — crazing, crawling, etc.</span></a>
-                            <a href="#">Reference Desk<span class="desc">Cone chart, Stull map, glossary</span></a>
-                            <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
+                        <div class="menu-promo">
+                            <h4>Ready to level up?</h4>
+                            <p>Get full access to the Glaze Calculator, testing tools, and thousands of hours of research.</p>
+                            <a href="#" class="promo-btn">Compare Plans</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Clay Lab — clay-focused tools and knowledge -->
-            <div class="nav-item">
-                <button>Clay Lab</button>
+            <!-- My Courses — enrolled student content -->
+            <div class="nav-item" id="myCoursesNav">
+                <button>My Courses</button>
+                <div class="dropdown" style="min-width: 240px;">
+                    <div class="section-label">My Learning</div>
+                    <a href="#" data-required-tier="midfire">My Courses<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Your enrolled courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Labs<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Hands-on experiments across courses</span></a>
+                    <a href="#" data-required-tier="midfire">All Discussions<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Conversations with classmates & instructors</span></a>
+                    <a href="#" data-required-tier="midfire">Commons<span class="pill pill-midfire tier-pill">Mid Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">See classmates' work and progress</span></a>
+                    <div class="divider"></div>
+                    <div class="section-label">Hangout Course Resources</div>
+                    <a href="#" data-required-tier="highfire">Live Hangout Links<span class="pill pill-highfire tier-pill">High Fire+</span><span style="display:block; font-size:11px; color:#888; margin-top:1px;">Weekly discussions, calendar, and signup</span></a>
+                    <!-- Upgrade CTA -->
+                    <div class="mega-menu-cta" data-show-below-tier="midfire" style="margin: 8px 0 4px; border-radius: 6px;">
+                        <p>Unlock course access and tools</p>
+                        <a href="#" class="cta-btn">Upgrade Membership</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Work — consolidated personal content -->
+            <div class="nav-item" id="myWorkNav">
+                <button>My Work</button>
                 <div class="mega-menu" style="width: 520px;">
                     <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
                         <div class="mega-column">
-                            <h4>Calculators & Tools</h4>
-                            <a href="#">Clay Body Calculator<span class="desc">Formulate and analyze clay bodies</span></a>
-                            <a href="#">Plaster Calculator</a>
-                            <a href="#">Compare<span class="desc">Side-by-side clay body analysis</span></a>
+                            <h4>My Saved Work</h4>
+                            <a href="#">My Book<span class="desc">Recipes, mainstays, testing, and your wishlist</span></a>
+                            <a href="#">My Glazes<span class="desc">Your full saved-glazes library</span></a>
+                            <a href="#" data-required-tier="midfire">My Clay Bodies<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                            <a href="#" data-required-tier="midfire">My Test Reports<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Create and analyze reports from your test data</span></a>
+                            <a href="#">My Presentations<span class="desc">Slide decks from your test photos, recipes, and notes</span></a>
+                            <a href="#">My Workbooks<span class="desc">Imported workbooks — a glaze taken through five labs</span></a>
                         </div>
                         <div class="mega-column">
-                            <h4>Knowledge & Reference</h4>
-                            <a href="#">Clay Reports<span class="desc">Detailed analyses of commercial clays</span></a>
-                            <a href="#">Clay Body Basics<span class="desc">How clay bodies work</span></a>
-                            <a href="#">Shrinkage & Absorption<span class="desc">Testing and understanding fit</span></a>
-                            <a href="#">Material Properties<span class="desc">Kaolins, ball clays, feldspars, silica</span></a>
+                            <h4>Data Management</h4>
+                            <a href="#" data-required-tier="midfire">Import<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Bring in CMW, Glazy, Insight, and spreadsheet data</span></a>
+                            <a href="#" data-required-tier="midfire">Drop Box<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- The Lab — combined glaze and clay tools and workflows -->
+            <div class="nav-item">
+                <button>The Lab</button>
+                <div class="mega-menu" style="width: 600px;">
+                    <div class="mega-grid">
+                        <div class="mega-column">
+                            <h4>Glaze Tools</h4>
+                            <a href="#" data-hide-above-tier="pitfire">Free Tools<span class="desc">Public calculators & resources</span></a>
+                            <a href="#"><svg style="display:inline-block; vertical-align:middle; margin-right:6px; width:14px; height:14px; color:#fff;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>Glaze Calculator<span class="desc">UMF, recipe, limits</span></a>
+                            <a href="#" data-required-tier="midfire">Glaze Quantity<span class="pill pill-midfire tier-pill">Mid Fire+</span></a>
+                            <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side analysis</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Clay Tools</h4>
+                            <a href="#"><svg style="display:inline-block; vertical-align:middle; margin-right:6px; width:14px; height:14px; color:#fff;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>Clay Body Calculator<span class="desc">Formulate and analyze clay bodies</span></a>
+                            <a href="#"><svg style="display:inline-block; vertical-align:middle; margin-right:6px; width:14px; height:14px; color:#fff;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>Plaster Calculator</a>
+                            <a href="#" data-required-tier="midfire">Compare<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Side-by-side clay body analysis</span></a>
+                        </div>
+                        <div class="mega-column">
+                            <h4>Testing Tools</h4>
+                            <a href="#" data-required-tier="midfire">Start a Test<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Easy guided-tests to help you with your glazes and clays</span></a>
+                            <a href="#" data-required-tier="midfire">Design a Test<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Pick a variable, set your range, and get a fire-ready test series</span></a>
+                        </div>
+                    </div>
+                    <!-- Upgrade CTA (shown when user has locked items) -->
+                    <div class="mega-menu-cta" data-show-below-tier="midfire">
+                        <p>Unlock more features and tools</p>
+                        <a href="#" class="cta-btn">Upgrade Membership</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Glaze & Clay Anatomy — knowledge and reference -->
+            <div class="nav-item">
+                <button>Glaze & Clay Anatomy</button>
+                <div class="mega-menu" style="width: 880px; padding: 0; overflow: hidden;">
+                    <div class="mega-menu-with-promo">
+                        <div class="mega-content" style="padding: 38px 38px;">
+                            <div class="mega-grid" style="grid-template-columns: 1fr 1fr; gap: 32px;">
+                                <div class="mega-column">
+                                    <h4>Glaze Knowledge</h4>
+                                    <a href="#">Anatomy Overview<span class="desc">Guided paths by level</span></a>
+                                    <a href="#">Materials<span class="desc">Oxides, families, analyses</span></a>
+                                    <a href="#">Concepts<span class="desc">Glaze basics, firing, clay bodies</span></a>
+                                    <a href="#">Glaze Types<span class="desc">36 families — celadon to tenmoku</span></a>
+                                    <a href="#">Troubleshooting<span class="desc">25 faults</span></a>
+                                    <a href="#">CMW Reference Guide / Glossary<span class="desc">The classic ceramics charts, the working vocabulary, and the class index</span></a>
+                                    <a href="#" data-required-tier="midfire">Fix a Flaw<span class="pill pill-midfire tier-pill">Mid Fire+</span><span class="desc">Turn a defect into a test plan</span></a>
+                                </div>
+                                <div class="mega-column">
+                                    <h4>Clay Knowledge</h4>
+                                    <a href="#">Clay Body Basics<span class="desc">How clay bodies work</span></a>
+                                    <a href="#">Clay Reports<span class="desc">Analyses of commercial clays</span></a>
+                                    <a href="#">Shrinkage & Absorption</a>
+                                    <a href="#">Material Properties</a>
+                                    <h4 style="margin-top: 16px;">Firing</h4>
+                                    <a href="#">Firing Schedules<span class="desc">Public CMW reference cycles</span></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="menu-promo">
+                            <h4>New to glazes?</h4>
+                            <p>Start with 39 guided questions that take you from beginner to advanced — at your own pace.</p>
+                            <a href="#" class="promo-btn">Find Your Path</a>
                         </div>
                     </div>
                 </div>
@@ -1224,44 +1383,70 @@
             <!-- Research — research collections and published content -->
             <div class="nav-item">
                 <button>Research</button>
-                <div class="mega-menu" style="width: 620px;">
-                    <div class="mega-grid" style="grid-template-columns: 1fr 1fr;">
-                        <div class="mega-column">
-                            <a href="#" class="locked-item">Test, Test, Test <span class="pill pill-highfire">High Fire</span><span class="desc">Thousands of fired tiles</span></a>
-                            <a href="#">CMW Glaze Recipes<span class="desc">The glazes worked through in CMW's glaze class — full chemistry and one-click open in the calculator</span></a>
-                            <a href="#">Stull Map Explorations</a>
-                            <a href="#">Stains<span class="desc">CMW's color research — how single stains fire, and how they blend</span></a>
+                <div class="mega-menu" style="width: 880px; padding: 0; overflow: hidden;">
+                    <div class="mega-menu-with-promo">
+                        <div class="mega-content" style="padding: 38px 38px;">
+                            <div class="mega-grid" style="grid-template-columns: 1fr 1fr; gap: 32px;">
+                                <div class="mega-column">
+                                    <a href="#" style="background: rgba(139, 92, 246, 0.06); border: 1px solid rgba(139, 92, 246, 0.15); border-radius: 8px; padding: 10px 12px; margin-bottom: 8px;">
+                                        <span style="color: #8b5cf6; font-weight: 500;">Search Absolutely Everything</span>
+                                        <span class="desc" style="margin-top: 4px;">Search the CMW corpus: your own research tests and test series, the CMW Glaze Studies library, your saved glazes, and glazes published by CMW researchers.</span>
+                                    </a>
+                                    <a href="#">Color</a>
+                                    <a href="#">The Journal<span class="desc">Articles, arguments, and thoughts from CMW</span></a>
+                                    <a href="#">Hot Takes<span class="desc">Studio folklore vs. research</span></a>
+                                    <a href="#">Commercial Glaze Reference<span class="desc">Commercial glazes, underglazes, and decorating media from North American manufacturers</span></a>
+                                </div>
+                                <div class="mega-column">
+                                    <h4 data-required-tier="highfire" class="tier-heading">High Fire+</h4>
+                                    <a href="#" data-required-tier="highfire">CMW Glaze Recipes<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Full chemistry and one-click open in the calculator</span></a>
+                                    <a href="#" data-required-tier="highfire">Stull Map Explorations<span class="pill pill-highfire tier-pill">High Fire+</span></a>
+                                    <a href="#" data-required-tier="highfire">Stain Spectrum<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">How single stains fire, and how they blend</span></a>
+                                    <a href="#" data-required-tier="highfire">Test, Test, Test<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">Thousands of fired tiles</span></a>
+                                    <a href="#" data-required-tier="highfire">Hangout Library<span class="pill pill-highfire tier-pill">High Fire+</span><span class="desc">~4,000 hours of searchable live discussion archives</span></a>
+                                </div>
+                            </div>
+                            <!-- Upgrade CTA -->
+                            <div class="mega-menu-cta" data-show-below-tier="highfire">
+                                <p>Unlock the full research library</p>
+                                <a href="#" class="cta-btn">Upgrade Membership</a>
+                            </div>
                         </div>
-                        <div class="mega-column">
-                            <a href="#">Commercial Glaze Reference<span class="desc">Commercial glazes, underglazes, and decorating media from North American manufacturers</span></a>
-                            <a href="#">Color</a>
-                            <a href="#">The Journal<span class="desc">Articles, arguments, and thoughts from CMW</span></a>
-                            <a href="#">Search the Entire Site</a>
+                        <div class="menu-promo">
+                            <h4>Go deeper</h4>
+                            <p>Thousands of fired tiles, full Stull maps, stain research, and the CMW recipe library — all with the chemistry behind the result.</p>
+                            <a href="#" class="promo-btn">Explore High Fire</a>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Merch -->
-            <div class="nav-item">
-                <a href="#">Merch</a>
             </div>
 
             <!-- Community — social, Fired!, watch & listen -->
             <div class="nav-item">
                 <button class="community-btn">Community</button>
                 <div class="dropdown" style="min-width: 280px;">
-                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Join our online community. Post your work, ask a question, and check out work from other potters</span></a>
-                    <a href="#">Silica:Alumni <span class="pill pill-exclusive">Exclusive Membership</span><span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Our exclusive community for dedicated ceramicists. Independent study, peer collaboration, and premium access.</span></a>
-                    <div class="divider"></div>
-                    <a href="#">Studio Directory<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Find a ceramics studio near you</span></a>
-                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#666; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
+                    <a href="#">Fired!<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Post your work, ask a question, and check out work from other potters</span></a>
                     <div class="divider"></div>
                     <div class="section-label">Watch & Listen</div>
                     <a href="#">For Flux Sake Podcast</a>
                     <a href="#">YouTube</a>
                     <a href="#">Livestreams</a>
                 </div>
+            </div>
+
+            <!-- Studio -->
+            <div class="nav-item">
+                <button>Studio</button>
+                <div class="dropdown" style="min-width: 280px;">
+                    <a href="#">Studio Directory<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Search public-access studios across the U.S. and Canada.</span></a>
+                    <div class="divider"></div>
+                    <a href="#">Region Board<span style="display:block; font-size:11px; color:#888; margin-top:2px; line-height:1.4;">Announcements, events, workshops, and classes from the studios in your region</span></a>
+                </div>
+            </div>
+
+            <!-- Pyr — special internal tier -->
+            <div class="nav-item" id="pyrNavItem" data-required-tier="pyr" style="display: none;">
+                <a href="#" style="color: #f97316;">Pyr</a>
             </div>
 
             <!-- Ware — external service -->
@@ -1303,8 +1488,12 @@
                 </svg>
             </div>
             <!-- Dark/Light toggle - moved to account dropdown -->
+            <!-- Sign In / Sign Up (shown when logged out) -->
+            <a href="#" id="signInBtn" style="display: none; padding: 6px 14px; background: transparent; border: 1px solid #555; color: #ccc; font-size: 13px; font-weight: 500; border-radius: 6px; text-decoration: none; margin-left: 8px;">Sign In</a>
+            <a href="#" id="signUpBtn" style="display: none; padding: 6px 14px; background: #7c3aed; color: #fff; font-size: 13px; font-weight: 500; border-radius: 6px; text-decoration: none; margin-left: 6px;">Sign Up</a>
+
             <!-- Account -->
-            <div class="nav-item account-item">
+            <div class="nav-item account-item" id="accountNav">
                 <div class="avatar" title="Account">U</div>
                 <div class="dropdown account-dropdown" style="right: 0; left: auto; min-width: 280px; padding: 0;">
                     <!-- User info header -->
@@ -1327,7 +1516,7 @@
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
-                        My membership <span class="pill pill-midfire">Mid Fire</span>
+                        My membership <span id="membershipPill" class="pill pill-midfire">Mid Fire</span>
                     </a>
                     <a href="#" style="display: flex; align-items: center; gap: 12px; padding: 12px 16px;">
                         <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
@@ -1362,11 +1551,32 @@
     </nav>
 
     <!-- Announcement Bar -->
-    <div class="announcement-bar">
+    <div class="announcement-bar" id="announcementLoggedIn">
         <span class="announcement-badge">New</span>
         <span class="announcement-text">Introducing <strong>Ware</strong> — Design your perfect glaze. Start with a color, we'll handle the chemistry.</span>
         <a href="#" class="announcement-link">Learn more →</a>
         <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <div class="announcement-bar" id="announcementLoggedOut" style="display: none;">
+        <span class="announcement-text">Unlock tools, expert glaze advice, and a community of makers.</span>
+        <a href="#" style="padding: 5px 14px; background: #7c3aed; color: #fff; font-size: 12px; font-weight: 500; border-radius: 4px; text-decoration: none; margin-left: 8px;">Become a Member</a>
+        <button class="announcement-close" onclick="this.parentElement.style.display='none'" aria-label="Dismiss">&times;</button>
+    </div>
+
+    <!-- Membership Tier Simulator -->
+    <div class="tier-simulator-bar" style="background: #0d0d0d; border-bottom: 1px solid #2a2a2a; padding: 10px 24px; display: flex; align-items: center; gap: 16px;">
+        <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa;">Viewing as:</span>
+        <select id="tierSelector" onchange="applyTier()" style="padding: 6px 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; color: #fff; font-size: 13px; font-family: inherit; cursor: pointer;">
+            <option value="loggedout">Not Logged In</option>
+            <option value="pitfire">Pit Fire (Free)</option>
+            <option value="lowfire">Low Fire</option>
+            <option value="midfire" selected>Mid Fire</option>
+            <option value="highfire">High Fire</option>
+            <option value="alumni">Silica:Alumni</option>
+            <option value="pyr">Pyr</option>
+        </select>
+        <span id="tierDescription" style="font-size: 11px; color: #888;"></span>
     </div>
 
     <!-- Hero Spotlight -->
@@ -1424,8 +1634,8 @@
         </div>
     </div>
 
-    <!-- Spacer to simulate page content -->
-    <div style="min-height: 20vh;"></div>
+    <!-- Spacer -->
+    <div style="min-height: 40px;"></div>
 
     <!-- Legend & Questions -->
     <div style="max-width: 700px; margin: 0 auto 60px; padding: 0 24px;">
@@ -1701,6 +1911,28 @@
     </a>
 
     <script>
+        // Reposition mega menus to stay within viewport
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                const mega = item.querySelector('.mega-menu');
+                if (!mega) return;
+                // Reset position
+                mega.style.left = '0';
+                mega.style.right = 'auto';
+                // Check if it overflows right
+                const rect = mega.getBoundingClientRect();
+                const overflow = rect.right - window.innerWidth + 16;
+                if (overflow > 0) {
+                    mega.style.left = (-overflow) + 'px';
+                }
+                // Check if it overflows left
+                const rectAfter = mega.getBoundingClientRect();
+                if (rectAfter.left < 16) {
+                    mega.style.left = (-rect.left + 16) + 'px';
+                }
+            });
+        });
+
         function toggleSearch() {
             const container = document.getElementById('searchContainer');
             const input = document.getElementById('searchInput');
@@ -1744,6 +1976,132 @@
                 toggleDiv.onmouseout = function() { this.style.background = 'transparent'; };
             }
         }
+
+        // Membership Tier Simulator
+        const tierHierarchy = ['loggedout', 'pitfire', 'lowfire', 'midfire', 'highfire', 'alumni', 'pyr'];
+
+        function tierLevel(tier) {
+            if (tier === 'pyr') return 7;
+            if (tier === 'alumni') return 6;
+            return tierHierarchy.indexOf(tier);
+        }
+
+        function applyTier() {
+            const selectedTier = document.getElementById('tierSelector').value;
+            const lockedItems = document.querySelectorAll('[data-required-tier]');
+            const descEl = document.getElementById('tierDescription');
+            const membershipPill = document.getElementById('membershipPill');
+            const pyrNavItem = document.getElementById('pyrNavItem');
+            const myCoursesNav = document.getElementById('myCoursesNav');
+            const myWorkNav = document.getElementById('myWorkNav');
+            const accountNav = document.getElementById('accountNav');
+            const signInBtn = document.getElementById('signInBtn');
+            const signUpBtn = document.getElementById('signUpBtn');
+            const announcementLoggedIn = document.getElementById('announcementLoggedIn');
+            const announcementLoggedOut = document.getElementById('announcementLoggedOut');
+
+            const isLoggedOut = (selectedTier === 'loggedout');
+
+            const descriptions = {
+                loggedout: 'Not logged in — public reference and free tools only.',
+                pitfire: 'Free tier — public reference, basic calculator, 5 saves/day.',
+                lowfire: 'Private saves, connected-subject navigation, editable downloads.',
+                midfire: 'Full testing, predictions, Clay Body Calculator, unlimited saves.',
+                highfire: 'Full access to all features and research.',
+                alumni: 'Full access plus exclusive alumni community.',
+                pyr: 'Internal tier — full access plus Pyr tools.'
+            };
+            descEl.textContent = descriptions[selectedTier];
+
+            // Toggle logged-out UI
+            myCoursesNav.style.display = isLoggedOut ? 'none' : '';
+            myWorkNav.style.display = isLoggedOut ? 'none' : '';
+            accountNav.style.display = isLoggedOut ? 'none' : '';
+            signInBtn.style.display = isLoggedOut ? '' : 'none';
+            signUpBtn.style.display = isLoggedOut ? '' : 'none';
+            announcementLoggedIn.style.display = isLoggedOut ? 'none' : '';
+            announcementLoggedOut.style.display = isLoggedOut ? '' : 'none';
+
+            // Update membership pill in account dropdown
+            if (!isLoggedOut) {
+                const tierNames = {
+                    pitfire: 'Pit Fire',
+                    lowfire: 'Low Fire',
+                    midfire: 'Mid Fire',
+                    highfire: 'High Fire',
+                    alumni: 'Silica:Alumni',
+                    pyr: 'Pyr'
+                };
+                const tierClasses = {
+                    pitfire: 'pill-pitfire',
+                    lowfire: 'pill-lowfire',
+                    midfire: 'pill-midfire',
+                    highfire: 'pill-highfire',
+                    alumni: 'pill-alumni',
+                    pyr: 'pill-pyr'
+                };
+                membershipPill.className = 'pill ' + tierClasses[selectedTier];
+                membershipPill.textContent = tierNames[selectedTier];
+            }
+
+            // Show/hide upgrade CTAs
+            const ctaBanners = document.querySelectorAll('.mega-menu-cta');
+            ctaBanners.forEach(cta => {
+                const showBelow = cta.getAttribute('data-show-below-tier');
+                const userLevel = tierLevel(selectedTier);
+                const requiredLevel = tierLevel(showBelow);
+                cta.style.display = (userLevel < requiredLevel) ? 'block' : 'none';
+            });
+
+            // Show/hide Pyr nav item
+            pyrNavItem.style.display = (selectedTier === 'pyr') ? '' : 'none';
+
+            // Hide items that should only show at or below a certain tier
+            document.querySelectorAll('[data-hide-above-tier]').forEach(item => {
+                const maxTier = item.getAttribute('data-hide-above-tier');
+                const userLevel = tierLevel(selectedTier);
+                const maxLevel = tierLevel(maxTier);
+                item.style.display = (userLevel <= maxLevel) ? '' : 'none';
+            });
+
+            lockedItems.forEach(item => {
+                if (item.id === 'pyrNavItem') return; // handled above
+                const requiredTier = item.getAttribute('data-required-tier');
+                const userLevel = tierLevel(selectedTier);
+                const requiredLevel = tierLevel(requiredTier);
+                const tierGap = requiredLevel - userLevel;
+                const tierPills = item.querySelectorAll('.tier-pill');
+
+                // Tier headings — hide when user has access
+                if (item.classList.contains('tier-heading')) {
+                    item.style.display = (tierGap <= 0) ? 'none' : '';
+                    return;
+                }
+
+                if (tierGap <= 0) {
+                    // User has access — show normally, hide pills
+                    item.style.display = '';
+                    item.style.opacity = '1';
+                    item.classList.remove('locked-item');
+                    tierPills.forEach(pill => pill.style.display = 'none');
+                } else if (tierGap === 1) {
+                    // One tier away — show dimmed with pill
+                    item.style.display = '';
+                    item.style.opacity = '0.6';
+                    item.classList.add('locked-item');
+                    tierPills.forEach(pill => pill.style.display = '');
+                } else {
+                    // Two+ tiers away — very faded
+                    item.style.display = '';
+                    item.style.opacity = '0.35';
+                    item.classList.add('locked-item');
+                    tierPills.forEach(pill => pill.style.display = '');
+                }
+            });
+        }
+
+        // Apply on load
+        applyTier();
     </script>
 
 </body>
