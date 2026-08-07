@@ -383,6 +383,7 @@
             text-decoration: none;
             font-size: 13px;
             transition: color 0.12s;
+            white-space: nowrap;
         }
 
         .mega-column a:hover {
@@ -394,6 +395,7 @@
             font-size: 11px;
             color: #888;
             margin-top: 1px;
+            white-space: normal;
         }
 
         /* Right side nav */
@@ -528,6 +530,7 @@
             border-radius: 10px;
             margin-left: 8px;
             vertical-align: middle;
+            white-space: nowrap;
         }
 
         .pill-exclusive {
@@ -1314,7 +1317,7 @@
             <!-- The Lab — combined glaze and clay tools and workflows -->
             <div class="nav-item">
                 <button>The Lab</button>
-                <div class="mega-menu" style="width: 600px;">
+                <div class="mega-menu" style="width: 720px;">
                     <div class="mega-grid">
                         <div class="mega-column">
                             <h4>Glaze Tools</h4>
@@ -1568,10 +1571,10 @@
     <div class="tier-simulator-bar" style="background: #0d0d0d; border-bottom: 1px solid #2a2a2a; padding: 10px 24px; display: flex; align-items: center; gap: 16px;">
         <span style="font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; color: #aaa;">Viewing as:</span>
         <select id="tierSelector" onchange="applyTier()" style="padding: 6px 12px; background: #1a1a1a; border: 1px solid #333; border-radius: 4px; color: #fff; font-size: 13px; font-family: inherit; cursor: pointer;">
-            <option value="loggedout">Not Logged In</option>
+            <option value="loggedout" selected>Not Logged In</option>
             <option value="pitfire">Pit Fire (Free)</option>
             <option value="lowfire">Low Fire</option>
-            <option value="midfire" selected>Mid Fire</option>
+            <option value="midfire">Mid Fire</option>
             <option value="highfire">High Fire</option>
             <option value="alumni">Silica:Alumni</option>
             <option value="pyr">Pyr</option>
