@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Book · CMW (Local Prototype)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        clay: {
+                            100: '#e8e4e0', 200: '#d4cec8', 300: '#b8b0a8',
+                            400: '#9a8f85', 500: '#7d7168', 600: '#635850',
+                            700: '#4a4039', 800: '#332b26', 900: '#1f1a17',
+                            950: '#141110'
+                        },
+                        brand: {
+                            50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff',
+                            300: '#d8b4fe', 400: '#c084fc', 500: '#a855f7',
+                            600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6',
+                            900: '#4c1d95', 950: '#2e1065'
+                        },
+                        silver: {
+                            100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 dark:bg-clay-900 text-gray-900 dark:text-clay-100 antialiased font-sans">
+
+<!-- ===== TOP NAV (dark) ===== -->
+<div class="dark">
+<nav class="border-b border-clay-800 px-3 sm:px-10 bg-clay-950 text-clay-100">
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex min-w-0 items-center gap-1 sm:gap-4">
+            <!-- Mobile hamburger -->
+            <button type="button" aria-label="Open navigation menu" aria-expanded="false"
+                class="flex shrink-0 items-center px-2 py-3 text-clay-200 hover:text-white md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+            <!-- Logo -->
+            <a href="#" aria-label="CMW — Ceramic Materials Workshop home" class="shrink-0 select-none">
+                <img src="https://my.ceramicmaterialsworkshop.com/anatomy/cmw-logo.png" alt="CMW" class="block h-9 w-auto"/>
+            </a>
+            <!-- Main nav links -->
+            <div class="relative min-w-0 hidden min-w-0 flex-1 md:block">
+                <div class="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    <ul class="flex min-w-max gap-1">
+                        <li class="shrink-0"><a href="#" class="inline-block whitespace-nowrap border-b-2 border-transparent px-3 py-4 text-base font-medium text-clay-300 transition-colors hover:border-clay-600 hover:text-clay-100">Ware</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Join</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Glaze Anatomy</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">FIRED!</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-brand-500 text-white">My Book</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">The Lab</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Library</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Learn</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Studio</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 transition-colors border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Pyr</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <!-- Right side: search + feedback + avatar -->
+        <div class="flex shrink-0 items-center gap-2">
+            <button type="button" aria-label="Search the whole site" title="Search"
+                class="inline-flex items-center justify-center rounded-md p-2 text-clay-300 hover:text-brand-400 hover:bg-clay-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5">
+                    <circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path>
+                </svg>
+            </button>
+            <a title="Send feedback" aria-label="Send feedback"
+                class="hidden shrink-0 items-center px-2 py-1.5 text-clay-300 hover:text-clay-100 md:flex" href="#">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path>
+                </svg>
+            </a>
+            <span aria-hidden="true" class="inline-block w-9 h-9 rounded-full bg-clay-700"></span>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!-- ===== SIDEBAR + MAIN LAYOUT ===== -->
+<div id="layout-wrapper" class="flex min-h-[calc(100vh-64px)]">
+    <!-- Sidebar backdrop (mobile) -->
+    <div id="sidebar-backdrop" class="hidden fixed inset-0 z-30 bg-black/30" onclick="closeSidebar()"></div>
+
+    <!-- Left sidebar (collapsible, in-flow) -->
+    <aside id="sidebar" class="shrink-0 h-[calc(100vh-64px)] sticky top-[64px] w-60 flex flex-col border-r border-neutral-200 bg-white px-3 py-5 overflow-hidden" style="transition: width 200ms ease, padding 200ms ease, border-width 200ms ease;">
+        <!-- Sidebar header with collapse -->
+        <div class="flex items-center justify-between px-3 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Navigate</span>
+            <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition" aria-label="Collapse sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            </button>
+        </div>
+
+        <nav aria-label="My sections" class="flex-1 space-y-1 overflow-y-auto">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                My Book
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                My Glazes
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                My Clay Bodies
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                My Reports
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+                My Presentations
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                My Stull Map
+            </a>
+
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Glaze Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Clay Body Calculator
+            </a>
+
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Import
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Drop Box
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Workbooks
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Sidebar toggle button (visible when collapsed) -->
+    <button id="sidebar-open-btn" onclick="openSidebar()" class="hidden sticky top-20 ml-2 mt-4 flex h-8 w-8 items-center justify-center rounded-md border border-silver-200 bg-white text-clay-500 shadow-sm hover:text-brand-700 hover:border-brand-300 transition z-10 shrink-0" aria-label="Open navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 7 18 12 13 17"/><polyline points="6 7 11 12 6 17"/></svg>
+    </button>
+    <!-- Main content area -->
+    <main class="flex-1 min-w-0 px-4 sm:px-8 py-8">
+    <div class="mx-auto max-w-5xl">
+    <!-- Header -->
+    <header class="mb-5">
+        <div class="flex items-center gap-3">
+            <h1 class="text-2xl font-semibold text-brand-700">My Book</h1>
+            <span class="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700 cursor-help" title="Your book is public. Recipes you save can be seen by other members. Upgrade to Low Fire ($5/mo) to keep it private.">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                Public
+            </span>
+            <!-- Info tooltip -->
+            <div class="relative inline-block">
+                <button class="rounded-full p-1 text-clay-400 hover:text-brand-600 hover:bg-brand-50 transition" aria-label="How shelves work" onclick="document.getElementById('shelf-info').classList.toggle('hidden')">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+                </button>
+                <div id="shelf-info" class="hidden absolute left-0 top-full mt-2 z-10 w-72 rounded-lg border border-silver-200 bg-white p-3 shadow-lg text-xs leading-relaxed text-clay-600">
+                    <p>Every recipe you save lands in your <strong>Notebook</strong>. Promote the ones you use regularly into <strong>Mainstays</strong>, group test series under <strong>Testing</strong>, and keep a <strong>Wishlist</strong> of things to try.</p>
+                    <p class="mt-2"><a href="#" class="font-semibold text-brand-700 underline underline-offset-2 hover:text-brand-800">Low Fire ($5/mo)</a> keeps your book private.</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== PAGE GUIDE (dismissable onboarding) ===== -->
+    <div id="page-guide" class="mb-6 rounded-xl border border-brand-200/60 bg-gradient-to-r from-brand-50/80 to-white p-4 sm:p-5 relative">
+        <button onclick="dismissGuide()" class="absolute top-3 right-3 rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-white transition" aria-label="Dismiss guide">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="flex gap-3 sm:gap-4">
+            <div class="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            </div>
+            <div class="flex-1 min-w-0">
+                <h2 class="text-sm font-semibold text-clay-900">Welcome to your Book</h2>
+                <p class="mt-1 text-sm text-clay-600 leading-relaxed">This is where all your saved recipes live. Organize them into shelves to keep track of what you're using, what you're testing, and what you want to try.</p>
+                <div class="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3">
+                    <div class="flex items-start gap-2">
+                        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[10px] font-bold text-white">1</span>
+                        <p class="text-xs text-clay-600"><strong class="text-clay-800">Save a recipe</strong> from the Library, Calculator, or Import tool and it lands in your Notebook.</p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[10px] font-bold text-white">2</span>
+                        <p class="text-xs text-clay-600"><strong class="text-clay-800">Organize</strong> by moving recipes to Mainstays (your go-tos), Testing (active experiments), or Wishlist.</p>
+                    </div>
+                    <div class="flex items-start gap-2">
+                        <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-600 text-[10px] font-bold text-white">3</span>
+                        <p class="text-xs text-clay-600"><strong class="text-clay-800">Use the tools</strong> — open any recipe in the Calculator, batch it for mixing, start a test, or share it.</p>
+                    </div>
+                </div>
+                <div class="mt-3 flex items-center gap-3">
+                    <button onclick="dismissGuide()" class="text-xs font-medium text-brand-700 hover:text-brand-900 transition">Got it, don't show again</button>
+                    <span class="text-clay-300">·</span>
+                    <a href="#" class="text-xs font-medium text-clay-500 hover:text-brand-700 transition">Watch a quick tour</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- "Show guide" toggle (appears when guide is dismissed) -->
+    <button id="show-guide-btn" onclick="showGuide()" class="hidden mb-4 inline-flex items-center gap-1.5 rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-500 hover:text-brand-700 hover:border-brand-300 transition">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        How to use this page
+    </button>
+
+    <!-- Filter row: type dropdown + shelf tabs (single line) -->
+    <div class="mb-5 flex flex-wrap items-center gap-3">
+        <!-- Type dropdown -->
+        <div class="flex items-center gap-2">
+            <span class="text-xs font-medium uppercase tracking-wide text-clay-400">Show</span>
+            <select class="rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200" aria-label="Material type">
+                <option selected>Glazes</option>
+                <option>Clay bodies</option>
+                <option>Slips</option>
+                <option>Firing</option>
+            </select>
+        </div>
+
+        <!-- Shelf tabs -->
+        <nav class="flex flex-wrap gap-1.5" aria-label="Book shelves" id="shelf-tabs">
+            <button data-shelf="mainstays" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-brand-600 bg-brand-50 text-brand-800" aria-current="page">
+                <span class="font-medium">Mainstays</span>
+                <span class="shelf-count rounded-full bg-brand-600 px-1.5 text-xs tabular-nums text-white">3</span>
+            </button>
+            <button data-shelf="notebook" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700">
+                <span class="font-medium">Notebook</span>
+                <span class="shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500">12</span>
+            </button>
+            <button data-shelf="testing" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700">
+                <span class="font-medium">Testing</span>
+                <span class="shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500">5</span>
+            </button>
+            <button data-shelf="projects" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700">
+                <span class="font-medium">Projects</span>
+            </button>
+            <button data-shelf="wishlist" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700">
+                <span class="font-medium">Wishlist</span>
+                <span class="shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500">7</span>
+            </button>
+            <button data-shelf="archive" class="shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700">
+                <span class="font-medium">Archive</span>
+                <span class="shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500">2</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ===== FACETED FILTERS ===== -->
+    <div id="filter-bar" class="mb-4 flex flex-wrap items-center gap-2">
+        <span class="text-xs font-medium text-clay-500">Filter:</span>
+
+        <!-- Cone dropdown -->
+        <div class="relative" id="filter-cone-wrap">
+            <button onclick="toggleFilterDropdown('cone')" class="filter-dropdown-btn inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                Cone <span id="filter-cone-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="filter-cone-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                <div class="max-h-48 overflow-y-auto space-y-0.5">
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 04"> Cone 04</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 06"> Cone 06</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 1"> Cone 1</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 4"> Cone 4</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 5"> Cone 5</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 6"> Cone 6</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 7"> Cone 7</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 8"> Cone 8</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 9"> Cone 9</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 10"> Cone 10</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 11"> Cone 11</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 12"> Cone 12</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finish dropdown -->
+        <div class="relative" id="filter-finish-wrap">
+            <button onclick="toggleFilterDropdown('finish')" class="filter-dropdown-btn inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                Finish <span id="filter-finish-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="filter-finish-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                <div class="max-h-48 overflow-y-auto space-y-0.5">
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Gloss"> Gloss</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Satin"> Satin</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Matte"> Matte</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Opalescent"> Opalescent</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Crystal"> Crystalline</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Atmosphere dropdown -->
+        <div class="relative" id="filter-atmo-wrap">
+            <button onclick="toggleFilterDropdown('atmo')" class="filter-dropdown-btn inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                Atmosphere <span id="filter-atmo-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="filter-atmo-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                <div class="max-h-48 overflow-y-auto space-y-0.5">
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Reduction"> Reduction</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Oxidation"> Oxidation</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Wood"> Wood</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Soda"> Soda</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Folder filter -->
+        <div class="relative" id="filter-folder-wrap">
+            <button onclick="toggleFilterDropdown('folder')" id="filter-folder-btn" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 min-w-[10rem]">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-clay-400"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                <span id="filter-folder-label">All folders</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div id="filter-folder-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-56 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                <div class="max-h-56 overflow-y-auto space-y-0.5">
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Copper reds"> Copper reds</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Ash Exploration"> Ash Exploration</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Shino Series"> Shino Series</label>
+                    <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="__none__"> No folder</label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Clear filters -->
+        <button id="clear-filters" class="hidden text-[11px] font-medium text-brand-700 hover:text-brand-900 transition ml-2">Clear all ✕</button>
+    </div>
+
+    <!-- Search + Sort + utility icons -->
+    <div class="mb-4 flex flex-wrap items-center gap-2">
+        <input type="search" placeholder="Search glazes by name…"
+            class="min-w-[12rem] max-w-sm flex-1 rounded-lg border border-silver-300 bg-white text-clay-800 placeholder:text-clay-400 focus:border-brand-400 px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-brand-200" value=""/>
+        <span class="text-xs font-medium text-clay-500">Sort by</span>
+        <select class="rounded-lg border border-silver-300 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none" aria-label="Sort by">
+            <option value="recent" selected>Recently updated</option>
+            <option value="name">Name (A–Z)</option>
+            <option value="name-desc">Name (Z–A)</option>
+            <option value="cone">Cone</option>
+        </select>
+        <div class="flex items-center gap-2 ml-auto">
+            <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 hover:text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Bulk Image Upload
+            </button>
+            <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 hover:text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Import Recipes
+            </button>
+            <button id="btn-timeline" class="rounded-md p-1.5 text-neutral-400 transition hover:bg-neutral-100 hover:text-brand-700" title="Timeline view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Timeline panel (hidden by default) -->
+    <div id="panel-timeline" class="hidden mb-4 rounded-xl border border-silver-200 bg-white p-4 shadow-sm">
+        <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-semibold text-clay-800">Timeline — tests by date</h3>
+            <button onclick="document.getElementById('panel-timeline').classList.add('hidden')" class="rounded p-1 text-clay-400 hover:text-clay-700 hover:bg-silver-100 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="space-y-3">
+            <div class="flex gap-3">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-bold uppercase text-clay-400">Aug</span>
+                    <span class="text-lg font-semibold text-clay-800">5</span>
+                    <div class="mt-1 h-full w-px bg-silver-200"></div>
+                </div>
+                <div class="flex-1 space-y-1.5 pb-3">
+                    <div class="rounded-lg border border-silver-100 bg-silver-100/50 px-3 py-2 text-sm">
+                        <span class="font-medium text-clay-800">Copper Red #1</span>
+                        <span class="ml-2 text-xs text-clay-400">Cone 10 · Reduction</span>
+                    </div>
+                    <div class="rounded-lg border border-silver-100 bg-silver-100/50 px-3 py-2 text-sm">
+                        <span class="font-medium text-clay-800">Ash Glaze Trial</span>
+                        <span class="ml-2 text-xs text-clay-400">Cone 10 · Reduction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-bold uppercase text-clay-400">Jul</span>
+                    <span class="text-lg font-semibold text-clay-800">28</span>
+                    <div class="mt-1 h-full w-px bg-silver-200"></div>
+                </div>
+                <div class="flex-1 space-y-1.5 pb-3">
+                    <div class="rounded-lg border border-silver-100 bg-silver-100/50 px-3 py-2 text-sm">
+                        <span class="font-medium text-clay-800">Tenmoku Variation #3</span>
+                        <span class="ml-2 text-xs text-clay-400">Cone 9 · Reduction</span>
+                    </div>
+                    <div class="rounded-lg border border-silver-100 bg-silver-100/50 px-3 py-2 text-sm">
+                        <span class="font-medium text-clay-800">Shino Test Batch</span>
+                        <span class="ml-2 text-xs text-clay-400">Cone 9 · Reduction</span>
+                    </div>
+                </div>
+            </div>
+            <div class="flex gap-3">
+                <div class="flex flex-col items-center">
+                    <span class="text-[10px] font-bold uppercase text-clay-400">Jul</span>
+                    <span class="text-lg font-semibold text-clay-800">14</span>
+                </div>
+                <div class="flex-1 space-y-1.5">
+                    <div class="rounded-lg border border-silver-100 bg-silver-100/50 px-3 py-2 text-sm">
+                        <span class="font-medium text-clay-800">Celadon Base</span>
+                        <span class="ml-2 text-xs text-clay-400">Cone 10 · Reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Results bar + view toggle -->
+    <div class="mb-4 flex items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+            <p id="results-count" class="min-w-0 truncate text-sm text-clay-500">5 glazes in Testing</p>
+            <div class="flex items-center gap-1.5">
+                <label for="per-page" class="text-xs text-clay-400">Show</label>
+                <select id="per-page" class="rounded border border-silver-300 bg-white px-2 py-0.5 text-xs text-clay-600 focus:outline-none focus:border-brand-400" aria-label="Items per page">
+                    <option value="12" selected>12</option>
+                    <option value="24">24</option>
+                    <option value="48">48</option>
+                    <option value="96">96</option>
+                </select>
+            </div>
+        </div>
+        <div id="view-toggle" class="inline-flex flex-shrink-0 rounded-lg border border-silver-300 p-0.5" role="group" aria-label="Card view">
+            <button data-view="list" aria-pressed="false" class="view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700" title="List view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+            <button data-view="tiles" aria-pressed="true" class="view-btn rounded-md p-1.5 transition bg-brand-600 text-white" title="Tile view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            </button>
+            <button data-view="chemistry" aria-pressed="false" class="view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700" title="Chemistry view">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Glaze tiles grid (sample data) -->
+    <div id="glaze-grid" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        <!-- Rendered by JS -->
+    </div>
+
+    <!-- Pagination -->
+    <nav id="pagination" class="mt-6 flex items-center justify-between border-t border-silver-200 pt-4" aria-label="Pagination">
+        <p id="pagination-info" class="text-xs text-clay-500">Showing 1–12 of 18</p>
+        <div class="flex items-center gap-1">
+            <button id="page-prev" class="rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-600 transition hover:border-brand-400 hover:text-brand-700 disabled:opacity-40 disabled:pointer-events-none" disabled>Prev</button>
+            <div id="page-numbers" class="flex items-center gap-0.5"></div>
+            <button id="page-next" class="rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-600 transition hover:border-brand-400 hover:text-brand-700 disabled:opacity-40 disabled:pointer-events-none">Next</button>
+        </div>
+    </nav>
+
+    <!-- (tools moved inline to search bar area) -->
+    </div><!-- end centered wrapper -->
+    </main>
+</div><!-- end sidebar + main flex -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="mt-12 border-t border-neutral-200 dark:border-clay-700 px-6 py-8">
+    <div class="mx-auto max-w-7xl">
+        <section aria-label="More from CMW" class="mb-8">
+            <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-400 dark:text-clay-400">From CMW</div>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Join</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">CMW membership</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">Calculators, tests, and the research library.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">See support levels →</span>
+                </a>
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Listen</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">For Flux Sake</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">The CMW glaze-chemistry podcast.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">Listen →</span>
+                </a>
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Watch</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">CMW on YouTube</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">Lectures, demos, and Q&amp;A from the workshop.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">Watch →</span>
+                </a>
+            </div>
+        </section>
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <nav aria-label="Reference">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-clay-400">Reference</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Glaze Anatomy</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Materials</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Reference shelf</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">The Library</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Make">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-clay-400">Make</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">The Lab</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Color</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Tools">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-clay-400">Tools</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Glaze calculator</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Clay body calculator</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Research tests</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Design a test</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Learn">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500 dark:text-clay-400">Learn</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">Classes</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">For Flux Sake (podcast)</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline dark:text-clay-300">CMW on YouTube</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mt-8 border-t border-neutral-100 pt-4 text-[11px] leading-relaxed text-neutral-400 dark:border-clay-800 dark:text-clay-400">
+            <p>&copy; 2026 Ceramic Materials Workshop. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- Dark/Light toggle for prototyping -->
+<div class="fixed bottom-4 right-4 z-50">
+    <button onclick="document.documentElement.classList.toggle('dark')"
+        class="rounded-full bg-clay-800 dark:bg-white px-3 py-2 text-xs font-medium text-white dark:text-clay-900 shadow-lg hover:scale-105 transition">
+        Toggle dark/light
+    </button>
+</div>
+
+<!-- ===== INTERACTIVE SHELF SWITCHING ===== -->
+<script>
+const shelfData = {
+    mainstays: {
+        label: 'Mainstays',
+        layout: 'full',
+        glazes: [
+            {
+                name: 'Prim Ochre Tan', id: '080726-20', cone: 'cone 6', coneColor: 'blue', category: 'crystalline', type: 'Glaze',
+                ingredients: [
+                    ['Neph Sy', 33.9], ['Grolleg', 20.3], ['Dolomite', 17.6], ['Flint', 15.9],
+                    ['Gillespie Borate', 8.8], ['Titanium Dioxide', 6], ['Rutile', 5],
+                    ['Tin Oxide', 5], ['Whiting', 3.5], ['Yellow Ochre', 2], ['Copper Carbonate', 2]
+                ],
+                chemistry: null // no analysis available
+            },
+            {
+                name: 'Blue Variegated (Working Prod)', id: '080726-1', cone: 'cone 6', coneColor: 'blue', category: 'satin matte', type: 'Glaze',
+                ingredients: [
+                    ['Neph Sy', 33.9], ['Strontium Carb', 33.9], ['Grolleg', 17.8], ['Frit 3195', 10.17],
+                    ['Tin Oxide', 5], ['Copper Carbonate', 5], ['Flint', 3.39], ['Whiting', 0.85]
+                ],
+                chemistry: {
+                    umf: [
+                        ['SiO\u2082', 1.49], ['Al\u2082O\u2083', 0.35], ['B\u2082O\u2083', 0.07],
+                        ['TiO\u2082', 0.00], ['Si:Al', '4.2:1']
+                    ],
+                    r2o: [['Na\u2082O', 0.15], ['K\u2082O', 0.05], ['CuO', 0.10], ['SnO\u2082', 0.08], ['total', 0.38]],
+                    ro: [['CaO', 0.07], ['MgO', 0.00], ['SrO', 0.54], ['FeO', 0.01], ['MnO\u2082', 0.00], ['total', 0.62]]
+                }
+            },
+            {
+                name: 'Iron Saturate Red', id: '070312-11', cone: 'cone 10', coneColor: 'green', category: 'matte', type: 'Glaze',
+                ingredients: [
+                    ['Custer Feldspar', 40], ['Red Iron Oxide', 15], ['Dolomite', 22],
+                    ['Silica', 12], ['Whiting', 8], ['EPK', 3]
+                ],
+                chemistry: {
+                    umf: [
+                        ['SiO\u2082', 2.85], ['Al\u2082O\u2083', 0.42], ['B\u2082O\u2083', 0.00],
+                        ['TiO\u2082', 0.00], ['Si:Al', '6.8:1']
+                    ],
+                    r2o: [['Na\u2082O', 0.08], ['K\u2082O', 0.22], ['Fe\u2082O\u2083', 0.45], ['total', 0.75]],
+                    ro: [['CaO', 0.18], ['MgO', 0.22], ['SrO', 0.00], ['total', 0.40]]
+                }
+            }
+        ]
+    },
+    notebook: {
+        label: 'Notebook',
+        layout: 'full',
+        glazes: [
+            {
+                name: 'Oribe Green', id: '090415-03', cone: 'cone 9', coneColor: 'amber', category: 'gloss',
+                ingredients: [
+                    ['Wood Ash', 30], ['Feldspar', 35], ['Copper Carb', 5], ['Silica', 15],
+                    ['Ball Clay', 10], ['Whiting', 5]
+                ]
+            },
+            {
+                name: 'Chun Blue Attempt', id: '091102-07', cone: 'cone 10', coneColor: 'green', category: 'opalescent',
+                ingredients: [
+                    ['Custer Feldspar', 55], ['Bone Ash', 8], ['Silica', 18], ['Whiting', 12],
+                    ['EPK', 4], ['Bentonite', 3]
+                ]
+            }
+        ]
+    },
+    testing: {
+        label: 'Testing',
+        layout: 'compact',
+        glazes: [
+            { name: 'Celadon Base', type: 'Glaze', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Satin', tags: ['Feldspar 45%', 'Silica 25%', 'Whiting 18%'] },
+            { name: 'Tenmoku Variation #3', type: 'Glaze', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Reduction', surface: 'Gloss', tags: ['Iron Oxide 8%', 'Whiting 20%', 'Feldspar 42%'] },
+            { name: 'Porcelain Blend #4', type: 'Clay Body', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Tight', tags: ['Grolleg 25%', 'Silica 28%', 'Feldspar 22%'] },
+            { name: 'Shino Test Batch', type: 'Glaze', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Reduction', surface: 'Satin', tags: ['Neph Sy 70%', 'Ball clay 12%', 'Soda ash 8%'] },
+            { name: 'White Engobe', type: 'Slip', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Matte', tags: ['EPK 40%', 'Silica 30%', 'Zircopax 10%'] },
+            { name: 'Copper Red #1', type: 'Glaze', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Gloss', tags: ['Copper Carb 1%', 'Tin Oxide 0.5%', 'Feldspar 48%'] },
+            { name: 'Rutile Blue', type: 'Glaze', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Satin', tags: ['Rutile 6%', 'Frit 3134 30%'] },
+            { name: 'Oatmeal #2', type: 'Glaze', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Matte', tags: ['Dolomite 20%', 'EPK 18%'] },
+            { name: 'Carbon Trap Shino', type: 'Glaze', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Satin', tags: ['Neph Sy 65%', 'Soda Ash 10%'] },
+            { name: 'Stoneware Body #7', type: 'Clay Body', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Dense', tags: ['Fireclay 30%', 'Ball Clay 25%'] },
+            { name: 'Flashing Slip A', type: 'Slip', cone: 'cone 10', coneColor: 'green', atmosphere: 'Wood', surface: 'Variable', tags: ['EPK 50%', 'Neph Sy 30%'] },
+            { name: 'Temmoku Dark', type: 'Glaze', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Reduction', surface: 'Gloss', tags: ['Iron Oxide 10%', 'Feldspar 40%'] },
+            { name: 'Jun / Chun', type: 'Glaze', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Opalescent', tags: ['Bone Ash 8%', 'Feldspar 50%'] },
+            { name: 'Porcelain Blend #5', type: 'Clay Body', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Smooth', tags: ['Tile 6 35%', 'Silica 25%'] },
+            { name: 'Lithium Matte', type: 'Glaze', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Matte', tags: ['Lithium Carb 5%', 'Wollastonite 20%'] },
+            { name: 'Val Cushing Clear', type: 'Glaze', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Gloss', tags: ['Feldspar 38%', 'Silica 30%'] },
+            { name: 'Iron Red Slip', type: 'Slip', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Reduction', surface: 'Satin', tags: ['Red Iron Oxide 12%', 'Ball Clay 40%'] },
+            { name: 'Crystalline Test #1', type: 'Glaze', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Oxidation', surface: 'Crystal', tags: ['Zinc Oxide 25%', 'Frit 3110 38%'] },
+        ]
+    },
+    projects: { label: 'Projects', layout: 'compact', glazes: [] },
+    wishlist: {
+        label: 'Wishlist',
+        layout: 'compact',
+        glazes: [
+            { name: 'Nuka (from Library)', cone: 'cone 10', coneColor: 'green', atmosphere: 'Reduction', surface: 'Satin', tags: ['Rice hull ash 40%', 'Feldspar 35%'] },
+            { name: 'Pete Pinnell Clear', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Gloss', tags: ['Frit 3134 28%', 'Neph Sy 28%'] },
+        ]
+    },
+    archive: {
+        label: 'Archive',
+        layout: 'compact',
+        glazes: [
+            { name: 'Failed Crystalline #2', cone: 'cone 9', coneColor: 'amber', atmosphere: 'Oxidation', surface: 'Gloss', tags: ['Zinc Oxide 25%', 'Frit 3110 40%'] },
+            { name: 'Old Studio Bucket', cone: 'cone 6', coneColor: 'blue', atmosphere: 'Oxidation', surface: 'Matte', tags: ['Unknown mix'] },
+        ]
+    }
+};
+
+const coneColors = {
+    green: { bg: 'bg-green-100', text: 'text-green-700', border: 'border-l-green-500' },
+    amber: { bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-l-amber-500' },
+    blue:  { bg: 'bg-blue-100',  text: 'text-blue-700',  border: 'border-l-blue-500' }
+};
+
+const shelfColors = {
+    mainstays: { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', dot: 'bg-green-500', label: 'Mainstay' },
+    notebook:  { bg: 'bg-neutral-50', border: 'border-neutral-300', text: 'text-neutral-600', dot: 'bg-neutral-400', label: 'Notebook' },
+    testing:   { bg: 'bg-amber-50', border: 'border-amber-300', text: 'text-amber-700', dot: 'bg-amber-500', label: 'Testing' },
+    projects:  { bg: 'bg-purple-50', border: 'border-purple-300', text: 'text-purple-700', dot: 'bg-purple-500', label: 'Project' },
+    wishlist:  { bg: 'bg-blue-50', border: 'border-blue-300', text: 'text-blue-700', dot: 'bg-blue-500', label: 'Wishlist' },
+    archive:   { bg: 'bg-slate-50', border: 'border-slate-300', text: 'text-slate-500', dot: 'bg-slate-400', label: 'Archived' }
+};
+
+function shelfTag(shelfKey) {
+    const sc = shelfColors[shelfKey] || shelfColors.notebook;
+    return `<span class="inline-flex items-center gap-1.5 rounded-full border ${sc.border} ${sc.bg} px-2.5 py-0.5 text-[11px] font-semibold ${sc.text}"><span class="h-2 w-2 rounded-full ${sc.dot}"></span>${sc.label}</span>`;
+}
+
+function renderFullCard(g, shelfKey) {
+    const cc = coneColors[g.coneColor] || coneColors.blue;
+    const rows = g.ingredients.map(([name, amt]) =>
+        `<tr class="border-b border-silver-100 last:border-0">
+            <td class="py-1 pr-4 text-sm text-clay-700">${name}</td>
+            <td class="py-1 text-right text-sm font-medium tabular-nums text-clay-900">${amt}</td>
+        </tr>`
+    ).join('');
+
+    return `
+    <div class="rounded-lg border border-silver-200 bg-white p-5 transition hover:shadow-md">
+        <div class="flex items-center justify-between mb-1.5">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+            ${shelfTag(shelfKey)}
+        </div>
+        <div class="flex items-start justify-between gap-3 mb-2">
+            <h3 class="text-lg font-bold text-clay-900">${g.name}</h3>
+            <span class="shrink-0 text-xs text-clay-400 tabular-nums">${g.id}</span>
+        </div>
+        <div class="flex items-center gap-2 mb-3">
+            <span class="rounded border border-silver-300 px-2 py-0.5 text-xs font-medium text-clay-600">${g.cone}</span>
+            ${g.category ? `<span class="rounded border border-brand-200 bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">${g.category}</span>` : ''}
+        </div>
+        <table class="w-full mb-4">
+            <tbody>${rows}</tbody>
+        </table>
+        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-silver-100 pt-3 text-xs font-medium">
+            <a href="#" class="text-brand-700 hover:text-brand-900 transition">Open in calculator</a>
+            <a href="#" class="text-brand-700 hover:text-brand-900 transition">Start a test</a>
+            <a href="#" class="text-brand-700 hover:text-brand-900 transition">Batch &amp; print</a>
+            <a href="#" class="text-brand-700 hover:text-brand-900 transition">Share to FIRED!</a>
+        </div>
+    </div>`;
+}
+
+function renderCompactCard(g, shelfKey) {
+    const cc = coneColors[g.coneColor] || coneColors.green;
+    const tags = g.tags.map(t => `<span class="rounded bg-amber-50/60 border border-amber-100/80 px-1.5 py-0.5 text-[10px] text-clay-600">${t}</span>`).join('');
+    return `
+    <div class="rounded-lg border border-silver-200 border-l-[3px] ${cc.border} bg-gradient-to-br from-white to-amber-50/30 p-4 transition hover:shadow-md hover:border-silver-300 group">
+        <div class="flex items-center justify-between mb-1">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+            ${shelfTag(shelfKey)}
+        </div>
+        <div class="flex items-start justify-between gap-2">
+            <h3 class="font-semibold text-clay-900 group-hover:text-brand-800 transition-colors">${g.name}</h3>
+            <span class="shrink-0 rounded-full ${cc.bg} px-2 py-0.5 text-[11px] font-semibold ${cc.text}">${g.cone}</span>
+        </div>
+        <p class="mt-1 text-xs text-clay-500">${g.atmosphere || ''} · ${g.surface || ''}</p>
+        <div class="mt-3 flex flex-wrap gap-1">${tags}</div>
+    </div>`;
+}
+
+function renderChemistryCard(g, shelfKey) {
+    const cc = coneColors[g.coneColor] || coneColors.blue;
+    const rows = (g.ingredients || []).map(([name, amt]) =>
+        `<tr class="border-b border-silver-100 last:border-0">
+            <td class="py-0.5 pr-4 text-sm text-clay-700">${name}</td>
+            <td class="py-0.5 text-right text-sm font-medium tabular-nums text-clay-900">${amt}</td>
+        </tr>`
+    ).join('');
+
+    let chemPanel = '';
+    if (g.chemistry) {
+        const umfRows = g.chemistry.umf.map(([ox, val]) =>
+            `<tr><td class="pr-3 text-xs text-clay-700">${ox}</td><td class="text-right text-xs font-medium tabular-nums text-clay-900">${val}</td></tr>`
+        ).join('');
+        const r2oRows = g.chemistry.r2o.map(([ox, val]) =>
+            `<tr class="${ox === 'total' ? 'border-t border-silver-200 font-semibold' : ''}"><td class="pr-3 text-xs text-clay-700">${ox}</td><td class="text-right text-xs font-medium tabular-nums text-clay-900">${val}</td></tr>`
+        ).join('');
+        const roRows = g.chemistry.ro.map(([ox, val]) =>
+            `<tr class="${ox === 'total' ? 'border-t border-silver-200 font-semibold' : ''}"><td class="pr-3 text-xs text-clay-700">${ox}</td><td class="text-right text-xs font-medium tabular-nums text-clay-900">${val}</td></tr>`
+        ).join('');
+
+        chemPanel = `
+        <div class="border-l border-silver-200 pl-4 min-w-[180px]">
+            <table class="w-full mb-3"><tbody>${umfRows}</tbody></table>
+            <div class="grid grid-cols-2 gap-3">
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wide text-clay-400 mb-1">R₂O</div>
+                    <table class="w-full"><tbody>${r2oRows}</tbody></table>
+                </div>
+                <div>
+                    <div class="text-[10px] font-bold uppercase tracking-wide text-clay-400 mb-1">RO</div>
+                    <table class="w-full"><tbody>${roRows}</tbody></table>
+                </div>
+            </div>
+        </div>`;
+    } else {
+        chemPanel = `
+        <div class="border-l border-silver-200 pl-4 min-w-[140px] flex items-start">
+            <p class="text-xs text-clay-400 italic">— chemistry unavailable (a material has no analysis)</p>
+        </div>`;
+    }
+
+    return `
+    <div class="rounded-lg border border-silver-200 bg-white p-5 transition hover:shadow-md">
+        <div class="flex gap-4">
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center justify-between mb-1.5">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+                    ${shelfTag(shelfKey)}
+                </div>
+                <div class="flex items-start justify-between gap-3 mb-2">
+                    <h3 class="text-base font-bold text-clay-900">${g.name}</h3>
+                    <span class="shrink-0 text-xs text-clay-400 tabular-nums">${g.id || ''}</span>
+                </div>
+                <div class="flex items-center gap-2 mb-3">
+                    <span class="rounded border border-silver-300 px-2 py-0.5 text-xs font-medium text-clay-600">${g.cone}</span>
+                    ${g.category ? `<span class="rounded border border-brand-200 bg-brand-50 px-2 py-0.5 text-xs font-medium text-brand-700">${g.category}</span>` : ''}
+                </div>
+                <table class="w-full mb-3"><tbody>${rows}</tbody></table>
+                <div class="flex flex-wrap items-center gap-x-3 gap-y-1 border-t border-silver-100 pt-2 text-xs font-medium">
+                    <a href="#" class="text-brand-700 hover:text-brand-900 transition">Open in calculator</a>
+                    <a href="#" class="text-brand-700 hover:text-brand-900 transition">Start a test</a>
+                    <a href="#" class="text-brand-700 hover:text-brand-900 transition">Batch &amp; print</a>
+                    <a href="#" class="text-brand-700 hover:text-brand-900 transition">Share to FIRED!</a>
+                </div>
+                <div class="flex flex-wrap items-center gap-2 mt-2 pt-2 border-t border-silver-100">
+                    <select class="rounded border border-silver-300 bg-white px-2 py-0.5 text-xs text-clay-600 focus:outline-none focus:border-brand-400">
+                        <option selected>Mainstays</option><option>Notebook</option><option>Testing</option><option>Wishlist</option><option>Archive</option>
+                    </select>
+                    <button class="rounded border border-silver-300 px-2 py-0.5 text-xs text-clay-600 hover:border-brand-400 hover:text-brand-700 transition">Share to the Commons</button>
+                </div>
+            </div>
+            ${chemPanel}
+        </div>
+    </div>`;
+}
+
+function renderGrid(shelfKey) {
+    const shelf = shelfData[shelfKey];
+    const grid = document.getElementById('glaze-grid');
+    const count = document.getElementById('results-count');
+
+    if (shelf.glazes.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-sm text-clay-400">No glazes on this shelf yet.</div>`;
+        count.textContent = `0 glazes in ${shelf.label}`;
+        return;
+    }
+
+    count.textContent = `${shelf.glazes.length} recipe${shelf.glazes.length !== 1 ? 's' : ''} in ${shelf.label}`;
+
+    if (shelf.layout === 'full') {
+        // Full recipe cards — wider grid
+        grid.className = 'grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3';
+        grid.innerHTML = shelf.glazes.map(g => renderFullCard(g, shelfKey)).join('');
+    } else {
+        // Compact tiles — tighter grid
+        grid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+        grid.innerHTML = shelf.glazes.map(g => renderCompactCard(g, shelfKey)).join('');
+    }
+}
+
+function setActiveShelf(shelfKey) {
+    const tabs = document.querySelectorAll('.shelf-tab');
+    tabs.forEach(tab => {
+        const isActive = tab.dataset.shelf === shelfKey;
+        if (isActive) {
+            tab.className = 'shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-brand-600 bg-brand-50 text-brand-800';
+            tab.setAttribute('aria-current', 'page');
+            const badge = tab.querySelector('.shelf-count');
+            if (badge) {
+                badge.className = 'shelf-count rounded-full bg-brand-600 px-1.5 text-xs tabular-nums text-white';
+            }
+        } else {
+            tab.className = 'shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700';
+            tab.removeAttribute('aria-current');
+            const badge = tab.querySelector('.shelf-count');
+            if (badge) {
+                badge.className = 'shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500';
+            }
+        }
+    });
+    renderGrid(shelfKey);
+}
+
+// Attach click handlers
+document.querySelectorAll('.shelf-tab').forEach(tab => {
+    tab.addEventListener('click', () => setActiveShelf(tab.dataset.shelf));
+});
+
+// Timeline & Projects panel toggles
+document.getElementById('btn-timeline').addEventListener('click', () => {
+    const panel = document.getElementById('panel-timeline');
+    const other = document.getElementById('panel-projects');
+    other.classList.add('hidden');
+    panel.classList.toggle('hidden');
+    // Highlight the button when panel is open
+    const btn = document.getElementById('btn-timeline');
+    btn.classList.toggle('bg-brand-50', !panel.classList.contains('hidden'));
+    btn.classList.toggle('text-brand-700', !panel.classList.contains('hidden'));
+    btn.classList.toggle('text-neutral-400', panel.classList.contains('hidden'));
+});
+
+// Initial render
+let currentView = 'tiles';
+let currentShelf = 'mainstays';
+
+function renderListView(shelfKey) {
+    const shelf = shelfData[shelfKey];
+    const grid = document.getElementById('glaze-grid');
+
+    if (shelf.glazes.length === 0) {
+        grid.innerHTML = `<div class="py-12 text-center text-sm text-clay-400">No glazes on this shelf yet.</div>`;
+        return;
+    }
+
+    const rows = shelf.glazes.map(g => {
+        const name = g.name;
+        const cone = g.cone || '';
+        const category = g.category || g.surface || '';
+        const id = g.id || '';
+        return `
+        <div class="flex items-center gap-3 border-b border-silver-100 px-4 py-3 last:border-0 hover:bg-silver-100/50 transition">
+            <input type="checkbox" class="h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-200 shrink-0">
+            <span class="min-w-0 flex-1 font-medium text-sm text-clay-900 truncate">${name}</span>
+            <span class="hidden sm:inline text-xs text-clay-500">${cone}${category ? ' · ' + category : ''}</span>
+            <span class="hidden md:inline text-xs text-clay-400 tabular-nums">${id}</span>
+            ${shelfTag(shelfKey)}
+        </div>`;
+    }).join('');
+
+    grid.className = 'rounded-lg border border-silver-200 bg-white divide-y divide-silver-100';
+    grid.innerHTML = rows;
+}
+
+function renderCurrentView() {
+    const shelf = shelfData[currentShelf];
+    const grid = document.getElementById('glaze-grid');
+    const count = document.getElementById('results-count');
+
+    if (shelf.glazes.length === 0) {
+        grid.className = 'grid grid-cols-1';
+        grid.innerHTML = `<div class="py-12 text-center text-sm text-clay-400">No glazes on this shelf yet.</div>`;
+        count.textContent = `0 recipes in ${shelf.label}`;
+        return;
+    }
+
+    count.textContent = `${shelf.glazes.length} recipe${shelf.glazes.length !== 1 ? 's' : ''} in ${shelf.label}`;
+
+    if (currentView === 'list') {
+        renderListView(currentShelf);
+    } else if (currentView === 'chemistry') {
+        // Chemistry view — wider cards with oxide panel
+        grid.className = 'grid grid-cols-1 gap-4 lg:grid-cols-2';
+        grid.innerHTML = shelf.glazes.map(g => renderChemistryCard(g, currentShelf)).join('');
+    } else {
+        // Tiles (default)
+        if (shelf.layout === 'full') {
+            grid.className = 'grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3';
+            grid.innerHTML = shelf.glazes.map(g => renderFullCard(g, currentShelf)).join('');
+        } else {
+            grid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+            grid.innerHTML = shelf.glazes.map(g => renderCompactCard(g, currentShelf)).join('');
+        }
+    }
+}
+
+function setView(view) {
+    currentView = view;
+    document.querySelectorAll('.view-btn').forEach(btn => {
+        if (btn.dataset.view === view) {
+            btn.className = 'view-btn rounded-md p-1.5 transition bg-brand-600 text-white';
+            btn.setAttribute('aria-pressed', 'true');
+        } else {
+            btn.className = 'view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700';
+            btn.setAttribute('aria-pressed', 'false');
+        }
+    });
+    renderCurrentView();
+}
+
+// View toggle click handlers
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => setView(btn.dataset.view));
+});
+
+// Override setActiveShelf to use current view
+const _origSetActive = setActiveShelf;
+setActiveShelf = function(shelfKey) {
+    currentShelf = shelfKey;
+    // Update tab styles
+    const tabs = document.querySelectorAll('.shelf-tab');
+    tabs.forEach(tab => {
+        const isActive = tab.dataset.shelf === shelfKey;
+        if (isActive) {
+            tab.className = 'shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-brand-600 bg-brand-50 text-brand-800';
+            tab.setAttribute('aria-current', 'page');
+            const badge = tab.querySelector('.shelf-count');
+            if (badge) badge.className = 'shelf-count rounded-full bg-brand-600 px-1.5 text-xs tabular-nums text-white';
+        } else {
+            tab.className = 'shelf-tab flex items-center gap-1.5 rounded-full border px-3 py-1.5 text-sm transition border-silver-200 text-clay-600 hover:border-brand-300 hover:text-brand-700';
+            tab.removeAttribute('aria-current');
+            const badge = tab.querySelector('.shelf-count');
+            if (badge) badge.className = 'shelf-count rounded-full bg-silver-100 px-1.5 text-xs tabular-nums text-clay-500';
+        }
+    });
+    renderCurrentView();
+};
+
+// ===== FACETED FILTERING (dropdowns) =====
+let activeFilters = {};
+
+function toggleFilterDropdown(name) {
+    const menu = document.getElementById(`filter-${name}-menu`);
+    const allMenus = document.querySelectorAll('[id$="-menu"]');
+    allMenus.forEach(m => { if (m !== menu) m.classList.add('hidden'); });
+    menu.classList.toggle('hidden');
+}
+
+// Close dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('[id$="-wrap"]')) {
+        document.querySelectorAll('[id$="-menu"]').forEach(m => m.classList.add('hidden'));
+    }
+});
+
+// Checkbox change handler
+document.querySelectorAll('.filter-cb').forEach(cb => {
+    cb.addEventListener('change', () => {
+        const filterKey = cb.dataset.filter;
+        const filterVal = cb.dataset.value;
+
+        if (!activeFilters[filterKey]) activeFilters[filterKey] = [];
+
+        if (cb.checked) {
+            activeFilters[filterKey].push(filterVal);
+        } else {
+            activeFilters[filterKey] = activeFilters[filterKey].filter(v => v !== filterVal);
+            if (activeFilters[filterKey].length === 0) delete activeFilters[filterKey];
+        }
+
+        updateFilterCounts();
+        currentPage = 1;
+        renderCurrentView();
+    });
+});
+
+function updateFilterCounts() {
+    const hasFilters = Object.keys(activeFilters).length > 0;
+    document.getElementById('clear-filters').classList.toggle('hidden', !hasFilters);
+
+    // Update each dropdown button's count badge
+    ['cone', 'finish', 'atmo'].forEach(name => {
+        const mapping = { cone: 'cone', finish: 'surface', atmo: 'atmosphere' };
+        const key = mapping[name];
+        const countEl = document.getElementById(`filter-${name}-count`);
+        const count = (activeFilters[key] || []).length;
+        if (count > 0) {
+            countEl.textContent = count;
+            countEl.classList.remove('hidden');
+        } else {
+            countEl.classList.add('hidden');
+        }
+    });
+
+    // Update folder button label
+    const folderVals = activeFilters['folder'] || [];
+    const folderLabel = document.getElementById('filter-folder-label');
+    const folderBtn = document.getElementById('filter-folder-btn');
+    if (folderVals.length === 0) {
+        folderLabel.textContent = 'All folders';
+        folderBtn.classList.remove('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.add('border-silver-300', 'text-clay-700');
+    } else if (folderVals.length === 1) {
+        folderLabel.textContent = folderVals[0] === '__none__' ? 'No folder' : folderVals[0];
+        folderBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.remove('border-silver-300', 'text-clay-700');
+    } else {
+        folderLabel.textContent = `${folderVals.length} folders`;
+        folderBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.remove('border-silver-300', 'text-clay-700');
+    }
+}
+
+document.getElementById('clear-filters').addEventListener('click', () => {
+    clearAllFilters();
+});
+
+function clearAllFilters() {
+    activeFilters = {};
+    document.querySelectorAll('.filter-cb').forEach(cb => cb.checked = false);
+    updateFilterCounts();
+    currentPage = 1;
+    renderCurrentView();
+}
+
+function getFilteredGlazes(glazes) {
+    if (Object.keys(activeFilters).length === 0) return glazes;
+    return glazes.filter(g => {
+        return Object.entries(activeFilters).every(([key, values]) => {
+            if (key === 'folder') {
+                return values.some(v => v === '__none__' ? !g.folder : (g.folder||'').toLowerCase() === v.toLowerCase());
+            }
+            const gVal = g[key] || '';
+            return values.some(v => gVal.toLowerCase() === v.toLowerCase());
+        });
+    });
+}
+
+// Pagination state
+let currentPage = 1;
+let perPage = 12;
+
+document.getElementById('per-page').addEventListener('change', (e) => {
+    perPage = parseInt(e.target.value);
+    currentPage = 1;
+    renderCurrentView();
+});
+
+document.getElementById('page-prev').addEventListener('click', () => {
+    if (currentPage > 1) { currentPage--; renderCurrentView(); }
+});
+
+document.getElementById('page-next').addEventListener('click', () => {
+    const shelf = shelfData[currentShelf];
+    const totalPages = Math.ceil(shelf.glazes.length / perPage);
+    if (currentPage < totalPages) { currentPage++; renderCurrentView(); }
+});
+
+function renderPagination(totalItems) {
+    const totalPages = Math.ceil(totalItems / perPage);
+    const paginationNav = document.getElementById('pagination');
+    const info = document.getElementById('pagination-info');
+    const numbers = document.getElementById('page-numbers');
+    const prevBtn = document.getElementById('page-prev');
+    const nextBtn = document.getElementById('page-next');
+
+    if (totalItems <= perPage) {
+        paginationNav.classList.add('hidden');
+        return;
+    }
+
+    paginationNav.classList.remove('hidden');
+    const start = (currentPage - 1) * perPage + 1;
+    const end = Math.min(currentPage * perPage, totalItems);
+    info.textContent = `Showing ${start}\u2013${end} of ${totalItems}`;
+
+    prevBtn.disabled = currentPage === 1;
+    nextBtn.disabled = currentPage === totalPages;
+
+    let pagesHtml = '';
+    for (let i = 1; i <= totalPages; i++) {
+        if (i === currentPage) {
+            pagesHtml += `<button class="rounded-md bg-brand-600 px-2.5 py-1 text-xs font-semibold text-white">${i}</button>`;
+        } else {
+            pagesHtml += `<button onclick="goToPage(${i})" class="rounded-md px-2.5 py-1 text-xs font-medium text-clay-600 hover:bg-neutral-100 transition">${i}</button>`;
+        }
+    }
+    numbers.innerHTML = pagesHtml;
+}
+
+function goToPage(page) {
+    currentPage = page;
+    renderCurrentView();
+}
+
+// Override renderCurrentView with pagination support
+const _paginatedRender = renderCurrentView;
+renderCurrentView = function() {
+    const shelf = shelfData[currentShelf];
+    const grid = document.getElementById('glaze-grid');
+    const count = document.getElementById('results-count');
+
+    if (shelf.glazes.length === 0) {
+        grid.className = 'grid grid-cols-1';
+        grid.innerHTML = `<div class="py-12 text-center text-sm text-clay-400">No glazes on this shelf yet.</div>`;
+        count.textContent = `0 recipes in ${shelf.label}`;
+        document.getElementById('pagination').classList.add('hidden');
+        return;
+    }
+
+    const filtered = getFilteredGlazes(shelf.glazes);
+    const totalItems = filtered.length;
+
+    if (totalItems === 0) {
+        grid.className = 'grid grid-cols-1';
+        grid.innerHTML = `<div class="py-12 text-center text-sm text-clay-400">No recipes match your filters.</div>`;
+        count.textContent = `0 of ${shelf.glazes.length} recipes in ${shelf.label}`;
+        document.getElementById('pagination').classList.add('hidden');
+        return;
+    }
+
+    const totalPages = Math.ceil(totalItems / perPage);
+    if (currentPage > totalPages) currentPage = totalPages;
+    const startIdx = (currentPage - 1) * perPage;
+    const pageGlazes = filtered.slice(startIdx, startIdx + perPage);
+
+    const filterNote = Object.keys(activeFilters).length > 0 ? ` (${totalItems} of ${shelf.glazes.length})` : '';
+    count.textContent = `${totalItems} recipe${totalItems !== 1 ? 's' : ''} in ${shelf.label}${filterNote}`;
+
+    if (currentView === 'list') {
+        const rows = pageGlazes.map(g => {
+            const name = g.name;
+            const cone = g.cone || '';
+            const category = g.category || g.surface || '';
+            const id = g.id || '';
+            return `
+            <div class="flex items-center gap-3 border-b border-silver-100 px-4 py-3 last:border-0 hover:bg-silver-100/50 transition">
+                <input type="checkbox" class="h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-200 shrink-0">
+                <span class="min-w-0 flex-1 font-medium text-sm text-clay-900 truncate">${name}</span>
+                <span class="hidden sm:inline text-xs text-clay-500">${cone}${category ? ' · ' + category : ''}</span>
+                <span class="hidden md:inline text-xs text-clay-400 tabular-nums">${id}</span>
+                ${shelfTag(currentShelf)}
+            </div>`;
+        }).join('');
+        grid.className = 'rounded-lg border border-silver-200 bg-white divide-y divide-silver-100';
+        grid.innerHTML = rows;
+    } else if (currentView === 'chemistry') {
+        grid.className = 'grid grid-cols-1 gap-4 lg:grid-cols-2';
+        grid.innerHTML = pageGlazes.map(g => renderChemistryCard(g, currentShelf)).join('');
+    } else {
+        if (shelf.layout === 'full') {
+            grid.className = 'grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3';
+            grid.innerHTML = pageGlazes.map(g => renderFullCard(g, currentShelf)).join('');
+        } else {
+            grid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+            grid.innerHTML = pageGlazes.map(g => renderCompactCard(g, currentShelf)).join('');
+        }
+    }
+    renderPagination(totalItems);
+};
+
+// Reset page on shelf change
+const __origSetActive = setActiveShelf;
+setActiveShelf = function(shelfKey) {
+    currentPage = 1;
+    __origSetActive(shelfKey);
+};
+
+renderCurrentView();
+
+// Page guide dismiss/show with localStorage
+function dismissGuide() {
+    document.getElementById('page-guide').classList.add('hidden');
+    document.getElementById('show-guide-btn').classList.remove('hidden');
+    localStorage.setItem('cmw-mybook-guide-dismissed', '1');
+}
+
+function showGuide() {
+    document.getElementById('page-guide').classList.remove('hidden');
+    document.getElementById('show-guide-btn').classList.add('hidden');
+    localStorage.removeItem('cmw-mybook-guide-dismissed');
+}
+
+// Guide always shows by default on load
+document.getElementById('page-guide').classList.remove('hidden');
+document.getElementById('show-guide-btn').classList.add('hidden');
+
+// Sidebar open/close
+function openSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const btn = document.getElementById('sidebar-open-btn');
+    sidebar.style.width = '15rem'; // w-60
+    sidebar.style.padding = '';
+    sidebar.style.borderRightWidth = '';
+    backdrop.classList.add('hidden');
+    btn.classList.add('hidden');
+    localStorage.removeItem('cmw-sidebar-collapsed');
+}
+
+function closeSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const backdrop = document.getElementById('sidebar-backdrop');
+    const btn = document.getElementById('sidebar-open-btn');
+    sidebar.style.width = '0';
+    sidebar.style.padding = '0';
+    sidebar.style.borderRightWidth = '0';
+    backdrop.classList.add('hidden');
+    btn.classList.remove('hidden');
+    localStorage.setItem('cmw-sidebar-collapsed', '1');
+}
+
+// Sidebar starts open by default (user can close it manually)
+</script>
+
+</body>
+</html>

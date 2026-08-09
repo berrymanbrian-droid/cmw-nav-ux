@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Glazes · CMW (Local Prototype)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        clay: {
+                            100: '#e8e4e0', 200: '#d4cec8', 300: '#b8b0a8',
+                            400: '#9a8f85', 500: '#7d7168', 600: '#635850',
+                            700: '#4a4039', 800: '#332b26', 900: '#1f1a17',
+                            950: '#141110'
+                        },
+                        brand: {
+                            50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff',
+                            300: '#d8b4fe', 400: '#c084fc', 500: '#a855f7',
+                            600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6',
+                            900: '#4c1d95', 950: '#2e1065'
+                        },
+                        silver: {
+                            100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 text-gray-900 antialiased font-sans">
+
+<!-- ===== TOP NAV (dark) ===== -->
+<div class="dark">
+<nav class="border-b border-clay-800 px-3 sm:px-10 bg-clay-950 text-clay-100">
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex min-w-0 items-center gap-1 sm:gap-4">
+            <button type="button" aria-label="Open navigation menu" class="flex shrink-0 items-center px-2 py-3 text-clay-200 hover:text-white md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+            <a href="#" aria-label="CMW home" class="shrink-0 select-none">
+                <img src="https://my.ceramicmaterialsworkshop.com/anatomy/cmw-logo.png" alt="CMW" class="block h-9 w-auto"/>
+            </a>
+            <div class="relative hidden flex-1 md:block">
+                <div class="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    <ul class="flex min-w-max gap-1">
+                        <li><a href="#" class="inline-block whitespace-nowrap border-b-2 border-transparent px-3 py-4 text-base font-medium text-clay-300 transition-colors hover:border-clay-600 hover:text-clay-100">Ware</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Join</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Glaze Anatomy</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">FIRED!</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-brand-500 text-white">My Book</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">The Lab</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Library</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Learn</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Studio</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Pyr</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+            <button type="button" aria-label="Search" class="inline-flex items-center justify-center rounded-md p-2 text-clay-300 hover:text-brand-400 hover:bg-clay-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <span aria-hidden="true" class="inline-block w-9 h-9 rounded-full bg-clay-700"></span>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!-- ===== SIDEBAR + MAIN LAYOUT ===== -->
+<div id="layout-wrapper" class="flex min-h-[calc(100vh-64px)]">
+    <div id="sidebar-backdrop" class="hidden fixed inset-0 z-30 bg-black/30" onclick="closeSidebar()"></div>
+
+    <!-- Left sidebar -->
+    <aside id="sidebar" class="shrink-0 h-[calc(100vh-64px)] sticky top-[64px] w-60 flex flex-col border-r border-neutral-200 bg-white px-3 py-5 overflow-hidden" style="transition: width 200ms ease, padding 200ms ease, border-width 200ms ease;">
+        <div class="flex items-center justify-between px-3 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Navigate</span>
+            <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition" aria-label="Collapse sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            </button>
+        </div>
+        <nav aria-label="My sections" class="flex-1 space-y-1 overflow-y-auto">
+            <a href="my-book.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                My Book
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                My Glazes
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                My Clay Bodies
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                My Reports
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+                My Presentations
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                My Stull Map
+            </a>
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Glaze Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Clay Body Calculator
+            </a>
+
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Import
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Sidebar open button -->
+    <button id="sidebar-open-btn" onclick="openSidebar()" class="hidden sticky top-20 ml-2 mt-4 h-8 w-8 items-center justify-center rounded-md border border-silver-200 bg-white text-clay-500 shadow-sm hover:text-brand-700 hover:border-brand-300 transition z-10 shrink-0" aria-label="Open navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 7 18 12 13 17"/><polyline points="6 7 11 12 6 17"/></svg>
+    </button>
+
+    <!-- Main content area -->
+    <main class="flex-1 min-w-0 px-4 sm:px-8 py-8">
+
+        <!-- Header -->
+        <header class="mb-5">
+            <h1 class="text-2xl font-semibold text-brand-700">My Glazes</h1>
+            <p class="mt-1 text-sm text-clay-500">All your saved glaze recipes in one place — across all shelves.</p>
+        </header>
+
+        <!-- Page Guide -->
+        <div id="page-guide" class="mb-6 rounded-xl border border-brand-200/60 bg-gradient-to-r from-brand-50/80 to-white p-4 sm:p-5 relative">
+            <button onclick="dismissGuide()" class="absolute top-3 right-3 rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-white transition" aria-label="Dismiss guide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="flex gap-3 sm:gap-4">
+                <div class="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-sm font-semibold text-clay-900">My Glazes — Collection View</h2>
+                    <p class="mt-1 text-sm text-clay-600 leading-relaxed">This is a flat view of every glaze recipe you've saved, regardless of which shelf it's on. Use filters to narrow by cone, finish, or atmosphere. Click any recipe to see its full detail.</p>
+                    <button onclick="dismissGuide()" class="mt-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Got it, don't show again</button>
+                </div>
+            </div>
+        </div>
+        <button id="show-guide-btn" onclick="showGuide()" class="hidden mb-4 inline-flex items-center gap-1.5 rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-500 hover:text-brand-700 hover:border-brand-300 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            How to use this page
+        </button>
+
+        <!-- Filter dropdowns -->
+        <div id="filter-bar" class="mb-4 flex flex-wrap items-center gap-2">
+            <span class="text-xs font-medium text-clay-500">Filter:</span>
+            <div class="relative" id="filter-cone-wrap">
+                <button onclick="toggleFilterDropdown('cone')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                    Cone <span id="filter-cone-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-cone-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-48 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 6"> Cone 6</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 9"> Cone 9</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="cone" data-value="cone 10"> Cone 10</label>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" id="filter-finish-wrap">
+                <button onclick="toggleFilterDropdown('finish')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                    Finish <span id="filter-finish-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-finish-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-48 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Gloss"> Gloss</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Satin"> Satin</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Matte"> Matte</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="surface" data-value="Crystal"> Crystalline</label>
+                    </div>
+                </div>
+            </div>
+            <div class="relative" id="filter-atmo-wrap">
+                <button onclick="toggleFilterDropdown('atmo')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                    Atmosphere <span id="filter-atmo-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-atmo-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-48 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Reduction"> Reduction</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Oxidation"> Oxidation</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="atmosphere" data-value="Wood"> Wood</label>
+                    </div>
+                </div>
+            </div>
+            <!-- Shelf filter -->
+            <div class="relative" id="filter-shelf-wrap">
+                <button onclick="toggleFilterDropdown('shelf')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                    Shelf <span id="filter-shelf-count" class="hidden rounded-full bg-brand-600 px-1.5 text-[10px] text-white"></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-shelf-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-44 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-48 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="shelf" data-value="mainstays"> Mainstays</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="shelf" data-value="notebook"> Notebook</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="shelf" data-value="testing"> Testing</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="shelf" data-value="wishlist"> Wishlist</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="shelf" data-value="archive"> Archive</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Folder filter (wider, shows selected name) -->
+            <div class="relative" id="filter-lab-wrap">
+                <button onclick="toggleFilterDropdown('lab')" id="filter-lab-btn" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 min-w-[8rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-clay-400"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                    <span id="filter-lab-label">All labs</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-lab-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-72 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-64 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 1 — Pick a Part"> Lab 1 — Pick a Part</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 2 — Flux Capacity (weight-for-weight)"> Lab 2 — Flux Capacity (weight-for-weight)</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 3 — Sili-Closeness"> Lab 3 — Sili-Closeness</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 4 — Back to Flux Capacity (UMF-matched)"> Lab 4 — Back to Flux Capacity (UMF-matched)</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 5 — Color Wheel"> Lab 5 — Color Wheel</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 1 — First Impressions"> Lab 1 — First Impressions</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 2 — Apply Yourself"> Lab 2 — Apply Yourself</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 3 — Cartography"> Lab 3 — Cartography</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 4 — Exchange Rate"> Lab 4 — Exchange Rate</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="lab" data-value="Lab 5 — Flying Colors"> Lab 5 — Flying Colors</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Folder filter (wider, shows selected name) -->
+            <div class="relative" id="filter-folder-wrap">
+                <button onclick="toggleFilterDropdown('folder')" id="filter-folder-btn" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 min-w-[10rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-clay-400"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    <span id="filter-folder-label">All folders</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-folder-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-56 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="max-h-56 overflow-y-auto space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Iron series"> Iron series</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Celadon tests"> Celadon tests</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="Copper reds"> Copper reds</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="filter-cb rounded border-silver-300 text-brand-600 focus:ring-brand-200" data-filter="folder" data-value="__none__"> No folder</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Clear all (sits right after last dropdown) -->
+            <button id="clear-filters" class="hidden text-[11px] font-medium text-brand-700 hover:text-brand-900 transition ml-2" onclick="clearAllFilters()">Clear all ✕</button>
+        </div>
+
+        <!-- Search + results count + view toggle -->
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+            <input type="search" placeholder="Search glazes by name…" class="min-w-[12rem] max-w-sm flex-1 rounded-lg border border-silver-300 bg-white text-clay-800 placeholder:text-clay-400 focus:border-brand-400 px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-brand-200" value=""/>
+            <span class="text-xs font-medium text-clay-500">Sort by</span>
+            <select id="sort-select" class="rounded-lg border border-silver-300 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none" aria-label="Sort by">
+                <option value="recent" selected>Recently updated</option>
+                <option value="name-asc">Name (A–Z)</option>
+                <option value="name-desc">Name (Z–A)</option>
+                <option value="cone">Cone</option>
+            </select>
+            <div class="flex items-center gap-2 ml-auto">
+                <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 hover:text-brand-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                    Bulk Image Upload
+                </button>
+                <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 hover:text-brand-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    Import Recipes
+                </button>
+            </div>
+        </div>
+
+        <div class="mb-4 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <p id="results-count" class="text-sm text-clay-500">12 glazes</p>
+                <div class="flex items-center gap-1.5">
+                    <label for="per-page" class="text-xs text-clay-400">Show</label>
+                    <select id="per-page" class="rounded border border-silver-300 bg-white px-2 py-0.5 text-xs text-clay-600 focus:outline-none focus:border-brand-400">
+                        <option value="12" selected>12</option>
+                        <option value="24">24</option>
+                        <option value="48">48</option>
+                    </select>
+                </div>
+            </div>
+            <div class="inline-flex flex-shrink-0 rounded-lg border border-silver-300 p-0.5" role="group" aria-label="View mode">
+                <button data-view="list" class="view-btn rounded-md p-1.5 transition bg-brand-600 text-white" title="List view">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </button>
+                <button data-view="tiles" class="view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700" title="Tile view">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                </button>
+                <button data-view="chemistry" class="view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700" title="Chemistry view">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Bulk action toolbar (hidden until items selected) -->
+        <div id="bulk-toolbar" class="hidden mb-3 rounded-lg border border-brand-200 bg-brand-50/50 px-4 py-2.5 flex flex-wrap items-center gap-3">
+            <span id="bulk-count" class="text-sm font-semibold text-clay-800">0 selected</span>
+            <button class="rounded-md border border-silver-300 bg-white px-3 py-1 text-xs font-medium text-clay-700 hover:border-brand-400 hover:text-brand-700 transition">Move to folder ▾</button>
+            <button class="rounded-md border border-silver-300 bg-white px-3 py-1 text-xs font-medium text-clay-700 hover:border-brand-400 hover:text-brand-700 transition">Set subset...</button>
+            <button class="rounded-md border border-amber-300 bg-amber-50 px-3 py-1 text-xs font-medium text-amber-700 hover:bg-amber-100 transition">Set labs...</button>
+            <button class="rounded-md border border-red-300 bg-red-50 px-3 py-1 text-xs font-medium text-red-700 hover:bg-red-100 transition">Delete selected</button>
+            <button onclick="clearSelection()" class="ml-auto text-xs font-medium text-clay-500 hover:text-clay-800 transition">Clear selection</button>
+        </div>
+
+        <!-- Select all checkbox -->
+        <div id="select-all-row" class="mb-2 flex items-center gap-2">
+            <input type="checkbox" id="select-all-cb" class="h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-200" onchange="toggleSelectAll(this.checked)">
+            <label for="select-all-cb" id="select-all-label" class="text-xs text-clay-500 cursor-pointer">Select all</label>
+        </div>
+
+        <!-- Glaze grid -->
+        <div id="glaze-grid" class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+        </div>
+
+        <!-- Pagination -->
+        <nav id="pagination" class="hidden mt-6 flex items-center justify-between border-t border-silver-200 pt-4" aria-label="Pagination">
+            <p id="pagination-info" class="text-xs text-clay-500"></p>
+            <div class="flex items-center gap-1">
+                <button id="page-prev" class="rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-600 transition hover:border-brand-400 hover:text-brand-700 disabled:opacity-40 disabled:pointer-events-none" disabled>Prev</button>
+                <div id="page-numbers" class="flex items-center gap-0.5"></div>
+                <button id="page-next" class="rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-600 transition hover:border-brand-400 hover:text-brand-700 disabled:opacity-40 disabled:pointer-events-none">Next</button>
+            </div>
+        </nav>
+
+        <!-- Continue where you left off -->
+        <section class="mt-10 border-t border-silver-200 pt-6">
+            <div class="flex items-baseline gap-3 mb-4">
+                <h2 class="text-base font-semibold text-clay-900 italic">Continue where you left off</h2>
+                <span class="text-xs text-clay-400">your latest tests &amp; recipes</span>
+            </div>
+            <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
+                <div class="rounded-lg border border-silver-200 bg-white p-4">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-clay-400">Glaze</span>
+                    </div>
+                    <h3 class="font-semibold text-sm text-clay-900 truncate">Prim Ochre Tan</h3>
+                    <p class="text-[11px] text-clay-400 mt-0.5">updated 8/7/2026</p>
+                    <a href="#" class="mt-2 inline-flex items-center gap-1 rounded border border-brand-300 px-2 py-0.5 text-[11px] font-medium text-brand-700 hover:bg-brand-50 transition">Start a test →</a>
+                </div>
+                <div class="rounded-lg border border-silver-200 bg-white p-4">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-clay-400">Glaze</span>
+                    </div>
+                    <h3 class="font-semibold text-sm text-clay-900 truncate">Blue Variegated (Working...</h3>
+                    <p class="text-[11px] text-clay-400 mt-0.5">updated 8/7/2026</p>
+                    <a href="#" class="mt-2 inline-flex items-center gap-1 rounded border border-brand-300 px-2 py-0.5 text-[11px] font-medium text-brand-700 hover:bg-brand-50 transition">Start a test →</a>
+                </div>
+                <div class="rounded-lg border border-silver-200 bg-white p-4">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-clay-400">Glaze</span>
+                    </div>
+                    <h3 class="font-semibold text-sm text-clay-900 truncate">Toasted Mello (VB3)</h3>
+                    <p class="text-[11px] text-clay-400 mt-0.5">updated 8/7/2026</p>
+                    <a href="#" class="mt-2 inline-flex items-center gap-1 rounded border border-brand-300 px-2 py-0.5 text-[11px] font-medium text-brand-700 hover:bg-brand-50 transition">Start a test →</a>
+                </div>
+                <div class="rounded-lg border border-silver-200 bg-white p-4">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-clay-400">Glaze</span>
+                    </div>
+                    <h3 class="font-semibold text-sm text-clay-900 truncate">Ghost Crawl</h3>
+                    <p class="text-[11px] text-clay-400 mt-0.5">updated 8/7/2026</p>
+                    <a href="#" class="mt-2 inline-flex items-center gap-1 rounded border border-brand-300 px-2 py-0.5 text-[11px] font-medium text-brand-700 hover:bg-brand-50 transition">Start a test →</a>
+                </div>
+                <div class="rounded-lg border border-silver-200 bg-white p-4">
+                    <div class="flex items-center gap-1.5 mb-1">
+                        <span class="h-2 w-2 rounded-full bg-brand-600"></span>
+                        <span class="text-[10px] font-bold uppercase tracking-wide text-clay-400">Test · Pre-fire</span>
+                    </div>
+                    <h3 class="font-semibold text-sm text-clay-900 truncate">BlueVar Crazed V1</h3>
+                    <p class="text-[11px] text-clay-400 mt-0.5">updated 8/7/2026</p>
+                    <a href="#" class="mt-2 inline-flex items-center gap-1 rounded border border-brand-300 px-2 py-0.5 text-[11px] font-medium text-brand-700 hover:bg-brand-50 transition">Batch &amp; print →</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</div><!-- end layout wrapper -->
+
+<!-- ===== FOOTER ===== -->
+<footer class="mt-12 border-t border-neutral-200 px-6 py-8">
+    <div class="mx-auto max-w-7xl">
+        <section aria-label="More from CMW" class="mb-8">
+            <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-400">From CMW</div>
+            <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600">Join</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900">CMW membership</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500">Calculators, tests, and the research library.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700">See support levels →</span>
+                </a>
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600">Listen</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900">For Flux Sake</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500">The CMW glaze-chemistry podcast.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700">Listen →</span>
+                </a>
+                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600">Watch</div>
+                    <div class="mt-0.5 text-sm font-semibold text-neutral-900">CMW on YouTube</div>
+                    <p class="mt-1 text-xs leading-snug text-neutral-500">Lectures, demos, and Q&amp;A from the workshop.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700">Watch →</span>
+                </a>
+            </div>
+        </section>
+        <div class="grid grid-cols-2 gap-6 sm:grid-cols-4">
+            <nav aria-label="Reference">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">Reference</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Glaze Anatomy</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Materials</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Reference shelf</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">The Library</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Make">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">Make</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">The Lab</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Color</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Tools">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">Tools</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Glaze calculator</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Clay body calculator</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Research tests</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Design a test</a></li>
+                </ul>
+            </nav>
+            <nav aria-label="Learn">
+                <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-500">Learn</div>
+                <ul class="space-y-1.5">
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">Classes</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">For Flux Sake (podcast)</a></li>
+                    <li><a href="#" class="text-xs text-neutral-600 hover:text-brand-700 hover:underline">CMW on YouTube</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="mt-8 border-t border-neutral-100 pt-4 text-[11px] leading-relaxed text-neutral-400">
+            <p>&copy; 2026 Ceramic Materials Workshop. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<!-- ===== SCRIPT ===== -->
+<script>
+// Glaze data — flat collection across all shelves
+const allGlazes = [
+    { name: 'Blue Variegated (Working Prod)', id: '080726-1', cone: 'cone 6', coneColor: 'blue', surface: 'Satin', atmosphere: 'Oxidation', shelf: 'mainstays', type: 'Glaze', folder: null, updated: '8/7/2026', photos: 3,
+      ingredients: [['Neph Sy','ALKALI \u00b7 Na\u2082O',33.9],['Whiting','ALK. EARTH \u00b7 CaO',0.8],['Strontium Carb','ALK. EARTH \u00b7 SrO',33.9],['Frit 3195','BORON \u00b7 B\u2082O\u2083',10.2],['Grolleg','ALUMINA \u00b7 Al\u2082O\u2083',17.8],['Flint','SILICA \u00b7 SiO\u2082',3.4],['Copper Carbonate','COLORANT \u00b7 CuO',5.0],['Tin Oxide','OPACIFIER \u00b7 SnO\u2082',5.0]],
+      umf: { siAl: '4.2:1', sio2: 1.49, al2o3: 0.35, b2o3: 0.07 },
+      flux: { alkali: 0.22, alkalineEarth: 0.78 },
+      r2o: [['Na\u2082O',0.15],['K\u2082O',0.05],['K:Na',0.34]],
+      ro: [['CaO',0.07],['SrO',0.54],['CuO',0.10],['FeO',0.01]] },
+    { name: 'Prim Ochre Tan', id: '080726-20', cone: 'cone 6', coneColor: 'blue', surface: 'Crystal', atmosphere: 'Oxidation', shelf: 'mainstays', type: 'Glaze', folder: null, updated: '7/22/2026', photos: 0,
+      ingredients: [['Neph Sy','ALKALI \u00b7 Na\u2082O',33.9],['Grolleg','ALUMINA \u00b7 Al\u2082O\u2083',20.3],['Dolomite','ALK. EARTH \u00b7 MgO',17.6],['Flint','SILICA \u00b7 SiO\u2082',15.9],['Gillespie Borate','BORON \u00b7 B\u2082O\u2083',8.8],['Titanium Dioxide','OPACIFIER',6.0],['Rutile','COLORANT',5.0],['Tin Oxide','OPACIFIER \u00b7 SnO\u2082',5.0]],
+      umf: null, flux: null, r2o: null, ro: null },
+    { name: 'Iron Saturate Red', id: '070312-11', cone: 'cone 10', coneColor: 'green', surface: 'Matte', atmosphere: 'Reduction', shelf: 'mainstays', type: 'Glaze', folder: 'Iron series', updated: '6/15/2026', photos: 2,
+      ingredients: [['Custer Feldspar','ALKALI \u00b7 K\u2082O',40],['Red Iron Oxide','COLORANT \u00b7 Fe\u2082O\u2083',15],['Dolomite','ALK. EARTH \u00b7 MgO',22],['Silica','SILICA \u00b7 SiO\u2082',12],['Whiting','ALK. EARTH \u00b7 CaO',8],['EPK','ALUMINA \u00b7 Al\u2082O\u2083',3]],
+      umf: { siAl: '6.8:1', sio2: 2.85, al2o3: 0.42, b2o3: 0.00 },
+      flux: { alkali: 0.30, alkalineEarth: 0.70 },
+      r2o: [['Na\u2082O',0.08],['K\u2082O',0.22]],
+      ro: [['CaO',0.18],['MgO',0.22]] },
+    { name: 'Celadon Base', id: '090101-05', cone: 'cone 10', coneColor: 'green', surface: 'Satin', atmosphere: 'Reduction', shelf: 'testing', type: 'Glaze', folder: 'Celadon tests', updated: '8/1/2026', photos: 1,
+      ingredients: [['Custer Feldspar','ALKALI \u00b7 K\u2082O',45],['Silica','SILICA \u00b7 SiO\u2082',25],['Whiting','ALK. EARTH \u00b7 CaO',18],['EPK','ALUMINA \u00b7 Al\u2082O\u2083',10],['Iron Oxide','COLORANT \u00b7 Fe\u2082O\u2083',2]],
+      umf: { siAl: '5.1:1', sio2: 3.20, al2o3: 0.63, b2o3: 0.00 },
+      flux: { alkali: 0.28, alkalineEarth: 0.72 },
+      r2o: [['K\u2082O',0.28]], ro: [['CaO',0.52],['MgO',0.20]] },
+    { name: 'Tenmoku Variation #3', id: '090215-03', cone: 'cone 9', coneColor: 'amber', surface: 'Gloss', atmosphere: 'Reduction', shelf: 'testing', type: 'Glaze', folder: null, updated: '7/28/2026', photos: 0,
+      ingredients: [['Feldspar','ALKALI',42],['Whiting','ALK. EARTH \u00b7 CaO',20],['Silica','SILICA',15],['Ball Clay','ALUMINA',10],['Iron Oxide','COLORANT',8],['Bone Ash','FLUX',5]],
+      umf: null, flux: null, r2o: null, ro: null },
+    { name: 'Copper Red #1', id: '090405-02', cone: 'cone 10', coneColor: 'green', surface: 'Gloss', atmosphere: 'Reduction', shelf: 'testing', type: 'Glaze', folder: 'Copper reds', updated: '8/5/2026', photos: 2,
+      ingredients: [['Custer Feldspar','ALKALI',48],['Silica','SILICA',22],['Whiting','ALK. EARTH',14],['EPK','ALUMINA',8],['Bone Ash','FLUX',6],['Copper Carb','COLORANT \u00b7 CuO',1],['Tin Oxide','OPACIFIER',0.5]],
+      umf: { siAl: '4.8:1', sio2: 2.90, al2o3: 0.60, b2o3: 0.00 },
+      flux: { alkali: 0.25, alkalineEarth: 0.75 },
+      r2o: [['K\u2082O',0.22],['Na\u2082O',0.03]], ro: [['CaO',0.45],['MgO',0.05],['CuO',0.02]] },
+];
+
+const coneColors = {
+    green: { bg: 'bg-green-100', text: 'text-green-700', border: 'border-l-green-500' },
+    amber: { bg: 'bg-amber-100', text: 'text-amber-700', border: 'border-l-amber-500' },
+    blue:  { bg: 'bg-blue-100',  text: 'text-blue-700',  border: 'border-l-blue-500' }
+};
+
+const shelfColors = {
+    mainstays: { bg: 'bg-green-50', border: 'border-green-300', text: 'text-green-700', dot: 'bg-green-500', label: 'Mainstay' },
+    notebook:  { bg: 'bg-neutral-50', border: 'border-neutral-300', text: 'text-neutral-600', dot: 'bg-neutral-400', label: 'Notebook' },
+    testing:   { bg: 'bg-amber-50', border: 'border-amber-300', text: 'text-amber-700', dot: 'bg-amber-500', label: 'Testing' },
+    wishlist:  { bg: 'bg-blue-50', border: 'border-blue-300', text: 'text-blue-700', dot: 'bg-blue-500', label: 'Wishlist' },
+    archive:   { bg: 'bg-slate-50', border: 'border-slate-300', text: 'text-slate-500', dot: 'bg-slate-400', label: 'Archived' }
+};
+
+function shelfTag(shelfKey) {
+    const sc = shelfColors[shelfKey] || shelfColors.notebook;
+    return `<span class="inline-flex items-center gap-1.5 rounded-full border ${sc.border} ${sc.bg} px-2.5 py-0.5 text-[11px] font-semibold ${sc.text}"><span class="h-2 w-2 rounded-full ${sc.dot}"></span>${sc.label}</span>`;
+}
+
+// State
+let activeFilters = {};
+let currentPage = 1;
+let perPage = 12;
+let currentView = 'list';
+
+// Filter logic
+function toggleFilterDropdown(name) {
+    const menu = document.getElementById(`filter-${name}-menu`);
+    document.querySelectorAll('[id$="-menu"]').forEach(m => { if (m !== menu) m.classList.add('hidden'); });
+    menu.classList.toggle('hidden');
+}
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('[id$="-wrap"]')) {
+        document.querySelectorAll('[id$="-menu"]').forEach(m => m.classList.add('hidden'));
+    }
+});
+document.querySelectorAll('.filter-cb').forEach(cb => {
+    cb.addEventListener('change', () => {
+        const key = cb.dataset.filter, val = cb.dataset.value;
+        if (!activeFilters[key]) activeFilters[key] = [];
+        if (cb.checked) { activeFilters[key].push(val); }
+        else { activeFilters[key] = activeFilters[key].filter(v => v !== val); if (!activeFilters[key].length) delete activeFilters[key]; }
+        updateFilterCounts();
+        currentPage = 1;
+        render();
+    });
+});
+function updateFilterCounts() {
+    const has = Object.keys(activeFilters).length > 0;
+    document.getElementById('clear-filters').classList.toggle('hidden', !has);
+    ['cone','finish','atmo','shelf'].forEach(name => {
+        const mapping = { cone:'cone', finish:'surface', atmo:'atmosphere', shelf:'shelf' };
+        const cnt = (activeFilters[mapping[name]] || []).length;
+        const el = document.getElementById(`filter-${name}-count`);
+        if (cnt) { el.textContent = cnt; el.classList.remove('hidden'); } else { el.classList.add('hidden'); }
+    });
+    // Update lab button label
+    const labVals = activeFilters['lab'] || [];
+    const labLabel = document.getElementById('filter-lab-label');
+    const labBtn = document.getElementById('filter-lab-btn');
+    if (labVals.length === 0) {
+        labLabel.textContent = 'All labs';
+        labBtn.classList.remove('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        labBtn.classList.add('border-silver-300', 'text-clay-700');
+    } else if (labVals.length === 1) {
+        labLabel.textContent = labVals[0];
+        labBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        labBtn.classList.remove('border-silver-300', 'text-clay-700');
+    } else {
+        labLabel.textContent = `${labVals.length} labs`;
+        labBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        labBtn.classList.remove('border-silver-300', 'text-clay-700');
+    }
+    // Update folder button label
+    const folderVals = activeFilters['folder'] || [];
+    const folderLabel = document.getElementById('filter-folder-label');
+    const folderBtn = document.getElementById('filter-folder-btn');
+    if (folderVals.length === 0) {
+        folderLabel.textContent = 'All folders';
+        folderBtn.classList.remove('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.add('border-silver-300', 'text-clay-700');
+    } else if (folderVals.length === 1) {
+        folderLabel.textContent = folderVals[0] === '__none__' ? 'No folder' : folderVals[0];
+        folderBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.remove('border-silver-300', 'text-clay-700');
+    } else {
+        folderLabel.textContent = `${folderVals.length} folders`;
+        folderBtn.classList.add('border-brand-600', 'bg-brand-50', 'text-brand-800');
+        folderBtn.classList.remove('border-silver-300', 'text-clay-700');
+    }
+}
+function clearAllFilters() {
+    activeFilters = {};
+    document.querySelectorAll('.filter-cb').forEach(cb => cb.checked = false);
+    updateFilterCounts();
+    currentPage = 1;
+    render();
+}
+function getFiltered() {
+    if (!Object.keys(activeFilters).length) return sortGlazes([...allGlazes]);
+    return sortGlazes(allGlazes.filter(g => Object.entries(activeFilters).every(([k, vals]) => {
+        if (k === 'folder') {
+            return vals.some(v => v === '__none__' ? !g.folder : (g.folder||'').toLowerCase() === v.toLowerCase());
+        }
+        return vals.some(v => (g[k]||'').toLowerCase() === v.toLowerCase());
+    })));
+}
+
+function sortGlazes(glazes) {
+    const sortVal = document.getElementById('sort-select').value;
+    if (sortVal === 'name-asc') return glazes.sort((a,b) => a.name.localeCompare(b.name));
+    if (sortVal === 'name-desc') return glazes.sort((a,b) => b.name.localeCompare(a.name));
+    if (sortVal === 'cone') return glazes.sort((a,b) => {
+        const numA = parseInt((a.cone||'').replace(/\D/g,'')) || 0;
+        const numB = parseInt((b.cone||'').replace(/\D/g,'')) || 0;
+        return numA - numB;
+    });
+    return glazes; // 'recent' — keep original order
+}
+
+// Render
+function render() {
+    const filtered = getFiltered();
+    const total = filtered.length;
+    const grid = document.getElementById('glaze-grid');
+    const count = document.getElementById('results-count');
+    const totalPages = Math.ceil(total / perPage);
+    if (currentPage > totalPages) currentPage = Math.max(1, totalPages);
+    const page = filtered.slice((currentPage-1)*perPage, currentPage*perPage);
+
+    count.textContent = `${total} glaze${total!==1?'s':''}`;
+
+    if (!total) { grid.className='grid grid-cols-1'; grid.innerHTML='<div class="py-12 text-center text-sm text-clay-400">No glazes match your filters.</div>'; renderPagination(0); return; }
+
+    if (currentView === 'list') {
+        grid.className = 'space-y-3';
+        grid.innerHTML = page.map(g => {
+            const meta = [g.folder ? `<em>${g.folder}</em>` : '<em>no folder</em>', `${g.ingredients.length} ingredients`, `updated ${g.updated}`].join(' \u00b7 ');
+            const ingredRows = g.ingredients.map(([name,role,amt]) => `<tr class="border-b border-silver-100/60 last:border-0"><td class="py-1 pr-2 text-sm text-clay-800">${name}</td><td class="py-1 pr-3 text-[10px] uppercase text-clay-400 hidden lg:table-cell">${role}</td><td class="py-1 text-right text-sm font-medium tabular-nums text-clay-900">${amt}g</td></tr>`).join('');
+            // Photos placeholder
+            const photosHtml = g.photos > 0
+                ? `<div class="grid grid-cols-3 gap-1.5"><${Array.from({length: Math.min(g.photos,3)}, (_,i) => `<div class="aspect-square rounded-lg bg-gradient-to-br from-clay-200 to-clay-300 flex items-center justify-center text-clay-500 text-xs">${i+1}</div>`).join('')}</div><div class="mt-1.5 flex items-center gap-2"><button class="text-[11px] text-brand-700 font-medium">+ Add</button><select class="rounded border border-silver-300 px-1.5 py-0.5 text-[11px] text-clay-600"><option>Fired</option><option>Unfired</option></select></div>`
+                : `<div class="flex items-center justify-center h-20 rounded-lg border-2 border-dashed border-silver-200 text-xs text-clay-400">No photos yet</div><button class="mt-1.5 text-[11px] text-brand-700 font-medium">+ Add photo</button>`;
+            // Chemistry panel
+            let chemHtml = '';
+            if (g.umf) {
+                const fluxBar = g.flux ? `<div class="mb-2"><span class="text-[10px] font-bold uppercase text-clay-400">Flux Ratio</span><div class="mt-1 flex items-center gap-2 text-xs"><span class="font-semibold text-red-600">${g.flux.alkali.toFixed(2)} alkali</span><span class="text-clay-300">|</span><span class="font-semibold text-blue-600">${g.flux.alkalineEarth.toFixed(2)} alk. earth</span></div></div>` : '';
+                const glassFormers = `<div class="rounded bg-neutral-50 p-2"><div class="text-[9px] font-bold uppercase tracking-wide text-clay-400 mb-1">Glass Formers · Si:Al ${g.umf.siAl}</div><table class="w-full text-[11px]"><tr><td class="text-clay-600">SiO\u2082</td><td class="text-right font-medium tabular-nums">${g.umf.sio2}</td></tr><tr><td class="text-clay-600">Al\u2082O\u2083</td><td class="text-right font-medium tabular-nums">${g.umf.al2o3}</td></tr><tr><td class="text-clay-600">B\u2082O\u2083</td><td class="text-right font-medium tabular-nums">${g.umf.b2o3}</td></tr></table></div>`;
+                const r2oHtml = g.r2o ? `<div class="rounded bg-red-50/50 p-2"><div class="text-[9px] font-bold uppercase tracking-wide text-red-400 mb-1">R\u2082O</div><table class="w-full text-[11px]">${g.r2o.map(([ox,v])=>`<tr><td class="text-clay-600">${ox}</td><td class="text-right font-medium tabular-nums">${v}</td></tr>`).join('')}</table></div>` : '';
+                const roHtml = g.ro ? `<div class="rounded bg-blue-50/50 p-2"><div class="text-[9px] font-bold uppercase tracking-wide text-blue-400 mb-1">RO</div><table class="w-full text-[11px]">${g.ro.map(([ox,v])=>`<tr><td class="text-clay-600">${ox}</td><td class="text-right font-medium tabular-nums">${v}</td></tr>`).join('')}</table></div>` : '';
+                chemHtml = `<div class="border-l border-silver-200 pl-4 min-w-[200px] space-y-2">${fluxBar}${glassFormers}<div class="grid grid-cols-2 gap-2">${r2oHtml}${roHtml}</div></div>`;
+            } else {
+                chemHtml = `<div class="border-l border-silver-200 pl-4 min-w-[140px] flex items-start pt-2"><p class="text-xs text-clay-400 italic">Chemistry unavailable</p></div>`;
+            }
+            return `
+            <div class="rounded-lg border border-silver-200 bg-white p-5 transition hover:shadow-sm">
+                <div class="flex items-start justify-between gap-3 mb-1">
+                    <div class="flex items-center gap-2">
+                        <input type="checkbox" data-select-id="${g.id}" onchange="toggleSelectOne('${g.id}')" class="h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-200 shrink-0">
+                        <h3 class="text-base font-bold text-clay-900">${g.name}</h3>
+                    </div>
+                    <div class="flex items-center gap-2 shrink-0">
+                        ${shelfTag(g.shelf)}
+                        <button class="rounded border border-silver-300 px-2 py-0.5 text-[11px] font-medium text-clay-600 hover:border-brand-400 hover:text-brand-700 transition">+ Compare</button>
+                        <button class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition" title="More options">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                        </button>
+                    </div>
+                </div>
+                <p class="ml-6 text-xs text-clay-400 mb-3">${meta}</p>
+                <div class="flex gap-4">
+                    <!-- Photos -->
+                    <div class="w-36 shrink-0 hidden sm:block">${photosHtml}</div>
+                    <!-- Ingredients -->
+                    <div class="flex-1 min-w-0">
+                        <table class="w-full"><tbody>${ingredRows}</tbody></table>
+                    </div>
+                    <!-- Chemistry -->
+                    <div class="hidden md:block">${chemHtml}</div>
+                </div>
+            </div>`;
+        }).join('');
+    } else {
+        grid.className = 'grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4';
+        grid.innerHTML = page.map(g => {
+            const cc = coneColors[g.coneColor] || coneColors.green;
+            const topIngredients = g.ingredients.slice(0,3).map(([name,,amt]) => `<span class="rounded bg-amber-50/60 border border-amber-100/80 px-1.5 py-0.5 text-[10px] text-clay-600">${name} ${amt}</span>`).join('');
+            return `
+            <div class="rounded-lg border border-silver-200 border-l-[3px] ${cc.border} bg-gradient-to-br from-white to-amber-50/30 p-4 transition hover:shadow-md hover:border-silver-300 group">
+                <div class="flex items-center justify-between mb-1">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type||'Glaze'}</span>
+                    ${shelfTag(g.shelf)}
+                </div>
+                <div class="flex items-start justify-between gap-2">
+                    <h3 class="font-semibold text-clay-900 group-hover:text-brand-800 transition-colors">${g.name}</h3>
+                    <span class="shrink-0 rounded-full ${cc.bg} px-2 py-0.5 text-[11px] font-semibold ${cc.text}">${g.cone}</span>
+                </div>
+                <p class="mt-1 text-xs text-clay-500">${g.atmosphere} \u00b7 ${g.surface}</p>
+                <div class="mt-3 flex flex-wrap gap-1">${topIngredients}</div>
+            </div>`;
+        }).join('');
+    }
+    renderPagination(total);
+}
+
+function renderPagination(total) {
+    const nav = document.getElementById('pagination');
+    if (total <= perPage) { nav.classList.add('hidden'); return; }
+    nav.classList.remove('hidden');
+    const totalPages = Math.ceil(total / perPage);
+    const start = (currentPage-1)*perPage+1, end = Math.min(currentPage*perPage, total);
+    document.getElementById('pagination-info').textContent = `Showing ${start}\u2013${end} of ${total}`;
+    document.getElementById('page-prev').disabled = currentPage === 1;
+    document.getElementById('page-next').disabled = currentPage === totalPages;
+    let html = '';
+    for (let i=1; i<=totalPages; i++) {
+        html += i===currentPage
+            ? `<button class="rounded-md bg-brand-600 px-2.5 py-1 text-xs font-semibold text-white">${i}</button>`
+            : `<button onclick="goToPage(${i})" class="rounded-md px-2.5 py-1 text-xs font-medium text-clay-600 hover:bg-neutral-100 transition">${i}</button>`;
+    }
+    document.getElementById('page-numbers').innerHTML = html;
+}
+function goToPage(p) { currentPage = p; render(); }
+document.getElementById('page-prev').addEventListener('click', () => { if(currentPage>1){currentPage--;render();} });
+document.getElementById('page-next').addEventListener('click', () => { const tp=Math.ceil(getFiltered().length/perPage); if(currentPage<tp){currentPage++;render();} });
+document.getElementById('per-page').addEventListener('change', (e) => { perPage=parseInt(e.target.value); currentPage=1; render(); });
+document.getElementById('sort-select').addEventListener('change', () => { currentPage=1; render(); });
+
+// View toggle
+document.querySelectorAll('.view-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        currentView = btn.dataset.view;
+        document.querySelectorAll('.view-btn').forEach(b => {
+            b.className = b.dataset.view === currentView
+                ? 'view-btn rounded-md p-1.5 transition bg-brand-600 text-white'
+                : 'view-btn rounded-md p-1.5 transition text-neutral-400 hover:text-brand-700';
+        });
+        render();
+    });
+});
+
+// Sidebar
+function openSidebar() {
+    const s = document.getElementById('sidebar'); s.style.width='15rem'; s.style.padding=''; s.style.borderRightWidth='';
+    document.getElementById('sidebar-open-btn').classList.add('hidden');
+    localStorage.removeItem('cmw-sidebar-collapsed');
+}
+function closeSidebar() {
+    const s = document.getElementById('sidebar'); s.style.width='0'; s.style.padding='0'; s.style.borderRightWidth='0';
+    document.getElementById('sidebar-open-btn').classList.remove('hidden');
+    localStorage.setItem('cmw-sidebar-collapsed','1');
+}
+if (localStorage.getItem('cmw-sidebar-collapsed')==='1') closeSidebar();
+
+// Page guide
+function dismissGuide() { document.getElementById('page-guide').classList.add('hidden'); document.getElementById('show-guide-btn').classList.remove('hidden'); localStorage.setItem('cmw-glazes-guide-dismissed','1'); }
+function showGuide() { document.getElementById('page-guide').classList.remove('hidden'); document.getElementById('show-guide-btn').classList.add('hidden'); localStorage.removeItem('cmw-glazes-guide-dismissed'); }
+if (localStorage.getItem('cmw-glazes-guide-dismissed')==='1') { document.getElementById('page-guide').classList.add('hidden'); document.getElementById('show-guide-btn').classList.remove('hidden'); }
+
+// Bulk selection
+let selectedIds = new Set();
+
+function updateBulkToolbar() {
+    const toolbar = document.getElementById('bulk-toolbar');
+    const count = document.getElementById('bulk-count');
+    const selectAllCb = document.getElementById('select-all-cb');
+    const selectAllLabel = document.getElementById('select-all-label');
+    const filtered = getFiltered();
+
+    if (selectedIds.size > 0) {
+        toolbar.classList.remove('hidden');
+        count.textContent = `${selectedIds.size} selected`;
+    } else {
+        toolbar.classList.add('hidden');
+    }
+
+    // Update select-all checkbox state
+    const visibleCount = filtered.length;
+    selectAllLabel.textContent = selectedIds.size > 0 && selectedIds.size === visibleCount
+        ? `Select all ${visibleCount} visible`
+        : `Select all`;
+    selectAllCb.checked = visibleCount > 0 && selectedIds.size === visibleCount;
+    selectAllCb.indeterminate = selectedIds.size > 0 && selectedIds.size < visibleCount;
+}
+
+function toggleSelectAll(checked) {
+    const filtered = getFiltered();
+    if (checked) {
+        filtered.forEach(g => selectedIds.add(g.id));
+    } else {
+        selectedIds.clear();
+    }
+    updateBulkToolbar();
+    render();
+}
+
+function toggleSelectOne(id) {
+    if (selectedIds.has(id)) {
+        selectedIds.delete(id);
+    } else {
+        selectedIds.add(id);
+    }
+    updateBulkToolbar();
+    // Update just the checkbox without full re-render
+    const cb = document.querySelector(`[data-select-id="${id}"]`);
+    if (cb) cb.checked = selectedIds.has(id);
+}
+
+function clearSelection() {
+    selectedIds.clear();
+    updateBulkToolbar();
+    render();
+}
+
+// Patch render to include selection state on checkboxes
+const _origRender = render;
+render = function() {
+    _origRender();
+    // After rendering, update checkbox states
+    document.querySelectorAll('[data-select-id]').forEach(cb => {
+        cb.checked = selectedIds.has(cb.dataset.selectId);
+    });
+    // Update select-all label with visible count
+    const filtered = getFiltered();
+    document.getElementById('select-all-label').textContent = `Select all ${filtered.length} visible`;
+    updateBulkToolbar();
+};
+
+// Initial render
+render();
+</script>
+
+</body>
+</html>
