@@ -35,6 +35,24 @@
             }
         }
     </script>
+    <style>
+        .dark .text-clay-400, .dark .text-clay-500, .dark .text-clay-600, .dark .text-clay-700, .dark .text-clay-800 { color: #e8e4e0 !important; }
+        .dark .text-neutral-400, .dark .text-neutral-500, .dark .text-neutral-600 { color: #d4cec8 !important; }
+        .dark .text-clay-900 { color: #fff !important; }
+        .dark .bg-white { background-color: #332b26 !important; }
+        .dark .bg-neutral-50 { background-color: #1f1a17 !important; }
+        .dark .border-silver-200, .dark .border-silver-300, .dark .border-neutral-200 { border-color: #4a4039 !important; }
+        .dark .bg-silver-100 { background-color: #4a4039 !important; }
+        .dark .placeholder\:text-clay-400::placeholder { color: #9a8f85 !important; }
+        /* Page guide card in dark mode */
+        .dark #page-guide { background: linear-gradient(to right, #2e1065, #332b26) !important; border-color: #6d28d9 !important; }
+        .dark #page-guide h2 { color: #fff !important; }
+        .dark #page-guide p, .dark #page-guide strong { color: #d4cec8 !important; }
+        .dark #page-guide strong { color: #fff !important; }
+        .dark #page-guide .bg-brand-100 { background-color: #4c1d95 !important; }
+        .dark #page-guide .text-brand-700 { color: #d8b4fe !important; }
+        .dark #page-guide .bg-brand-600 { background-color: #7c3aed !important; }
+    </style>
 </head>
 <body class="bg-neutral-50 dark:bg-clay-900 text-gray-900 dark:text-clay-100 antialiased font-sans">
 
@@ -91,7 +109,9 @@
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"></path>
                 </svg>
             </a>
-            <span aria-hidden="true" class="inline-block w-9 h-9 rounded-full bg-clay-700"></span>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-clay-700 hover:bg-clay-600 transition" title="Toggle light/dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-clay-200"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
         </div>
     </div>
 </nav>
@@ -103,10 +123,10 @@
     <div id="sidebar-backdrop" class="hidden fixed inset-0 z-30 bg-black/30" onclick="closeSidebar()"></div>
 
     <!-- Left sidebar (collapsible, in-flow) -->
-    <aside id="sidebar" class="shrink-0 h-[calc(100vh-64px)] sticky top-[64px] w-60 flex flex-col border-r border-neutral-200 bg-white px-3 py-5 overflow-hidden" style="transition: width 200ms ease, padding 200ms ease, border-width 200ms ease;">
+    <aside id="sidebar" class="shrink-0 h-screen sticky top-0 w-60 flex flex-col border-r border-neutral-200 dark:border-clay-800 bg-white dark:bg-clay-900 px-3 py-5 overflow-hidden z-10" style="transition: width 200ms ease, padding 200ms ease, border-width 200ms ease;">
         <!-- Sidebar header with collapse -->
         <div class="flex items-center justify-between px-3 mb-4">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Navigate</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Navigate</span>
             <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition" aria-label="Collapse sidebar">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
             </button>
@@ -117,47 +137,51 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
                 My Book
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="my-glazes.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
                 My Glazes
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
                 My Clay Bodies
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
                 My Reports
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
                 My Presentations
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
                 My Stull Map
             </a>
+            <a href="my-inspiration.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                My Inspiration
+            </a>
 
-            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Calculators</div>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
                 Glaze Calculator
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
                 Clay Body Calculator
             </a>
 
-            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400">Tools</div>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                 Import
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
                 Drop Box
             </a>
-            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 transition">
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
                 Workbooks
             </a>
@@ -170,7 +194,6 @@
     </button>
     <!-- Main content area -->
     <main class="flex-1 min-w-0 px-4 sm:px-8 py-8">
-    <div class="mx-auto max-w-5xl">
     <!-- Header -->
     <header class="mb-5">
         <div class="flex items-center gap-3">
@@ -483,7 +506,6 @@
     </nav>
 
     <!-- (tools moved inline to search bar area) -->
-    </div><!-- end centered wrapper -->
     </main>
 </div><!-- end sidebar + main flex -->
 
@@ -493,23 +515,23 @@
         <section aria-label="More from CMW" class="mb-8">
             <div class="mb-2 text-[11px] font-semibold uppercase tracking-wider text-neutral-400 dark:text-clay-400">From CMW</div>
             <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
-                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Join</div>
-                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">CMW membership</div>
-                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">Calculators, tests, and the research library.</p>
-                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">See support levels →</span>
+                <a href="#" class="block rounded-lg bg-clay-900 p-4 transition hover:bg-clay-800 hover:shadow-lg">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-300">Join</div>
+                    <div class="mt-0.5 text-sm font-semibold text-white">CMW membership</div>
+                    <p class="mt-1 text-xs leading-snug text-clay-300">Calculators, tests, and the research library.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-300">See support levels →</span>
                 </a>
-                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
-                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Listen</div>
-                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">For Flux Sake</div>
-                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">The CMW glaze-chemistry podcast.</p>
-                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">Listen →</span>
+                <a href="#" class="block rounded-lg bg-clay-900 p-4 transition hover:bg-clay-800 hover:shadow-lg">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-300">Listen</div>
+                    <div class="mt-0.5 text-sm font-semibold text-white">For Flux Sake</div>
+                    <p class="mt-1 text-xs leading-snug text-clay-300">The CMW glaze-chemistry podcast.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-300">Listen →</span>
                 </a>
-                <a href="#" class="block rounded-lg border border-neutral-200 border-t-[3px] border-t-brand-400 bg-gradient-to-b from-brand-50/40 to-white p-3 transition hover:shadow-sm dark:border-clay-700 dark:bg-clay-800 dark:hover:border-brand-500">
-                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-300">Watch</div>
-                    <div class="mt-0.5 text-sm font-semibold text-neutral-900 dark:text-clay-100">CMW on YouTube</div>
-                    <p class="mt-1 text-xs leading-snug text-neutral-500 dark:text-clay-300">Lectures, demos, and Q&amp;A from the workshop.</p>
-                    <span class="mt-2 inline-block text-xs font-semibold text-brand-700 dark:text-brand-300">Watch →</span>
+                <a href="#" class="block rounded-lg bg-clay-900 p-4 transition hover:bg-clay-800 hover:shadow-lg">
+                    <div class="text-[10px] font-semibold uppercase tracking-wide text-brand-300">Watch</div>
+                    <div class="mt-0.5 text-sm font-semibold text-white">CMW on YouTube</div>
+                    <p class="mt-1 text-xs leading-snug text-clay-300">Lectures, demos, and Q&amp;A from the workshop.</p>
+                    <span class="mt-2 inline-block text-xs font-semibold text-brand-300">Watch →</span>
                 </a>
             </div>
         </section>
@@ -705,7 +727,7 @@ function renderFullCard(g, shelfKey) {
     return `
     <div class="rounded-lg border border-silver-200 bg-white p-5 transition hover:shadow-md">
         <div class="flex items-center justify-between mb-1.5">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">${g.type || 'Glaze'}</span>
             ${shelfTag(shelfKey)}
         </div>
         <div class="flex items-start justify-between gap-3 mb-2">
@@ -734,7 +756,7 @@ function renderCompactCard(g, shelfKey) {
     return `
     <div class="rounded-lg border border-silver-200 border-l-[3px] ${cc.border} bg-gradient-to-br from-white to-amber-50/30 p-4 transition hover:shadow-md hover:border-silver-300 group">
         <div class="flex items-center justify-between mb-1">
-            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">${g.type || 'Glaze'}</span>
             ${shelfTag(shelfKey)}
         </div>
         <div class="flex items-start justify-between gap-2">
@@ -793,7 +815,7 @@ function renderChemistryCard(g, shelfKey) {
         <div class="flex gap-4">
             <div class="flex-1 min-w-0">
                 <div class="flex items-center justify-between mb-1.5">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">${g.type || 'Glaze'}</span>
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">${g.type || 'Glaze'}</span>
                     ${shelfTag(shelfKey)}
                 </div>
                 <div class="flex items-start justify-between gap-3 mb-2">

@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Inspiration · CMW (Local Prototype)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                    colors: {
+                        clay: {
+                            100: '#e8e4e0', 200: '#d4cec8', 300: '#b8b0a8',
+                            400: '#9a8f85', 500: '#7d7168', 600: '#635850',
+                            700: '#4a4039', 800: '#332b26', 900: '#1f1a17',
+                            950: '#141110'
+                        },
+                        brand: {
+                            50: '#faf5ff', 100: '#f3e8ff', 200: '#e9d5ff',
+                            300: '#d8b4fe', 400: '#c084fc', 500: '#a855f7',
+                            600: '#7c3aed', 700: '#6d28d9', 800: '#5b21b6',
+                            900: '#4c1d95', 950: '#2e1065'
+                        },
+                        silver: {
+                            100: '#f4f4f5', 200: '#e4e4e7', 300: '#d4d4d8'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .dark .text-clay-400, .dark .text-clay-500, .dark .text-clay-600, .dark .text-clay-700, .dark .text-clay-800 { color: #e8e4e0 !important; }
+        .dark .text-neutral-400, .dark .text-neutral-500, .dark .text-neutral-600 { color: #d4cec8 !important; }
+        .dark .text-clay-900 { color: #fff !important; }
+        .dark .bg-white { background-color: #332b26 !important; }
+        .dark .bg-neutral-50 { background-color: #1f1a17 !important; }
+        .dark .border-silver-200, .dark .border-silver-300, .dark .border-neutral-200 { border-color: #4a4039 !important; }
+        .dark .bg-silver-100 { background-color: #4a4039 !important; }
+        .dark #page-guide { background: linear-gradient(to right, #2e1065, #332b26) !important; border-color: #6d28d9 !important; }
+        .dark #page-guide h2 { color: #fff !important; }
+        .dark #page-guide p, .dark #page-guide strong { color: #d4cec8 !important; }
+        .dark #page-guide strong { color: #fff !important; }
+        /* Grid layout - left to right, row by row */
+        .inspo-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        @media (max-width: 1024px) { .inspo-grid { grid-template-columns: repeat(3, 1fr); } }
+        @media (max-width: 768px) { .inspo-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .inspo-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body class="bg-neutral-50 dark:bg-clay-900 text-gray-900 dark:text-clay-100 antialiased font-sans">
+
+<!-- ===== TOP NAV (dark) ===== -->
+<div class="dark">
+<nav class="border-b border-clay-800 px-3 sm:px-10 bg-clay-950 text-clay-100">
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex min-w-0 items-center gap-1 sm:gap-4">
+            <a href="#" aria-label="CMW home" class="shrink-0 select-none">
+                <img src="https://my.ceramicmaterialsworkshop.com/anatomy/cmw-logo.png" alt="CMW" class="block h-9 w-auto"/>
+            </a>
+            <div class="relative hidden flex-1 md:block">
+                <div class="overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+                    <ul class="flex min-w-max gap-1">
+                        <li><a href="#" class="inline-block whitespace-nowrap border-b-2 border-transparent px-3 py-4 text-base font-medium text-clay-300 hover:border-clay-600 hover:text-clay-100">Ware</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Glaze Anatomy</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">FIRED!</a></li>
+                        <li><a href="my-book.html" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-brand-500 text-white">My Book</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">The Lab</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Library</a></li>
+                        <li><a href="#" class="inline-block whitespace-nowrap px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Learn</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+            <button type="button" aria-label="Search" class="inline-flex items-center justify-center rounded-md p-2 text-clay-300 hover:text-brand-400 hover:bg-clay-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="inline-flex items-center justify-center w-9 h-9 rounded-full bg-clay-700 hover:bg-clay-600 transition" title="Toggle light/dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-clay-200"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!-- ===== SIDEBAR + MAIN ===== -->
+<div id="layout-wrapper" class="flex min-h-[calc(100vh-64px)]">
+    <div id="sidebar-backdrop" class="hidden fixed inset-0 z-30 bg-black/30" onclick="closeSidebar()"></div>
+
+    <aside id="sidebar" class="shrink-0 h-screen sticky top-0 w-60 flex flex-col border-r border-neutral-200 dark:border-clay-800 bg-white dark:bg-clay-900 px-3 py-5 overflow-hidden z-10" style="transition: width 200ms ease, padding 200ms ease, border-width 200ms ease;">
+        <div class="flex items-center justify-between px-3 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Navigate</span>
+            <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition" aria-label="Collapse sidebar">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            </button>
+        </div>
+        <nav aria-label="My sections" class="flex-1 space-y-1 overflow-y-auto">
+            <a href="my-book.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+                My Book
+            </a>
+            <a href="my-glazes.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                My Glazes
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                My Clay Bodies
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                My Reports
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="14" x="3" y="3" rx="2"/><path d="M12 17v4"/><path d="M8 21h8"/></svg>
+                My Presentations
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+                My Stull Map
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                My Inspiration
+            </a>
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Glaze Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Clay Body Calculator
+            </a>
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                Import
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                Drop Box
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 dark:hover:text-white transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+                Workbooks
+            </a>
+        </nav>
+    </aside>
+
+    <button id="sidebar-open-btn" onclick="openSidebar()" class="hidden sticky top-20 ml-2 mt-4 h-8 w-8 items-center justify-center rounded-md border border-silver-200 bg-white text-clay-500 shadow-sm hover:text-brand-700 hover:border-brand-300 transition z-10 shrink-0" aria-label="Open navigation">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="13 7 18 12 13 17"/><polyline points="6 7 11 12 6 17"/></svg>
+    </button>
+
+    <!-- Main content -->
+    <main class="flex-1 min-w-0 px-4 sm:px-8 py-8">
+
+        <!-- Header -->
+        <header class="mb-5">
+            <div class="flex items-center gap-3">
+                <h1 class="text-2xl font-semibold text-brand-700">My Inspiration</h1>
+                <span class="inline-flex items-center gap-1 rounded-full border border-green-200 bg-green-50 px-2 py-0.5 text-[11px] font-medium text-green-700 cursor-help" title="Your inspiration board is private. Only you can see these images.">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                    Private
+                </span>
+            </div>
+            <p class="mt-1 text-sm text-clay-500">Collect images of pottery, glazes, and surfaces that inspire you. Tag them, add notes, and organize into projects.</p>
+        </header>
+
+        <!-- Page Guide -->
+        <div id="page-guide" class="mb-6 rounded-xl border border-brand-200/60 bg-gradient-to-r from-brand-50/80 to-white p-4 sm:p-5 relative">
+            <button onclick="dismissGuide()" class="absolute top-3 right-3 rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-white transition" aria-label="Dismiss guide">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+            <div class="flex gap-3 sm:gap-4">
+                <div class="hidden sm:flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand-100 text-brand-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h2 class="text-sm font-semibold text-clay-900">Your visual mood board</h2>
+                    <p class="mt-1 text-sm text-clay-600 leading-relaxed">Upload photos of pots, glazes, textures, and surfaces that catch your eye. Add notes about what you like, tag them with attributes (cone, finish, color), and group them into project folders for future reference.</p>
+                    <button onclick="dismissGuide()" class="mt-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Got it, don't show again</button>
+                </div>
+            </div>
+        </div>
+        <button id="show-guide-btn" onclick="showGuide()" class="hidden mb-4 inline-flex items-center gap-1.5 rounded-md border border-silver-300 px-2.5 py-1 text-xs font-medium text-clay-500 hover:text-brand-700 hover:border-brand-300 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+            How to use this page
+        </button>
+
+        <!-- Actions bar -->
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+            <button onclick="document.getElementById('upload-modal').classList.remove('hidden')" class="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                Upload Images
+            </button>
+            <input type="search" placeholder="Search by tag or note…" class="min-w-[10rem] max-w-xs flex-1 rounded-lg border border-silver-300 bg-white text-clay-800 placeholder:text-clay-400 focus:border-brand-400 px-3 py-1.5 text-sm focus:outline-none focus:ring-1 focus:ring-brand-200" value=""/>
+            <span class="text-xs font-medium text-clay-500">Sort by</span>
+            <select class="rounded-lg border border-silver-300 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none" aria-label="Sort by">
+                <option value="recent" selected>Date added (newest)</option>
+                <option value="oldest">Date added (oldest)</option>
+                <option value="name-asc">Title (A–Z)</option>
+                <option value="name-desc">Title (Z–A)</option>
+                <option value="most-tags">Most tagged</option>
+            </select>
+
+            <!-- Filter: Tags -->
+            <div class="relative" id="filter-tags-wrap">
+                <button onclick="toggleDrop('tags')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400">
+                    Tags
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-tags-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-48 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Celadon</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Wood fired</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Crystalline</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Surface texture</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Form/shape</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filter: Folder -->
+            <div class="relative" id="filter-folder-wrap">
+                <button onclick="toggleDrop('folder')" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 transition hover:border-brand-400 min-w-[9rem]">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-clay-400"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                    All folders
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-auto shrink-0"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div id="filter-folder-menu" class="hidden absolute left-0 top-full mt-1 z-20 w-52 rounded-lg border border-silver-200 bg-white p-2 shadow-lg">
+                    <div class="space-y-0.5">
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Copper Red Inspiration</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Wood Fire Reference</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Form Studies</label>
+                        <label class="flex items-center gap-2 rounded px-2 py-1.5 text-xs hover:bg-neutral-50 cursor-pointer"><input type="checkbox" class="rounded border-silver-300 text-brand-600"> Unfiled</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results info -->
+        <p class="mb-4 text-sm text-clay-500">12 images</p>
+
+        <!-- Masonry image grid -->
+        <div class="inspo-grid" id="inspo-grid">
+            <!-- Real image 1 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="overflow-hidden">
+                    <img src="70b410ea7da7340647c1143eafee0512.jpg" alt="Blue purple speckled bud vase" class="w-full h-auto object-cover transition group-hover:scale-105"/>
+                </div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Blue/purple speckled bud vase — closed form</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Love the color variation from copper/cobalt. The speckle pattern is from slow cooling.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#matte</span>
+                        <span class="rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] text-blue-700">#copper</span>
+                        <span class="rounded-full bg-purple-50 border border-purple-200 px-2 py-0.5 text-[10px] text-purple-700">#cobalt</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#form</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real image 2 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="overflow-hidden">
+                    <img src="KkiKBYa.jpg" alt="Crater lava glaze bowl" class="w-full h-auto object-cover transition group-hover:scale-105"/>
+                </div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Crater/lava glaze bowl — heavy texture</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Incredible crater texture from silicon carbide. Green interior with celadon liner. The scalloped foot is a nice touch.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#crater</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#texture</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#cone10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real image 3 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="overflow-hidden">
+                    <img src="bariummattbaseglaze_jan03p57.jpg" alt="Barium matte base glaze surface" class="w-full h-auto object-cover transition group-hover:scale-105"/>
+                </div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Barium matte base glaze — surface detail</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Beautiful teal/green-gold color shift. The barium gives it that buttery matte surface with depth.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#barium</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#matte</span>
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#surface</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real image 4 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="overflow-hidden">
+                    <img src="jan-lewin-cadogan-crater-glaze-2-1.jpg" alt="Jan Lewin-Cadogan crater glaze bowl" class="w-full h-auto object-cover transition group-hover:scale-105"/>
+                </div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Jan Lewin-Cadogan — Crater Glaze, Cone 9</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Barium turquoise + lava glaze. Strontium Carb 15%, Neph Sy 61%, China Clay 11%, Silica 13% + Silicon Carbide 4%. Fired 2281°F oxidation.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#crater</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#barium</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#cone9</span>
+                        <span class="rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] text-blue-700">#oxidation</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 5 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-square bg-gradient-to-br from-rose-200 via-red-300 to-rose-400"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Copper red ox-blood — heavy reduction</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Deep ox-blood pooling at the foot. Ask about firing schedule — likely very heavy reduction at cone 10.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-red-50 border border-red-200 px-2 py-0.5 text-[10px] text-red-700">#copperred</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#cone10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 6 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-[4/3] bg-gradient-to-br from-amber-100 via-yellow-200 to-orange-300"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Wood fired anagama — natural ash deposit</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#woodfired</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#ash</span>
+                        <span class="rounded-full bg-neutral-50 border border-neutral-200 px-2 py-0.5 text-[10px] text-neutral-600">#anagama</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 7 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-square bg-gradient-to-br from-emerald-200 via-teal-300 to-cyan-400"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Celadon teabowl — jade green</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Classic Song dynasty celadon color. Iron 1-2% in reduction. Want to try this depth of color.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#celadon</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#cone10</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#reduction</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 8 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-[3/4] bg-gradient-to-br from-purple-200 via-fuchsia-300 to-pink-300"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Crystalline macro — zinc crystal formation</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">Radial crystal growth from heavy zinc. Slow cool over 6+ hours. Would need programmable controller.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-purple-50 border border-purple-200 px-2 py-0.5 text-[10px] text-purple-700">#crystalline</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#zinc</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 9 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-square bg-gradient-to-br from-stone-200 via-stone-300 to-stone-400"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Faceted porcelain vessel — carved form</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-neutral-50 border border-neutral-200 px-2 py-0.5 text-[10px] text-neutral-600">#form</span>
+                        <span class="rounded-full bg-neutral-50 border border-neutral-200 px-2 py-0.5 text-[10px] text-neutral-600">#porcelain</span>
+                        <span class="rounded-full bg-neutral-50 border border-neutral-200 px-2 py-0.5 text-[10px] text-neutral-600">#carving</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 10 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-[4/3] bg-gradient-to-br from-blue-200 via-indigo-300 to-violet-400"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Cobalt slip trailing on stoneware</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">The trailing technique gives beautiful line quality. Cobalt over iron-bearing body.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-blue-50 border border-blue-200 px-2 py-0.5 text-[10px] text-blue-700">#cobalt</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#sliptrail</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 11 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-square bg-gradient-to-br from-yellow-100 via-amber-200 to-orange-200"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Shino — carbon trap pattern</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#shino</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#carbontrap</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#cone10</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Placeholder 12 -->
+            <div class="rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer" onclick="openDetail(this)">
+                <div class="aspect-[3/4] bg-gradient-to-br from-slate-300 via-zinc-400 to-gray-500"></div>
+                <div class="p-3">
+                    <p class="text-xs text-clay-700 font-medium">Iron saturate — pooling detail</p>
+                    <p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">The way heavy iron pools and breaks over texture. Beautiful rust-to-black gradient.</p>
+                    <div class="mt-1.5 flex flex-wrap gap-1">
+                        <span class="rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[10px] text-amber-700">#iron</span>
+                        <span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#texture</span>
+                        <span class="rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[10px] text-green-700">#reduction</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+</div><!-- end layout -->
+
+<!-- Upload modal (hidden) -->
+<div id="upload-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+    <div class="w-full max-w-lg rounded-xl bg-white p-6 shadow-xl">
+        <div class="flex items-center justify-between mb-4">
+            <h2 class="text-lg font-semibold text-clay-900">Upload Inspiration</h2>
+            <button onclick="document.getElementById('upload-modal').classList.add('hidden')" class="rounded-md p-1 text-clay-400 hover:text-clay-700 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div id="drop-zone" class="rounded-lg border-2 border-dashed border-silver-300 bg-silver-100/50 p-8 text-center mb-4 cursor-pointer transition hover:border-brand-400 hover:bg-brand-50/30" onclick="document.getElementById('file-input').click()" ondragover="event.preventDefault(); this.classList.add('border-brand-500','bg-brand-50/50')" ondragleave="this.classList.remove('border-brand-500','bg-brand-50/50')" ondrop="handleDrop(event)">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="mx-auto text-clay-400 mb-3"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p class="text-sm text-clay-600 font-medium">Drop images here or click to browse</p>
+            <p class="text-xs text-clay-400 mt-1">PNG, JPG, WEBP up to 10MB each</p>
+            <input id="file-input" type="file" accept="image/*" multiple class="hidden" onchange="handleFiles(this.files)"/>
+        </div>
+        <!-- Preview of selected files -->
+        <div id="upload-preview" class="hidden mb-4 grid grid-cols-4 gap-2"></div>
+        <div class="space-y-3">
+            <div>
+                <label class="text-xs font-medium text-clay-600 mb-1 block">Note (optional)</label>
+                <textarea rows="2" class="w-full rounded-lg border border-silver-300 px-3 py-2 text-sm text-clay-800 placeholder:text-clay-400 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200" placeholder="What caught your eye about this?"></textarea>
+            </div>
+            <div>
+                <label class="text-xs font-medium text-clay-600 mb-1 block">Tags</label>
+                <input type="text" class="w-full rounded-lg border border-silver-300 px-3 py-2 text-sm text-clay-800 placeholder:text-clay-400 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200" placeholder="e.g. celadon, cone 10, wood fired"/>
+            </div>
+            <div>
+                <label class="text-xs font-medium text-clay-600 mb-1 block">Project folder</label>
+                <select class="w-full rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm text-clay-700 focus:border-brand-400 focus:outline-none">
+                    <option>None</option>
+                    <option>Copper Red Inspiration</option>
+                    <option>Wood Fire Reference</option>
+                    <option>Form Studies</option>
+                </select>
+            </div>
+        </div>
+        <div class="mt-4 flex justify-end gap-2">
+            <button onclick="cancelUpload()" class="rounded-lg border border-silver-300 px-4 py-2 text-sm font-medium text-clay-600 transition hover:bg-neutral-50">Cancel</button>
+            <button onclick="confirmUpload()" class="rounded-lg bg-brand-600 px-4 py-2 text-sm font-medium text-white transition hover:bg-brand-700">Upload</button>
+        </div>
+    </div>
+</div>
+
+<!-- Image detail modal -->
+<div id="detail-modal" class="hidden fixed inset-0 z-50 flex bg-black/80 p-4 sm:p-8">
+    <button onclick="closeDetail()" class="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white/80 hover:text-white hover:bg-black/70 transition" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="flex flex-1 gap-0 max-w-6xl mx-auto overflow-hidden rounded-xl">
+        <!-- Image side -->
+        <div id="detail-image" class="flex-1 min-w-0 bg-clay-950 flex items-center justify-center rounded-l-xl overflow-hidden">
+            <div class="w-full h-full bg-gradient-to-br from-emerald-200 via-teal-300 to-cyan-400"></div>
+        </div>
+        <!-- Info panel -->
+        <div class="w-80 shrink-0 bg-white flex flex-col rounded-r-xl overflow-hidden">
+            <div class="flex-1 overflow-y-auto p-5 space-y-5">
+                <!-- Title -->
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-clay-400 mb-1 block">Title</label>
+                    <input id="detail-title" type="text" value="Celadon bowl — Song dynasty style" class="w-full rounded-lg border border-silver-300 px-3 py-2 text-sm font-medium text-clay-900 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200"/>
+                </div>
+
+                <!-- Tags (hashtag style) -->
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-clay-400 mb-1 block">Tags</label>
+                    <div id="detail-tags" class="flex flex-wrap gap-1.5 mb-2">
+                        <span class="tag-pill inline-flex items-center gap-1 rounded-full bg-brand-50 border border-brand-200 px-2.5 py-0.5 text-xs text-brand-700">
+                            #celadon <button onclick="removeTag(this)" class="ml-0.5 text-brand-400 hover:text-brand-700">&times;</button>
+                        </span>
+                        <span class="tag-pill inline-flex items-center gap-1 rounded-full bg-brand-50 border border-brand-200 px-2.5 py-0.5 text-xs text-brand-700">
+                            #cone10 <button onclick="removeTag(this)" class="ml-0.5 text-brand-400 hover:text-brand-700">&times;</button>
+                        </span>
+                        <span class="tag-pill inline-flex items-center gap-1 rounded-full bg-brand-50 border border-brand-200 px-2.5 py-0.5 text-xs text-brand-700">
+                            #reduction <button onclick="removeTag(this)" class="ml-0.5 text-brand-400 hover:text-brand-700">&times;</button>
+                        </span>
+                    </div>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm text-clay-400">#</span>
+                        <input id="tag-input" type="text" placeholder="Add tag..." class="w-full rounded-lg border border-silver-300 pl-7 pr-3 py-2 text-sm text-clay-800 placeholder:text-clay-400 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200" onkeydown="handleTagKey(event)"/>
+                    </div>
+                    <p class="mt-1 text-[11px] text-clay-400">Press Enter or comma to add</p>
+                    <!-- Suggested tags -->
+                    <div class="mt-2 flex flex-wrap gap-1">
+                        <button onclick="addSuggestedTag('woodfired')" class="rounded-full border border-silver-200 px-2 py-0.5 text-[10px] text-clay-500 hover:border-brand-300 hover:text-brand-700 transition">#woodfired</button>
+                        <button onclick="addSuggestedTag('crystalline')" class="rounded-full border border-silver-200 px-2 py-0.5 text-[10px] text-clay-500 hover:border-brand-300 hover:text-brand-700 transition">#crystalline</button>
+                        <button onclick="addSuggestedTag('texture')" class="rounded-full border border-silver-200 px-2 py-0.5 text-[10px] text-clay-500 hover:border-brand-300 hover:text-brand-700 transition">#texture</button>
+                        <button onclick="addSuggestedTag('form')" class="rounded-full border border-silver-200 px-2 py-0.5 text-[10px] text-clay-500 hover:border-brand-300 hover:text-brand-700 transition">#form</button>
+                        <button onclick="addSuggestedTag('ash')" class="rounded-full border border-silver-200 px-2 py-0.5 text-[10px] text-clay-500 hover:border-brand-300 hover:text-brand-700 transition">#ash</button>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-clay-400 mb-1 block">Notes</label>
+                    <textarea id="detail-notes" rows="4" class="w-full rounded-lg border border-silver-300 px-3 py-2 text-sm text-clay-700 placeholder:text-clay-400 focus:border-brand-400 focus:outline-none focus:ring-1 focus:ring-brand-200" placeholder="What do you like about this? What would you try?">Love the depth of color and the way the glaze pools in the carved details. Want to try a similar approach with my celadon base at cone 10 reduction.</textarea>
+                </div>
+
+                <!-- Folder -->
+                <div>
+                    <label class="text-[10px] font-bold uppercase tracking-widest text-clay-400 mb-1 block">Project Folder</label>
+                    <select class="w-full rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm text-clay-700 focus:border-brand-400 focus:outline-none">
+                        <option>None</option>
+                        <option selected>Copper Red Inspiration</option>
+                        <option>Wood Fire Reference</option>
+                        <option>Form Studies</option>
+                    </select>
+                </div>
+
+                <!-- Meta info -->
+                <div class="border-t border-silver-200 pt-3">
+                    <p class="text-[11px] text-clay-400">Added Aug 3, 2026</p>
+                    <p class="text-[11px] text-clay-400">Source: Uploaded from camera roll</p>
+                </div>
+            </div>
+
+            <!-- Bottom actions -->
+            <div class="border-t border-silver-200 p-4 flex items-center justify-between gap-2">
+                <button class="rounded-lg border border-red-200 px-3 py-1.5 text-xs font-medium text-red-600 hover:bg-red-50 transition">Delete</button>
+                <button onclick="closeDetail()" class="rounded-lg bg-brand-600 px-4 py-1.5 text-xs font-medium text-white hover:bg-brand-700 transition">Save &amp; Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Sidebar
+function openSidebar() { const s=document.getElementById('sidebar'); s.style.width='15rem'; s.style.padding=''; s.style.borderRightWidth=''; document.getElementById('sidebar-open-btn').classList.add('hidden'); }
+function closeSidebar() { const s=document.getElementById('sidebar'); s.style.width='0'; s.style.padding='0'; s.style.borderRightWidth='0'; document.getElementById('sidebar-open-btn').classList.remove('hidden'); }
+
+// Dropdowns
+function toggleDrop(name) { const m=document.getElementById(`filter-${name}-menu`); document.querySelectorAll('[id$="-menu"]').forEach(x=>{if(x!==m)x.classList.add('hidden')}); m.classList.toggle('hidden'); }
+document.addEventListener('click',e=>{if(!e.target.closest('[id$="-wrap"]'))document.querySelectorAll('[id$="-menu"]').forEach(m=>m.classList.add('hidden'));});
+
+// Guide
+function dismissGuide(){document.getElementById('page-guide').classList.add('hidden');document.getElementById('show-guide-btn').classList.remove('hidden');}
+function showGuide(){document.getElementById('page-guide').classList.remove('hidden');document.getElementById('show-guide-btn').classList.add('hidden');}
+
+// Detail modal
+function openDetail(card) {
+    document.getElementById('detail-modal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    // Show the actual image
+    const img = card.querySelector('img');
+    const detail = document.getElementById('detail-image');
+    if (img) {
+        detail.innerHTML = `<img src="${img.src}" class="max-w-full max-h-full object-contain"/>`;
+    }
+    // Get the title
+    const title = card.querySelector('.text-clay-700.font-medium');
+    if (title) document.getElementById('detail-title').value = title.textContent.trim();
+    // Get notes
+    const note = card.querySelector('.text-clay-400.line-clamp-2');
+    if (note) document.getElementById('detail-notes').value = note.textContent.trim();
+}
+
+function closeDetail() {
+    document.getElementById('detail-modal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Close on Escape
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeDetail();
+});
+
+// Tag management
+function handleTagKey(e) {
+    if (e.key === 'Enter' || e.key === ',') {
+        e.preventDefault();
+        const input = document.getElementById('tag-input');
+        const val = input.value.replace(/[,#\s]+/g, '').trim();
+        if (val) {
+            addTag(val);
+            input.value = '';
+        }
+    }
+}
+
+function addTag(tagText) {
+    const container = document.getElementById('detail-tags');
+    const pill = document.createElement('span');
+    pill.className = 'tag-pill inline-flex items-center gap-1 rounded-full bg-brand-50 border border-brand-200 px-2.5 py-0.5 text-xs text-brand-700';
+    pill.innerHTML = `#${tagText} <button onclick="removeTag(this)" class="ml-0.5 text-brand-400 hover:text-brand-700">&times;</button>`;
+    container.appendChild(pill);
+}
+
+function removeTag(btn) {
+    btn.closest('.tag-pill').remove();
+}
+
+function addSuggestedTag(tag) {
+    addTag(tag);
+}
+
+// ===== UPLOAD FUNCTIONALITY =====
+let pendingFiles = [];
+
+function handleDrop(e) {
+    e.preventDefault();
+    e.currentTarget.classList.remove('border-brand-500', 'bg-brand-50/50');
+    handleFiles(e.dataTransfer.files);
+}
+
+function handleFiles(files) {
+    pendingFiles = [...pendingFiles, ...Array.from(files).filter(f => f.type.startsWith('image/'))];
+    renderUploadPreview();
+}
+
+function renderUploadPreview() {
+    const preview = document.getElementById('upload-preview');
+    if (pendingFiles.length === 0) { preview.classList.add('hidden'); return; }
+    preview.classList.remove('hidden');
+    preview.innerHTML = pendingFiles.map((file, i) => {
+        const url = URL.createObjectURL(file);
+        return `<div class="relative aspect-square rounded-lg overflow-hidden border border-silver-200">
+            <img src="${url}" class="w-full h-full object-cover"/>
+            <button onclick="removePendingFile(${i})" class="absolute top-1 right-1 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center text-xs hover:bg-black/80">&times;</button>
+        </div>`;
+    }).join('');
+}
+
+function removePendingFile(idx) {
+    pendingFiles.splice(idx, 1);
+    renderUploadPreview();
+}
+
+function cancelUpload() {
+    pendingFiles = [];
+    document.getElementById('upload-preview').classList.add('hidden');
+    document.getElementById('upload-preview').innerHTML = '';
+    document.getElementById('file-input').value = '';
+    document.getElementById('upload-modal').classList.add('hidden');
+}
+
+function confirmUpload() {
+    if (pendingFiles.length === 0) return;
+
+    const noteEl = document.querySelector('#upload-modal textarea');
+    const tagEl = document.querySelector('#upload-modal input[placeholder*="e.g."]');
+    const folderEl = document.querySelector('#upload-modal select');
+    const note = noteEl ? noteEl.value : '';
+    const tags = tagEl ? tagEl.value.split(',').map(t => t.trim().replace(/^#/, '')).filter(Boolean) : [];
+    const folder = folderEl ? folderEl.value : '';
+
+    const grid = document.getElementById('inspo-grid');
+
+    pendingFiles.forEach(file => {
+        const url = URL.createObjectURL(file);
+        const card = document.createElement('div');
+        card.className = 'rounded-xl border border-silver-200 bg-white overflow-hidden group cursor-pointer';
+        card.onclick = function() { openDetail(this); };
+
+        const tagsHtml = tags.length > 0
+            ? tags.map(t => `<span class="rounded-full bg-brand-50 border border-brand-200 px-2 py-0.5 text-[10px] text-brand-700">#${t}</span>`).join('')
+            : '';
+
+        card.innerHTML = `
+            <div class="aspect-auto max-h-80 overflow-hidden">
+                <img src="${url}" class="w-full h-full object-cover transition group-hover:scale-105"/>
+            </div>
+            <div class="p-3">
+                <p class="text-xs text-clay-700 font-medium truncate">${file.name.replace(/\.[^.]+$/, '')}</p>
+                ${note ? `<p class="text-[11px] text-clay-400 mt-0.5 line-clamp-2">${note}</p>` : ''}
+                ${tagsHtml ? `<div class="mt-1.5 flex flex-wrap gap-1">${tagsHtml}</div>` : ''}
+                ${folder && folder !== 'None' ? `<p class="mt-1.5 text-[10px] text-clay-400"><svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="inline mr-0.5"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>${folder}</p>` : ''}
+            </div>
+        `;
+
+        grid.insertBefore(card, grid.firstChild);
+    });
+
+    // Update count
+    const countEl = document.querySelector('main p.text-sm.text-clay-500');
+    if (countEl) {
+        const current = parseInt(countEl.textContent) || 0;
+        countEl.textContent = `${current + pendingFiles.length} images`;
+    }
+
+    // Reset and close
+    pendingFiles = [];
+    document.getElementById('upload-preview').classList.add('hidden');
+    document.getElementById('upload-preview').innerHTML = '';
+    document.getElementById('file-input').value = '';
+    if (noteEl) noteEl.value = '';
+    if (tagEl) tagEl.value = '';
+    document.getElementById('upload-modal').classList.add('hidden');
+}
+</script>
+
+</body>
+</html>
