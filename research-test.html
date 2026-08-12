@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Test #184 · CMW (Local Prototype)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                colors: {
+                    clay: { 100:'#e8e4e0',200:'#d4cec8',300:'#b8b0a8',400:'#9a8f85',500:'#7d7168',600:'#635850',700:'#4a4039',800:'#332b26',900:'#1f1a17',950:'#141110' },
+                    brand: { 50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95',950:'#2e1065' },
+                    silver: { 100:'#f4f4f5',200:'#e4e4e7',300:'#d4d4d8' }
+                }
+            }}
+        }
+    </script>
+    <style>
+        .dark .text-clay-400,.dark .text-clay-500,.dark .text-clay-600,.dark .text-clay-700,.dark .text-clay-800{color:#e8e4e0!important}
+        .dark .text-clay-900{color:#fff!important}
+        .dark .bg-white{background-color:#332b26!important}
+        .dark .bg-neutral-50{background-color:#1f1a17!important}
+        .dark .border-silver-200,.dark .border-silver-300,.dark .border-neutral-200{border-color:#4a4039!important}
+    </style>
+</head>
+<body class="bg-neutral-50 dark:bg-clay-900 text-gray-900 dark:text-clay-100 antialiased font-sans">
+
+<!-- TOP NAV -->
+<div class="dark">
+<nav class="border-b border-clay-800 px-3 sm:px-10 bg-clay-950 text-clay-100">
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex min-w-0 items-center gap-1 sm:gap-4">
+            <a href="#" class="shrink-0 select-none"><img src="https://my.ceramicmaterialsworkshop.com/anatomy/cmw-logo.png" alt="CMW" class="block h-9 w-auto"/></a>
+            <div class="relative hidden flex-1 md:block">
+                <ul class="flex min-w-max gap-1">
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Ware</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Glaze Anatomy</a></li>
+                    <li><a href="my-book.html" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">My Book</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">The Lab</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Library</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Learn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+            <button onclick="document.documentElement.classList.toggle('dark')" class="w-9 h-9 rounded-full bg-clay-700 hover:bg-clay-600 transition inline-flex items-center justify-center" title="Toggle dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-clay-200"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!-- SIDEBAR + MAIN -->
+<div class="flex min-h-[calc(100vh-64px)]">
+    <aside id="sidebar" class="shrink-0 h-screen sticky top-0 w-60 flex flex-col border-r border-neutral-200 dark:border-clay-800 bg-white dark:bg-clay-900 px-3 py-5 overflow-hidden z-10" style="transition:width 200ms ease,padding 200ms ease,border-width 200ms ease;">
+        <div class="flex items-center justify-between px-3 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Navigate</span>
+            <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg></button>
+        </div>
+        <nav class="flex-1 space-y-1 overflow-y-auto">
+            <a href="my-book.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>My Book</a>
+            <a href="my-glazes.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>My Glazes</a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>My Reports</a>
+            <a href="my-inspiration.html" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>My Inspiration</a>
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>Glaze Calculator</a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/></svg>Clay Body Calculator</a>
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Import</a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>Drop Box</a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Workbooks</a>
+        </nav>
+    </aside>
+    <button id="sidebar-open-btn" onclick="openSidebar()" class="hidden sticky top-20 ml-2 mt-4 h-8 w-8 items-center justify-center rounded-md border border-silver-200 bg-white text-clay-500 shadow-sm hover:text-brand-700 hover:border-brand-300 transition z-10 shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 7 18 12 13 17"/><polyline points="6 7 11 12 6 17"/></svg>
+    </button>
+    <main class="flex-1 min-w-0 py-6 px-4 sm:px-8">
+
+        <!-- Workflow process bar -->
+        <div class="mb-6 flex flex-wrap items-center gap-2 rounded-lg border border-silver-200 bg-white p-2">
+            <div class="flex items-center gap-1.5 rounded-md bg-brand-50 px-3 py-1.5">
+                <span class="text-[10px] font-bold uppercase tracking-wide text-brand-600">Make</span>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">The Lab</a>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Calculator</a>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Quantity</a>
+            </div>
+            <div class="flex items-center gap-1.5 rounded-md bg-brand-100/60 px-3 py-1.5">
+                <span class="text-[10px] font-bold uppercase tracking-wide text-brand-600">Test</span>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium bg-brand-600 text-white">This Test</a>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Design</a>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Oxide Sweep</a>
+            </div>
+            <div class="flex items-center gap-1.5 rounded-md bg-brand-200/40 px-3 py-1.5">
+                <span class="text-[10px] font-bold uppercase tracking-wide text-brand-600">Fire</span>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Firing</a>
+            </div>
+            <div class="flex items-center gap-1.5 rounded-md bg-brand-300/30 px-3 py-1.5">
+                <span class="text-[10px] font-bold uppercase tracking-wide text-brand-600">Compare</span>
+                <a href="#" class="rounded px-2 py-0.5 text-xs font-medium text-neutral-600 hover:bg-white hover:text-neutral-900 transition">Compare</a>
+            </div>
+        </div>
+
+        <!-- Report header -->
+        <header class="mb-6">
+            <div class="flex items-center justify-between gap-4 flex-wrap">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Research Test #184</span>
+                        <span class="inline-flex items-center gap-1 rounded-full border border-amber-200 bg-amber-50 px-2 py-0.5 text-[11px] font-medium text-amber-700">
+                            <span class="h-2 w-2 rounded-full bg-amber-500"></span>Testing
+                        </span>
+                    </div>
+                    <h1 class="text-2xl font-semibold text-brand-700">Celadon Base — Cone 10 Reduction</h1>
+                    <p class="mt-1 text-sm text-clay-500">Line blend test: varying silica 22–28% in 2% increments</p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 hover:border-brand-400 hover:text-brand-700 transition">Edit</button>
+                    <button class="inline-flex items-center gap-1.5 rounded-lg border border-silver-300 bg-white px-3 py-1.5 text-xs font-medium text-clay-700 hover:border-brand-400 hover:text-brand-700 transition">Add to Presentation</button>
+                    <button class="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-700 transition">Mark Complete</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Test metadata cards -->
+        <div class="mb-6 grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <div class="rounded-lg border border-silver-200 bg-white p-3">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Cone</div>
+                <div class="mt-0.5 text-lg font-semibold text-clay-900">10</div>
+                <div class="text-xs text-clay-500">Reduction</div>
+            </div>
+            <div class="rounded-lg border border-silver-200 bg-white p-3">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Tiles</div>
+                <div class="mt-0.5 text-lg font-semibold text-clay-900">4</div>
+                <div class="text-xs text-clay-500">of 4 fired</div>
+            </div>
+            <div class="rounded-lg border border-silver-200 bg-white p-3">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Started</div>
+                <div class="mt-0.5 text-lg font-semibold text-clay-900">Jul 14</div>
+                <div class="text-xs text-clay-500">2026</div>
+            </div>
+            <div class="rounded-lg border border-silver-200 bg-white p-3">
+                <div class="text-[10px] font-bold uppercase tracking-widest text-clay-400">Last Fired</div>
+                <div class="mt-0.5 text-lg font-semibold text-clay-900">Aug 5</div>
+                <div class="text-xs text-clay-500">2026</div>
+            </div>
+        </div>
+
+        <!-- Main content grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="lg:col-span-2 space-y-6">
+                <!-- Fired results -->
+                <section class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h2 class="text-sm font-semibold text-clay-800 mb-4">Fired Results</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <div class="text-center">
+                            <div class="aspect-square rounded-lg bg-gradient-to-br from-emerald-200 via-teal-300 to-cyan-400 mb-2"></div>
+                            <p class="text-xs font-medium text-clay-800">Tile A — 22%</p>
+                            <p class="text-[11px] text-clay-400">Satin, slight crawl</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="aspect-square rounded-lg bg-gradient-to-br from-emerald-300 via-teal-400 to-cyan-500 mb-2"></div>
+                            <p class="text-xs font-medium text-clay-800">Tile B — 24%</p>
+                            <p class="text-[11px] text-clay-400">Smooth satin</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="aspect-square rounded-lg bg-gradient-to-br from-teal-200 via-cyan-300 to-sky-400 mb-2 ring-2 ring-brand-500 ring-offset-2"></div>
+                            <p class="text-xs font-medium text-brand-700">Tile C — 26% ★</p>
+                            <p class="text-[11px] text-clay-400">Best result</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="aspect-square rounded-lg bg-gradient-to-br from-sky-200 via-blue-300 to-indigo-300 mb-2"></div>
+                            <p class="text-xs font-medium text-clay-800">Tile D — 28%</p>
+                            <p class="text-[11px] text-clay-400">Slightly dry</p>
+                        </div>
+                    </div>
+                    <button class="mt-4 inline-flex items-center gap-1.5 rounded-lg border border-dashed border-silver-300 px-3 py-2 text-xs font-medium text-clay-500 hover:border-brand-400 hover:text-brand-700 transition">+ Add photos</button>
+                </section>
+
+                <!-- Observations -->
+                <section class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h2 class="text-sm font-semibold text-clay-800 mb-3">Observations</h2>
+                    <div class="space-y-3 text-sm text-clay-700 leading-relaxed">
+                        <p>Tile C at 26% silica gave the best result — smooth satin surface with good depth of color. The jade green is exactly what I was looking for.</p>
+                        <p>Tile A (22%) crawled slightly at the rim, probably too fluid. Tile D (28%) went dry/matte, losing the celadon sheen.</p>
+                        <p><strong>Next step:</strong> Run Tile C as a full batch on a bowl. Also try +1% iron oxide to deepen the green.</p>
+                    </div>
+                    <button class="mt-3 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Edit observations →</button>
+                </section>
+
+                <!-- Base recipe -->
+                <section class="rounded-xl border border-silver-200 bg-white p-5">
+                    <div class="flex items-center justify-between mb-3">
+                        <h2 class="text-sm font-semibold text-clay-800">Base Recipe</h2>
+                        <a href="#" class="text-xs font-medium text-brand-700 hover:text-brand-900 transition">Open in calculator →</a>
+                    </div>
+                    <table class="w-full text-sm">
+                        <tbody>
+                            <tr class="border-b border-silver-100"><td class="py-1.5 text-clay-700">Custer Feldspar</td><td class="py-1.5 text-right font-medium tabular-nums text-clay-900">45</td></tr>
+                            <tr class="border-b border-silver-100"><td class="py-1.5 text-clay-700">Silica</td><td class="py-1.5 text-right font-medium tabular-nums text-clay-900">25</td></tr>
+                            <tr class="border-b border-silver-100"><td class="py-1.5 text-clay-700">Whiting</td><td class="py-1.5 text-right font-medium tabular-nums text-clay-900">18</td></tr>
+                            <tr class="border-b border-silver-100"><td class="py-1.5 text-clay-700">EPK</td><td class="py-1.5 text-right font-medium tabular-nums text-clay-900">10</td></tr>
+                            <tr><td class="py-1.5 text-clay-700">Iron Oxide</td><td class="py-1.5 text-right font-medium tabular-nums text-clay-900">2</td></tr>
+                        </tbody>
+                    </table>
+                </section>
+            </div>
+
+            <!-- Right panel -->
+            <div class="space-y-4">
+                <div class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-clay-400 mb-3">Test Info</h3>
+                    <dl class="space-y-2 text-sm">
+                        <div class="flex justify-between"><dt class="text-clay-500">Test type</dt><dd class="font-medium text-clay-800">Line blend</dd></div>
+                        <div class="flex justify-between"><dt class="text-clay-500">Variable</dt><dd class="font-medium text-clay-800">Silica (22–28%)</dd></div>
+                        <div class="flex justify-between"><dt class="text-clay-500">Increment</dt><dd class="font-medium text-clay-800">2%</dd></div>
+                        <div class="flex justify-between"><dt class="text-clay-500">Clay body</dt><dd class="font-medium text-clay-800">B-Mix w/ grog</dd></div>
+                        <div class="flex justify-between"><dt class="text-clay-500">Application</dt><dd class="font-medium text-clay-800">Dipped, 3 sec</dd></div>
+                        <div class="flex justify-between"><dt class="text-clay-500">Kiln</dt><dd class="font-medium text-clay-800">Gas reduction #2</dd></div>
+                    </dl>
+                </div>
+                <div class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-clay-400 mb-3">Project</h3>
+                    <div class="flex items-center gap-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-clay-400"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+                        <span class="text-sm font-medium text-clay-800">Celadon tests</span>
+                    </div>
+                    <p class="mt-2 text-xs text-clay-400">3 tests in this project</p>
+                </div>
+                <div class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-clay-400 mb-3">Related Tests</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="block rounded-lg border border-silver-100 p-2 hover:border-brand-300 transition">
+                            <p class="text-xs font-medium text-clay-800">Test #182 — Iron variation</p>
+                            <p class="text-[11px] text-clay-400">Completed · Jul 10</p>
+                        </a>
+                        <a href="#" class="block rounded-lg border border-silver-100 p-2 hover:border-brand-300 transition">
+                            <p class="text-xs font-medium text-clay-800">Test #179 — Feldspar swap</p>
+                            <p class="text-[11px] text-clay-400">Completed · Jun 28</p>
+                        </a>
+                        <a href="#" class="block rounded-lg border border-silver-100 p-2 hover:border-brand-300 transition">
+                            <p class="text-xs font-medium text-clay-800">Test #186 — +Iron follow-up</p>
+                            <p class="text-[11px] text-clay-400">Pre-fire · Planned</p>
+                        </a>
+                    </div>
+                </div>
+                <div class="rounded-xl border border-silver-200 bg-white p-5">
+                    <h3 class="text-xs font-bold uppercase tracking-widest text-clay-400 mb-3">Actions</h3>
+                    <div class="space-y-2">
+                        <a href="#" class="flex items-center gap-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">+ Start follow-up test</a>
+                        <a href="#" class="flex items-center gap-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Save winner to Book</a>
+                        <a href="#" class="flex items-center gap-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Batch &amp; print labels</a>
+                        <a href="#" class="flex items-center gap-2 text-xs font-medium text-brand-700 hover:text-brand-900 transition">Share to FIRED!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script>
+function openSidebar(){const s=document.getElementById('sidebar');s.style.width='15rem';s.style.padding='';s.style.borderRightWidth='';document.getElementById('sidebar-open-btn').classList.add('hidden');}
+function closeSidebar(){const s=document.getElementById('sidebar');s.style.width='0';s.style.padding='0';s.style.borderRightWidth='0';document.getElementById('sidebar-open-btn').classList.remove('hidden');}
+</script>
+</body>
+</html>

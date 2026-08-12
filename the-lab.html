@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lab · CMW (Local Prototype)</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                colors: {
+                    clay: { 100:'#e8e4e0',200:'#d4cec8',300:'#b8b0a8',400:'#9a8f85',500:'#7d7168',600:'#635850',700:'#4a4039',800:'#332b26',900:'#1f1a17',950:'#141110' },
+                    brand: { 50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95',950:'#2e1065' },
+                    silver: { 100:'#f4f4f5',200:'#e4e4e7',300:'#d4d4d8' }
+                }
+            }}
+        }
+    </script>
+    <style>
+        .dark .text-clay-400,.dark .text-clay-500,.dark .text-clay-600,.dark .text-clay-700,.dark .text-clay-800{color:#e8e4e0!important}
+        .dark .text-clay-900{color:#fff!important}
+        .dark .bg-white{background-color:#332b26!important}
+        .dark .bg-neutral-50{background-color:#1f1a17!important}
+        .dark .border-silver-200,.dark .border-silver-300,.dark .border-neutral-200{border-color:#4a4039!important}
+    </style>
+</head>
+<body class="bg-neutral-50 dark:bg-clay-900 text-gray-900 dark:text-clay-100 antialiased font-sans">
+
+<!-- TOP NAV -->
+<div class="dark">
+<nav class="border-b border-clay-800 px-3 sm:px-10 bg-clay-950 text-clay-100">
+    <div class="flex items-center justify-between gap-2 sm:gap-4">
+        <div class="flex min-w-0 items-center gap-1 sm:gap-4">
+            <a href="#" class="shrink-0 select-none"><img src="https://my.ceramicmaterialsworkshop.com/anatomy/cmw-logo.png" alt="CMW" class="block h-9 w-auto"/></a>
+            <div class="relative hidden flex-1 md:block">
+                <ul class="flex min-w-max gap-1">
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Ware</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Glaze Anatomy</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">FIRED!</a></li>
+                    <li><a href="my-book.html" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">My Book</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-brand-500 text-white">The Lab</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Library</a></li>
+                    <li><a href="#" class="inline-block px-3 py-4 text-base font-medium border-b-2 border-transparent text-clay-300 hover:text-clay-100 hover:border-clay-600">Learn</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="flex shrink-0 items-center gap-2">
+            <button type="button" aria-label="Search" class="inline-flex items-center justify-center rounded-md p-2 text-clay-300 hover:text-brand-400 hover:bg-clay-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            </button>
+            <button onclick="document.documentElement.classList.toggle('dark')" class="w-9 h-9 rounded-full bg-clay-700 hover:bg-clay-600 transition inline-flex items-center justify-center" title="Toggle dark mode">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-clay-200"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
+            </button>
+        </div>
+    </div>
+</nav>
+</div>
+
+<!-- SIDEBAR + MAIN -->
+<div class="flex min-h-[calc(100vh-64px)]">
+    <aside id="sidebar" class="shrink-0 h-screen sticky top-0 w-60 flex flex-col border-r border-neutral-200 dark:border-clay-800 bg-white dark:bg-clay-900 px-3 py-5 overflow-hidden z-10" style="transition:width 200ms ease,padding 200ms ease,border-width 200ms ease;">
+        <div class="flex items-center justify-between px-3 mb-4">
+            <span class="text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">The Lab</span>
+            <button onclick="closeSidebar()" class="rounded-md p-1 text-clay-400 hover:text-clay-700 hover:bg-neutral-100 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="11 17 6 12 11 7"/><polyline points="18 17 13 12 18 7"/></svg>
+            </button>
+        </div>
+        <nav class="flex-1 space-y-1 overflow-y-auto">
+            <div class="px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Calculators</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium bg-brand-50 text-brand-700">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Glaze Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Clay Body Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Plaster Calculator
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="8" y1="10" x2="10" y2="10"/><line x1="12" y1="10" x2="14" y2="10"/><line x1="8" y1="14" x2="10" y2="14"/><line x1="12" y1="14" x2="14" y2="14"/><line x1="8" y1="18" x2="10" y2="18"/><line x1="12" y1="18" x2="16" y2="18"/></svg>
+                Glaze Quantity Calculator
+            </a>
+
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Test Tools</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 3h6v7l4 11H5L9 10V3z"/><path d="M9 3h6"/></svg>
+                Start a Test
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.376 3.622a1 1 0 0 1 3.002 3.002L7.368 18.635a2 2 0 0 1-.855.506l-2.872.838.838-2.872a2 2 0 0 1 .506-.855z"/></svg>
+                Design a Test
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Fix a Flaw
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="8" height="18" rx="1"/><rect x="13" y="3" width="8" height="18" rx="1"/></svg>
+                Side by Side Comparison
+            </a>
+
+            <div class="!mt-6 px-3 mb-2 text-[10px] font-bold uppercase tracking-widest text-clay-400 dark:text-clay-300">Firing</div>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2c1 3 2.5 3.5 3.5 4.5A5 5 0 0 1 17 10c0 4-4 6-5 9-1-3-5-5-5-9a5 5 0 0 1 1.5-3.5C9.5 5.5 11 5 12 2z"/></svg>
+                Firing Schedules
+            </a>
+            <a href="#" class="flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm font-medium text-clay-600 hover:bg-neutral-50 hover:text-clay-900 dark:text-white dark:hover:bg-clay-800 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                Firing Log
+            </a>
+        </nav>
+    </aside>
+
+    <button id="sidebar-open-btn" onclick="openSidebar()" class="hidden sticky top-20 ml-2 mt-4 h-8 w-8 items-center justify-center rounded-md border border-silver-200 bg-white text-clay-500 shadow-sm hover:text-brand-700 hover:border-brand-300 transition z-10 shrink-0">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="13 7 18 12 13 17"/><polyline points="6 7 11 12 6 17"/></svg>
+    </button>
+
+    <!-- Main content -->
+    <main class="flex-1 min-w-0 py-8 px-4 sm:px-8">
+        <header class="mb-6">
+            <h1 class="text-2xl font-semibold text-brand-700">The Lab</h1>
+            <p class="mt-1 text-sm text-clay-500">Your workspace for building, testing, and firing glaze recipes.</p>
+        </header>
+
+        <p class="text-sm text-clay-500">[Lab content area — calculator, test builder, etc. would render here based on sidebar selection]</p>
+    </main>
+</div>
+
+<script>
+function openSidebar(){const s=document.getElementById('sidebar');s.style.width='15rem';s.style.padding='';s.style.borderRightWidth='';document.getElementById('sidebar-open-btn').classList.add('hidden');}
+function closeSidebar(){const s=document.getElementById('sidebar');s.style.width='0';s.style.padding='0';s.style.borderRightWidth='0';document.getElementById('sidebar-open-btn').classList.remove('hidden');}
+</script>
+
+</body>
+</html>

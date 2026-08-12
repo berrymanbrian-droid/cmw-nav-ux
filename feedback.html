@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW UX Feedback — Tweaks & Notes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 text-gray-900 antialiased font-sans">
+
+<div class="max-w-4xl mx-auto px-6 py-12">
+    <header class="mb-10">
+        <h1 class="text-3xl font-bold text-gray-900">CMW UX Feedback</h1>
+        <p class="mt-2 text-base text-gray-500">Small tweaks and implementation notes for the development team. Each item includes a description of the issue and the expected behavior based on the wireframes.</p>
+        <p class="mt-1 text-sm text-gray-400">Reference prototypes: <a href="my-book.html" class="text-purple-600 underline">My Book</a> · <a href="my-glazes.html" class="text-purple-600 underline">My Glazes</a></p>
+    </header>
+
+    <!-- FEEDBACK ITEMS -->
+    <div class="space-y-10" id="feedback-list">
+
+        <!-- ITEM 1 -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Sidebar</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#1</span> Left-hand navigation tweaks</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: All (sidebar)</span>
+            </div>
+
+            <!-- Side by side screenshots -->
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Current</p>
+                    <img src="img/feedback-sidebar-1.png" alt="Current: MY BOOK is a non-clickable section label" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-green-100 bg-green-50/50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-2">Recommended</p>
+                    <img src="img/feedback-sidebar-2.png" alt="Recommended: My Book as a clickable nav link with icons" class="rounded max-w-full"/>
+                </div>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Add a direct link for My Book.</strong> "MY BOOK" at the top of the sidebar is currently just a section label — it should be a clickable link that navigates to the My Book shelves page.</li>
+                <li><strong>Increase the size of the arrow icon</strong> that opens and closes the left-hand menu. The current chevron is too small and hard to click, especially for less tech-savvy users. Recommend at least 20x20px icon with a 32x32px hit target.</li>
+                <li><strong>Consider adding icons to the sidebar menu items.</strong> Users can quickly associate with icons to drive exploration. Each nav item should have a small (16px) icon to the left of the label (see "Recommended" screenshot for reference).</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 2: Sidebar Navigation -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Navigation</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#2</span> Sidebar Navigation — Strip back to focus users on key tools</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: All (top nav)</span>
+            </div>
+
+            <!-- Side by side screenshots -->
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Current</p>
+                    <img src="img/feedback-nav-current.png" alt="Current sidebar navigation with many items" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-green-100 bg-green-50/50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-2">Recommended</p>
+                    <img src="img/feedback-nav-recommended.png" alt="Simplified sidebar with cross-links to other areas" class="rounded max-w-full"/>
+                </div>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Strip the top navigation back significantly.</strong> The current version has too many items competing for attention. Focus users on the core areas of the site — the contextual sidebars handle the detail within each area. We can always introduce new items in the future as we learn how users are interacting with the nav.</li>
+                <li><strong>Include links to other areas of focus on the site.</strong> With a simpler sidebar, add cross-links to the other major sections (e.g., The Lab, FIRED!) with short descriptor text so users can discover and navigate between the core areas without relying solely on the top nav.</li>
+                <li><strong>Rename "My Glazes" back to "My Book."</strong> The current version labels the main sidebar item "My Glazes" but it actually navigates to My Book — which contains not only glazes but also clay bodies, slips, and firing schedules. "My Book" is more accurate and avoids confusion about what's inside.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 3: Controls & filters area -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Controls</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#3</span> Shelf tabs, filters & dropdowns — readability issues</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-5">
+                <img src="img/feedback-controls-1.png" alt="Screenshot of the shelf tabs, filter area, and dropdown controls" class="rounded max-w-full"/>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Too much text in this area.</strong> The shelf tabs, filter chips, search bar, sort dropdown, and results count all compete for attention. Consider reducing label verbosity and using tighter spacing to make the section feel less overwhelming.</li>
+                <li><strong>Emoji-style icons render too small.</strong> The shelf tab icons (📗 📓 🧪 🌳 🔖 📦) are hard to read at this size. Replace them with simple line-art SVG icons that stay crisp at small sizes and render consistently across platforms.</li>
+                <li><strong>Add helper text labels next to dropdown menus.</strong> Users need to understand what each control does at a glance. Add small labels like "Show", "Filter", "Sort by" next to their respective dropdowns — see <a href="my-book.html" class="text-purple-600 underline">wireframe</a> for examples of this pattern.</li>
+                <li><strong>Dropdown default values should describe the field's purpose.</strong> The pre-selected/default option should tell the user what the dropdown is for. For example, instead of just showing "Recently updated" as the first option, the visible label should read "Sort by" with the value inside, so the user understands the control before interacting with it.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 4: Page header & guide -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Page Header</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#4</span> Page header: Public/Private tag & dismissable guide</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book / My Glazes</span>
+            </div>
+
+            <!-- Side by side screenshots -->
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Current</p>
+                    <img src="img/feedback-header-1.png" alt="Current page header without privacy badge or guide" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-green-100 bg-green-50/50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-2">Recommended</p>
+                    <img src="img/feedback-header-2.png" alt="Recommended: with Public badge and dismissable page guide" class="rounded max-w-full"/>
+                </div>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Add a Public / Private tag next to the page title.</strong> This helps users immediately understand whether the information they're storing on this page is visible to others or private. Use an amber "Public" badge (with info icon) or a green "Private" badge (with lock icon). One consideration: decide whether this label applies at the page level or per-recipe — either approach works, but be consistent.</li>
+                <li><strong>Adjust the dismissable "page guide" section.</strong> When the user clicks to hide the onboarding guide, there should be a small "How do I use this page?" button that appears in its place so they can bring it back later. Currently once dismissed, users have no way to re-access the help content. See <a href="my-book.html" class="text-purple-600 underline">wireframe</a> for the implemented pattern.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 5: Sub-nav toolbar -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Navigation</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#5</span> Data Space — Consider hiding to reduce confusion and focus on existing tools</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: Calculator / Research</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-5">
+                <img src="img/feedback-subnav-hide.png" alt="Screenshot of the Make/Test/Fire/Compare sub-navigation toolbar" class="rounded max-w-full"/>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>This feature is interesting but could cause users to get lost.</strong> The Make/Test/Fire/Compare workflow toolbar introduces another layer of navigation that may overwhelm users who are still learning the site. The recommendation is to hide this for now and get users managing their recipes through the existing, more familiar tools — My Book, My Glazes, and the sidebar navigation. It can be reintroduced in the future once users are comfortable with the core flows.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 6: Top level nav streamlining -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Navigation</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#6</span> Top-level nav — Streamline to focus on getting users to My Book</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: All (top nav)</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-5">
+                <img src="img/feedback-topnav-1.png" alt="Screenshot of the current top-level navigation" class="rounded max-w-full"/>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Streamline the top-level navigation.</strong> Focus on getting the user into the My Book section of the site as quickly as possible. The top nav should prioritize the core areas without overwhelming users with too many choices.</li>
+                <li><strong>Consider removing "Bring Work In."</strong> This section is an easy candidate to prune — importing/uploading can be handled within the My Book sidebar tools (Import, Drop Box) once users are already in context.</li>
+                <li><strong>Consider removing "Shared."</strong> The shared/community functionality could be better established within the FIRED! area, where social and community features already live. Having it in both places creates redundancy and dilutes FIRED!'s purpose.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 7: Bottom tool cards -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Redundancy</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#7</span> Bottom-of-page tool cards — Consider removing</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-5">
+                <img src="img/feedback-toolcards-remove.png" alt="Screenshot of the tool cards at the bottom of the page" class="rounded max-w-full"/>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Consider removing these tool cards entirely.</strong> Most of these actions (New glaze, Import, Drop Box, Bulk photos) are already accessible from the sidebar menu or the inline action buttons at the top of the page. Having them repeated at the bottom adds visual weight without providing new access — users who've scrolled past all their recipes don't need a second set of entry points to the same tools.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 8: Default image placeholder -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-red-100 text-red-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Bug</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#8</span> Glaze cards show default placeholder even when user photos exist</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-5">
+                <img src="img/feedback-placeholder-image.png" alt="Screenshot showing default placeholder image on glaze cards despite user-submitted photos existing" class="rounded max-w-full"/>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Glaze cards display a generic placeholder image even when the recipe has user-submitted photos.</strong> If a user has uploaded fired images for a glaze, those should be shown on the card (e.g., the first uploaded photo as a thumbnail). The placeholder should only appear when no photos have been added to the recipe.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 9: Back button broken -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-red-100 text-red-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Bug</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#9</span> Browser back button doesn't work from glaze recipe view</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book → Recipe</span>
+            </div>
+
+            <!-- Side by side screenshots -->
+            <div class="grid grid-cols-2 gap-4 mb-5">
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Step 1: Click a recipe from My Book</p>
+                    <img src="img/feedback-placeholder-image.png" alt="My Book view showing recipe cards" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Step 2: Recipe view — back button does nothing</p>
+                    <img src="img/feedback-back-button.png" alt="Recipe detail view where back button is broken" class="rounded max-w-full"/>
+                </div>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Clicking the browser back button from a glaze recipe does nothing.</strong> When a user clicks a recipe from My Book to view its details, pressing the browser's back button fails to return them to the list. This may be an issue with how My Book renders the glaze recipe views — possibly using client-side state changes without pushing to browser history. Each recipe view should create a proper history entry so back navigation works as expected.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 10: My Glazes list view vs My Book -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-purple-100 text-purple-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Question / Suggestion</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#10</span> Consider adopting My Glazes list view as the default recipe layout in My Book</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: My Book / My Glazes</span>
+            </div>
+
+            <!-- Three screenshots -->
+            <div class="grid grid-cols-3 gap-3 mb-5">
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <img src="img/feedback-listview-2.png" alt="My Glazes list view showing images and recipe details" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <img src="img/feedback-listview-1.png" alt="My Glazes list view continued" class="rounded max-w-full"/>
+                </div>
+                <div class="rounded-lg border border-gray-100 bg-gray-50 p-2">
+                    <img src="img/feedback-listview-3.png" alt="My Book current list view for comparison" class="rounded max-w-full"/>
+                </div>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Will the My Glazes page continue to exist as a separate page?</strong> If My Book is the central hub, having a separate My Glazes view may be redundant. Consider consolidating.</li>
+                <li><strong>The My Glazes list view is richer and more useful.</strong> It shows images, ingredients, chemistry, and actions inline — giving users much more information at a glance than the current My Book list view. Consider replacing the My Book recipe list layout with the My Glazes list layout as the default, so users get the benefit of seeing photos and details without needing to click into each recipe.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 11: Lab sidebar nav -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-purple-100 text-purple-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Suggestion</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#11</span> Create a sidebar nav for The Lab area</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: The Lab</span>
+            </div>
+
+            <!-- Screenshot -->
+            <div class="rounded-lg border border-green-100 bg-green-50/50 p-2 mb-5">
+                <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-2">Recommended</p>
+                <img src="img/feedback-lab-sidebar.png" alt="Wireframe of The Lab sidebar with Calculators, Test Tools, and Firing sections" class="rounded" style="max-width: 50%;"/>
+            </div>
+
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Create a dedicated sidebar navigation for The Lab.</strong> Similarly to My Book, The Lab should have its own contextual sidebar that pulls together the various tools a user needs for testing and experimentation — calculators, test design tools, and firing management — all in one accessible place. See <a href="the-lab.html" class="text-purple-600 underline">wireframe</a> for the full implementation.</li>
+            </ol>
+        </article>
+
+    <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-xs text-gray-400">
+        <p>CMW UX Feedback Document · August 2026</p>
+    </footer>
+</div>
+
+</body>
+</html>
