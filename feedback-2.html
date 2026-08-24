@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMW UX Feedback — Round 2</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: { fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] } } }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 text-gray-900 antialiased font-sans">
+
+<div class="max-w-4xl mx-auto px-6 py-12">
+    <header class="mb-10">
+        <h1 class="text-3xl font-bold text-gray-900">CMW UX Feedback — Round 2</h1>
+        <p class="mt-2 text-base text-gray-500">Additional tweaks and layout improvements. See also <a href="feedback.html" class="text-purple-600 underline">Round 1</a>.</p>
+    </header>
+
+    <div class="space-y-10" id="feedback-list">
+
+        <!-- ITEM 1: Test table layout -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-amber-100 text-amber-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Layout</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#1</span> Research tests table — improve column structure and readability</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: Research / Tests</span>
+            </div>
+
+            <!-- Current screenshot -->
+            <div class="rounded-lg border border-gray-100 bg-gray-50 p-2 mb-4">
+                <p class="text-[10px] font-bold uppercase tracking-wide text-gray-400 mb-2">Current</p>
+                <img src="img/feedback-test-table.png" alt="Current test table layout — jumbled, missing headings" class="rounded max-w-full"/>
+            </div>
+
+            <!-- Recommended table mockup -->
+            <div class="rounded-lg border border-green-100 bg-green-50/50 p-4 mb-5">
+                <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-3">Recommended Table Structure</p>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm border-collapse">
+                        <thead>
+                            <tr class="border-b-2 border-gray-200 text-left">
+                                <th class="py-2 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Test Name</th>
+                                <th class="py-2 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Status</th>
+                                <th class="py-2 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500"># of Tiles</th>
+                                <th class="py-2 pr-4 text-xs font-semibold uppercase tracking-wide text-gray-500">Created</th>
+                                <th class="py-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Last Updated</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-100">
+                                <td class="py-2.5 pr-4 font-medium text-gray-900">Celadon Base — Silica Line Blend</td>
+                                <td class="py-2.5 pr-4"><span class="inline-flex items-center gap-1 rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">Pre-fire</span></td>
+                                <td class="py-2.5 pr-4 tabular-nums text-gray-600">4</td>
+                                <td class="py-2.5 pr-4 text-gray-500">Jul 14, 2026</td>
+                                <td class="py-2.5 text-gray-500">Aug 5, 2026</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="py-2.5 pr-4 font-medium text-gray-900">Copper Red #1 — Iron Variation</td>
+                                <td class="py-2.5 pr-4"><span class="inline-flex items-center gap-1 rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[11px] font-medium text-green-700">Fired</span></td>
+                                <td class="py-2.5 pr-4 tabular-nums text-gray-600">6</td>
+                                <td class="py-2.5 pr-4 text-gray-500">Jun 28, 2026</td>
+                                <td class="py-2.5 text-gray-500">Jul 30, 2026</td>
+                            </tr>
+                            <tr class="border-b border-gray-100">
+                                <td class="py-2.5 pr-4 font-medium text-gray-900">Ash Glaze — Wood Ash Source Test</td>
+                                <td class="py-2.5 pr-4"><span class="inline-flex items-center gap-1 rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-600">Concluded</span></td>
+                                <td class="py-2.5 pr-4 tabular-nums text-gray-600">8</td>
+                                <td class="py-2.5 pr-4 text-gray-500">May 10, 2026</td>
+                                <td class="py-2.5 text-gray-500">Jun 15, 2026</td>
+                            </tr>
+                            <tr>
+                                <td class="py-2.5 pr-4 font-medium text-gray-900">Tenmoku — Feldspar Swap</td>
+                                <td class="py-2.5 pr-4"><span class="inline-flex items-center gap-1 rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">Pre-fire</span></td>
+                                <td class="py-2.5 pr-4 tabular-nums text-gray-600">3</td>
+                                <td class="py-2.5 pr-4 text-gray-500">Aug 1, 2026</td>
+                                <td class="py-2.5 text-gray-500">Aug 3, 2026</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Add clear column headings.</strong> The current table lacks visible headers, making it hard to scan and understand what each column represents.</li>
+                <li><strong>Use these columns:</strong> Test Name, Status (Pre-fire / Fired / Concluded), # of Tiles, Created date, Last Updated date.</li>
+                <li><strong>Remove the numeric range columns</strong> (e.g., "23–27"). These don't communicate useful information to the user at the table level.</li>
+                <li><strong>Use colored status badges</strong> to make test status instantly scannable — amber for Pre-fire, green for Fired, gray for Concluded.</li>
+            </ol>
+        </article>
+
+        <!-- ITEM 2: Project View -->
+        <article class="rounded-xl border border-gray-200 bg-white p-6">
+            <div class="flex items-start justify-between gap-4 mb-3">
+                <div>
+                    <span class="inline-block rounded-full bg-purple-100 text-purple-700 px-2.5 py-0.5 text-[11px] font-semibold uppercase">Suggestion</span>
+                    <h2 class="mt-2 text-lg font-semibold text-gray-900"><span class="text-gray-400 font-normal">#2</span> Add a "Project View" to group related tests together</h2>
+                </div>
+                <span class="text-xs text-gray-400 whitespace-nowrap">Page: Research / Tests</span>
+            </div>
+
+            <p class="text-sm text-gray-600 leading-relaxed mb-5">Users often run many individual tests before achieving their desired result. A Project View would group related tests under a named project, making it easy to see progress on a line of inquiry. Tests without a project assignment would appear in an "Unassigned" group at the bottom.</p>
+
+            <!-- View toggle mockup -->
+            <div class="mb-5 inline-flex rounded-lg border border-gray-200 p-0.5">
+                <span class="rounded-md px-3 py-1 text-xs font-medium text-gray-500">All Tests</span>
+                <span class="rounded-md bg-purple-600 px-3 py-1 text-xs font-medium text-white">Project View</span>
+            </div>
+
+            <!-- Recommended project view mockup -->
+            <div class="rounded-lg border border-green-100 bg-green-50/50 p-4 mb-5">
+                <p class="text-[10px] font-bold uppercase tracking-wide text-green-600 mb-4">Recommended: Project View</p>
+
+                <!-- Project 1 -->
+                <div class="mb-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="h-3 w-3 rounded-full bg-purple-500"></div>
+                        <h3 class="text-sm font-semibold text-gray-900">Celadon Development</h3>
+                        <span class="text-[11px] text-gray-400">— 3 tests</span>
+                    </div>
+                    <div class="ml-5 overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-gray-200 text-left">
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Test Name</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Status</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Tiles</th>
+                                    <th class="py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Silica Line Blend (22–28%)</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[11px] font-medium text-green-700">Fired</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">4 tiles</td>
+                                    <td class="py-2 text-gray-500">Aug 5, 2026</td>
+                                </tr>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Iron Variation (1–3%)</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">Pre-fire</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">3 tiles</td>
+                                    <td class="py-2 text-gray-500">Aug 10, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Feldspar Swap — Custer vs F4</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-600">Concluded</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">2 tiles</td>
+                                    <td class="py-2 text-gray-500">Jul 10, 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="mb-5">
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="h-3 w-3 rounded-full bg-red-500"></div>
+                        <h3 class="text-sm font-semibold text-gray-900">Copper Red Series</h3>
+                        <span class="text-[11px] text-gray-400">— 2 tests</span>
+                    </div>
+                    <div class="ml-5 overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-gray-200 text-left">
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Test Name</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Status</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Tiles</th>
+                                    <th class="py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Base Recipe — Tin vs Bone Ash</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-green-50 border border-green-200 px-2 py-0.5 text-[11px] font-medium text-green-700">Fired</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">6 tiles</td>
+                                    <td class="py-2 text-gray-500">Jul 30, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Copper % Variation (0.5–2%)</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">Pre-fire</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">4 tiles</td>
+                                    <td class="py-2 text-gray-500">Aug 12, 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Unassigned -->
+                <div>
+                    <div class="flex items-center gap-2 mb-2">
+                        <div class="h-3 w-3 rounded-full bg-gray-300"></div>
+                        <h3 class="text-sm font-semibold text-gray-500">Unassigned</h3>
+                        <span class="text-[11px] text-gray-400">— 2 tests</span>
+                    </div>
+                    <div class="ml-5 overflow-x-auto">
+                        <table class="w-full text-sm border-collapse">
+                            <thead>
+                                <tr class="border-b border-gray-200 text-left">
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Test Name</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Status</th>
+                                    <th class="py-1.5 pr-4 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Tiles</th>
+                                    <th class="py-1.5 text-[11px] font-semibold uppercase tracking-wide text-gray-400">Last Updated</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="border-b border-gray-100">
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Tenmoku — Feldspar Swap</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-amber-50 border border-amber-200 px-2 py-0.5 text-[11px] font-medium text-amber-700">Pre-fire</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">3 tiles</td>
+                                    <td class="py-2 text-gray-500">Aug 3, 2026</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2 pr-4 font-medium text-gray-900">Ash Glaze — Wood Ash Source</td>
+                                    <td class="py-2 pr-4"><span class="inline-flex rounded-full bg-slate-50 border border-slate-200 px-2 py-0.5 text-[11px] font-medium text-slate-600">Concluded</span></td>
+                                    <td class="py-2 pr-4 tabular-nums text-gray-600">8 tiles</td>
+                                    <td class="py-2 text-gray-500">Jun 15, 2026</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback points -->
+            <ol class="space-y-3 text-sm text-gray-700 list-decimal list-inside">
+                <li><strong>Add a view toggle:</strong> "All Tests" (flat table) vs "Project View" (grouped by project).</li>
+                <li><strong>Group tests by project name</strong> with a colored dot, project title, and test count. Each group shows its tests in a compact table below.</li>
+                <li><strong>Include an "Unassigned" group</strong> at the bottom for any tests that haven't been linked to a project yet — this avoids orphaned tests getting lost.</li>
+                <li><strong>Projects are user-created folders</strong> that represent a line of inquiry (e.g., "Celadon Development", "Copper Red Series"). Users assign tests to projects when creating or editing them.</li>
+            </ol>
+        </article>
+
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-gray-200 text-center text-xs text-gray-400">
+        <p>CMW UX Feedback — Round 2 · August 2026</p>
+    </footer>
+</div>
+
+</body>
+</html>
