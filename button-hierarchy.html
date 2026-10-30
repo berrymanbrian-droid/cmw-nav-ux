@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Page — Button Hierarchy &amp; Recommendations</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                colors: {
+                    clay: { 100:'#e8e4e0',200:'#d4cec8',300:'#b8b0a8',400:'#9a8f85',500:'#7d7168',600:'#635850',700:'#4a4039',800:'#332b26',900:'#1f1a17',950:'#141110' },
+                    brand: { 50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95',950:'#2e1065' },
+                    silver: { 100:'#f4f4f5',200:'#e4e4e7',300:'#d4d4d8' }
+                }
+            }}
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 text-gray-900 antialiased font-sans">
+
+<div class="max-w-5xl mx-auto px-6 py-10">
+
+    <p class="text-[11px] font-bold uppercase tracking-widest text-clay-400 mb-2">Testing page</p>
+    <h1 class="text-2xl font-bold text-gray-900 mb-1">Refined testing list view</h1>
+    <p class="text-sm text-clay-500 mb-8 max-w-2xl">A working demo of the cleaned-up Testing list view, followed by the context on what changed and why. The goal is to cut redundancy and let the table and its column controls do the work the extra buttons were doing.</p>
+
+    <!-- ===== RECOMMENDED LIVE DEMO ===== -->
+    <section class="mb-16">
+        <h2 class="mb-8 text-sm font-bold uppercase tracking-wide text-clay-500">Working demo</h2>
+
+        <!-- Material type selector + global import -->
+        <div class="mb-6 flex flex-wrap items-center justify-between gap-3">
+            <div class="inline-flex rounded-lg bg-silver-100 p-1">
+                <button onclick="pickType(this)" class="type-seg rounded-md bg-white px-4 py-2 text-sm font-semibold text-brand-700 shadow-sm">Glazes</button>
+                <button onclick="pickType(this)" class="type-seg rounded-md px-4 py-2 text-sm font-medium text-clay-600 hover:text-brand-700">Clay bodies</button>
+                <button onclick="pickType(this)" class="type-seg rounded-md px-4 py-2 text-sm font-medium text-clay-600 hover:text-brand-700">Slips &amp; underglazes</button>
+                <button onclick="pickType(this)" class="type-seg rounded-md px-4 py-2 text-sm font-medium text-clay-600 hover:text-brand-700">Washes</button>
+                <button onclick="pickType(this)" class="type-seg rounded-md px-4 py-2 text-sm font-medium text-clay-600 hover:text-brand-700">Firing</button>
+            </div>
+            <div class="relative">
+                <button onclick="toggleImport()" id="importBtn" class="inline-flex items-center gap-1.5 text-sm font-medium text-clay-600 hover:text-brand-700">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0l-4-4m4 4l4-4M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2"/></svg>
+                    Import files &amp; images
+                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div id="importMenu" class="hidden absolute right-0 top-full z-30 mt-2 w-56 rounded-xl border border-silver-200 bg-white p-1.5 shadow-lg">
+                    <a href="#" class="block rounded-lg px-3 py-2.5 text-sm text-clay-700 hover:bg-neutral-50 hover:text-brand-700">Import recipes</a>
+                    <a href="#" class="block rounded-lg px-3 py-2.5 text-sm text-clay-700 hover:bg-neutral-50 hover:text-brand-700">Bulk upload photos</a>
+                    <a href="#" class="block rounded-lg px-3 py-2.5 text-sm text-clay-700 hover:bg-neutral-50 hover:text-brand-700">Drop Box</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shelf pills (Projects pill is the single home for projects now) -->
+        <div class="mb-6 flex flex-wrap gap-1.5">
+            <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Mainstays 9</span>
+            <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Notebook 46</span>
+            <span class="rounded-full border border-brand-600 bg-brand-50 px-3 py-1.5 text-sm text-brand-800">Testing 42</span>
+            <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Projects</span>
+            <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Wishlist 0</span>
+            <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Archive 7</span>
+        </div>
+
+        <!-- Toolbar: one Sort, one Filter, one primary -->
+        <div class="flex flex-wrap items-center gap-2 rounded-t-xl border border-silver-200 bg-white px-4 py-3">
+            <div class="relative flex-1 min-w-[200px]">
+                <svg class="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-clay-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7" stroke-width="2"/><path stroke-width="2" stroke-linecap="round" d="M21 21l-4-4"/></svg>
+                <input type="text" placeholder="Search glazes by name, notes or date code…" class="w-full rounded-lg border border-silver-200 bg-neutral-50 py-2 pl-9 pr-3 text-sm text-clay-700 placeholder:text-clay-400 focus:border-brand-400 focus:bg-white focus:outline-none">
+            </div>
+            <div class="relative">
+                <button onclick="toggleFilters()" id="filtersBtn" class="inline-flex items-center gap-1.5 rounded-lg border border-silver-200 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-300">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 4h18M6 12h12M10 20h4"/></svg>
+                    Filters
+                </button>
+                <div id="filtersPanel" class="hidden absolute left-0 top-full z-30 mt-2 w-64 rounded-xl border border-silver-200 bg-white p-4 shadow-lg">
+                    <div class="mb-4">
+                        <div class="mb-2 text-[11px] font-bold uppercase tracking-wide text-clay-400">Status</div>
+                        <div class="space-y-1.5">
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-status" checked class="text-brand-600 focus:ring-brand-400"> Any status</label>
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-status" class="text-brand-600 focus:ring-brand-400"> Pre-fire</label>
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-status" class="text-brand-600 focus:ring-brand-400"> Fired</label>
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-status" class="text-brand-600 focus:ring-brand-400"> Concluded</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="mb-2 text-[11px] font-bold uppercase tracking-wide text-clay-400">Photos</div>
+                        <div class="space-y-1.5">
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-photos" checked class="text-brand-600 focus:ring-brand-400"> Any photos</label>
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-photos" class="text-brand-600 focus:ring-brand-400"> With photos</label>
+                            <label class="flex items-center gap-2 text-sm text-clay-700 cursor-pointer"><input type="radio" name="f-photos" class="text-brand-600 focus:ring-brand-400"> Without photos</label>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <div class="mb-2 text-[11px] font-bold uppercase tracking-wide text-clay-400">Surface</div>
+                        <select class="w-full rounded-lg border border-silver-200 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none">
+                            <option>Any surface</option><option>Gloss</option><option>Satin</option><option>Matte</option><option>Opalescent</option><option>Crystalline</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <div class="mb-2 text-[11px] font-bold uppercase tracking-wide text-clay-400">Color family</div>
+                        <select class="w-full rounded-lg border border-silver-200 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none">
+                            <option>Any color</option><option>Blue</option><option>Green</option><option>Red / Pink</option><option>Yellow / Amber</option><option>Brown / Tan</option><option>Black</option><option>White / Clear</option>
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <div class="mb-2 text-[11px] font-bold uppercase tracking-wide text-clay-400">Flux type</div>
+                        <select class="w-full rounded-lg border border-silver-200 bg-white px-2.5 py-1.5 text-sm text-clay-700 focus:border-brand-400 focus:outline-none">
+                            <option>Any flux</option><option>Calcium</option><option>Magnesium</option><option>Alkaline (KNaO)</option><option>Zinc</option><option>Barium / Strontium</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center justify-between border-t border-silver-200 pt-3">
+                        <button onclick="toggleFilters()" class="text-xs font-medium text-clay-500 hover:text-brand-700">Clear all</button>
+                        <button onclick="toggleFilters()" class="rounded-md bg-brand-600 px-3 py-1.5 text-xs font-semibold text-white hover:bg-brand-700">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ml-auto inline-flex rounded-lg border border-silver-200 bg-white p-0.5 text-sm">
+                <button class="rounded-md bg-brand-600 px-3 py-1.5 font-medium text-white">List</button>
+                <button class="rounded-md px-3 py-1.5 text-clay-600">Tiles</button>
+                <button class="rounded-md px-3 py-1.5 text-clay-600">Chemistry</button>
+            </div>
+            <button class="inline-flex items-center gap-1.5 rounded-lg bg-brand-600 px-3.5 py-2 text-sm font-semibold text-white hover:bg-brand-700">
+                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14"/></svg>New glaze
+            </button>
+        </div>
+
+        <!-- Active / Archived / All / By project tabs -->
+        <div class="flex items-end gap-1 border-x border-silver-200 bg-white px-4 pt-2">
+            <button class="tab -mb-px border-b-2 border-brand-600 px-3 pb-2.5 pt-1 text-sm font-semibold text-brand-700" data-tab="active" onclick="switchTab(this)">
+                Active tests <span class="ml-1 rounded-full bg-brand-100 px-1.5 text-xs text-brand-700">35</span>
+            </button>
+            <button class="tab -mb-px border-b-2 border-transparent px-3 pb-2.5 pt-1 text-sm font-medium text-clay-500 hover:text-brand-700" data-tab="archived" onclick="switchTab(this)">
+                Archived <span class="ml-1 rounded-full bg-silver-100 px-1.5 text-xs text-clay-500">7</span>
+            </button>
+            <button class="tab -mb-px border-b-2 border-transparent px-3 pb-2.5 pt-1 text-sm font-medium text-clay-500 hover:text-brand-700" data-tab="all" onclick="switchTab(this)">
+                All tests <span class="ml-1 rounded-full bg-silver-100 px-1.5 text-xs text-clay-500">42</span>
+            </button>
+            <button class="tab -mb-px border-b-2 border-transparent px-3 pb-2.5 pt-1 text-sm font-medium text-clay-500 hover:text-brand-700" data-tab="project" onclick="switchTab(this)">
+                By project
+            </button>
+        </div>
+
+        <!-- Bulk action bar (hidden until a row is checked) -->
+        <div id="bulkbar" class="hidden items-center gap-3 border-x border-silver-200 bg-brand-50 px-4 py-2 text-sm">
+            <span id="bulkcount" class="font-semibold text-brand-800">0 selected</span>
+            <div class="h-4 w-px bg-brand-200"></div>
+            <button class="rounded-md border border-brand-300 bg-white px-2.5 py-1 text-xs font-medium text-brand-700 hover:bg-brand-100">Group into project</button>
+            <button class="rounded-md border border-silver-300 bg-white px-2.5 py-1 text-xs font-medium text-clay-700 hover:border-brand-300">Move</button>
+            <button class="rounded-md border border-silver-300 bg-white px-2.5 py-1 text-xs font-medium text-clay-700 hover:border-brand-300">Share</button>
+            <button onclick="clearSelection()" class="ml-auto text-xs text-clay-500 hover:text-brand-700">Clear</button>
+        </div>
+
+        <!-- Results count -->
+        <div class="flex items-center justify-between border-x border-silver-200 bg-white px-4 py-2 text-xs text-clay-500">
+            <span id="resultsCount">Showing 1–35 of 35</span>
+        </div>
+
+        <!-- ===== LIST VIEW (Active / Archived / All) ===== -->
+        <div id="view-list" class="overflow-hidden rounded-b-xl border border-t-0 border-silver-200 bg-white">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-silver-200 bg-neutral-50 text-left text-xs font-semibold uppercase tracking-wide text-clay-500">
+                        <th class="px-4 py-2.5 w-10"><input type="checkbox" id="selectAll" onchange="toggleAll(this)" class="h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-400"></th>
+                        <th class="px-4 py-2.5"><button class="group inline-flex items-center gap-1 hover:text-brand-700">Name <svg class="h-3 w-3 text-clay-300 group-hover:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></button></th>
+                        <th class="px-4 py-2.5"><button class="group inline-flex items-center gap-1 hover:text-brand-700">Tile code <svg class="h-3 w-3 text-clay-300 group-hover:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></button></th>
+                        <th class="px-4 py-2.5 text-center"><button class="group inline-flex items-center gap-1 hover:text-brand-700">Cone <svg class="h-3 w-3 text-clay-300 group-hover:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></button></th>
+                        <th class="px-4 py-2.5"><button class="group inline-flex items-center gap-1 text-brand-700">Updated <svg class="h-3 w-3 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 15l4 4 4-4"/></svg></button></th>
+                        <th class="px-4 py-2.5"><button class="group inline-flex items-center gap-1 hover:text-brand-700">Status <svg class="h-3 w-3 text-clay-300 group-hover:text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 9l4-4 4 4M8 15l4 4 4-4"/></svg></button></th>
+                        <th class="px-4 py-2.5 w-10"><span class="sr-only">Actions</span></th>
+                    </tr>
+                </thead>
+                <tbody id="listBody" class="divide-y divide-silver-200"></tbody>
+                <!-- Timeline link lives at the bottom now -->
+                <tfoot>
+                    <tr class="border-t border-silver-200 bg-neutral-50">
+                        <td colspan="7" class="px-4 py-3 text-center">
+                            <a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:text-brand-900">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2"/></svg>
+                                View all tests in timeline →
+                            </a>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <!-- ===== BY PROJECT VIEW ===== -->
+        <div id="view-project" class="hidden rounded-b-xl border border-t-0 border-silver-200 bg-white"></div>
+        <p class="mt-3 text-xs text-clay-400">Tabs filter the table: <strong>Active tests</strong> (not archived), <strong>Archived</strong>, <strong>All tests</strong>, and <strong>By project</strong> (grouped). Check the header box to select all, or tick rows individually — the bulk-action bar appears with Group / Move / Share. The old "Timeline" and "Select tests to group" buttons are gone; the Projects button is gone (the pill handles it).</p>
+    </section>
+
+    <!-- ===== CONTEXT DIVIDER ===== -->
+    <div class="mb-10 border-t border-silver-200 pt-10">
+        <p class="text-[11px] font-bold uppercase tracking-widest text-clay-400 mb-2">The thinking</p>
+        <h2 class="text-xl font-bold text-gray-900 mb-1">What changed and why</h2>
+        <p class="text-sm text-clay-500 max-w-2xl">A reference of the controls as they ship today, and the reasoning behind each move in the demo above.</p>
+    </div>
+
+    <!-- ===== CURRENT STATE (reference) ===== -->
+    <section class="mb-10 rounded-xl border border-silver-200 bg-white p-5">
+        <div class="mb-4 flex items-center gap-2">
+            <span class="rounded bg-clay-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-clay-600">Current</span>
+            <span class="text-xs text-clay-400">the control rows as they ship today</span>
+        </div>
+        <div class="space-y-3 opacity-90">
+            <!-- shelf pills -->
+            <div class="flex flex-wrap gap-1.5">
+                <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Mainstays 9</span>
+                <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Notebook 46</span>
+                <span class="rounded-full border border-brand-600 bg-brand-50 px-3 py-1.5 text-sm text-brand-800">Testing 42</span>
+                <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Projects</span>
+                <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Wishlist 0</span>
+                <span class="rounded-full border border-silver-200 px-3 py-1.5 text-sm text-clay-600">Archive 7</span>
+            </div>
+            <!-- the 3 flagged buttons -->
+            <div class="flex flex-wrap gap-2">
+                <span class="rounded-lg border border-red-300 bg-red-50 px-3 py-1.5 text-sm text-red-700">Timeline — your tests by date →</span>
+                <span class="rounded-lg border border-red-300 bg-red-50 px-3 py-1.5 text-sm text-red-700">Projects — your lines of inquiry →</span>
+                <span class="rounded-lg border border-red-300 bg-red-50 px-3 py-1.5 text-sm text-red-700">Select tests to group →</span>
+            </div>
+            <p class="text-[11px] text-red-500">Red = flagged for change</p>
+        </div>
+    </section>
+
+    <!-- ===== HIERARCHY TABLE ===== -->
+    <section class="mb-12">
+        <h2 class="mb-3 text-sm font-bold uppercase tracking-wide text-clay-500">Action-by-action audit</h2>
+        <div class="overflow-hidden rounded-xl border border-silver-200 bg-white">
+            <table class="w-full text-sm">
+                <thead>
+                    <tr class="border-b border-silver-200 bg-neutral-50 text-left text-xs font-semibold uppercase tracking-wide text-clay-500">
+                        <th class="px-4 py-3 w-[22%]">Current button</th>
+                        <th class="px-4 py-3 w-[34%]">What it does today</th>
+                        <th class="px-4 py-3 w-[44%]">Recommendation</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y divide-silver-200 align-top">
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-semibold text-clay-800">Timeline — your tests by date</span></td>
+                        <td class="px-4 py-4 text-clay-600">Opens a separate chronological view of all tests.</td>
+                        <td class="px-4 py-4 text-clay-700">
+                            <span class="mb-1 inline-block rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">Demote</span>
+                            <p>Not relevant as a first-tier button. Sorting the table by date already satisfies this. Replace with a quiet link at the <strong>bottom of the table</strong>: <em>"View all tests in timeline →"</em>.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-semibold text-clay-800">Select tests to group</span></td>
+                        <td class="px-4 py-4 text-clay-600">Enters a mode where you pick multiple tests to batch into a group/project.</td>
+                        <td class="px-4 py-4 text-clay-700">
+                            <span class="mb-1 inline-block rounded bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-700">Replace with table pattern</span>
+                            <p>Use a standard <strong>checkbox in the table header</strong> (select-all) plus a checkbox per row. Selecting rows reveals a bulk-action bar (Group, Move, Share). This is the expected pattern and removes the extra button + mode.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-semibold text-clay-800">Projects — your lines of inquiry</span></td>
+                        <td class="px-4 py-4 text-clay-600">Jumps to the Projects view.</td>
+                        <td class="px-4 py-4 text-clay-700">
+                            <span class="mb-1 inline-block rounded bg-red-100 px-2 py-0.5 text-[10px] font-bold uppercase text-red-700">Remove</span>
+                            <p>Redundant — the <strong>Projects pill</strong> directly above already does this. Drop the duplicate button.</p>
+                        </td>
+                    </tr>
+                    <tr class="bg-neutral-50/60">
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">Sort / "then" / Date code / Newest first ×</span></td>
+                        <td class="px-4 py-4 text-clay-600">A multi-level sort builder (primary sort, secondary sort, direction) sitting inline.</td>
+                        <td class="px-4 py-4 text-clay-700">
+                            <span class="mb-1 inline-block rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">Consolidate</span>
+                            <p>Collapse into clickable <strong>column headers</strong> with sort carets. Click a header to sort; click again to flip direction. Removes the inline multi-level sort builder.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">New glaze</span></td>
+                        <td class="px-4 py-4 text-clay-600">Primary create action.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-green-100 px-2 py-0.5 text-[10px] font-bold uppercase text-green-700">Keep</span><p>Keep as the one filled primary button, right-aligned.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">List / Tiles / Chemistry</span></td>
+                        <td class="px-4 py-4 text-clay-600">View switchers for the result set.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-green-100 px-2 py-0.5 text-[10px] font-bold uppercase text-green-700">Keep</span><p>Keep as a grouped segmented control, right-aligned next to New glaze.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">Present (per row)</span></td>
+                        <td class="px-4 py-4 text-clay-600">A full "Present" button repeated on every row.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-amber-100 px-2 py-0.5 text-[10px] font-bold uppercase text-amber-800">Demote</span><p>Replace the repeated button with a compact <strong>icon + tooltip</strong> in a row-actions column. Lighter, less visual noise.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">Import / Drop Box / Bulk photos</span></td>
+                        <td class="px-4 py-4 text-clay-600">Separate import actions scattered in the toolbar.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-700">Consolidate</span><p>Gather under a single <strong>"Import files &amp; images"</strong> menu placed above the table, so it applies across material types.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">Active / Archived / All / By project tabs</span></td>
+                        <td class="px-4 py-4 text-clay-600">No clear way to separate in-progress tests from archived ones, or to view them grouped.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-700">New</span><p>Add a <strong>filter tab row</strong> above the table: <strong>Active tests</strong> (default — hides archived), <strong>Archived</strong>, <strong>All tests</strong>, and <strong>By project</strong> (grouped). Each shows a count so the distribution is visible at a glance.</p></td>
+                    </tr>
+                    <tr>
+                        <td class="px-4 py-4"><span class="font-medium text-clay-700">Filters + results count</span></td>
+                        <td class="px-4 py-4 text-clay-600">Faceted filters existed as scattered dropdowns; no summary of how many results are showing.</td>
+                        <td class="px-4 py-4 text-clay-700"><span class="mb-1 inline-block rounded bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase text-brand-700">Consolidate</span><p>Collect facets (Status, Photos, Surface, Color family, Flux type) into one <strong>Filters</strong> panel, and add a <strong>"Showing X of Y"</strong> count above the table.</p></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</div>
+
+<script>
+// ---- Filters panel ----
+function toggleFilters(){
+    document.getElementById('filtersPanel').classList.toggle('hidden');
+}
+
+// ---- Import menu ----
+function toggleImport(){
+    document.getElementById('importMenu').classList.toggle('hidden');
+}
+
+// ---- Material type segmented control ----
+function pickType(btn){
+    btn.parentElement.querySelectorAll('.type-seg').forEach(b=>{
+        const on = b===btn;
+        b.classList.toggle('bg-white', on);
+        b.classList.toggle('shadow-sm', on);
+        b.classList.toggle('text-brand-700', on);
+        b.classList.toggle('font-semibold', on);
+        b.classList.toggle('text-clay-600', !on);
+        b.classList.toggle('font-medium', !on);
+    });
+}
+
+// ---- Data ----
+const TESTS = [
+    { name:'Rusty Nail (Prim) Stain Triaxial', code:'102926·1-15', cone:6, updated:'2 days ago', status:'Pre-fire', archived:false, project:'Unassigned' },
+    { name:'Katz Craze v20', code:'102526·1-16', cone:6, updated:'4 days ago', status:'Pre-fire', archived:false, project:'Katz Craze Series' },
+    { name:'Katz Craze v18 — Boron Sweep Again', code:'102226·1-4', cone:6, updated:'1 week ago', status:'Concluded', archived:false, project:'Katz Craze Series' },
+    { name:'Katz Craze v17 — Tight Mapping', code:'101826·1-9', cone:6, updated:'2 weeks ago', status:'Concluded', archived:true, project:'Katz Craze Series' },
+    { name:'Katz Craze v19', code:'102026·1-12', cone:6, updated:'3 weeks ago', status:'Fired', archived:false, project:'Katz Craze Series' },
+    { name:'BluVar v5 Barium — Si Al Mapping', code:'082326·1-12', cone:6, updated:'1 month ago', status:'Concluded', archived:true, project:'BluVar Crazed' },
+];
+const STATUS_BADGE = {
+    'Pre-fire':'bg-amber-100 text-amber-800',
+    'Fired':'bg-sky-100 text-sky-800',
+    'Concluded':'bg-emerald-100 text-emerald-800'
+};
+function badge(status){ return '<span class="rounded-full '+STATUS_BADGE[status]+' px-2 py-0.5 text-xs font-medium">'+status+'</span>'; }
+function rowHTML(t){
+    return '<tr class="hover:bg-neutral-50">'
+        + '<td class="px-4 py-3"><input type="checkbox" class="rowcheck h-4 w-4 rounded border-silver-300 text-brand-600 focus:ring-brand-400" onchange="syncBar()"></td>'
+        + '<td class="px-4 py-3 font-medium text-clay-800">'+t.name+'</td>'
+        + '<td class="px-4 py-3 font-mono text-xs text-clay-500">'+t.code+'</td>'
+        + '<td class="px-4 py-3 text-center text-clay-600">'+t.cone+'</td>'
+        + '<td class="px-4 py-3 text-clay-500">'+t.updated+'</td>'
+        + '<td class="px-4 py-3">'+badge(t.status)+'</td>'
+        + '<td class="px-4 py-3 text-right"><button title="Present this test" aria-label="Present this test" class="inline-flex h-7 w-7 items-center justify-center rounded-md text-clay-400 hover:bg-brand-50 hover:text-brand-700"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 3h20v14H2z"/><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M8 21h8M12 17v4"/></svg></button></td></tr>';
+}
+
+let currentTab = 'active';
+
+function switchTab(btn){
+    currentTab = btn.dataset.tab;
+    document.querySelectorAll('.tab').forEach(t=>{
+        const on = t === btn;
+        t.classList.toggle('border-brand-600', on);
+        t.classList.toggle('text-brand-700', on);
+        t.classList.toggle('font-semibold', on);
+        t.classList.toggle('border-transparent', !on);
+        t.classList.toggle('text-clay-500', !on);
+        t.classList.toggle('font-medium', !on);
+    });
+    render();
+}
+
+function render(){
+    const listView = document.getElementById('view-list');
+    const projView = document.getElementById('view-project');
+    if (currentTab === 'project'){
+        listView.classList.add('hidden');
+        projView.classList.remove('hidden');
+        renderProjects();
+    } else {
+        projView.classList.add('hidden');
+        listView.classList.remove('hidden');
+        let rows = TESTS;
+        if (currentTab === 'active') rows = TESTS.filter(t=>!t.archived);
+        else if (currentTab === 'archived') rows = TESTS.filter(t=>t.archived);
+        document.getElementById('listBody').innerHTML = rows.map(rowHTML).join('');
+        const countEl = document.getElementById('resultsCount');
+        if (countEl) countEl.textContent = rows.length ? ('Showing 1–'+rows.length+' of '+rows.length) : 'No results';
+        clearSelection();
+    }
+}
+
+function renderProjects(){
+    const groups = {};
+    TESTS.forEach(t=>{ (groups[t.project] = groups[t.project]||[]).push(t); });
+    const html = Object.keys(groups).map(name=>{
+        const items = groups[name];
+        return '<div class="border-b border-silver-200 last:border-0">'
+            + '<div class="flex items-center gap-2 bg-neutral-50 px-4 py-2 text-xs font-semibold uppercase tracking-wide text-clay-500">'
+            +   '<svg class="h-4 w-4 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>'
+            +   name + '<span class="rounded-full bg-silver-100 px-1.5 text-[11px] normal-case text-clay-500">'+items.length+'</span>'
+            + '</div>'
+            + '<table class="w-full text-sm"><tbody class="divide-y divide-silver-200">'
+            + items.map(t=>'<tr class="hover:bg-neutral-50"><td class="px-4 py-3 w-1/2 font-medium text-clay-800">'+t.name+'</td><td class="px-4 py-3 font-mono text-xs text-clay-500">'+t.code+'</td><td class="px-4 py-3 text-clay-500">'+t.updated+'</td><td class="px-4 py-3 text-right">'+badge(t.status)+'</td></tr>').join('')
+            + '</tbody></table></div>';
+    }).join('');
+    document.getElementById('view-project').innerHTML = html
+        + '<div class="border-t border-silver-200 bg-neutral-50 px-4 py-3 text-center"><a href="#" class="inline-flex items-center gap-1 text-sm font-medium text-brand-700 hover:text-brand-900"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-width="2"/><path stroke-width="2" stroke-linecap="round" d="M12 7v5l3 2"/></svg>View all tests in timeline →</a></div>';
+}
+
+function toggleAll(master) {
+    document.querySelectorAll('.rowcheck').forEach(c => c.checked = master.checked);
+    syncBar();
+}
+function syncBar() {
+    const boxes = [...document.querySelectorAll('.rowcheck')];
+    const checked = boxes.filter(c => c.checked).length;
+    const bar = document.getElementById('bulkbar');
+    document.getElementById('selectAll').checked = checked === boxes.length && checked > 0;
+    document.getElementById('selectAll').indeterminate = checked > 0 && checked < boxes.length;
+    if (checked > 0) { bar.classList.remove('hidden'); bar.classList.add('flex'); }
+    else { bar.classList.add('hidden'); bar.classList.remove('flex'); }
+    document.getElementById('bulkcount').textContent = checked + ' selected';
+}
+function clearSelection() {
+    document.querySelectorAll('.rowcheck').forEach(c => c.checked = false);
+    document.getElementById('selectAll').checked = false;
+    document.getElementById('selectAll').indeterminate = false;
+    syncBar();
+}
+
+render(); // initial paint
+</script>
+
+</body>
+</html>

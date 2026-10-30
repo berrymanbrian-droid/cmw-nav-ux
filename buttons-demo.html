@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Actions — Interactive Button Audit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: { extend: {
+                fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+                colors: {
+                    clay: { 100:'#e8e4e0',200:'#d4cec8',300:'#b8b0a8',400:'#9a8f85',500:'#7d7168',600:'#635850',700:'#4a4039',800:'#332b26',900:'#1f1a17',950:'#141110' },
+                    brand: { 50:'#faf5ff',100:'#f3e8ff',200:'#e9d5ff',300:'#d8b4fe',400:'#c084fc',500:'#a855f7',600:'#7c3aed',700:'#6d28d9',800:'#5b21b6',900:'#4c1d95',950:'#2e1065' },
+                    silver: { 100:'#f4f4f5',200:'#e4e4e7',300:'#d4d4d8' }
+                }
+            }}
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 text-gray-900 antialiased font-sans">
+
+<div class="max-w-4xl mx-auto px-6 py-10">
+
+    <p class="text-[11px] font-bold uppercase tracking-widest text-clay-400 mb-2">Interactive wireframe</p>
+    <h1 class="text-2xl font-bold text-gray-900 mb-1">What each action button does</h1>
+    <p class="text-sm text-clay-500 mb-8 max-w-2xl">The current test page shows 9 buttons at equal weight. Click any button below to see what it triggers — a view switch, a modal, a print sheet, or a share flow. Once you can see the behavior, it's clearer which belong up front and which can move into a menu.</p>
+
+    <!-- ======================================================= -->
+    <!-- CURRENT: the raw cluster, exactly as shipped            -->
+    <!-- ======================================================= -->
+    <section class="mb-10 rounded-xl border border-silver-200 bg-white p-5">
+        <div class="mb-4 flex items-center gap-2">
+            <span class="rounded bg-clay-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-clay-600">Current</span>
+            <span class="text-xs text-clay-400">9 buttons, equal weight — click to inspect behavior</span>
+        </div>
+
+        <!-- Status action -->
+        <button data-action="mark-fired" class="demo-btn mb-3 rounded-lg bg-amber-500 hover:bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition">Mark as fired</button>
+
+        <!-- The 9-button grid -->
+        <div class="flex flex-wrap gap-2">
+            <button data-action="presentation" class="demo-btn rounded-lg border border-brand-300 bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-100 transition">Presentation view →</button>
+            <button data-action="data" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Data view →</button>
+            <button data-action="report" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Report →</button>
+            <button data-action="batch" class="demo-btn rounded-lg border border-brand-300 bg-brand-50 px-3 py-2 text-sm font-medium text-brand-700 hover:bg-brand-100 transition">Batch on screen</button>
+            <button data-action="print" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Print test sheet</button>
+            <button data-action="duplicate" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Duplicate test</button>
+            <button data-action="edit" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Edit / regenerate</button>
+            <button data-action="share" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Share to Silica : Alumni</button>
+        </div>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- RECOMMENDED: grouped by job                             -->
+    <!-- ======================================================= -->
+    <section class="mb-10 rounded-xl border-2 border-brand-200 bg-white p-5">
+        <div class="mb-4 flex items-center gap-2">
+            <span class="rounded bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-700">Recommended</span>
+            <span class="text-xs text-clay-400">same 9 actions, grouped by what you're doing right now</span>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2">
+            <!-- Status (primary) -->
+            <button data-action="mark-fired" class="demo-btn rounded-lg bg-amber-500 hover:bg-amber-600 px-4 py-2 text-sm font-semibold text-white transition">Mark as fired</button>
+
+            <span class="mx-1 h-6 w-px bg-silver-200"></span>
+
+            <!-- Pre-fire primary jobs -->
+            <button data-action="batch" class="demo-btn rounded-lg border border-brand-300 bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-100 transition">Batch on screen</button>
+            <button data-action="print" class="demo-btn rounded-lg border border-brand-300 bg-brand-50 px-3 py-2 text-sm font-semibold text-brand-700 hover:bg-brand-100 transition">Print test sheet</button>
+            <button data-action="data" class="demo-btn rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">Data view →</button>
+
+            <!-- Overflow -->
+            <div class="relative">
+                <button onclick="toggleOverflow(event)" class="demo-btn-overflow inline-flex items-center gap-1 rounded-lg border border-silver-300 bg-white px-3 py-2 text-sm font-medium text-clay-700 hover:border-brand-400 transition">
+                    More
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 9l6 6 6-6"/></svg>
+                </button>
+                <div id="overflow" class="hidden absolute right-0 top-full z-20 mt-1 w-56 rounded-lg border border-silver-200 bg-white p-1.5 shadow-lg">
+                    <button data-action="presentation" class="demo-btn block w-full rounded px-3 py-2 text-left text-sm text-clay-700 hover:bg-neutral-50">Presentation view →</button>
+                    <button data-action="report" class="demo-btn block w-full rounded px-3 py-2 text-left text-sm text-clay-700 hover:bg-neutral-50">Report →</button>
+                    <button data-action="duplicate" class="demo-btn block w-full rounded px-3 py-2 text-left text-sm text-clay-700 hover:bg-neutral-50">Duplicate test</button>
+                    <button data-action="edit" class="demo-btn block w-full rounded px-3 py-2 text-left text-sm text-clay-700 hover:bg-neutral-50">Edit / regenerate</button>
+                    <div class="my-1 h-px bg-silver-200"></div>
+                    <button data-action="share" class="demo-btn block w-full rounded px-3 py-2 text-left text-sm text-clay-700 hover:bg-neutral-50">Share to Silica : Alumni</button>
+                </div>
+            </div>
+        </div>
+        <p class="mt-3 text-xs text-clay-400">3 primary actions stay visible (the ones you use while mixing), the other 5 tuck into <span class="font-medium text-clay-600">More</span>. The visible set swaps as the test moves Pre-fire → Fired → Concluded.</p>
+    </section>
+
+    <!-- ======================================================= -->
+    <!-- INSPECTOR: shows what the clicked button does           -->
+    <!-- ======================================================= -->
+    <section>
+        <p class="text-[11px] font-bold uppercase tracking-widest text-clay-400 mb-2">Behavior preview</p>
+        <div id="inspector" class="rounded-xl border border-dashed border-silver-300 bg-white p-6 text-center text-sm text-clay-400">
+            Click any button above to preview what it does.
+        </div>
+    </section>
+
+</div>
+
+<!-- ===== MODAL (used by print / batch / share) ===== -->
+<div id="modal" class="hidden fixed inset-0 z-40 flex items-center justify-center bg-black/40 p-4">
+    <div class="w-full max-w-md rounded-xl bg-white p-6 shadow-xl">
+        <div class="mb-3 flex items-start justify-between">
+            <h3 id="modal-title" class="text-lg font-bold text-gray-900"></h3>
+            <button onclick="closeModal()" class="rounded p-1 text-clay-400 hover:bg-neutral-100 hover:text-clay-700">
+                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="2" stroke-linecap="round" d="M6 6l12 12M18 6L6 18"/></svg>
+            </button>
+        </div>
+        <div id="modal-body" class="text-sm text-clay-600"></div>
+        <div class="mt-5 flex justify-end gap-2">
+            <button onclick="closeModal()" class="rounded-lg border border-silver-300 px-3 py-1.5 text-sm font-medium text-clay-700 hover:border-brand-400">Close</button>
+            <button id="modal-cta" onclick="closeModal()" class="rounded-lg bg-brand-600 px-3 py-1.5 text-sm font-semibold text-white hover:bg-brand-700"></button>
+        </div>
+    </div>
+</div>
+
+<script>
+// Each action: label, type (view | modal | print | status), and what it does.
+const ACTIONS = {
+    'mark-fired': { kind:'status', title:'Mark as fired', cta:'Confirm fired',
+        desc:'Advances the test from <strong>Pre-fire</strong> to <strong>Fired</strong>. This is a state change — it unlocks the result-documentation actions (Add images, Presentation view) and hides the mixing actions you no longer need.',
+        preview:'<div class="flex items-center gap-2 text-xs"><span class="flex items-center gap-1.5 text-clay-400"><span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>Pre-fire</span><div class="h-px w-8 bg-silver-300"></div><span class="flex items-center gap-1.5 font-semibold text-green-700"><span class="h-2.5 w-2.5 rounded-full bg-green-500"></span>Fired</span><div class="h-px w-8 bg-silver-300"></div><span class="flex items-center gap-1.5 text-clay-400"><span class="h-2.5 w-2.5 rounded-full border-2 border-silver-300"></span>Concluded</span></div>' },
+    'presentation': { kind:'view', title:'Presentation view', cta:'Open view',
+        desc:'Switches to a <strong>full-screen, clean layout</strong> of the test for sharing on screen or projecting in a class — tiles, labels, and chemistry with the app chrome stripped away.',
+        preview:'<div class="rounded-lg border border-silver-200 bg-neutral-50 p-4"><div class="mx-auto mb-2 h-2 w-24 rounded bg-clay-300"></div><div class="grid grid-cols-4 gap-2">'+Array(8).fill('<div class="aspect-square rounded bg-gradient-to-br from-clay-200 to-brand-100"></div>').join('')+'</div></div>' },
+    'data': { kind:'view', title:'Data view', cta:'Open view',
+        desc:'Switches to the <strong>numeric table</strong> — each tile\'s recipe, UMF, and measured values in rows you can sort and export.',
+        preview:'<div class="overflow-hidden rounded-lg border border-silver-200 text-xs"><div class="grid grid-cols-4 bg-neutral-50 font-semibold text-clay-500"><div class="p-2">Tile</div><div class="p-2">SiO₂</div><div class="p-2">Al₂O₃</div><div class="p-2">R₂O:RO</div></div>'+['1-1','1-2','1-3'].map(r=>'<div class="grid grid-cols-4 border-t border-silver-200 text-clay-600"><div class="p-2 font-mono">'+r+'</div><div class="p-2">3.42</div><div class="p-2">0.38</div><div class="p-2">0.3:0.7</div></div>').join('')+'</div>' },
+    'report': { kind:'view', title:'Report', cta:'Open report',
+        desc:'Opens a <strong>formatted write-up</strong> — the test\'s goal, method, results, and conclusions as a readable document you can share or print.',
+        preview:'<div class="rounded-lg border border-silver-200 bg-white p-4 space-y-2"><div class="h-3 w-40 rounded bg-clay-300"></div><div class="h-2 w-full rounded bg-silver-200"></div><div class="h-2 w-5/6 rounded bg-silver-200"></div><div class="h-2 w-2/3 rounded bg-silver-200"></div></div>' },
+    'batch': { kind:'modal', title:'Batch on screen', cta:'Show batch',
+        desc:'Opens a <strong>mixing calculator</strong> for the selected tiles — scales each recipe to a batch size you set, so you can weigh out materials at the scale.',
+        body:'<p class="mb-3">Enter a batch size and the recipe scales for every tile in the test.</p><div class="flex items-center gap-2"><label class="text-sm text-clay-600">Batch size</label><input type="number" value="100" class="w-24 rounded-lg border border-silver-300 px-2 py-1 text-sm"><span class="text-sm text-clay-500">g</span></div><div class="mt-3 rounded-lg bg-neutral-50 p-3 text-xs font-mono text-clay-600">Silica 34.2g · Alumina 18.0g · Flux 47.8g</div>' },
+    'print': { kind:'modal', title:'Print test sheet', cta:'Send to printer',
+        desc:'Generates a <strong>printable worksheet</strong> — tile grid with blank fields for labeling, weighing, and recording observations at the bench.',
+        body:'<p class="mb-3">A print-ready PDF of the test sheet with blank result fields. Opens your browser\'s print dialog.</p><div class="rounded-lg border border-silver-200 p-4"><div class="mb-2 h-2 w-28 rounded bg-clay-300"></div><div class="grid grid-cols-3 gap-1">'+Array(6).fill('<div class="aspect-[3/2] rounded border border-dashed border-silver-300"></div>').join('')+'</div></div>' },
+    'duplicate': { kind:'modal', title:'Duplicate test', cta:'Create duplicate',
+        desc:'Makes a <strong>copy of this test</strong> as a new Pre-fire test — same recipes and setup, fresh tile codes. Used to start the next round.',
+        body:'<p>Creates <strong>BluVar v5 Barium — Si Al Mapping (copy)</strong> as a new Pre-fire test. You can tweak the recipes before firing.</p>' },
+    'edit': { kind:'modal', title:'Edit / regenerate', cta:'Edit setup',
+        desc:'Reopens the <strong>test setup</strong> — change the variables, ranges, or tile count and regenerate the grid. Only available before firing.',
+        body:'<p>Returns to the test builder so you can change variables (Si:Al range, step count) and regenerate the tile grid.</p>' },
+    'share': { kind:'modal', title:'Share to Silica : Alumni', cta:'Share',
+        desc:'Publishes this test to a <strong>group or the Commons</strong> so others can view the results. Replaces the "Private" badge with the group name.',
+        body:'<p class="mb-3">Choose who can see this test.</p><div class="space-y-2 text-sm"><label class="flex items-center gap-2"><input type="radio" name="vis" checked> Silica : Alumni (group)</label><label class="flex items-center gap-2"><input type="radio" name="vis"> Public Commons</label><label class="flex items-center gap-2"><input type="radio" name="vis"> Keep private</label></div>' }
+};
+
+const inspector = document.getElementById('inspector');
+
+function renderInspector(key) {
+    const a = ACTIONS[key];
+    if (!a) return;
+    const kindLabel = { status:'State change', view:'View switch', modal:'Opens a dialog' }[a.kind];
+    inspector.innerHTML =
+        '<div class="text-left">'
+        + '<div class="mb-2 flex items-center gap-2"><span class="rounded-full bg-brand-100 px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide text-brand-700">'+kindLabel+'</span><span class="text-sm font-semibold text-clay-800">'+a.title+'</span></div>'
+        + '<p class="mb-4 text-sm text-clay-600">'+a.desc+'</p>'
+        + (a.preview ? '<div>'+a.preview+'</div>' : '')
+        + '</div>';
+}
+
+document.querySelectorAll('.demo-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        const key = btn.dataset.action;
+        renderInspector(key);
+        document.getElementById('overflow').classList.add('hidden');
+        const a = ACTIONS[key];
+        if (a.kind === 'modal') openModal(a);
+        inspector.scrollIntoView({ behavior:'smooth', block:'nearest' });
+    });
+});
+
+function openModal(a) {
+    document.getElementById('modal-title').textContent = a.title;
+    document.getElementById('modal-body').innerHTML = a.body || a.desc;
+    document.getElementById('modal-cta').textContent = a.cta;
+    document.getElementById('modal').classList.remove('hidden');
+}
+function closeModal() { document.getElementById('modal').classList.add('hidden'); }
+
+function toggleOverflow(e) {
+    e.stopPropagation();
+    document.getElementById('overflow').classList.toggle('hidden');
+}
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.demo-btn-overflow') && !e.target.closest('#overflow')) {
+        document.getElementById('overflow').classList.add('hidden');
+    }
+});
+document.getElementById('modal').addEventListener('click', (e) => {
+    if (e.target.id === 'modal') closeModal();
+});
+</script>
+
+</body>
+</html>
